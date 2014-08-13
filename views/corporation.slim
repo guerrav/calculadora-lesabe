@@ -1,0 +1,11 @@
+li.corporation id=corporation.id class=(corporation.completed_at.nil? ? "" : "completed")
+  = corporation.name
+  form.update action="/corporation/#{corporation.id}" method="POST"
+    input type="hidden" name="_method" value="PUT"
+    -if corporation.completed_at.nil?
+      input type="submit" value="  " title="Complete corporation"
+    -else
+      input type="submit" value="✓" title="Uncomplete corporation"
+  form.delete action="/corporation/#{corporation.id}" method="POST"
+    input type="hidden" name="_method" value="DELETE"
+    input type="submit" value="×" title="Delete corporation"

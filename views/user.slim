@@ -1,0 +1,10 @@
+li.user
+  h2= user.email
+  form.new action="/#{user.id}" method="POST"
+    input type="text" name="corporation[name]"
+  ul.corporations
+    - user.corporations.each do |corporation|
+      == slim :corporation, locals: { corporation: corporation }
+  form.destroy action="/user/#{user.id}" method="POST"
+    input type="hidden" name="_method" value="DELETE"
+    input type="submit" value="×"
