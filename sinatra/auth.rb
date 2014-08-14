@@ -43,7 +43,6 @@ module Sinatra
       	
       	app.get '/logout' do
         	session[:admin] = nil
-        	session.clear
         	flash[:notice] = "You have now logged out"
         	redirect to('/')
 		end 
