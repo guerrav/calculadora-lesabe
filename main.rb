@@ -4,6 +4,7 @@ require 'sinatra/reloader' if development?
 require 'slim'
 require 'data_mapper'
 require 'dm-migrations'
+require 'dm-validations'
 require 'omniauth-identity'
 require 'dm-ar-finders'
 require './sinatra/auth'
@@ -21,9 +22,14 @@ end
 
 #omniauth initializer
 
-use Rack::Session::Cookie
+use Rack::Session::Pool
 use OmniAuth::Builder do
-  provider :identity, :fields => [:email]
+  provider :identity, :fields => [:email], on_failed_registration: lambda { |env|
+      status, headers, body = call env.merge("PATH_INFO" => '/register')
+    }
+    OmniAuth.config.on_failure = Proc.new { |env|
+      OmniAuth::FailureEndpoint.new(env).redirect_to_failure
+    }
 end
 
 
@@ -42,9 +48,8 @@ class Identity
 
   attr_accessor :password_confirmation
 
-#  validates_uniqueness_of :email
-#  validates_format_of :format => :email_address 
-
+  validates_uniqueness_of :email
+  validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
 end
 
 
@@ -203,10 +208,7 @@ delete '/user/:id' do
 end
 
 
-
-
-
-
+  
 
 
 

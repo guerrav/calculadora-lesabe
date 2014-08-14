@@ -1,4 +1,8 @@
-
+- if @identity && @identity.errors.any?
+  .alert.alert-error
+    - @identity.errors.full_messages.each do |msg|
+      ul.unstyled
+        li= msg
 
 
 form.new action="/auth/identity/register" method="POST"

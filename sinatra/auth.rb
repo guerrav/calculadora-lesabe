@@ -30,10 +30,20 @@ module Sinatra
 			slim :login
 		end
 
+		app.get '/register' do 
+			slim :register
+		end
+
+		app.post '/register' do
+    		@identity = env['omniauth.identity']
+    		slim :register
+ 		end
+
 		
       	
       	app.get '/logout' do
         	session[:admin] = nil
+        	session.clear
         	flash[:notice] = "You have now logged out"
         	redirect to('/')
 		end 
@@ -49,6 +59,8 @@ module Sinatra
 		  user = User.all.first(email: auth["info"]["email"])
 
 
+
+		# SIGN IN
 		# CHECA EL CALLBACK, SI EXISTE EL USUARIO PARA COMO TRUE Y LO VERIFICA 
 
 		  if user
@@ -56,6 +68,9 @@ module Sinatra
 		    flash[:notice] = "You are now logged in as #{user.email}" 
 		    redirect to('/')
 
+
+
+		# REGISTER
 		# CHECA EL CALLBACK, NO EXISTE USER LO CREA Y INGRESA LA INFO DEL HASH EN EMAIL
 
 		  else
@@ -64,7 +79,11 @@ module Sinatra
 		    session[:admin] = user.id
 		    flash[:notice] = "no hay match entonces genera un usario " 
 		    redirect to('/')
+
+		
+
 		  end
+
 
 		end
 		 
