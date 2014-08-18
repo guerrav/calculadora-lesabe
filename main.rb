@@ -24,12 +24,17 @@ end
 
 use Rack::Session::Pool
 use OmniAuth::Builder do
+  #IDENTITY
   provider :identity, :fields => [:email], on_failed_registration: lambda { |env|
       status, headers, body = call env.merge("PATH_INFO" => '/register')
     }
     OmniAuth.config.on_failure = Proc.new { |env|
       OmniAuth::FailureEndpoint.new(env).redirect_to_failure
     }
+
+    #TWITTER
+  provider :twitter, 'put your consumer key here', 'put your consumer secret here'
+
 end
 
 
