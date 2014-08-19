@@ -1,6 +1,6 @@
-- if @identity && @identity.errors.any?
+- if @user && @user.errors.any?
   .alert.alert-error
-    - @identity.errors.full_messages.each do |msg|
+    - @user.errors.full_messages.each do |msg|
       ul.unstyled
         li= msg
 

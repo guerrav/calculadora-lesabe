@@ -35,7 +35,7 @@ module Sinatra
 		end
 
 		app.post '/register' do
-    		@identity = env['omniauth.identity']
+    		@user = env['omniauth.identity']
     		slim :register
  		end
 

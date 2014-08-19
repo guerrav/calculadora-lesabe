@@ -6,6 +6,7 @@ require 'data_mapper'
 require 'dm-migrations'
 require 'dm-validations'
 require 'omniauth-identity'
+require 'omniauth-twitter'
 require 'dm-ar-finders'
 require './sinatra/auth'
 
@@ -25,7 +26,7 @@ end
 use Rack::Session::Pool
 use OmniAuth::Builder do
   #IDENTITY
-  provider :identity, :fields => [:email], on_failed_registration: lambda { |env|
+  provider :identity, :fields => [:email], model: User, on_failed_registration: lambda { |env|
       status, headers, body = call env.merge("PATH_INFO" => '/register')
     }
     OmniAuth.config.on_failure = Proc.new { |env|
@@ -43,37 +44,68 @@ end
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
 
 
-class Identity
+class Authentication
   include DataMapper::Resource
-  include OmniAuth::Identity::Models::DataMapper
 
-  property :id,              Serial
-  property :email,           String
-  property :password_digest, Text
+  property :id,           Serial
+  property :provider,     String
+  property :uid,          String
+  property :created_at,   DateTime
+  property :updated_at,   DateTime
 
-  attr_accessor :password_confirmation
+  belongs_to :user
 
-  validates_uniqueness_of :email
-  validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
+  def self.find_with_omniauth(auth)
+    Authentication.all.first(provider: auth["info"]["provider"], uid: auth["info"]["uid"])
+  end
+ 
+  def self.create_with_omniauth(auth)
+    create! do |authentication|
+    
+      authentication.uid = auth["info"]["uid"]
+      authentication.provider = auth["info"]["provider"]  
+  
+    end
+  end
+
 end
 
 
 class User
   include DataMapper::Resource
+  include OmniAuth::Identity::Models::DataMapper
+
 
 
   property :id,           Serial
   property :email,        String
   property :username,     String
-  property :password,     String
+  property :password_digest,     Text
   property :name,         String
   property :lastname,     String
   property :created_at,   DateTime
 
+  attr_accessor :password_confirmation
 
+  validates_uniqueness_of :email
+  validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
+  
+  def self.create_with_omniauth(auth)
+    create! do |user|
+    
+      user.email = auth["info"]["email"]
+    end
+  end
+
+
+  has n, :authentications
   has n, :corporations
 
+  
+
 end
+  
+
 
 
 class Corporation
