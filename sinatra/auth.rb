@@ -49,6 +49,28 @@ module Sinatra
 
 
 
+ 		app.get '/auth/:provider/callback' do
+
+
+	      	auth = request.env["omniauth.auth"]
+	      	authentication = Authentication.find_with_omniauth(auth)
+
+	      	if authentication
+	      		authentication.user_id == current_user
+	      		flash[:notice] = "existe una auth ligada a user.id #{authentication.id} " 
+	      		redirect to('/')
+
+	      	else
+	      		user = User.create!
+	      		user.authentications.create!(uid: auth["uid"], provider: auth["provider"])
+	      		user.save
+	      		session[:admin] = user.id
+	      		flash[:notice] = "lo logre  #{user.id} "
+	      		redirect to('/')
+ 
+			end 
+	    end
+
 
 		app.post '/auth/:provider/callback' do
 		  

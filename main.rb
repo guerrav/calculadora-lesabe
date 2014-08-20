@@ -34,7 +34,7 @@ use OmniAuth::Builder do
     }
 
     #TWITTER
-  provider :twitter, 'put your consumer key here', 'put your consumer secret here'
+  provider :twitter, 'dpGgrLpsjZl94CwwdykqoABuU', 'YJlE5EN36opAZRKgsx4lbHToaoz0h3RjPAmzEDHLrfUFGZyAjW'
 
 end
 
@@ -56,14 +56,14 @@ class Authentication
   belongs_to :user
 
   def self.find_with_omniauth(auth)
-    Authentication.all.first(provider: auth["info"]["provider"], uid: auth["info"]["uid"])
+    authentication = Authentication.all.first(uid: auth["uid"], provider: auth["provider"])
   end
  
   def self.create_with_omniauth(auth)
     create! do |authentication|
     
-      authentication.uid = auth["info"]["uid"]
-      authentication.provider = auth["info"]["provider"]  
+      authentication.uid = auth["uid"]
+      authentication.provider = auth["provider"]  
   
     end
   end
