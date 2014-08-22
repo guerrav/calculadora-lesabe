@@ -80,7 +80,7 @@ class User
   property :id,           Serial
   property :email,        String
   property :username,     String
-  property :password_digest,     Text
+  property :password_digest,     Text 
   property :name,         String
   property :lastname,     String
   property :created_at,   DateTime
@@ -111,7 +111,7 @@ end
 class Corporation
   include DataMapper::Resource
   property :id,             Serial
-  property :name,           String
+  property :name,           Integer # es string inicial ahora integer
   property :description,    Text
   property :status,         String
   property :completed_at,   DateTime
@@ -201,9 +201,10 @@ DataMapper.finalize
 get '/' do
   protected!
   @users = User.all(:order => [:name])
+  
+
   slim :index
 end
-
 
 
 
@@ -212,7 +213,7 @@ end
 # CUANDO JALA EL GATILLO DE POST AGREGA Corporation Y REGRESA A HOME
 
 post '/:id' do
-  User.get(params[:id]).corporations.create params['corporation']
+  numero = User.get(params[:id]).corporations.create params['corporation']  
   redirect to('/')
 end
 
@@ -222,6 +223,8 @@ delete '/corporation/:id' do
 end
 
 
+
+ 
 
 
 put '/corporation/:id' do

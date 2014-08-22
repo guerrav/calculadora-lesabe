@@ -1,5 +1,6 @@
 - if @user && @user.errors.any?
-  .alert.alert-error
+
+    .alert.alert-error
     - @user.errors.full_messages.each do |msg|
       ul.unstyled
         li= msg

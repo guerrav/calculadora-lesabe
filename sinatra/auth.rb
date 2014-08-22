@@ -112,7 +112,7 @@ module Sinatra
 		 
 		app.get '/auth/failure' do
 			flash[:notice] = "The username or password you entered are incorrect"
-          	redirect to('/login')
+          	redirect to('/')
 		end
 
 

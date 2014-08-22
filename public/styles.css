@@ -78,4 +78,12 @@ form.delete input{
   border: 1px solid red;
 }
 
+.unstyled {
+  width: 400px;
+  padding: 5px;
+  margin: 20px;
+  background: (red, 60%);
+  color: red;
+  border: 1px solid rgb(10, 255, 0);
+}
 
