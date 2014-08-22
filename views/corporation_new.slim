@@ -1,11 +1,19 @@
 li.corporation id=corporation.id class=(corporation.completed_at.nil? ? "" : "completed")
+  /el numero 
   = corporation.name
+
+  /el cuadrito de completado
   form.update action="/corporation/#{corporation.id}" method="POST"
     input type="hidden" name="_method" value="PUT"
     -if corporation.completed_at.nil?
       input type="submit" value="  " title="Complete corporation"
     -else
       input type="submit" value="✓" title="Uncomplete corporation"
+
+  /la equis para borrarlos    
   form.delete action="/corporation/#{corporation.id}" method="POST"
     input type="hidden" name="_method" value="DELETE"
     input type="submit" value="×" title="Delete corporation"
+
+
+  

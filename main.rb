@@ -21,6 +21,7 @@ end
 
 
 
+
 #omniauth initializer
 
 use Rack::Session::Pool
@@ -78,7 +79,7 @@ class User
 
 
   property :id,           Serial
-  property :email,        String
+  property :email,        String 
   property :username,     String
   property :password_digest,     Text 
   property :name,         String
@@ -87,6 +88,7 @@ class User
 
   attr_accessor :password_confirmation
 
+  validates_presence_of :email
   validates_uniqueness_of :email
   validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
   
@@ -111,7 +113,7 @@ end
 class Corporation
   include DataMapper::Resource
   property :id,             Serial
-  property :name,           Integer # es string inicial ahora integer
+  property :name,           Integer, default: 0 # es string inicial ahora integer
   property :description,    Text
   property :status,         String
   property :completed_at,   DateTime
@@ -122,7 +124,7 @@ end
 class Project
   include DataMapper::Resource
   property :id,             Serial
-  property :name,           String, :required => true
+  property :name,           String, required: true
   property :description,    Text
   property :status,         String
   property :completed_at,           DateTime
@@ -201,8 +203,6 @@ DataMapper.finalize
 get '/' do
   protected!
   @users = User.all(:order => [:name])
-  
-
   slim :index
 end
 
@@ -213,7 +213,12 @@ end
 # CUANDO JALA EL GATILLO DE POST AGREGA Corporation Y REGRESA A HOME
 
 post '/:id' do
-  numero = User.get(params[:id]).corporations.create params['corporation']  
+  
+
+  User.get(params[:id]).corporations.create params['corporation']  
+  
+  
+
   redirect to('/')
 end
 
@@ -249,7 +254,6 @@ end
 
 
   
-
 
 
 

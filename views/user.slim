@@ -3,10 +3,19 @@ li.user
 
   form.new action="/#{user.id}" method="POST"
     input type="text" name="corporation[name]"
+
+  
+  
+
   ul.corporations
 
+  	- sum = user.corporations.sum(:name)
+  	h2= "Suma es #{sum}"
+
     - user.corporations.each do |corporation|
-      == slim :corporation_new, locals: { corporation: corporation }
+
+     	== slim :corporation_new, locals: { corporation: corporation }
   form.destroy action="/user/#{user.id}" method="POST"
     input type="hidden" name="_method" value="DELETE"
     input type="submit" value="×"
+
