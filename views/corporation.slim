@@ -6,12 +6,23 @@ li.corporation id=corporation.id class=(corporation.completed_at.nil? ? "" : "co
   /datos que se imprimen
   = corporation.name
 
+  /CLIENT
 
   /form para agregar
   form.new action="/corporation/#{corporation.id}" method="POST"
     label for="client" client: 
     input type="text" name="client[name]"
     input type="submit" value="+ client"
+
+  /SUPPLIER
+
+  /form para agregar
+  form.new action="/supplier/#{corporation.id}" method="POST"
+    label for="supplier" supplier: 
+    input type="text" name="supplier[name]"
+    input type="submit" value="+ supplier"
+
+
 
   /form para modificar
   form.update action="/corporation/#{corporation.id}" method="POST"
@@ -26,9 +37,19 @@ li.corporation id=corporation.id class=(corporation.completed_at.nil? ? "" : "co
     input type="hidden" name="_method" value="DELETE"
     input type="submit" value="×" title="Delete corporation"
 
+  
+
+
 
   /listado de elementos
   ul.clients
     - corporation.clients.each do |client|
 
       == slim :client, locals: { client: client }
+
+  /listado de elementos
+  ul.suppliers
+    - corporation.suppliers.each do |supplier|
+
+      == slim :supplier, locals: { supplier: supplier }
+

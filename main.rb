@@ -110,6 +110,7 @@ class Corporation
   property :completed_at,   DateTime
   has n, :projects
   has n, :clients
+  has n, :suppliers
   belongs_to :user
 end
 
@@ -119,6 +120,7 @@ class Client
   property :name,         String
   has n, :advpayments
   has n, :projects
+  belongs_to :corporation
 
 end
 
@@ -130,6 +132,7 @@ class Project
   property :status,         String
   property :completed_at,           DateTime
   has n, :budgets 
+  has n, :purchases
   belongs_to :client
   belongs_to :corporation
 end
@@ -157,9 +160,11 @@ end
 class Supplier
   include DataMapper::Resource
   property :id,           Serial
-  property :name,         String
+  property :name,         String, required: true
   has n, :payments
   has n, :quotes
+
+  belongs_to :corporation
 
 end
 
@@ -168,6 +173,7 @@ class Quote
   property :id,           Serial
   property :amount,       Integer
   property :date,     DateTime
+  has n, :payments
   belongs_to :supplier
   belongs_to :project
 end
@@ -255,6 +261,31 @@ put '/client/:id' do
   redirect to('/')
 end
 
+######## SUPPLIER
+
+# busca parent y crea child con params
+
+post '/supplier/:id' do
+  Corporation.get(params[:id]).suppliers.create! params['supplier'] 
+
+  redirect to('/')
+end
+
+# busca id y borra
+
+delete '/supplier/:id' do
+  Supplier.get(params[:id]).destroy
+  redirect to('/')
+end
+
+# busca id y modifica
+
+put '/supplier/:id' do
+  supplier = Supplier.get params[:id]
+  supplier.completed_at = supplier.completed_at.nil? ? Time.now : nil
+  supplier.save
+  redirect to('/')
+end
 
 
 
