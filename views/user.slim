@@ -1,21 +1,20 @@
+/el nombre de la clase
+/user
 li.user
+
+  /datos que se imprimen
   h2= user.email
+  - sum = user.corporations.sum(:name)
+  h2= "Suma es #{sum}"
 
+  /form para agregar , modificar, borrar elementos
   form.new action="/#{user.id}" method="POST"
+  	label for="corporation" corporation: 
     input type="text" name="corporation[name]"
+    input type="submit" value="+ corporation"
 
-  
-  
-
+  /listado de elementos
   ul.corporations
-
-  	- sum = user.corporations.sum(:name)
-  	h2= "Suma es #{sum}"
-
     - user.corporations.each do |corporation|
 
-     	== slim :corporation_new, locals: { corporation: corporation }
-  form.destroy action="/user/#{user.id}" method="POST"
-    input type="hidden" name="_method" value="DELETE"
-    input type="submit" value="×"
-
+     	== slim :corporation, locals: { corporation: corporation }

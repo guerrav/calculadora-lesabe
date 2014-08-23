@@ -76,8 +76,6 @@ class User
   include DataMapper::Resource
   include OmniAuth::Identity::Models::DataMapper
 
-
-
   property :id,           Serial
   property :email,        String 
   property :username,     String
@@ -99,17 +97,10 @@ class User
     end
   end
 
-
   has n, :authentications
   has n, :corporations
-
-  
-
 end
   
-
-
-
 class Corporation
   include DataMapper::Resource
   property :id,             Serial
@@ -118,7 +109,17 @@ class Corporation
   property :status,         String
   property :completed_at,   DateTime
   has n, :projects
+  has n, :clients
   belongs_to :user
+end
+
+class Client
+  include DataMapper::Resource
+  property :id,           Serial
+  property :name,         String
+  has n, :advpayments
+  has n, :projects
+
 end
 
 class Project
@@ -128,7 +129,7 @@ class Project
   property :description,    Text
   property :status,         String
   property :completed_at,           DateTime
-  has 1, :budget 
+  has n, :budgets 
   belongs_to :client
   belongs_to :corporation
 end
@@ -138,17 +139,11 @@ class Budget
   property :id,             Serial
   property :amount,         Integer
   property :date,           DateTime
+  has n, :advpayments
   belongs_to :project
 end
  
-class Client
-  include DataMapper::Resource
-  property :id,           Serial
-  property :name,         String
-  has n, :advpayments
-  has n, :projects
 
-end
 
 class Advpayment
   include DataMapper::Resource
@@ -207,30 +202,23 @@ get '/' do
 end
 
 
+######## CORPORATION
 
-
-
-# CUANDO JALA EL GATILLO DE POST AGREGA Corporation Y REGRESA A HOME
+# busca parent y crea child con params
 
 post '/:id' do
-  
-
   User.get(params[:id]).corporations.create params['corporation']  
-  
-  
-
   redirect to('/')
 end
+
+# busca id y borra
 
 delete '/corporation/:id' do
   Corporation.get(params[:id]).destroy
   redirect to('/')
 end
 
-
-
- 
-
+# busca id y modifica
 
 put '/corporation/:id' do
   corporation = Corporation.get params[:id]
@@ -240,19 +228,127 @@ put '/corporation/:id' do
 end
 
 
-#CUANDO JALA EL GATILLO DE POST AGREGA USER Y LOS BORRA
 
-post '/new/user' do
-  User.create params['user']
+######## CLIENT
+
+# busca parent y crea child con params
+
+post '/corporation/:id' do
+  Corporation.get(params[:id]).clients.create! params['client'] 
+
   redirect to('/')
 end
- 
-delete '/user/:id' do
-  User.get(params[:id]).destroy
+
+# busca id y borra
+
+delete '/client/:id' do
+  Client.get(params[:id]).destroy
+  redirect to('/')
+end
+
+# busca id y modifica
+
+put '/client/:id' do
+  client = Client.get params[:id]
+  client.completed_at = client.completed_at.nil? ? Time.now : nil
+  client.save
   redirect to('/')
 end
 
 
+
+
+######## PROJECT
+
+# busca parent y crea child con params
+
+post '/client/:id' do
+
+  client = Client.get(params[:id])
+  project = client.projects.create! params['project']
+  project.corporation_id = client[:corporation_id]
+  project.save
+  redirect to('/')
+end
+
+# busca id y borra
+
+delete '/project/:id' do
+  Project.get(params[:id]).destroy
+  redirect to('/')
+end
+
+# busca id y modifica
+
+put '/project/:id' do
+  project = Project.get params[:id]
+  project.completed_at = project.completed_at.nil? ? Time.now : nil
+  project.save
+  redirect to('/')
+end
+
+
+######## BUDGET
+
+# busca parent y crea child con params
+
+post '/project/:id' do
+
+  Project.get(params[:id]).budgets.create! params['budget'] 
+
+  redirect to('/')
+end
+
+# busca id y borra
+
+delete '/budget/:id' do
+  Budget.get(params[:id]).destroy
+  redirect to('/')
+end
+
+# busca id y modifica
+
+put '/budget/:id' do
+  budget = Budget.get params[:id]
+  budget.completed_at = budget.completed_at.nil? ? Time.now : nil
+  budget.save
+  redirect to('/')
+end
+
+######## ADVPAYMENT
+
+# busca parent y crea child con params
+
+post '/budget/:id' do
+
+  budget = Budget.get(params[:id])
+  advpayment = budget.advpayments.create! params['advpayment']
+  advpayment.project_id = budget[:project_id]
+
+
+  parent_class =  Project.get(budget[:project_id])
+
+  advpayment.client_id = parent_class[:client_id]
+
+  advpayment.save
+  redirect to('/')
+end
+
+# busca id y borra
+
+delete '/advpayment/:id' do
+  Advpayment.get(params[:id]).destroy
+  redirect to('/')
+end
+
+# busca id y modifica
+
+put '/advpayment/:id' do
+  advpayment = Advpayment.get params[:id]
+  advpayment.completed_at = advpayment.completed_at.nil? ? Time.now : nil
+  advpayment.save
+  redirect to('/')
+end
   
 
 

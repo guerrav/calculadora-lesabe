@@ -1,0 +1,33 @@
+/el nombre de la clase
+/client
+
+li.client 
+
+  /datos que se imprimen
+  = client.name
+
+  /form para agregar 
+  / se cambia /nombre de la clase/ nombre de la clase. id
+  form.new action="/client/#{client.id}" method="POST"
+    / se cambia child
+    label for="project" project: 
+    input type="text" name="project[name]"
+    input type="submit" value="+ project"
+
+
+  /form para borrar
+  form.delete action="/client/#{client.id}" method="POST"
+    input type="hidden" name="_method" value="DELETE"
+    input type="submit" value="×" title="Delete client"
+
+
+  /listado de elementos
+  ul.projects
+    - client.projects.each do |project|
+
+      == slim :project, locals: { project: project }
+
+
+
+
+

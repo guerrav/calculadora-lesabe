@@ -1,0 +1,33 @@
+/el nombre de la clase
+/project
+
+li.project 
+
+  /datos que se imprimen
+  = project.name
+
+
+  /form para agregar 
+  / se cambia /nombre de la clase/ nombre de la clase. id
+  form.new action="/project/#{project.id}" method="POST"
+    / se cambia child
+    label for="budget" budget: 
+    input type="text" name="budget[amount]"
+    input type="submit" value="+ budget"
+
+
+  /form para borrar
+  form.delete action="/project/#{project.id}" method="POST"
+    input type="hidden" name="_method" value="DELETE"
+    input type="submit" value="×" title="Delete project"
+
+
+  /listado de elementos
+  ul.budgets
+    - project.budgets.each do |budget|
+
+      == slim :budget, locals: { budget: budget }
+
+
+
+

@@ -1,8 +1,19 @@
+/el nombre de la clase
+/corporation
+
 li.corporation id=corporation.id class=(corporation.completed_at.nil? ? "" : "completed")
-  /el numero 
+
+  /datos que se imprimen
   = corporation.name
 
-  /el cuadrito de completado
+
+  /form para agregar
+  form.new action="/corporation/#{corporation.id}" method="POST"
+    label for="client" client: 
+    input type="text" name="client[name]"
+    input type="submit" value="+ client"
+
+  /form para modificar
   form.update action="/corporation/#{corporation.id}" method="POST"
     input type="hidden" name="_method" value="PUT"
     -if corporation.completed_at.nil?
@@ -10,10 +21,14 @@ li.corporation id=corporation.id class=(corporation.completed_at.nil? ? "" : "co
     -else
       input type="submit" value="✓" title="Uncomplete corporation"
 
-  /la equis para borrarlos    
+  /form para borrar
   form.delete action="/corporation/#{corporation.id}" method="POST"
     input type="hidden" name="_method" value="DELETE"
     input type="submit" value="×" title="Delete corporation"
 
 
-  
+  /listado de elementos
+  ul.clients
+    - corporation.clients.each do |client|
+
+      == slim :client, locals: { client: client }

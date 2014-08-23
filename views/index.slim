@@ -1,6 +1,3 @@
-form.new action="/new/user" method="POST"
-  input type="text" name="user[name]"
-  input type="submit" value="+ user"
 ul.users
   - @users.each do |user|
     == slim :user, locals: { user: user }
