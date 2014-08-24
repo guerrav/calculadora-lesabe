@@ -1,7 +1,12 @@
 /el nombre de la clase
-/budget
+/advpayment
 
 li.advpayment 
 
   /datos que se imprimen
   = advpayment.amount
+
+  /form para borrar
+  form.delete action="/advpayment/#{advpayment.id}" method="POST"
+    input type="hidden" name="_method" value="DELETE"
+    input type="submit" value="×" title="Delete advpayment"

@@ -1,0 +1,44 @@
+/el nombre de la clase
+/cost
+
+li.cost 
+
+  /datos que se imprimen
+  = "Cost #{cost.amount}"
+ 
+  /PURCHASE
+  /form para agregar 
+  / se cambia /nombre de la clase/ nombre de la clase. id
+  form.new action="/cost/#{cost.id}" method="POST"
+    / se cambia child
+    label for="purchase" purchase: 
+    input type="text" name="purchase[amount]"
+    input type="submit" value="+ purchase"
+
+  /QUOTE
+  /form para agregar 
+  / se cambia /nombre de la clase/ nombre de la clase. id
+  form.new action="/cost/#{cost.id}" method="POST"
+    / se cambia child
+    label for="quote" quote: 
+    input type="text" name="quote[amount]"
+    input type="submit" value="+ quote"
+
+
+
+  /form para borrar
+  form.delete action="/cost/#{cost.id}" method="POST"
+    input type="hidden" name="_method" value="DELETE"
+    input type="submit" value="×" title="Delete cost"
+
+  /listado de elementos
+  ul.purchases
+    - cost.purchases.each do |purchase|
+
+      == slim :purchase, locals: { purchase: purchase }
+
+
+
+
+
+

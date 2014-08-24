@@ -124,6 +124,17 @@ class Client
 
 end
 
+class Supplier
+  include DataMapper::Resource
+  property :id,           Serial
+  property :name,         String, required: true
+  has n, :payments
+  has n, :quotes
+
+  belongs_to :corporation
+
+end
+
 class Project
   include DataMapper::Resource
   property :id,             Serial
@@ -132,7 +143,7 @@ class Project
   property :status,         String
   property :completed_at,           DateTime
   has n, :budgets 
-  has n, :purchases
+  has n, :costs
   belongs_to :client
   belongs_to :corporation
 end
@@ -157,14 +168,24 @@ class Advpayment
 
 end
 
-class Supplier
+class Cost
+  include DataMapper::Resource
+  property :id,             Serial
+  property :amount,         Integer
+  property :date,           DateTime
+
+
+  has n, :purchases
+  belongs_to :project
+end
+
+
+class Purchase
   include DataMapper::Resource
   property :id,           Serial
-  property :name,         String, required: true
-  has n, :payments
-  has n, :quotes
-
-  belongs_to :corporation
+  property :amount,       Integer
+  property :date,         DateTime
+  belongs_to :cost
 
 end
 
@@ -175,7 +196,8 @@ class Quote
   property :date,     DateTime
   has n, :payments
   belongs_to :supplier
-  belongs_to :project
+  belongs_to :cost
+
 end
 
 class Payment
@@ -184,17 +206,11 @@ class Payment
   property :amount,       Integer
   property :date,         DateTime
   belongs_to :supplier
-  belongs_to :project
+  belongs_to :quote
+  
 end
 
-class Purchase
-  include DataMapper::Resource
-  property :id,           Serial
-  property :amount,       Integer
-  property :date,         DateTime
-  belongs_to :project
 
-end
 
 DataMapper.finalize
 
@@ -235,6 +251,24 @@ end
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ######## CLIENT
 
 # busca parent y crea child con params
@@ -261,11 +295,12 @@ put '/client/:id' do
   redirect to('/')
 end
 
+
 ######## SUPPLIER
 
 # busca parent y crea child con params
 
-post '/supplier/:id' do
+post '/suppliers/:id' do
   Corporation.get(params[:id]).suppliers.create! params['supplier'] 
 
   redirect to('/')
@@ -286,6 +321,19 @@ put '/supplier/:id' do
   supplier.save
   redirect to('/')
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -319,13 +367,27 @@ put '/project/:id' do
 end
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ######## BUDGET
 
 # busca parent y crea child con params
 
 post '/project/:id' do
 
-  Project.get(params[:id]).budgets.create! params['budget'] 
+  Project.get(params[:id]).budgets.create! params['budget']
 
   redirect to('/')
 end
@@ -345,6 +407,62 @@ put '/budget/:id' do
   budget.save
   redirect to('/')
 end
+
+
+
+
+######## COST
+
+post '/costs/:id' do
+  Project.get(params[:id]).costs.create! params['cost']
+  redirect to('/')
+end
+
+
+# busca id y borra
+
+delete '/cost/:id' do
+  Cost.get(params[:id]).destroy
+  redirect to('/')
+end
+
+# busca id y modifica
+
+put '/cost/:id' do
+  cost = Cost.get params[:id]
+  cost.completed_at = cost.completed_at.nil? ? Time.now : nil
+  cost.save
+  redirect to('/')
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ######## ADVPAYMENT
 
@@ -380,9 +498,90 @@ put '/advpayment/:id' do
   advpayment.save
   redirect to('/')
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+######## PURCHASE
+
+post '/cost/:id' do
   
 
+  Cost.get(params[:id]).purchases.create! params['purchase'] 
 
+  
+
+  redirect to('/')
+end
+
+# busca id y borra
+
+delete '/purchase/:id' do
+  Purchase.get(params[:id]).destroy
+  redirect to('/')
+end
+
+# busca id y modifica
+
+put '/purchase/:id' do
+  purchase = Purchase.get params[:id]
+  purchase.completed_at = purchase.completed_at.nil? ? Time.now : nil
+  purchase.save
+  redirect to('/')
+end
+
+
+
+
+
+
+
+
+
+######## QUOTE
+
+post '/cost/:id' do
+  
+
+  Cost.get(params[:id]).quotes.create! params['quote'] 
+
+  
+
+  redirect to('/')
+end
+
+# busca id y borra
+
+delete '/quote/:id' do
+  Quote.get(params[:id]).destroy
+  redirect to('/')
+end
+
+# busca id y modifica
+
+put '/purchase/:id' do
+  quote = Quote.get params[:id]
+  quote.completed_at = quote.completed_at.nil? ? Time.now : nil
+  quote.save
+  redirect to('/')
+end
+    
 
 
 

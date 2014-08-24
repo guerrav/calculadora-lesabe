@@ -7,6 +7,9 @@ li.project
   = project.name
 
 
+
+
+  /BUDGET 
   /form para agregar 
   / se cambia /nombre de la clase/ nombre de la clase. id
   form.new action="/project/#{project.id}" method="POST"
@@ -14,6 +17,24 @@ li.project
     label for="budget" budget: 
     input type="text" name="budget[amount]"
     input type="submit" value="+ budget"
+
+
+  /COST
+  form.new action="/costs/#{project.id}" method="POST"
+    / se cambia child
+    label for="cost" cost: 
+    input type="text" name="cost[amount]"
+    input type="submit" value="+ cost"
+
+
+
+  /SUPPLIER
+
+  /form para agregar
+  form.new action="/suppliers/#{project.corporation_id}" method="POST"
+    label for="supplier" supplier: 
+    input type="text" name="supplier[name]"
+    input type="submit" value="+ supplier"
 
 
   /form para borrar
@@ -27,6 +48,13 @@ li.project
     - project.budgets.each do |budget|
 
       == slim :budget, locals: { budget: budget }
+
+  ul.costs
+    - project.costs.each do |cost|
+
+      == slim :cost, locals: { cost: cost }
+
+
 
 
 

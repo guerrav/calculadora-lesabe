@@ -1,0 +1,14 @@
+/el nombre de la clase
+/payment
+
+li.payment
+
+  /datos que se imprimen
+  = payment.amount
+
+
+
+  /form para borrar
+  form.delete action="/payment/#{payment.id}" method="POST"
+    input type="hidden" name="_method" value="DELETE"
+    input type="submit" value="×" title="Delete payment"

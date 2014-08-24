@@ -4,7 +4,8 @@
 li.budget 
 
   /datos que se imprimen
-  = budget.amount
+  = "Budget #{budget.amount}"
+
 
   /form para agregar 
   / se cambia /nombre de la clase/ nombre de la clase. id
@@ -22,7 +23,7 @@ li.budget
 
 
   /listado de elementos
-  ul.budgets
+  ul.advpayments
     - budget.advpayments.each do |advpayment|
 
       == slim :advpayment, locals: { advpayment: advpayment }

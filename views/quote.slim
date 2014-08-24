@@ -1,0 +1,35 @@
+/el nombre de la clase
+/quote
+
+li.quote
+
+  /datos que se imprimen
+  = quote.amount
+
+  /form para agregar 
+  / se cambia /nombre de la clase/ nombre de la clase. id
+  form.new action="/quote/#{quote.id}" method="POST"
+    / se cambia child
+    label for="payment" quote: 
+    input type="text" name="payment[amount]"
+    input type="submit" value="+ payment"
+
+
+  /form para borrar
+  form.delete action="/quote/#{quote.id}" method="POST"
+    input type="hidden" name="_method" value="DELETE"
+    input type="submit" value="×" title="Delete quote"
+
+
+  /listado de elementos
+  ul.payments
+    - quote.payments.each do |payment|
+
+      == slim :payment, locals: { payment: payment }
+
+
+
+
+
+
+
