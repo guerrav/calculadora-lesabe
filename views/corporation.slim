@@ -14,6 +14,14 @@ li.corporation id=corporation.id class=(corporation.completed_at.nil? ? "" : "co
     input type="text" name="client[name]"
     input type="submit" value="+ client"
 
+  /SUPPLIER
+
+  /form para agregar
+  form.new action="/suppliers/#{corporation.id}" method="POST"
+    label for="supplier" supplier: 
+    input type="text" name="supplier[name]"
+    input type="submit" value="+ supplier"
+
   
 
 

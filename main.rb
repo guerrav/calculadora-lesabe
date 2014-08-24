@@ -174,7 +174,7 @@ class Cost
   property :amount,         Integer
   property :date,           DateTime
 
-
+  has n, :quotes
   has n, :purchases
   belongs_to :project
 end
@@ -556,7 +556,7 @@ end
 
 ######## QUOTE
 
-post '/cost/:id' do
+post '/quote/:id' do
   
 
   Cost.get(params[:id]).quotes.create! params['quote'] 
@@ -585,3 +585,39 @@ end
 
 
 
+
+######## PAYMENT
+
+post '/payment/:id' do
+  
+
+  quote = Quote.get(params[:id])
+
+  payment = quote.payments.create! params['payment'] 
+
+  payment.supplier_id = quote[:supplier_id]
+
+  payment.save
+
+
+  
+
+  redirect to('/')
+end
+
+# busca id y borra
+
+delete '/payment/:id' do
+  Payment.get(params[:id]).destroy
+  redirect to('/')
+end
+
+# busca id y modifica
+
+put '/payment/:id' do
+  payment = Payment.get params[:id]
+  payment.completed_at = payment.completed_at.nil? ? Time.now : nil
+  payment.save
+  redirect to('/')
+end
+    

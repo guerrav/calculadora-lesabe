@@ -8,9 +8,9 @@ li.quote
 
   /form para agregar 
   / se cambia /nombre de la clase/ nombre de la clase. id
-  form.new action="/quote/#{quote.id}" method="POST"
+  form.new action="/payment/#{quote.id}" method="POST"
     / se cambia child
-    label for="payment" quote: 
+    label for="payment" payment: 
     input type="text" name="payment[amount]"
     input type="submit" value="+ payment"
 
