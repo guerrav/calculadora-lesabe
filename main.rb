@@ -193,6 +193,7 @@ class Quote
   include DataMapper::Resource
   property :id,           Serial
   property :amount,       Integer
+  property :supplier_name,  String
   property :date,     DateTime
   has n, :payments
   belongs_to :supplier
@@ -557,11 +558,17 @@ end
 ######## QUOTE
 
 post '/quote/:id' do
-  
-
-  Cost.get(params[:id]).quotes.create! params['quote'] 
 
   
+  
+
+  quote = Cost.get(params[:id]).quotes.create! params['quote'] 
+
+  supplier = Supplier.all.first(name: quote["supplier_name"])
+
+  quote.supplier_id = supplier[:id]
+
+  quote.save
 
   redirect to('/')
 end
