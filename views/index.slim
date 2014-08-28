@@ -1,4 +1,53 @@
-ul.users
-  - @users.each do |user|
-    == slim :user, locals: { user: user }
+.contain-to-grid.sticky
+	nav.top-bar data-options="sticky_on: large" data-topbar="" role="navigation" 
+	  ul.title-area
+	    li.name
+	      h1
+	        a href="/"  Modul
+	    /! Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+	    li.toggle-topbar.menu-icon
+	      a href="#" 
+	        span Menu
+	  section.top-bar-section
+	    /! Right Nav Section
+	    ul.right
+	      li
+	        a href="/logout" Sign out 
+
+	    /! Left Nav Section
+
+	    - if current_user
+	    ul.left
+	    
+	      	li 
+	      		a href="" Welcome #{current_user.email}
+	      	li
+	        	a href="/logout" Clientes
+	       	li
+	       		a href="/logout" Proveedores
+	        li
+	        	a href="/logout" Proyectos
+
+
+
+
+
+
+
+== styled_flash
+
+
+    
+
+
+
+
+
+
+.row
+	.large-8.columns 
+
+		ul.users
+		  - @users.each do |user|
+		    == slim :user, locals: { user: user }
  

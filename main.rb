@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/flash'
 require 'sinatra/reloader' if development?
 require 'slim'
+require 'sass'
 require 'data_mapper'
 require 'dm-migrations'
 require 'dm-validations'
@@ -9,6 +10,7 @@ require 'omniauth-identity'
 require 'omniauth-twitter'
 require 'dm-ar-finders'
 require './sinatra/auth'
+require 'sinatra/assetpack'
 
 #INICIALIZERS
 
@@ -19,6 +21,25 @@ configure :development do
     DataMapper.auto_upgrade!
 end
 
+assets do
+  serve '/js', from: 'js'
+  serve '/bower_components', from: 'bower_components'
+
+  js :modernizr, [
+    '/bower_components/modernizr/modernizr.js',
+  ]
+
+  js :libs, [
+    '/bower_components/jquery/dist/jquery.js',
+    '/bower_components/foundation/js/foundation.js'
+  ]
+
+  js :application, [
+    '/js/app.js'
+  ]
+
+  js_compression :jsmin
+end
 
 
 
