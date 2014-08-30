@@ -1,0 +1,22 @@
+== slim :nav
+
+
+
+ul.corporations
+  - @corporations.each do |corporation|
+
+
+	li.corporation 
+
+	  /datos que se imprimen
+	  = corporation.name
+
+	  /form para agregar 
+	  / se cambia /nombre de la clase/ nombre de la clase. id
+
+
+
+	  /form para borrar
+	  form.delete action="/corporation/#{corporation.id}" method="POST"
+	    input type="hidden" name="_method" value="DELETE"
+	    input type="submit" value="×" title="Delete corporation"

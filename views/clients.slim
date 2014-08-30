@@ -1,0 +1,22 @@
+== slim :nav
+
+
+
+ul.clients
+  - @clients.each do |client|
+
+
+	li.client 
+
+	  /datos que se imprimen
+	  = client.name
+
+	  /form para agregar 
+	  / se cambia /nombre de la clase/ nombre de la clase. id
+
+
+
+	  /form para borrar
+	  form.delete action="/client/#{client.id}" method="POST"
+	    input type="hidden" name="_method" value="DELETE"
+	    input type="submit" value="×" title="Delete client"

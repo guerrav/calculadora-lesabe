@@ -245,6 +245,30 @@ get '/' do
   slim :index
 end
 
+get '/corporations' do
+  protected!
+  @corporations = Corporation.all(:order => [:name])
+  slim :corporations
+end
+
+get '/clients' do
+  protected!
+  @clients = Client.all(:order => [:name])
+  slim :clients
+end
+
+
+get '/supplier' do
+  protected!
+  @supplier = Supplier.all(:order => [:name])
+  slim :clients
+end
+
+get '/projects' do
+  protected!
+  @projects = Project.all(:order => [:name])
+  slim :projects
+end
 
 ######## CORPORATION
 
@@ -316,6 +340,8 @@ put '/client/:id' do
   client.save
   redirect to('/')
 end
+
+
 
 
 ######## SUPPLIER
