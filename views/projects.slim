@@ -1,0 +1,10 @@
+== slim :nav
+
+
+
+ul.projects
+  - @projects.each do |project|
+
+
+  	== slim :project, locals: { project: project }
+

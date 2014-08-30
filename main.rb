@@ -247,21 +247,22 @@ end
 
 get '/corporations' do
   protected!
-  @corporations = Corporation.all(:order => [:name])
+  @users = User.get(session[:admin])
+  @corporation = Corporation.last()
   slim :corporations
 end
 
 get '/clients' do
   protected!
-  @clients = Client.all(:order => [:name])
+  @corporation = Corporation.last()
   slim :clients
 end
 
 
-get '/supplier' do
+get '/suppliers' do
   protected!
-  @supplier = Supplier.all(:order => [:name])
-  slim :clients
+  @suppliers = Supplier.all(:order => [:name])
+  slim :suppliers
 end
 
 get '/projects' do
@@ -270,20 +271,31 @@ get '/projects' do
   slim :projects
 end
 
+
+
+
+
+
+
+
+
+
+
+
 ######## CORPORATION
 
 # busca parent y crea child con params
 
 post '/:id' do
   User.get(params[:id]).corporations.create params['corporation']  
-  redirect to('/')
+  redirect back
 end
 
 # busca id y borra
 
 delete '/corporation/:id' do
   Corporation.get(params[:id]).destroy
-  redirect to('/')
+  redirect back
 end
 
 # busca id y modifica
@@ -292,7 +304,7 @@ put '/corporation/:id' do
   corporation = Corporation.get params[:id]
   corporation.completed_at = corporation.completed_at.nil? ? Time.now : nil
   corporation.save
-  redirect to('/')
+  redirect back
 end
 
 
@@ -322,14 +334,14 @@ end
 post '/corporation/:id' do
   Corporation.get(params[:id]).clients.create! params['client'] 
 
-  redirect to('/')
+  redirect back
 end
 
 # busca id y borra
 
 delete '/client/:id' do
   Client.get(params[:id]).destroy
-  redirect to('/')
+  redirect back
 end
 
 # busca id y modifica
@@ -338,7 +350,7 @@ put '/client/:id' do
   client = Client.get params[:id]
   client.completed_at = client.completed_at.nil? ? Time.now : nil
   client.save
-  redirect to('/')
+  redirect back
 end
 
 
@@ -351,14 +363,14 @@ end
 post '/suppliers/:id' do
   Corporation.get(params[:id]).suppliers.create! params['supplier'] 
 
-  redirect to('/')
+  redirect back
 end
 
 # busca id y borra
 
 delete '/supplier/:id' do
   Supplier.get(params[:id]).destroy
-  redirect to('/')
+  redirect back
 end
 
 # busca id y modifica
@@ -367,7 +379,7 @@ put '/supplier/:id' do
   supplier = Supplier.get params[:id]
   supplier.completed_at = supplier.completed_at.nil? ? Time.now : nil
   supplier.save
-  redirect to('/')
+  redirect back
 end
 
 
@@ -395,14 +407,14 @@ post '/client/:id' do
   project = client.projects.create! params['project']
   project.corporation_id = client[:corporation_id]
   project.save
-  redirect to('/')
+  redirect back
 end
 
 # busca id y borra
 
 delete '/project/:id' do
   Project.get(params[:id]).destroy
-  redirect to('/')
+  redirect back
 end
 
 # busca id y modifica
@@ -411,7 +423,7 @@ put '/project/:id' do
   project = Project.get params[:id]
   project.completed_at = project.completed_at.nil? ? Time.now : nil
   project.save
-  redirect to('/')
+  redirect back
 end
 
 
@@ -436,15 +448,16 @@ end
 post '/project/:id' do
 
   Project.get(params[:id]).budgets.create! params['budget']
+  Project.get(params[:id]).costs.create!
 
-  redirect to('/')
+  redirect back
 end
 
 # busca id y borra
 
 delete '/budget/:id' do
   Budget.get(params[:id]).destroy
-  redirect to('/')
+  redirect back
 end
 
 # busca id y modifica
@@ -453,7 +466,7 @@ put '/budget/:id' do
   budget = Budget.get params[:id]
   budget.completed_at = budget.completed_at.nil? ? Time.now : nil
   budget.save
-  redirect to('/')
+  redirect back
 end
 
 
@@ -461,17 +474,12 @@ end
 
 ######## COST
 
-post '/costs/:id' do
-  Project.get(params[:id]).costs.create! params['cost']
-  redirect to('/')
-end
-
 
 # busca id y borra
 
 delete '/cost/:id' do
   Cost.get(params[:id]).destroy
-  redirect to('/')
+  redirect back
 end
 
 # busca id y modifica
@@ -480,7 +488,7 @@ put '/cost/:id' do
   cost = Cost.get params[:id]
   cost.completed_at = cost.completed_at.nil? ? Time.now : nil
   cost.save
-  redirect to('/')
+  redirect back
 end
 
 
@@ -528,14 +536,14 @@ post '/budget/:id' do
   advpayment.client_id = parent_class[:client_id]
 
   advpayment.save
-  redirect to('/')
+  redirect back
 end
 
 # busca id y borra
 
 delete '/advpayment/:id' do
   Advpayment.get(params[:id]).destroy
-  redirect to('/')
+  redirect back
 end
 
 # busca id y modifica
@@ -544,7 +552,7 @@ put '/advpayment/:id' do
   advpayment = Advpayment.get params[:id]
   advpayment.completed_at = advpayment.completed_at.nil? ? Time.now : nil
   advpayment.save
-  redirect to('/')
+  redirect back
 end
 
 
@@ -575,14 +583,14 @@ post '/cost/:id' do
 
   
 
-  redirect to('/')
+  redirect back
 end
 
 # busca id y borra
 
 delete '/purchase/:id' do
   Purchase.get(params[:id]).destroy
-  redirect to('/')
+  redirect back
 end
 
 # busca id y modifica
@@ -591,7 +599,7 @@ put '/purchase/:id' do
   purchase = Purchase.get params[:id]
   purchase.completed_at = purchase.completed_at.nil? ? Time.now : nil
   purchase.save
-  redirect to('/')
+  redirect back
 end
 
 
@@ -617,14 +625,14 @@ post '/quote/:id' do
 
   quote.save
 
-  redirect to('/')
+  redirect back
 end
 
 # busca id y borra
 
 delete '/quote/:id' do
   Quote.get(params[:id]).destroy
-  redirect to('/')
+  redirect back
 end
 
 # busca id y modifica
@@ -633,7 +641,7 @@ put '/purchase/:id' do
   quote = Quote.get params[:id]
   quote.completed_at = quote.completed_at.nil? ? Time.now : nil
   quote.save
-  redirect to('/')
+  redirect back
 end
     
 
@@ -656,14 +664,14 @@ post '/payment/:id' do
 
   
 
-  redirect to('/')
+  redirect back
 end
 
 # busca id y borra
 
 delete '/payment/:id' do
   Payment.get(params[:id]).destroy
-  redirect to('/')
+  redirect back
 end
 
 # busca id y modifica
@@ -672,6 +680,6 @@ put '/payment/:id' do
   payment = Payment.get params[:id]
   payment.completed_at = payment.completed_at.nil? ? Time.now : nil
   payment.save
-  redirect to('/')
+  redirect back
 end
     

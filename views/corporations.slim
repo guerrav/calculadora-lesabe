@@ -1,22 +1,59 @@
 == slim :nav
 
+== styled_flash
 
 
-ul.corporations
-  - @corporations.each do |corporation|
-
-
-	li.corporation 
-
-	  /datos que se imprimen
-	  = corporation.name
-
-	  /form para agregar 
-	  / se cambia /nombre de la clase/ nombre de la clase. id
+/datos que se imprimen
+h4= @users.email
+- sum = @users.corporations.sum(:name)
+h4= "Suma es #{sum}"
 
 
 
-	  /form para borrar
-	  form.delete action="/corporation/#{corporation.id}" method="POST"
-	    input type="hidden" name="_method" value="DELETE"
-	    input type="submit" value="×" title="Delete corporation"
+form.new action="/#{@users.id}" method="POST"
+    
+    .large-4.columns
+    	label for="corporation" corporation: 
+    	input type="text" name="corporation[name]" placeholder="nombre"
+    	input type="text" name="corporation[description]" placeholder="descripcion"
+    	input type="text" name="corporation[status]" placeholder="status"
+    	input type="submit" class="button tiny radius round" value="+ corporation"
+
+
+ul.corporations.large-2.columns
+	- @users.corporations.each do |corporation|
+
+    	li.corporation 
+
+      		/datos que se imprimen
+      		= corporation.name
+
+
+
+/form para agregar
+form.new action="/corporation/#{@corporation.id}" method="POST"
+	.large-4.columns
+        label for="client" client: 
+        input type="text" name="client[name]"
+        input type="submit" class="button tiny radius round" value="+ client"
+
+
+
+
+
+
+ul.clients.large-2.columns
+	- @corporation.clients.each do |client|
+
+    	li.client 
+
+      		/datos que se imprimen
+      		= client.name
+
+
+
+
+
+
+
+

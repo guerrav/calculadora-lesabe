@@ -12,9 +12,11 @@
 
       /form para agregar , modificar, borrar elementos
       form.new action="/#{user.id}" method="POST"
-      	label for="corporation" corporation: 
-        input type="text" name="corporation[name]"
-        input type="submit" class="button [small]" value="+ corporation"
+      	
+        .large-4.columns
+          
+          input type="text" name="corporation[name]" placeholder="corporation"
+          input type="submit" class="button tiny radius round" value="+ corporation"
 
       /listado de elementos
 
