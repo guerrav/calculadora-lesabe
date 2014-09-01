@@ -1,127 +1,131 @@
 /el nombre de la clase
 /project
-= project.name
 li.project 
-    .row 
-        .small-3.columns
-            /datos que se imprimen
-            
+    dl.accordion data-accordion="myAccordionGroup"
+        dd.accordion-navigation
+            a href="/##{project.name}" #{project.name}
+            .content id="#{project.name}" 
+                
+                .row 
+                    .small-3.columns
+                        /datos que se imprimen
+                        
 
-            = "Presupuesto sin iva"
+                        = "Presupuesto sin iva"
 
-            p= currency(project.budgets.sum(:amount))
+                        p= currency(project.budgets.sum(:amount))
 
-            = "TOTAL PAGADO"
+                        = "TOTAL PAGADO"
 
-            p= currency(project.budgets.advpayments.sum(:amount))
+                        p= currency(project.budgets.advpayments.sum(:amount))
 
-            - a = project.budgets.sum(:amount).to_i - project.budgets.advpayments.sum(:amount).to_i
+                        - a = project.budgets.sum(:amount).to_i - project.budgets.advpayments.sum(:amount).to_i
 
-            = "POR PAGAR"
-            p= currency(a)
-
-
-
-        .small-8.columns
-            = "COSTO REAL" 
-            p= currency(project.costs.purchases.sum(:amount).to_i + project.costs.quotes.sum(:amount).to_i)
-
-            = "MANO DE OBRA" 
-            p= "N/A"
+                        = "POR PAGAR"
+                        p= currency(a)
 
 
 
-    .row
-        .small-12.columns
-            
-            .row
+                    .small-8.columns
+                        = "COSTO REAL" 
+                        p= currency(project.costs.purchases.sum(:amount).to_i + project.costs.quotes.sum(:amount).to_i)
 
-                .small-3.columns
-                    = "ANTICIPOS/PAGOS" 
-                    ul 
-                        -project.budgets.advpayments.each do |advpayment|
-                            .row
-                                .small-4.columns
-                                    li   
-                               
-
-                                        = advpayment.client_id
-                            
-                                .small-8.columns
-                                    li
-                                        = advpayment.created_at.strftime("%e %B %Y")
-
-                                        p= currency(advpayment.amount)
-
-                .small-9.columns
-                    = "PROVEEDORES" 
-                    p= currency(project.costs.quotes.sum(:amount))
-
-                    .row
-                        .small-12.columns
-                            .row
-                                .small-3.columns
-                                    = "COTIZACIONES" 
-                                    ul 
-                                        -project.costs.quotes.each do |quote|
-                                            .row
-                                                .small-4.columns
-                                                    li   
-                                               
-
-                                                        = quote.supplier_id
-                                            
-                                                .small-8.columns
-                                                    li
-                                                        = quote.created_at.strftime("%e %B %Y")
-
-                                                        p= currency(quote.amount)
-                                .small-3.columns
-                                    = "PAGOS"
-                                .small-3.columns
-                                    = "POR PAGAR"
+                        = "MANO DE OBRA" 
+                        p= "N/A"
 
 
 
+                .row
+                    .small-12.columns
+                        
+                        .row
 
+                            .small-3.columns
+                                = "ANTICIPOS/PAGOS" 
+                                ul 
+                                    -project.budgets.advpayments.each do |advpayment|
+                                        .row
+                                            .small-4.columns
+                                                li   
+                                           
 
+                                                    = advpayment.client_id
+                                        
+                                            .small-8.columns
+                                                li
+                                                    = advpayment.created_at.strftime("%e %B %Y")
 
+                                                    p= currency(advpayment.amount)
 
+                            .small-9.columns
+                                = "PROVEEDORES" 
+                                p= currency(project.costs.quotes.sum(:amount))
 
-        .small-3.columns
+                                .row
+                                    .small-12.columns
+                                        .row
+                                            .small-3.columns
+                                                = "COTIZACIONES" 
+                                                ul 
+                                                    -project.costs.quotes.each do |quote|
+                                                        .row
+                                                            .small-4.columns
+                                                                li   
+                                                           
 
+                                                                    = quote.supplier_id
+                                                        
+                                                            .small-8.columns
+                                                                li
+                                                                    = quote.created_at.strftime("%e %B %Y")
 
-            /BUDGET 
-            /form para agregar 
-            / se cambia /nombre de la clase/ nombre de la clase. id
-            form.new action="/project/#{project.id}" method="POST"
-                / se cambia child
-                label for="budget" budget: 
-                input type="text" name="budget[amount]"
-                input type="submit" value="+ budget"
+                                                                    p= currency(quote.amount)
+                                            .small-3.columns
+                                                = "PAGOS"
+                                            .small-3.columns
+                                                = "POR PAGAR"
 
 
 
 
-              
 
 
-            /form para borrar
-            form.delete action="/project/#{project.id}" method="POST"
-                input type="hidden" name="_method" value="DELETE"
-                input type="submit" value="×" title="Delete project"
 
 
-            /listado de elementos
-            ul.budgets
-                - project.budgets.each do |budget|
+                    .small-3.columns
 
-                    == slim :budget, locals: { budget: budget }
 
-            ul.costs
-                - project.costs.each do |cost|
+                        /BUDGET 
+                        /form para agregar 
+                        / se cambia /nombre de la clase/ nombre de la clase. id
+                        form.new action="/project/#{project.id}" method="POST"
+                            / se cambia child
+                            label for="budget" budget: 
+                            input type="text" name="budget[amount]"
+                            input type="submit" value="+ budget"
 
-                    == slim :cost, locals: { cost: cost }
+
+
+
+                          
+
+
+                        /form para borrar
+                        form.delete action="/project/#{project.id}" method="POST"
+                            input type="hidden" name="_method" value="DELETE"
+                            input type="submit" value="×" title="Delete project"
+
+
+                        /listado de elementos
+                        ul.budgets
+                            - project.budgets.each do |budget|
+
+                                == slim :budget, locals: { budget: budget }
+
+                        ul.costs
+                            - project.costs.each do |cost|
+
+                                == slim :cost, locals: { cost: cost }
 
 
 
