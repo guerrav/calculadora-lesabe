@@ -138,7 +138,7 @@ end
 class Client
   include DataMapper::Resource
   property :id,           Serial
-  property :name,         String
+  property :name,         String, required: true
   has n, :advpayments
   has n, :projects
   belongs_to :corporation
@@ -161,6 +161,7 @@ class Project
   property :id,             Serial
   property :name,           String, required: true
   property :description,    Text
+  property :client_name,    String
   property :status,         String
   property :completed_at,           DateTime
   has n, :budgets 
@@ -245,31 +246,25 @@ get '/' do
   slim :index
 end
 
-get '/corporations' do
+get '/corporation' do
   protected!
-  @users = User.get(session[:admin])
-  @corporation = Corporation.last()
-  slim :corporations
-end
-
-get '/clients' do
-  protected!
-  @corporation = Corporation.last()
-  slim :clients
+  @user = User.get(session[:admin])
+  @corporation = @user.corporations.last()
+  slim :corporation_info
 end
 
 
-get '/suppliers' do
-  protected!
-  @suppliers = Supplier.all(:order => [:name])
-  slim :suppliers
-end
 
 get '/projects' do
   protected!
-  @projects = Project.all(:order => [:name])
+  @corporation = User.get(session[:admin]).corporations.last()
+  @projects = @corporation.clients.projects.all()
+
+
+
   slim :projects
 end
+
 
 
 
@@ -409,6 +404,26 @@ post '/client/:id' do
   project.save
   redirect back
 end
+
+post '/clientx/:id' do
+
+  corporation = Corporation.get(params[:id])
+
+  project = corporation.clients.projects.create! params['project']
+
+  client = Client.all.first(name: project["client_name"])
+
+  project.client_id = client[:id]
+  project.corporation_id = corporation[:id]
+  project.save
+  redirect back
+end
+
+
+ 
+
+
+
 
 # busca id y borra
 

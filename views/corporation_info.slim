@@ -1,0 +1,141 @@
+== slim :nav
+
+== styled_flash
+
+
+
+
+.row
+    .large-12.columns
+
+        ul class="no-bullet"
+            
+
+            li.user
+
+            /datos que se imprimen
+            - sum = @user.corporations.sum(:name)
+            h4= "Suma es #{sum}"
+
+             /form para agregar , modificar, borrar elementos
+            form.new action="/#{@user.id}" method="POST"
+                    .row
+                        .small-8
+                            .row
+                                .small-3.columns
+                                    label for="right-label" class="right inline" empresa: 
+                                .small-5.columns
+                                    input type="text" name="corporation[name]" placeholder="nombre"
+                                    input type="text" name="corporation[description]" placeholder="descripción"
+                                    input type="text" name="corporation[status]" placeholder="status"
+                                .small-2.columns
+                                    input type="submit" class="button tiny radius round" value="+ agregar"
+
+
+
+
+
+        - if @corporation
+            // CLIENT
+            /form para agregar
+            form.new action="/corporation/#{@corporation.id}" method="POST"
+                .row
+                    .small-8
+                        .row
+                            .small-3.columns
+                                label for="right-label" class="right inline" cliente: 
+
+                            .small-5.columns
+                                input type="text" name="client[name]" placeholder="nombre"
+                            .small-2.columns
+                                input type="submit" class="button tiny radius round" value="+ agregar"
+
+
+            // SUPPLIER
+            /form para agregar
+            form.new action="/suppliers/#{@corporation.id}" method="POST"
+                .row
+                    .small-8
+                        .row
+                            .small-3.columns
+                                label for="right-label" class="right inline" proveedor: 
+                            .small-5.columns
+                                input type="text" name="supplier[name]" Placeholder="nombre"
+                            .small-2.columns
+                                input type="submit" class="button tiny radius round" value="+ agregar"
+                    
+.row
+    .small-2.columns
+        - if @user.corporations.last
+            label for="lista-empresas" class="right" lista empresas: 
+    .small-10.columns
+
+        ul class="no-bullet"
+            - @user.corporations.each do |corporation|
+                
+                .row 
+                    .small-2.columns
+                        li
+
+                            /datos que se imprimen
+                            = corporation.name
+                    .small-8.columns
+                        form.delete action="/corporation/#{corporation.id}" method="POST"
+                            input type="hidden" name="_method" value="DELETE"
+                            input type="submit" class="button tiny radius" value="×" title="Delete corporation"
+
+
+
+-if @corporation
+
+    .row
+        .small-2.columns
+            - if @corporation.clients.last
+                label for="lista-empresas" class="right" lista clientes: 
+        .small-10.columns
+            ul class="no-bullet"
+
+                - if @corporation
+
+                - @corporation.clients.each do |client|
+                    .row
+                        
+                        .small-2.columns
+                            li 
+
+                                /datos que se imprimen
+                                = client.name
+                        .small-8.columns
+                            form.delete action="/client/#{client.id}" method="POST"
+                                input type="hidden" name="_method" value="DELETE"
+                                input type="submit" class="button tiny radius" value="×" title="Delete client"
+
+            
+    .row
+        .small-2.columns
+            - if @corporation.suppliers.last
+                label for="lista-empresas" class="right" lista proveedores: 
+        .small-10.columns
+            ul class="no-bullet"
+
+                - if @corporation
+
+                - @corporation.suppliers.each do |supplier|
+                    .row
+                        
+                        .small-2.columns
+                            li
+
+                                /datos que se imprimen
+                                = supplier.name
+                        .small-8.columns
+
+                            form.delete action="/supplier/#{supplier.id}" method="POST"
+                                input type="hidden" name="_method" value="DELETE"
+                                input type="submit" class="button tiny radius" value="×" title="Delete supplier"
+            
+
+
+
+
+

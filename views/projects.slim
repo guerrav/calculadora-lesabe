@@ -1,10 +1,25 @@
 == slim :nav
 
+.row
+  .large-12.columns
+
+	form.new action="/clientx/#{@corporation.id}" method="POST"
+		.row
+            .small-8
+                .row
+                    .small-3.columns
+                    	label for="right-label" class="right inline" projecto:
+                    .small-5.columns
+    					/ se cambia child
+				    	input type="text" name="project[name]" placeholder="nombre"
+				    	input type="text" name="project[client_name]" placeholder="cliente"
+    				.small-2.columns
+				    	input type="submit"  class="button tiny radius round" value="+ project"
 
 
-ul.projects
-  - @projects.each do |project|
+	ul.projects
+	  - @projects.each do |project|
 
 
-  	== slim :project, locals: { project: project }
+	  	== slim :project, locals: { project: project }
 

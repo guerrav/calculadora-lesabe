@@ -1,33 +1,28 @@
 /el nombre de la clase
 /user
 
-.row
-  .large-6.columns
-    li.user
 
-      /datos que se imprimen
-      h2= user.email
-      - sum = user.corporations.sum(:name)
-      h2= "Suma es #{sum}"
+li.user
 
-      /form para agregar , modificar, borrar elementos
-      form.new action="/#{user.id}" method="POST"
-      	
-        .large-4.columns
-          
-          input type="text" name="corporation[name]" placeholder="corporation"
-          input type="submit" class="button tiny radius round" value="+ corporation"
+  /datos que se imprimen
+  h2= user.email
+  - sum = user.corporations.sum(:name)
+  h2= "Suma es #{sum}"
 
-      /listado de elementos
+  /form para agregar , modificar, borrar elementos
+  form.new action="/#{user.id}" method="POST"
+  	
+    .large-4.columns
+      
+      input type="text" name="corporation[name]" placeholder="corporation"
+      input type="submit" class="button tiny radius round" value="+ corporation"
 
+  /listado de elementos
 
 
+ul.corporations
+  - user.corporations.each do |corporation|
 
-  .large-6.columns 
-    ul.corporations
-      - user.corporations.each do |corporation|
-
-       	== slim :corporation, locals: { corporation: corporation }
+   	== slim :corporation, locals: { corporation: corporation }
 
 
-end

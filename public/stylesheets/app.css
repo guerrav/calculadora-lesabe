@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* line 343, ../../bower_components/foundation/scss/foundation/components/_global.scss */
 meta.foundation-version {
   font-family: "/{{ VERSION }}/";
@@ -11,26 +12,26 @@ meta.foundation-mq-small {
 
 /* line 352, ../../bower_components/foundation/scss/foundation/components/_global.scss */
 meta.foundation-mq-medium {
-  font-family: "/only screen and (min-width:40.063em)/";
-  width: 40.063em;
+  font-family: "/only screen and (min-width:40em)/";
+  width: 40em;
 }
 
 /* line 357, ../../bower_components/foundation/scss/foundation/components/_global.scss */
 meta.foundation-mq-large {
-  font-family: "/only screen and (min-width:64.063em)/";
-  width: 64.063em;
+  font-family: "/only screen and (min-width:64em)/";
+  width: 64em;
 }
 
 /* line 362, ../../bower_components/foundation/scss/foundation/components/_global.scss */
 meta.foundation-mq-xlarge {
-  font-family: "/only screen and (min-width:90.063em)/";
-  width: 90.063em;
+  font-family: "/only screen and (min-width:90em)/";
+  width: 90em;
 }
 
 /* line 367, ../../bower_components/foundation/scss/foundation/components/_global.scss */
 meta.foundation-mq-xxlarge {
-  font-family: "/only screen and (min-width:120.063em)/";
-  width: 120.063em;
+  font-family: "/only screen and (min-width:120em)/";
+  width: 120em;
 }
 
 /* line 372, ../../bower_components/foundation/scss/foundation/components/_global.scss */
@@ -43,7 +44,7 @@ html, body {
   height: 100%;
 }
 
-/* line 382, ../../bower_components/foundation/scss/foundation/components/_global.scss */
+/* line 384, ../../bower_components/foundation/scss/foundation/components/_global.scss */
 *,
 *:before,
 *:after {
@@ -52,7 +53,7 @@ html, body {
   box-sizing: border-box;
 }
 
-/* line 388, ../../bower_components/foundation/scss/foundation/components/_global.scss */
+/* line 389, ../../bower_components/foundation/scss/foundation/components/_global.scss */
 html,
 body {
   font-size: 100%;
@@ -60,7 +61,7 @@ body {
 
 /* line 392, ../../bower_components/foundation/scss/foundation/components/_global.scss */
 body {
-  background: white;
+  background: whitesmoke;
   color: #222222;
   padding: 0;
   margin: 0;
@@ -88,7 +89,7 @@ img {
   -ms-interpolation-mode: bicubic;
 }
 
-/* line 414, ../../bower_components/foundation/scss/foundation/components/_global.scss */
+/* line 416, ../../bower_components/foundation/scss/foundation/components/_global.scss */
 #map_canvas img,
 #map_canvas embed,
 #map_canvas object,
@@ -164,7 +165,7 @@ select {
 .row:after {
   clear: both;
 }
-/* line 222, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
+/* line 223, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
 .row.collapse > .column,
 .row.collapse > .columns {
   padding-left: 0;
@@ -209,7 +210,7 @@ select {
   clear: both;
 }
 
-/* line 233, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
+/* line 234, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
 .column,
 .columns {
   padding-left: 0.9375rem;
@@ -397,7 +398,7 @@ select {
     left: auto;
   }
 
-  /* line 167, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
+  /* line 168, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
   .column,
   .columns {
     position: relative;
@@ -535,7 +536,7 @@ select {
     float: left;
   }
 
-  /* line 188, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
+  /* line 189, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
   .column.small-centered,
   .columns.small-centered {
     margin-left: auto;
@@ -543,7 +544,7 @@ select {
     float: none;
   }
 
-  /* line 191, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
+  /* line 192, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
   .column.small-uncentered,
   .columns.small-uncentered {
     margin-left: 0;
@@ -551,25 +552,25 @@ select {
     float: left;
   }
 
-  /* line 199, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
+  /* line 200, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
   .column.small-centered:last-child,
   .columns.small-centered:last-child {
     float: none;
   }
 
-  /* line 205, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
+  /* line 206, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
   .column.small-uncentered:last-child,
   .columns.small-uncentered:last-child {
     float: left;
   }
 
-  /* line 210, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
+  /* line 211, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
   .column.small-uncentered.opposite,
   .columns.small-uncentered.opposite {
     float: right;
   }
 }
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 159, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
   .medium-push-0 {
     position: relative;
@@ -738,7 +739,7 @@ select {
     left: auto;
   }
 
-  /* line 167, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
+  /* line 168, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
   .column,
   .columns {
     position: relative;
@@ -876,7 +877,7 @@ select {
     float: left;
   }
 
-  /* line 188, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
+  /* line 189, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
   .column.medium-centered,
   .columns.medium-centered {
     margin-left: auto;
@@ -884,7 +885,7 @@ select {
     float: none;
   }
 
-  /* line 191, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
+  /* line 192, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
   .column.medium-uncentered,
   .columns.medium-uncentered {
     margin-left: 0;
@@ -892,19 +893,19 @@ select {
     float: left;
   }
 
-  /* line 199, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
+  /* line 200, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
   .column.medium-centered:last-child,
   .columns.medium-centered:last-child {
     float: none;
   }
 
-  /* line 205, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
+  /* line 206, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
   .column.medium-uncentered:last-child,
   .columns.medium-uncentered:last-child {
     float: left;
   }
 
-  /* line 210, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
+  /* line 211, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
   .column.medium-uncentered.opposite,
   .columns.medium-uncentered.opposite {
     float: right;
@@ -1078,7 +1079,7 @@ select {
     left: auto;
   }
 }
-@media only screen and (min-width: 64.063em) {
+@media only screen and (min-width: 64em) {
   /* line 159, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
   .large-push-0 {
     position: relative;
@@ -1247,7 +1248,7 @@ select {
     left: auto;
   }
 
-  /* line 167, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
+  /* line 168, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
   .column,
   .columns {
     position: relative;
@@ -1385,7 +1386,7 @@ select {
     float: left;
   }
 
-  /* line 188, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
+  /* line 189, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
   .column.large-centered,
   .columns.large-centered {
     margin-left: auto;
@@ -1393,7 +1394,7 @@ select {
     float: none;
   }
 
-  /* line 191, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
+  /* line 192, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
   .column.large-uncentered,
   .columns.large-uncentered {
     margin-left: 0;
@@ -1401,19 +1402,19 @@ select {
     float: left;
   }
 
-  /* line 199, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
+  /* line 200, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
   .column.large-centered:last-child,
   .columns.large-centered:last-child {
     float: none;
   }
 
-  /* line 205, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
+  /* line 206, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
   .column.large-uncentered:last-child,
   .columns.large-uncentered:last-child {
     float: left;
   }
 
-  /* line 210, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
+  /* line 211, ../../bower_components/foundation/scss/foundation/components/_grid.scss */
   .column.large-uncentered.opposite,
   .columns.large-uncentered.opposite {
     float: right;
@@ -1658,11 +1659,11 @@ select {
   margin-top: -0.6875rem;
   right: 0.25rem;
   color: #333333;
-  opacity: 0.3;
+  opacity: 0;
 }
-/* line 94, ../../bower_components/foundation/scss/foundation/components/_alert-boxes.scss */
+/* line 95, ../../bower_components/foundation/scss/foundation/components/_alert-boxes.scss */
 .alert-box .close:hover, .alert-box .close:focus {
-  opacity: 0.5;
+  opacity: 0;
 }
 /* line 115, ../../bower_components/foundation/scss/foundation/components/_alert-boxes.scss */
 .alert-box.radius {
@@ -1899,7 +1900,7 @@ select {
     clear: both;
   }
 }
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 61, ../../bower_components/foundation/scss/foundation/components/_block-grid.scss */
   .medium-block-grid-1 > li {
     width: 100%;
@@ -2068,7 +2069,7 @@ select {
     clear: both;
   }
 }
-@media only screen and (min-width: 64.063em) {
+@media only screen and (min-width: 64em) {
   /* line 61, ../../bower_components/foundation/scss/foundation/components/_block-grid.scss */
   .large-block-grid-1 > li {
     width: 100%;
@@ -2277,7 +2278,7 @@ select {
   cursor: default;
   color: #333333;
 }
-/* line 83, ../../bower_components/foundation/scss/foundation/components/_breadcrumbs.scss */
+/* line 84, ../../bower_components/foundation/scss/foundation/components/_breadcrumbs.scss */
 .breadcrumbs > *.current:hover, .breadcrumbs > *.current:hover a, .breadcrumbs > *.current:focus, .breadcrumbs > *.current:focus a {
   text-decoration: none;
 }
@@ -2289,7 +2290,7 @@ select {
 .breadcrumbs > *.unavailable a {
   color: #999999;
 }
-/* line 92, ../../bower_components/foundation/scss/foundation/components/_breadcrumbs.scss */
+/* line 95, ../../bower_components/foundation/scss/foundation/components/_breadcrumbs.scss */
 .breadcrumbs > *.unavailable:hover, .breadcrumbs > *.unavailable:hover a, .breadcrumbs > *.unavailable:focus,
 .breadcrumbs > *.unavailable a:focus {
   text-decoration: none;
@@ -2341,11 +2342,11 @@ button, .button {
   color: white;
   transition: background-color 300ms ease-out;
 }
-/* line 157, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 158, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 button:hover, button:focus, .button:hover, .button:focus {
   background-color: #007095;
 }
-/* line 163, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 164, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 button:hover, button:focus, .button:hover, .button:focus {
   color: white;
 }
@@ -2355,11 +2356,11 @@ button.secondary, .button.secondary {
   border-color: #b9b9b9;
   color: #333333;
 }
-/* line 157, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 158, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 button.secondary:hover, button.secondary:focus, .button.secondary:hover, .button.secondary:focus {
   background-color: #b9b9b9;
 }
-/* line 163, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 164, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 button.secondary:hover, button.secondary:focus, .button.secondary:hover, .button.secondary:focus {
   color: #333333;
 }
@@ -2369,11 +2370,11 @@ button.success, .button.success {
   border-color: #368a55;
   color: white;
 }
-/* line 157, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 158, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 button.success:hover, button.success:focus, .button.success:hover, .button.success:focus {
   background-color: #368a55;
 }
-/* line 163, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 164, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 button.success:hover, button.success:focus, .button.success:hover, .button.success:focus {
   color: white;
 }
@@ -2383,11 +2384,11 @@ button.alert, .button.alert {
   border-color: #cf2a0e;
   color: white;
 }
-/* line 157, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 158, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 button.alert:hover, button.alert:focus, .button.alert:hover, .button.alert:focus {
   background-color: #cf2a0e;
 }
-/* line 163, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 164, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 button.alert:hover, button.alert:focus, .button.alert:hover, .button.alert:focus {
   color: white;
 }
@@ -2445,18 +2446,18 @@ button.disabled, button[disabled], .button.disabled, .button[disabled] {
   border-color: #007095;
   color: white;
   cursor: default;
-  opacity: 0.7;
+  opacity: 0;
   box-shadow: none;
 }
-/* line 157, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 158, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
   background-color: #007095;
 }
-/* line 163, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 164, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
   color: white;
 }
-/* line 174, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 175, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
   background-color: #008cba;
 }
@@ -2466,18 +2467,18 @@ button.disabled.secondary, button[disabled].secondary, .button.disabled.secondar
   border-color: #b9b9b9;
   color: #333333;
   cursor: default;
-  opacity: 0.7;
+  opacity: 0;
   box-shadow: none;
 }
-/* line 157, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 158, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 button.disabled.secondary:hover, button.disabled.secondary:focus, button[disabled].secondary:hover, button[disabled].secondary:focus, .button.disabled.secondary:hover, .button.disabled.secondary:focus, .button[disabled].secondary:hover, .button[disabled].secondary:focus {
   background-color: #b9b9b9;
 }
-/* line 163, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 164, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 button.disabled.secondary:hover, button.disabled.secondary:focus, button[disabled].secondary:hover, button[disabled].secondary:focus, .button.disabled.secondary:hover, .button.disabled.secondary:focus, .button[disabled].secondary:hover, .button[disabled].secondary:focus {
   color: #333333;
 }
-/* line 174, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 175, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 button.disabled.secondary:hover, button.disabled.secondary:focus, button[disabled].secondary:hover, button[disabled].secondary:focus, .button.disabled.secondary:hover, .button.disabled.secondary:focus, .button[disabled].secondary:hover, .button[disabled].secondary:focus {
   background-color: #e7e7e7;
 }
@@ -2487,18 +2488,18 @@ button.disabled.success, button[disabled].success, .button.disabled.success, .bu
   border-color: #368a55;
   color: white;
   cursor: default;
-  opacity: 0.7;
+  opacity: 0;
   box-shadow: none;
 }
-/* line 157, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 158, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .button.disabled.success:focus, .button[disabled].success:hover, .button[disabled].success:focus {
   background-color: #368a55;
 }
-/* line 163, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 164, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .button.disabled.success:focus, .button[disabled].success:hover, .button[disabled].success:focus {
   color: white;
 }
-/* line 174, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 175, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .button.disabled.success:focus, .button[disabled].success:hover, .button[disabled].success:focus {
   background-color: #43ac6a;
 }
@@ -2508,18 +2509,18 @@ button.disabled.alert, button[disabled].alert, .button.disabled.alert, .button[d
   border-color: #cf2a0e;
   color: white;
   cursor: default;
-  opacity: 0.7;
+  opacity: 0;
   box-shadow: none;
 }
-/* line 157, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 158, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .button.disabled.alert:focus, .button[disabled].alert:hover, .button[disabled].alert:focus {
   background-color: #cf2a0e;
 }
-/* line 163, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 164, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .button.disabled.alert:focus, .button[disabled].alert:hover, .button[disabled].alert:focus {
   color: white;
 }
-/* line 174, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 175, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .button.disabled.alert:focus, .button[disabled].alert:hover, .button[disabled].alert:focus {
   background-color: #f04124;
 }
@@ -2530,7 +2531,7 @@ button::-moz-focus-inner {
   padding: 0;
 }
 
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 246, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
   button, .button {
     display: inline-block;
@@ -2560,7 +2561,7 @@ button::-moz-focus-inner {
 /* line 40, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group > li > button, .button-group > li .button {
   border-left: 1px solid;
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0);
 }
 /* line 46, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group > li:first-child button, .button-group > li:first-child .button {
@@ -2577,7 +2578,7 @@ button::-moz-focus-inner {
 /* line 40, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.stack > li > button, .button-group.stack > li .button {
   border-left: 1px solid;
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0);
 }
 /* line 46, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.stack > li:first-child button, .button-group.stack > li:first-child .button {
@@ -2586,7 +2587,7 @@ button::-moz-focus-inner {
 /* line 68, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.stack > li > button, .button-group.stack > li .button {
   border-top: 1px solid;
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0);
   border-left-width: 0px;
   margin: 0;
   display: block;
@@ -2604,7 +2605,7 @@ button::-moz-focus-inner {
 /* line 40, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.stack-for-small > li > button, .button-group.stack-for-small > li .button {
   border-left: 1px solid;
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0);
 }
 /* line 46, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.stack-for-small > li:first-child button, .button-group.stack-for-small > li:first-child .button {
@@ -2622,7 +2623,7 @@ button::-moz-focus-inner {
   /* line 40, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.stack-for-small > li > button, .button-group.stack-for-small > li .button {
     border-left: 1px solid;
-    border-color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0);
   }
   /* line 46, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.stack-for-small > li:first-child button, .button-group.stack-for-small > li:first-child .button {
@@ -2631,7 +2632,7 @@ button::-moz-focus-inner {
   /* line 68, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.stack-for-small > li > button, .button-group.stack-for-small > li .button {
     border-top: 1px solid;
-    border-color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0);
     border-left-width: 0px;
     margin: 0;
     display: block;
@@ -2650,24 +2651,24 @@ button::-moz-focus-inner {
 /* line 40, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.radius > * > button, .button-group.radius > * .button {
   border-left: 1px solid;
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0);
 }
 /* line 46, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.radius > *:first-child button, .button-group.radius > *:first-child .button {
   border-left: 0;
 }
-/* line 113, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
+/* line 116, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.radius > *, .button-group.radius > * > a, .button-group.radius > * > button, .button-group.radius > * > .button {
   border-radius: 0;
 }
-/* line 117, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
+/* line 120, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.radius > *:first-child, .button-group.radius > *:first-child > a, .button-group.radius > *:first-child > button, .button-group.radius > *:first-child > .button {
   -webkit-border-bottom-left-radius: 3px;
   -webkit-border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
   border-top-left-radius: 3px;
 }
-/* line 128, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
+/* line 131, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.radius > *:last-child, .button-group.radius > *:last-child > a, .button-group.radius > *:last-child > button, .button-group.radius > *:last-child > .button {
   -webkit-border-bottom-right-radius: 3px;
   -webkit-border-top-right-radius: 3px;
@@ -2685,7 +2686,7 @@ button::-moz-focus-inner {
 /* line 40, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.radius.stack > * > button, .button-group.radius.stack > * .button {
   border-left: 1px solid;
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0);
 }
 /* line 46, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.radius.stack > *:first-child button, .button-group.radius.stack > *:first-child .button {
@@ -2694,7 +2695,7 @@ button::-moz-focus-inner {
 /* line 68, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.radius.stack > * > button, .button-group.radius.stack > * .button {
   border-top: 1px solid;
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0);
   border-left-width: 0px;
   margin: 0;
   display: block;
@@ -2703,25 +2704,25 @@ button::-moz-focus-inner {
 .button-group.radius.stack > *:first-child button, .button-group.radius.stack > *:first-child .button {
   border-top: 0;
 }
-/* line 113, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
+/* line 116, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.radius.stack > *, .button-group.radius.stack > * > a, .button-group.radius.stack > * > button, .button-group.radius.stack > * > .button {
   border-radius: 0;
 }
-/* line 117, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
+/* line 120, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.radius.stack > *:first-child, .button-group.radius.stack > *:first-child > a, .button-group.radius.stack > *:first-child > button, .button-group.radius.stack > *:first-child > .button {
   -webkit-top-left-radius: 3px;
   -webkit-top-right-radius: 3px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
-/* line 128, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
+/* line 131, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.radius.stack > *:last-child, .button-group.radius.stack > *:last-child > a, .button-group.radius.stack > *:last-child > button, .button-group.radius.stack > *:last-child > .button {
   -webkit-bottom-left-radius: 3px;
   -webkit-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
 }
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 170, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.radius.stack-for-small > * {
     margin: 0 -2px;
@@ -2731,24 +2732,24 @@ button::-moz-focus-inner {
   /* line 40, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.radius.stack-for-small > * > button, .button-group.radius.stack-for-small > * .button {
     border-left: 1px solid;
-    border-color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0);
   }
   /* line 46, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.radius.stack-for-small > *:first-child button, .button-group.radius.stack-for-small > *:first-child .button {
     border-left: 0;
   }
-  /* line 113, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
+  /* line 116, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.radius.stack-for-small > *, .button-group.radius.stack-for-small > * > a, .button-group.radius.stack-for-small > * > button, .button-group.radius.stack-for-small > * > .button {
     border-radius: 0;
   }
-  /* line 117, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
+  /* line 120, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.radius.stack-for-small > *:first-child, .button-group.radius.stack-for-small > *:first-child > a, .button-group.radius.stack-for-small > *:first-child > button, .button-group.radius.stack-for-small > *:first-child > .button {
     -webkit-border-bottom-left-radius: 3px;
     -webkit-border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
     border-top-left-radius: 3px;
   }
-  /* line 128, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
+  /* line 131, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.radius.stack-for-small > *:last-child, .button-group.radius.stack-for-small > *:last-child > a, .button-group.radius.stack-for-small > *:last-child > button, .button-group.radius.stack-for-small > *:last-child > .button {
     -webkit-border-bottom-right-radius: 3px;
     -webkit-border-top-right-radius: 3px;
@@ -2768,7 +2769,7 @@ button::-moz-focus-inner {
   /* line 40, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.radius.stack-for-small > * > button, .button-group.radius.stack-for-small > * .button {
     border-left: 1px solid;
-    border-color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0);
   }
   /* line 46, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.radius.stack-for-small > *:first-child button, .button-group.radius.stack-for-small > *:first-child .button {
@@ -2777,7 +2778,7 @@ button::-moz-focus-inner {
   /* line 68, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.radius.stack-for-small > * > button, .button-group.radius.stack-for-small > * .button {
     border-top: 1px solid;
-    border-color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0);
     border-left-width: 0px;
     margin: 0;
     display: block;
@@ -2786,18 +2787,18 @@ button::-moz-focus-inner {
   .button-group.radius.stack-for-small > *:first-child button, .button-group.radius.stack-for-small > *:first-child .button {
     border-top: 0;
   }
-  /* line 113, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
+  /* line 116, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.radius.stack-for-small > *, .button-group.radius.stack-for-small > * > a, .button-group.radius.stack-for-small > * > button, .button-group.radius.stack-for-small > * > .button {
     border-radius: 0;
   }
-  /* line 117, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
+  /* line 120, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.radius.stack-for-small > *:first-child, .button-group.radius.stack-for-small > *:first-child > a, .button-group.radius.stack-for-small > *:first-child > button, .button-group.radius.stack-for-small > *:first-child > .button {
     -webkit-top-left-radius: 3px;
     -webkit-top-right-radius: 3px;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
   }
-  /* line 128, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
+  /* line 131, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.radius.stack-for-small > *:last-child, .button-group.radius.stack-for-small > *:last-child > a, .button-group.radius.stack-for-small > *:last-child > button, .button-group.radius.stack-for-small > *:last-child > .button {
     -webkit-bottom-left-radius: 3px;
     -webkit-bottom-right-radius: 3px;
@@ -2814,24 +2815,24 @@ button::-moz-focus-inner {
 /* line 40, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.round > * > button, .button-group.round > * .button {
   border-left: 1px solid;
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0);
 }
 /* line 46, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.round > *:first-child button, .button-group.round > *:first-child .button {
   border-left: 0;
 }
-/* line 113, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
+/* line 116, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.round > *, .button-group.round > * > a, .button-group.round > * > button, .button-group.round > * > .button {
   border-radius: 0;
 }
-/* line 117, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
+/* line 120, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.round > *:first-child, .button-group.round > *:first-child > a, .button-group.round > *:first-child > button, .button-group.round > *:first-child > .button {
   -webkit-border-bottom-left-radius: 1000px;
   -webkit-border-top-left-radius: 1000px;
   border-bottom-left-radius: 1000px;
   border-top-left-radius: 1000px;
 }
-/* line 128, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
+/* line 131, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.round > *:last-child, .button-group.round > *:last-child > a, .button-group.round > *:last-child > button, .button-group.round > *:last-child > .button {
   -webkit-border-bottom-right-radius: 1000px;
   -webkit-border-top-right-radius: 1000px;
@@ -2849,7 +2850,7 @@ button::-moz-focus-inner {
 /* line 40, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.round.stack > * > button, .button-group.round.stack > * .button {
   border-left: 1px solid;
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0);
 }
 /* line 46, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.round.stack > *:first-child button, .button-group.round.stack > *:first-child .button {
@@ -2858,7 +2859,7 @@ button::-moz-focus-inner {
 /* line 68, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.round.stack > * > button, .button-group.round.stack > * .button {
   border-top: 1px solid;
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0);
   border-left-width: 0px;
   margin: 0;
   display: block;
@@ -2867,25 +2868,25 @@ button::-moz-focus-inner {
 .button-group.round.stack > *:first-child button, .button-group.round.stack > *:first-child .button {
   border-top: 0;
 }
-/* line 113, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
+/* line 116, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.round.stack > *, .button-group.round.stack > * > a, .button-group.round.stack > * > button, .button-group.round.stack > * > .button {
   border-radius: 0;
 }
-/* line 117, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
+/* line 120, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.round.stack > *:first-child, .button-group.round.stack > *:first-child > a, .button-group.round.stack > *:first-child > button, .button-group.round.stack > *:first-child > .button {
   -webkit-top-left-radius: 1rem;
   -webkit-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
 }
-/* line 128, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
+/* line 131, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.round.stack > *:last-child, .button-group.round.stack > *:last-child > a, .button-group.round.stack > *:last-child > button, .button-group.round.stack > *:last-child > .button {
   -webkit-bottom-left-radius: 1rem;
   -webkit-bottom-right-radius: 1rem;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
 }
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 181, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.round.stack-for-small > * {
     margin: 0 -2px;
@@ -2895,24 +2896,24 @@ button::-moz-focus-inner {
   /* line 40, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.round.stack-for-small > * > button, .button-group.round.stack-for-small > * .button {
     border-left: 1px solid;
-    border-color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0);
   }
   /* line 46, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.round.stack-for-small > *:first-child button, .button-group.round.stack-for-small > *:first-child .button {
     border-left: 0;
   }
-  /* line 113, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
+  /* line 116, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.round.stack-for-small > *, .button-group.round.stack-for-small > * > a, .button-group.round.stack-for-small > * > button, .button-group.round.stack-for-small > * > .button {
     border-radius: 0;
   }
-  /* line 117, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
+  /* line 120, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.round.stack-for-small > *:first-child, .button-group.round.stack-for-small > *:first-child > a, .button-group.round.stack-for-small > *:first-child > button, .button-group.round.stack-for-small > *:first-child > .button {
     -webkit-border-bottom-left-radius: 1000px;
     -webkit-border-top-left-radius: 1000px;
     border-bottom-left-radius: 1000px;
     border-top-left-radius: 1000px;
   }
-  /* line 128, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
+  /* line 131, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.round.stack-for-small > *:last-child, .button-group.round.stack-for-small > *:last-child > a, .button-group.round.stack-for-small > *:last-child > button, .button-group.round.stack-for-small > *:last-child > .button {
     -webkit-border-bottom-right-radius: 1000px;
     -webkit-border-top-right-radius: 1000px;
@@ -2932,7 +2933,7 @@ button::-moz-focus-inner {
   /* line 40, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.round.stack-for-small > * > button, .button-group.round.stack-for-small > * .button {
     border-left: 1px solid;
-    border-color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0);
   }
   /* line 46, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.round.stack-for-small > *:first-child button, .button-group.round.stack-for-small > *:first-child .button {
@@ -2941,7 +2942,7 @@ button::-moz-focus-inner {
   /* line 68, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.round.stack-for-small > * > button, .button-group.round.stack-for-small > * .button {
     border-top: 1px solid;
-    border-color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0);
     border-left-width: 0px;
     margin: 0;
     display: block;
@@ -2950,18 +2951,18 @@ button::-moz-focus-inner {
   .button-group.round.stack-for-small > *:first-child button, .button-group.round.stack-for-small > *:first-child .button {
     border-top: 0;
   }
-  /* line 113, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
+  /* line 116, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.round.stack-for-small > *, .button-group.round.stack-for-small > * > a, .button-group.round.stack-for-small > * > button, .button-group.round.stack-for-small > * > .button {
     border-radius: 0;
   }
-  /* line 117, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
+  /* line 120, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.round.stack-for-small > *:first-child, .button-group.round.stack-for-small > *:first-child > a, .button-group.round.stack-for-small > *:first-child > button, .button-group.round.stack-for-small > *:first-child > .button {
     -webkit-top-left-radius: 1rem;
     -webkit-top-right-radius: 1rem;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
   }
-  /* line 128, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
+  /* line 131, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
   .button-group.round.stack-for-small > *:last-child, .button-group.round.stack-for-small > *:last-child > a, .button-group.round.stack-for-small > *:last-child > button, .button-group.round.stack-for-small > *:last-child > .button {
     -webkit-bottom-left-radius: 1rem;
     -webkit-bottom-right-radius: 1rem;
@@ -2979,7 +2980,7 @@ button::-moz-focus-inner {
 /* line 40, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.even-2 li > button, .button-group.even-2 li .button {
   border-left: 1px solid;
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0);
 }
 /* line 46, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.even-2 li:first-child button, .button-group.even-2 li:first-child .button {
@@ -2999,7 +3000,7 @@ button::-moz-focus-inner {
 /* line 40, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.even-3 li > button, .button-group.even-3 li .button {
   border-left: 1px solid;
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0);
 }
 /* line 46, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.even-3 li:first-child button, .button-group.even-3 li:first-child .button {
@@ -3019,7 +3020,7 @@ button::-moz-focus-inner {
 /* line 40, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.even-4 li > button, .button-group.even-4 li .button {
   border-left: 1px solid;
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0);
 }
 /* line 46, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.even-4 li:first-child button, .button-group.even-4 li:first-child .button {
@@ -3039,7 +3040,7 @@ button::-moz-focus-inner {
 /* line 40, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.even-5 li > button, .button-group.even-5 li .button {
   border-left: 1px solid;
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0);
 }
 /* line 46, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.even-5 li:first-child button, .button-group.even-5 li:first-child .button {
@@ -3059,7 +3060,7 @@ button::-moz-focus-inner {
 /* line 40, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.even-6 li > button, .button-group.even-6 li .button {
   border-left: 1px solid;
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0);
 }
 /* line 46, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.even-6 li:first-child button, .button-group.even-6 li:first-child .button {
@@ -3079,7 +3080,7 @@ button::-moz-focus-inner {
 /* line 40, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.even-7 li > button, .button-group.even-7 li .button {
   border-left: 1px solid;
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0);
 }
 /* line 46, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.even-7 li:first-child button, .button-group.even-7 li:first-child .button {
@@ -3099,7 +3100,7 @@ button::-moz-focus-inner {
 /* line 40, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.even-8 li > button, .button-group.even-8 li .button {
   border-left: 1px solid;
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0);
 }
 /* line 46, ../../bower_components/foundation/scss/foundation/components/_button-groups.scss */
 .button-group.even-8 li:first-child button, .button-group.even-8 li:first-child .button {
@@ -3206,7 +3207,7 @@ button::-moz-focus-inner {
 /* line 102, ../../bower_components/foundation/scss/foundation/components/_clearing.scss */
 .clearing-caption {
   color: #cccccc;
-  font-size: 0.875em;
+  font-size: 0em;
   line-height: 1.3;
   margin-bottom: 0;
   text-align: center;
@@ -3228,7 +3229,7 @@ button::-moz-focus-inner {
   color: #cccccc;
   display: none;
 }
-/* line 125, ../../bower_components/foundation/scss/foundation/components/_clearing.scss */
+/* line 126, ../../bower_components/foundation/scss/foundation/components/_clearing.scss */
 .clearing-close:hover, .clearing-close:focus {
   color: #cccccc;
 }
@@ -3251,8 +3252,8 @@ button::-moz-focus-inner {
   display: block;
 }
 
-@media only screen and (min-width: 40.063em) {
-  /* line 143, ../../bower_components/foundation/scss/foundation/components/_clearing.scss */
+@media only screen and (min-width: 40em) {
+  /* line 144, ../../bower_components/foundation/scss/foundation/components/_clearing.scss */
   .clearing-main-prev,
   .clearing-main-next {
     position: absolute;
@@ -3297,7 +3298,7 @@ button::-moz-focus-inner {
     border-left-color: #cccccc;
   }
 
-  /* line 175, ../../bower_components/foundation/scss/foundation/components/_clearing.scss */
+  /* line 176, ../../bower_components/foundation/scss/foundation/components/_clearing.scss */
   .clearing-main-prev.disabled,
   .clearing-main-next.disabled {
     opacity: 0.3;
@@ -3305,7 +3306,7 @@ button::-moz-focus-inner {
 
   /* line 180, ../../bower_components/foundation/scss/foundation/components/_clearing.scss */
   .clearing-assembled .clearing-container .carousel {
-    background: rgba(51, 51, 51, 0.8);
+    background: rgba(51, 51, 51, 0);
     height: 120px;
     margin-top: 10px;
     text-align: center;
@@ -3607,7 +3608,7 @@ button::-moz-focus-inner {
   line-height: 1.125rem;
   margin: 0;
 }
-/* line 205, ../../bower_components/foundation/scss/foundation/components/_dropdown.scss */
+/* line 206, ../../bower_components/foundation/scss/foundation/components/_dropdown.scss */
 .f-dropdown li:hover, .f-dropdown li:focus {
   background: #eeeeee;
 }
@@ -3677,7 +3678,7 @@ button::-moz-focus-inner {
 /* line 97, ../../bower_components/foundation/scss/foundation/components/_dropdown-buttons.scss */
 .dropdown.button:after, button.dropdown:after {
   border-width: 0.375rem;
-  right: 1.40625rem;
+  right: 1.125rem;
   margin-top: -0.15625rem;
 }
 /* line 116, ../../bower_components/foundation/scss/foundation/components/_dropdown-buttons.scss */
@@ -3719,7 +3720,7 @@ button::-moz-focus-inner {
 /* line 107, ../../bower_components/foundation/scss/foundation/components/_dropdown-buttons.scss */
 .dropdown.button.large:after, button.dropdown.large:after {
   border-width: 0.3125rem;
-  right: 1.71875rem;
+  right: 1.375rem;
   margin-top: -0.15625rem;
 }
 /* line 116, ../../bower_components/foundation/scss/foundation/components/_dropdown-buttons.scss */
@@ -3735,20 +3736,20 @@ button::-moz-focus-inner {
 .flex-video {
   position: relative;
   padding-top: 1.5625rem;
-  padding-bottom: 67.5%;
+  padding-bottom: 67%;
   height: 0;
   margin-bottom: 1rem;
   overflow: hidden;
 }
 /* line 32, ../../bower_components/foundation/scss/foundation/components/_flex-video.scss */
 .flex-video.widescreen {
-  padding-bottom: 56.34%;
+  padding-bottom: 56%;
 }
 /* line 33, ../../bower_components/foundation/scss/foundation/components/_flex-video.scss */
 .flex-video.vimeo {
   padding-top: 0;
 }
-/* line 35, ../../bower_components/foundation/scss/foundation/components/_flex-video.scss */
+/* line 38, ../../bower_components/foundation/scss/foundation/components/_flex-video.scss */
 .flex-video iframe,
 .flex-video object,
 .flex-video embed,
@@ -3771,7 +3772,7 @@ form {
 form .row .row {
   margin: 0 -0.5rem;
 }
-/* line 88, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
+/* line 89, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
 form .row .row .column,
 form .row .row .columns {
   padding: 0 0.5rem;
@@ -3780,7 +3781,7 @@ form .row .row .columns {
 form .row .row.collapse {
   margin: 0;
 }
-/* line 94, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
+/* line 95, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
 form .row .row.collapse .column,
 form .row .row.collapse .columns {
   padding: 0;
@@ -3792,7 +3793,7 @@ form .row .row.collapse input {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
 }
-/* line 102, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
+/* line 105, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
 form .row input.column,
 form .row input.columns,
 form .row textarea.column,
@@ -3808,7 +3809,7 @@ label {
   cursor: pointer;
   display: block;
   font-weight: normal;
-  line-height: 1.5;
+  line-height: 1;
   margin-bottom: 0;
   /* Styles for required inputs */
 }
@@ -3834,7 +3835,7 @@ select::-ms-expand {
 }
 
 /* Attach elements to the beginning or end of an input */
-/* line 387, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
+/* line 388, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
 .prefix,
 .postfix {
   display: block;
@@ -3848,8 +3849,8 @@ select::-ms-expand {
   border-width: 1px;
   overflow: hidden;
   font-size: 0.875rem;
-  height: 2.3125rem;
-  line-height: 2.3125rem;
+  height: 1.8125rem;
+  line-height: 1.8125rem;
 }
 
 /* Adjust padding, alignment and radius if pre/post element is a button */
@@ -3945,7 +3946,7 @@ span.postfix.radius, label.postfix.radius {
 }
 
 /* We use this to get basic styling on all basic form elements */
-/* line 408, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
+/* line 422, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
 input[type="text"],
 input[type="password"],
 input[type="date"],
@@ -3966,18 +3967,18 @@ textarea {
   background-color: white;
   font-family: inherit;
   border: 1px solid #cccccc;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-  color: rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0);
+  color: rgba(0, 0, 0, 0);
   display: block;
   font-size: 0.875rem;
   margin: 0 0 1rem 0;
   padding: 0.5rem;
-  height: 2.3125rem;
+  height: 1.8125rem;
   width: 100%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  transition: box-shadow 0.45s, border-color 0.45s ease-in-out;
+  transition: box-shadow 0s, border-color 0s ease-in-out;
 }
 /* line 185, ../../bower_components/foundation/scss/foundation/components/_global.scss */
 input[type="text"]:focus,
@@ -4037,7 +4038,7 @@ textarea:disabled {
   background-color: #dddddd;
   cursor: default;
 }
-/* line 140, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
+/* line 142, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
 input[type="text"][disabled], input[type="text"][readonly], fieldset[disabled] input[type="text"],
 input[type="password"][disabled],
 input[type="password"][readonly], fieldset[disabled]
@@ -4127,10 +4128,10 @@ select {
   border: 1px solid #cccccc;
   padding: 0.5rem;
   font-size: 0.875rem;
-  color: rgba(0, 0, 0, 0.75);
+  color: rgba(0, 0, 0, 0);
   line-height: normal;
   border-radius: 0;
-  height: 2.3125rem;
+  height: 1.8125rem;
 }
 /* line 339, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
 select.radius {
@@ -4148,7 +4149,7 @@ select:disabled {
 }
 
 /* Adjust margin for form elements below */
-/* line 451, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
+/* line 454, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
 input[type="file"],
 input[type="checkbox"],
 input[type="radio"],
@@ -4156,11 +4157,11 @@ select {
   margin: 0 0 1rem 0;
 }
 
-/* line 458, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
+/* line 459, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
 input[type="checkbox"] + label,
 input[type="radio"] + label {
   display: inline-block;
-  margin-left: 0.5rem;
+  margin-left: 0rem;
   margin-right: 1rem;
   margin-bottom: 0;
   vertical-align: baseline;
@@ -4220,18 +4221,18 @@ span.error, small.error {
   color: white;
 }
 
-/* line 500, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
+/* line 502, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
 .error input,
 .error textarea,
 .error select {
   margin-bottom: 0;
 }
-/* line 506, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
+/* line 507, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
 .error input[type="checkbox"],
 .error input[type="radio"] {
   margin-bottom: 1rem;
 }
-/* line 511, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
+/* line 512, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
 .error label,
 .error label.error {
   color: #f04124;
@@ -4264,7 +4265,7 @@ span.error, small.error {
   display: block;
 }
 
-/* line 538, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
+/* line 540, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
 input.error,
 textarea.error,
 select.error {
@@ -4290,7 +4291,7 @@ label.error {
   width: 25%;
   margin: 0 auto;
   display: block;
-  padding: 1.25rem;
+  padding: 1rem;
   float: left;
 }
 /* line 48, ../../bower_components/foundation/scss/foundation/components/_icon-bar.scss */
@@ -4304,13 +4305,13 @@ label.error {
 }
 /* line 57, ../../bower_components/foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > * i {
-  font-size: 1.875rem;
+  font-size: 1rem;
   vertical-align: middle;
 }
 /* line 62, ../../bower_components/foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > * img {
-  width: 1.875rem;
-  height: 1.875rem;
+  width: 1rem;
+  height: 1rem;
 }
 /* line 70, ../../bower_components/foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar.label-right > * i, .icon-bar.label-right > * img {
@@ -4340,7 +4341,7 @@ label.error {
   margin: auto;
   float: none;
 }
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 97, ../../bower_components/foundation/scss/foundation/components/_icon-bar.scss */
   .icon-bar.medium-vertical {
     height: 100%;
@@ -4353,7 +4354,7 @@ label.error {
     float: none;
   }
 }
-@media only screen and (min-width: 64.063em) {
+@media only screen and (min-width: 64em) {
   /* line 109, ../../bower_components/foundation/scss/foundation/components/_icon-bar.scss */
   .icon-bar.large-vertical {
     height: 100%;
@@ -4369,7 +4370,7 @@ label.error {
 /* line 131, ../../bower_components/foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > * {
   font-size: 1rem;
-  padding: 1.25rem;
+  padding: 1rem;
 }
 /* line 137, ../../bower_components/foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > * i + label, .icon-bar > * img + label {
@@ -4377,12 +4378,12 @@ label.error {
 }
 /* line 142, ../../bower_components/foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > * i {
-  font-size: 1.875rem;
+  font-size: 1rem;
 }
 /* line 146, ../../bower_components/foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > * img {
-  width: 1.875rem;
-  height: 1.875rem;
+  width: 1rem;
+  height: 1rem;
 }
 /* line 168, ../../bower_components/foundation/scss/foundation/components/_icon-bar.scss */
 .icon-bar > *:hover {
@@ -4405,13 +4406,13 @@ label.error {
 .icon-bar.two-up.vertical .item, .icon-bar.two-up.small-vertical .item {
   width: auto;
 }
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 225, ../../bower_components/foundation/scss/foundation/components/_icon-bar.scss */
   .icon-bar.two-up.medium-vertical .item {
     width: auto;
   }
 }
-@media only screen and (min-width: 64.063em) {
+@media only screen and (min-width: 64em) {
   /* line 230, ../../bower_components/foundation/scss/foundation/components/_icon-bar.scss */
   .icon-bar.two-up.large-vertical .item {
     width: auto;
@@ -4425,13 +4426,13 @@ label.error {
 .icon-bar.three-up.vertical .item, .icon-bar.three-up.small-vertical .item {
   width: auto;
 }
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 239, ../../bower_components/foundation/scss/foundation/components/_icon-bar.scss */
   .icon-bar.three-up.medium-vertical .item {
     width: auto;
   }
 }
-@media only screen and (min-width: 64.063em) {
+@media only screen and (min-width: 64em) {
   /* line 244, ../../bower_components/foundation/scss/foundation/components/_icon-bar.scss */
   .icon-bar.three-up.large-vertical .item {
     width: auto;
@@ -4445,13 +4446,13 @@ label.error {
 .icon-bar.four-up.vertical .item, .icon-bar.four-up.small-vertical .item {
   width: auto;
 }
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 253, ../../bower_components/foundation/scss/foundation/components/_icon-bar.scss */
   .icon-bar.four-up.medium-vertical .item {
     width: auto;
   }
 }
-@media only screen and (min-width: 64.063em) {
+@media only screen and (min-width: 64em) {
   /* line 258, ../../bower_components/foundation/scss/foundation/components/_icon-bar.scss */
   .icon-bar.four-up.large-vertical .item {
     width: auto;
@@ -4465,13 +4466,13 @@ label.error {
 .icon-bar.five-up.vertical .item, .icon-bar.five-up.small-vertical .item {
   width: auto;
 }
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 267, ../../bower_components/foundation/scss/foundation/components/_icon-bar.scss */
   .icon-bar.five-up.medium-vertical .item {
     width: auto;
   }
 }
-@media only screen and (min-width: 64.063em) {
+@media only screen and (min-width: 64em) {
   /* line 272, ../../bower_components/foundation/scss/foundation/components/_icon-bar.scss */
   .icon-bar.five-up.large-vertical .item {
     width: auto;
@@ -4485,13 +4486,13 @@ label.error {
 .icon-bar.six-up.vertical .item, .icon-bar.six-up.small-vertical .item {
   width: auto;
 }
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 281, ../../bower_components/foundation/scss/foundation/components/_icon-bar.scss */
   .icon-bar.six-up.medium-vertical .item {
     width: auto;
   }
 }
-@media only screen and (min-width: 64.063em) {
+@media only screen and (min-width: 64em) {
   /* line 286, ../../bower_components/foundation/scss/foundation/components/_icon-bar.scss */
   .icon-bar.six-up.large-vertical .item {
     width: auto;
@@ -4599,7 +4600,7 @@ label.error {
 }
 
 /* Typography */
-/* line 113, ../../bower_components/foundation/scss/foundation/components/_joyride.scss */
+/* line 118, ../../bower_components/foundation/scss/foundation/components/_joyride.scss */
 .joyride-tip-guide h1,
 .joyride-tip-guide h2,
 .joyride-tip-guide h3,
@@ -4648,7 +4649,7 @@ label.error {
   font-weight: normal;
   line-height: .5 !important;
 }
-/* line 155, ../../bower_components/foundation/scss/foundation/components/_joyride.scss */
+/* line 156, ../../bower_components/foundation/scss/foundation/components/_joyride.scss */
 .joyride-close-tip:hover, .joyride-close-tip:focus {
   color: #eeeeee !important;
 }
@@ -4659,7 +4660,7 @@ label.error {
   height: 100%;
   width: 100%;
   background: transparent;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0);
   z-index: 100;
   display: none;
   top: 0;
@@ -4687,7 +4688,7 @@ label.error {
 }
 
 /* Styles for screens that are at least 768px; */
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 192, ../../bower_components/foundation/scss/foundation/components/_joyride.scss */
   .joyride-tip-guide {
     width: 300px;
@@ -4722,7 +4723,7 @@ label.error {
     right: auto;
   }
 }
-/* line 55, ../../bower_components/foundation/scss/foundation/components/_keystrokes.scss */
+/* line 56, ../../bower_components/foundation/scss/foundation/components/_keystrokes.scss */
 .keystroke,
 kbd {
   background-color: #ededed;
@@ -4813,6 +4814,7 @@ kbd {
     -webkit-transform: rotate(360deg);
   }
 }
+
 @-moz-keyframes rotate {
   /* line 58, ../../bower_components/foundation/scss/foundation/components/_orbit.scss */
   from {
@@ -4824,6 +4826,7 @@ kbd {
     -moz-transform: rotate(360deg);
   }
 }
+
 @-o-keyframes rotate {
   /* line 62, ../../bower_components/foundation/scss/foundation/components/_orbit.scss */
   from {
@@ -4835,6 +4838,7 @@ kbd {
     -o-transform: rotate(360deg);
   }
 }
+
 @keyframes rotate {
   /* line 66, ../../bower_components/foundation/scss/foundation/components/_orbit.scss */
   from {
@@ -4846,6 +4850,7 @@ kbd {
     transform: rotate(360deg);
   }
 }
+
 /* Orbit Graceful Loading */
 /* line 71, ../../bower_components/foundation/scss/foundation/components/_orbit.scss */
 .slideshow-wrapper {
@@ -4856,7 +4861,7 @@ kbd {
   list-style-type: none;
   margin: 0;
 }
-/* line 80, ../../bower_components/foundation/scss/foundation/components/_orbit.scss */
+/* line 81, ../../bower_components/foundation/scss/foundation/components/_orbit.scss */
 .slideshow-wrapper ul li,
 .slideshow-wrapper ul li .orbit-caption {
   display: none;
@@ -4935,7 +4940,7 @@ kbd {
 .orbit-container .orbit-slides-container > * .orbit-caption {
   position: absolute;
   bottom: 0;
-  background-color: rgba(51, 51, 51, 0.8);
+  background-color: rgba(51, 51, 51, 0);
   color: white;
   width: 100%;
   padding: 0.625rem 0.875rem;
@@ -4948,7 +4953,7 @@ kbd {
   left: 10px;
   font-size: 12px;
   color: white;
-  background: transparent;
+  background: rgba(0, 0, 0, 0);
   z-index: 10;
 }
 /* line 179, ../../bower_components/foundation/scss/foundation/components/_orbit.scss */
@@ -4968,7 +4973,7 @@ kbd {
 /* line 192, ../../bower_components/foundation/scss/foundation/components/_orbit.scss */
 .orbit-container .orbit-timer .orbit-progress {
   height: 3px;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0);
   display: block;
   width: 0%;
   position: relative;
@@ -5006,7 +5011,7 @@ kbd {
 .orbit-container:hover .orbit-timer > span {
   display: block;
 }
-/* line 240, ../../bower_components/foundation/scss/foundation/components/_orbit.scss */
+/* line 241, ../../bower_components/foundation/scss/foundation/components/_orbit.scss */
 .orbit-container .orbit-prev,
 .orbit-container .orbit-next {
   position: absolute;
@@ -5023,7 +5028,7 @@ kbd {
 /* line 253, ../../bower_components/foundation/scss/foundation/components/_orbit.scss */
 .orbit-container .orbit-prev:hover,
 .orbit-container .orbit-next:hover {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0);
 }
 /* line 257, ../../bower_components/foundation/scss/foundation/components/_orbit.scss */
 .orbit-container .orbit-prev > span,
@@ -5102,7 +5107,7 @@ kbd {
   margin-right: 0;
 }
 
-/* line 322, ../../bower_components/foundation/scss/foundation/components/_orbit.scss */
+/* line 323, ../../bower_components/foundation/scss/foundation/components/_orbit.scss */
 .touch .orbit-container .orbit-prev,
 .touch .orbit-container .orbit-next {
   display: none;
@@ -5112,8 +5117,8 @@ kbd {
   display: none;
 }
 
-@media only screen and (min-width: 40.063em) {
-  /* line 334, ../../bower_components/foundation/scss/foundation/components/_orbit.scss */
+@media only screen and (min-width: 40em) {
+  /* line 335, ../../bower_components/foundation/scss/foundation/components/_orbit.scss */
   .touch .orbit-container .orbit-prev,
   .touch .orbit-container .orbit-next {
     display: inherit;
@@ -5179,7 +5184,7 @@ ul.pagination li a, ul.pagination li button {
   line-height: inherit;
   transition: background-color 300ms ease-out;
 }
-/* line 122, ../../bower_components/foundation/scss/foundation/components/_pagination.scss */
+/* line 126, ../../bower_components/foundation/scss/foundation/components/_pagination.scss */
 ul.pagination li:hover a,
 ul.pagination li a:focus, ul.pagination li:hover button,
 ul.pagination li button:focus {
@@ -5190,7 +5195,7 @@ ul.pagination li.unavailable a, ul.pagination li.unavailable button {
   cursor: default;
   color: #999999;
 }
-/* line 55, ../../bower_components/foundation/scss/foundation/components/_pagination.scss */
+/* line 60, ../../bower_components/foundation/scss/foundation/components/_pagination.scss */
 ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus, ul.pagination li.unavailable:hover button, ul.pagination li.unavailable button:focus {
   background: transparent;
 }
@@ -5201,7 +5206,7 @@ ul.pagination li.current a, ul.pagination li.current button {
   font-weight: bold;
   cursor: default;
 }
-/* line 74, ../../bower_components/foundation/scss/foundation/components/_pagination.scss */
+/* line 75, ../../bower_components/foundation/scss/foundation/components/_pagination.scss */
 ul.pagination li.current a:hover, ul.pagination li.current a:focus, ul.pagination li.current button:hover, ul.pagination li.current button:focus {
   background: #008cba;
 }
@@ -5332,7 +5337,7 @@ ul.pagination li {
   color: #777777;
   font-size: 0.75rem;
   font-weight: normal;
-  line-height: 1.4;
+  line-height: 1;
   border-bottom: dotted 1px #dddddd;
 }
 /* line 145, ../../bower_components/foundation/scss/foundation/components/_pricing-tables.scss */
@@ -5473,13 +5478,13 @@ ul.pagination li {
 .range-slider.disabled, .range-slider[disabled] {
   background: #fafafa;
   cursor: default;
-  opacity: 0.7;
+  opacity: 0;
 }
 /* line 149, ../../bower_components/foundation/scss/foundation/components/_range-slider.scss */
 .range-slider.disabled .range-slider-handle, .range-slider[disabled] .range-slider-handle {
   background: #008cba;
   cursor: default;
-  opacity: 0.7;
+  opacity: 0;
 }
 /* line 110, ../../bower_components/foundation/scss/foundation/components/_range-slider.scss */
 .range-slider.disabled .range-slider-handle:hover, .range-slider[disabled] .range-slider-handle:hover {
@@ -5519,7 +5524,7 @@ ul.pagination li {
   left: 0;
   right: 0;
   background: black;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0);
   z-index: 1004;
   display: none;
   left: 0;
@@ -5538,8 +5543,8 @@ ul.pagination li {
   background-color: white;
   padding: 1.25rem;
   border: solid 1px #666666;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-  padding: 1.875rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+  padding: 1.25rem;
 }
 @media only screen and (max-width: 40em) {
   /* line 169, ../../bower_components/foundation/scss/foundation/components/_reveal.scss */
@@ -5547,7 +5552,7 @@ ul.pagination li {
     min-height: 100vh;
   }
 }
-/* line 87, ../../bower_components/foundation/scss/foundation/components/_reveal.scss */
+/* line 88, ../../bower_components/foundation/scss/foundation/components/_reveal.scss */
 .reveal-modal .column, dialog .column,
 .reveal-modal .columns,
 dialog .columns {
@@ -5561,7 +5566,7 @@ dialog .columns {
 .reveal-modal > :last-child, dialog > :last-child {
   margin-bottom: 0;
 }
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 169, ../../bower_components/foundation/scss/foundation/components/_reveal.scss */
   .reveal-modal, dialog {
     width: 80%;
@@ -5571,7 +5576,7 @@ dialog .columns {
     margin: 0 auto;
   }
 }
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 169, ../../bower_components/foundation/scss/foundation/components/_reveal.scss */
   .reveal-modal, dialog {
     top: 6.25rem;
@@ -5589,7 +5594,7 @@ dialog .columns {
 .reveal-modal.collapse, dialog.collapse {
   padding: 0;
 }
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 184, ../../bower_components/foundation/scss/foundation/components/_reveal.scss */
   .reveal-modal.tiny, dialog.tiny {
     width: 30%;
@@ -5599,7 +5604,7 @@ dialog .columns {
     margin: 0 auto;
   }
 }
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 185, ../../bower_components/foundation/scss/foundation/components/_reveal.scss */
   .reveal-modal.small, dialog.small {
     width: 40%;
@@ -5609,7 +5614,7 @@ dialog .columns {
     margin: 0 auto;
   }
 }
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 186, ../../bower_components/foundation/scss/foundation/components/_reveal.scss */
   .reveal-modal.medium, dialog.medium {
     width: 60%;
@@ -5619,7 +5624,7 @@ dialog .columns {
     margin: 0 auto;
   }
 }
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 187, ../../bower_components/foundation/scss/foundation/components/_reveal.scss */
   .reveal-modal.large, dialog.large {
     width: 70%;
@@ -5629,7 +5634,7 @@ dialog .columns {
     margin: 0 auto;
   }
 }
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 188, ../../bower_components/foundation/scss/foundation/components/_reveal.scss */
   .reveal-modal.xlarge, dialog.xlarge {
     width: 95%;
@@ -5648,7 +5653,7 @@ dialog .columns {
   min-height: 100vh;
   margin-left: 0 !important;
 }
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 189, ../../bower_components/foundation/scss/foundation/components/_reveal.scss */
   .reveal-modal.full, dialog.full {
     width: 100vw;
@@ -5678,7 +5683,7 @@ dialog::backdrop {
   left: 0;
   right: 0;
   background: black;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0);
   display: none;
   left: 0;
 }
@@ -5711,9 +5716,9 @@ dialog::backdrop {
   margin: 0;
   padding: 0.4375rem 0.875rem;
 }
-/* line 79, ../../bower_components/foundation/scss/foundation/components/_side-nav.scss */
+/* line 80, ../../bower_components/foundation/scss/foundation/components/_side-nav.scss */
 .side-nav li a:not(.button):hover, .side-nav li a:not(.button):focus {
-  background: rgba(0, 0, 0, 0.025);
+  background: rgba(0, 0, 0, 0);
   color: #1cc7ff;
 }
 /* line 86, ../../bower_components/foundation/scss/foundation/components/_side-nav.scss */
@@ -5765,15 +5770,15 @@ dialog::backdrop {
 }
 /* line 97, ../../bower_components/foundation/scss/foundation/components/_split-buttons.scss */
 .split.button span:active {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0);
 }
 /* line 103, ../../bower_components/foundation/scss/foundation/components/_split-buttons.scss */
 .split.button span {
-  border-left-color: rgba(255, 255, 255, 0.5);
+  border-left-color: rgba(255, 255, 255, 0);
 }
 /* line 140, ../../bower_components/foundation/scss/foundation/components/_split-buttons.scss */
 .split.button span {
-  width: 3.09375rem;
+  width: 2.8125rem;
 }
 /* line 141, ../../bower_components/foundation/scss/foundation/components/_split-buttons.scss */
 .split.button span:after {
@@ -5788,7 +5793,7 @@ dialog::backdrop {
 }
 /* line 103, ../../bower_components/foundation/scss/foundation/components/_split-buttons.scss */
 .split.button.secondary span {
-  border-left-color: rgba(255, 255, 255, 0.5);
+  border-left-color: rgba(255, 255, 255, 0);
 }
 /* line 166, ../../bower_components/foundation/scss/foundation/components/_split-buttons.scss */
 .split.button.secondary span:after {
@@ -5796,11 +5801,11 @@ dialog::backdrop {
 }
 /* line 103, ../../bower_components/foundation/scss/foundation/components/_split-buttons.scss */
 .split.button.alert span {
-  border-left-color: rgba(255, 255, 255, 0.5);
+  border-left-color: rgba(255, 255, 255, 0);
 }
 /* line 103, ../../bower_components/foundation/scss/foundation/components/_split-buttons.scss */
 .split.button.success span {
-  border-left-color: rgba(255, 255, 255, 0.5);
+  border-left-color: rgba(255, 255, 255, 0);
 }
 /* line 179, ../../bower_components/foundation/scss/foundation/components/_split-buttons.scss */
 .split.button.tiny {
@@ -5884,7 +5889,7 @@ dialog::backdrop {
 .sub-nav dt {
   text-transform: uppercase;
 }
-/* line 73, ../../bower_components/foundation/scss/foundation/components/_sub-nav.scss */
+/* line 75, ../../bower_components/foundation/scss/foundation/components/_sub-nav.scss */
 .sub-nav dt,
 .sub-nav dd,
 .sub-nav li {
@@ -5940,7 +5945,7 @@ div.switch label {
   width: 4rem;
   height: 2rem;
   cursor: pointer;
-  transition: left 0.15s ease-out;
+  transition: left 0s ease-out;
 }
 /* line 65, ../../bower_components/foundation/scss/foundation/components/_switches.scss */
 div.switch input {
@@ -5959,11 +5964,11 @@ div.switch label:after {
   position: absolute;
   top: .25rem;
   left: .25rem;
-  width: 1.5rem;
-  height: 1.5rem;
-  -webkit-transition: left 0.15s ease-out;
-  -moz-transition: left 0.15s ease-out;
-  transition: left 0.15s ease-out;
+  width: 2rem;
+  height: 2rem;
+  -webkit-transition: left 0s ease-out;
+  -moz-transition: left 0s ease-out;
+  transition: left 0s ease-out;
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
@@ -5974,7 +5979,7 @@ div.switch input:checked + label {
 }
 /* line 95, ../../bower_components/foundation/scss/foundation/components/_switches.scss */
 div.switch input:checked + label:after {
-  left: 2.25rem;
+  left: 2rem;
 }
 /* line 107, ../../bower_components/foundation/scss/foundation/components/_switches.scss */
 div.switch label {
@@ -5983,12 +5988,12 @@ div.switch label {
 }
 /* line 111, ../../bower_components/foundation/scss/foundation/components/_switches.scss */
 div.switch label:after {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 2rem;
+  height: 2rem;
 }
 /* line 115, ../../bower_components/foundation/scss/foundation/components/_switches.scss */
 div.switch input:checked + label:after {
-  left: 2.25rem;
+  left: 2rem;
 }
 /* line 135, ../../bower_components/foundation/scss/foundation/components/_switches.scss */
 div.switch label {
@@ -6005,8 +6010,8 @@ div.switch input:checked + label {
 }
 /* line 107, ../../bower_components/foundation/scss/foundation/components/_switches.scss */
 div.switch.large label {
-  width: 5rem;
-  height: 2.5rem;
+  width: 4rem;
+  height: 2rem;
 }
 /* line 111, ../../bower_components/foundation/scss/foundation/components/_switches.scss */
 div.switch.large label:after {
@@ -6015,26 +6020,26 @@ div.switch.large label:after {
 }
 /* line 115, ../../bower_components/foundation/scss/foundation/components/_switches.scss */
 div.switch.large input:checked + label:after {
-  left: 2.75rem;
-}
-/* line 107, ../../bower_components/foundation/scss/foundation/components/_switches.scss */
-div.switch.small label {
-  width: 3.5rem;
-  height: 1.75rem;
-}
-/* line 111, ../../bower_components/foundation/scss/foundation/components/_switches.scss */
-div.switch.small label:after {
-  width: 1.25rem;
-  height: 1.25rem;
-}
-/* line 115, ../../bower_components/foundation/scss/foundation/components/_switches.scss */
-div.switch.small input:checked + label:after {
   left: 2rem;
 }
 /* line 107, ../../bower_components/foundation/scss/foundation/components/_switches.scss */
+div.switch.small label {
+  width: 2rem;
+  height: 1rem;
+}
+/* line 111, ../../bower_components/foundation/scss/foundation/components/_switches.scss */
+div.switch.small label:after {
+  width: 1rem;
+  height: 1rem;
+}
+/* line 115, ../../bower_components/foundation/scss/foundation/components/_switches.scss */
+div.switch.small input:checked + label:after {
+  left: 1rem;
+}
+/* line 107, ../../bower_components/foundation/scss/foundation/components/_switches.scss */
 div.switch.tiny label {
-  width: 3rem;
-  height: 1.5rem;
+  width: 2rem;
+  height: 1rem;
 }
 /* line 111, ../../bower_components/foundation/scss/foundation/components/_switches.scss */
 div.switch.tiny label:after {
@@ -6043,7 +6048,7 @@ div.switch.tiny label:after {
 }
 /* line 115, ../../bower_components/foundation/scss/foundation/components/_switches.scss */
 div.switch.tiny input:checked + label:after {
-  left: 1.75rem;
+  left: 1rem;
 }
 /* line 207, ../../bower_components/foundation/scss/foundation/components/_switches.scss */
 div.switch.radius label {
@@ -6085,7 +6090,7 @@ table caption {
 table thead {
   background: whitesmoke;
 }
-/* line 82, ../../bower_components/foundation/scss/foundation/components/_tables.scss */
+/* line 83, ../../bower_components/foundation/scss/foundation/components/_tables.scss */
 table thead tr th,
 table thead tr td {
   padding: 0.5rem 0.625rem 0.625rem;
@@ -6097,7 +6102,7 @@ table thead tr td {
 table tfoot {
   background: whitesmoke;
 }
-/* line 96, ../../bower_components/foundation/scss/foundation/components/_tables.scss */
+/* line 97, ../../bower_components/foundation/scss/foundation/components/_tables.scss */
 table tfoot tr th,
 table tfoot tr td {
   padding: 0.5rem 0.625rem 0.625rem;
@@ -6105,7 +6110,7 @@ table tfoot tr td {
   font-weight: bold;
   color: #222222;
 }
-/* line 107, ../../bower_components/foundation/scss/foundation/components/_tables.scss */
+/* line 108, ../../bower_components/foundation/scss/foundation/components/_tables.scss */
 table tr th,
 table tr td {
   padding: 0.5625rem 0.625rem;
@@ -6113,11 +6118,11 @@ table tr td {
   color: #222222;
   text-align: left;
 }
-/* line 115, ../../bower_components/foundation/scss/foundation/components/_tables.scss */
+/* line 117, ../../bower_components/foundation/scss/foundation/components/_tables.scss */
 table tr.even, table tr.alt, table tr:nth-of-type(even) {
   background: #f9f9f9;
 }
-/* line 120, ../../bower_components/foundation/scss/foundation/components/_tables.scss */
+/* line 125, ../../bower_components/foundation/scss/foundation/components/_tables.scss */
 table thead tr th,
 table tfoot tr th,
 table tfoot tr td,
@@ -6190,7 +6195,7 @@ table tr td {
     text-align: justify !important;
   }
 }
-@media only screen and (min-width: 40.063em) and (max-width: 64em) {
+@media only screen and (min-width: 40em) and (max-width: 64em) {
   /* line 162, ../../bower_components/foundation/scss/foundation/components/_type.scss */
   .medium-only-text-left {
     text-align: left !important;
@@ -6211,7 +6216,7 @@ table tr td {
     text-align: justify !important;
   }
 }
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 162, ../../bower_components/foundation/scss/foundation/components/_type.scss */
   .medium-text-left {
     text-align: left !important;
@@ -6232,7 +6237,7 @@ table tr td {
     text-align: justify !important;
   }
 }
-@media only screen and (min-width: 64.063em) and (max-width: 90em) {
+@media only screen and (min-width: 64em) and (max-width: 90em) {
   /* line 162, ../../bower_components/foundation/scss/foundation/components/_type.scss */
   .large-only-text-left {
     text-align: left !important;
@@ -6253,7 +6258,7 @@ table tr td {
     text-align: justify !important;
   }
 }
-@media only screen and (min-width: 64.063em) {
+@media only screen and (min-width: 64em) {
   /* line 162, ../../bower_components/foundation/scss/foundation/components/_type.scss */
   .large-text-left {
     text-align: left !important;
@@ -6274,7 +6279,7 @@ table tr td {
     text-align: justify !important;
   }
 }
-@media only screen and (min-width: 90.063em) and (max-width: 120em) {
+@media only screen and (min-width: 90em) and (max-width: 120em) {
   /* line 162, ../../bower_components/foundation/scss/foundation/components/_type.scss */
   .xlarge-only-text-left {
     text-align: left !important;
@@ -6295,7 +6300,7 @@ table tr td {
     text-align: justify !important;
   }
 }
-@media only screen and (min-width: 90.063em) {
+@media only screen and (min-width: 90em) {
   /* line 162, ../../bower_components/foundation/scss/foundation/components/_type.scss */
   .xlarge-text-left {
     text-align: left !important;
@@ -6316,7 +6321,7 @@ table tr td {
     text-align: justify !important;
   }
 }
-@media only screen and (min-width: 120.063em) and (max-width: 99999999em) {
+@media only screen and (min-width: 120em) and (max-width: 99999999em) {
   /* line 162, ../../bower_components/foundation/scss/foundation/components/_type.scss */
   .xxlarge-only-text-left {
     text-align: left !important;
@@ -6337,7 +6342,7 @@ table tr td {
     text-align: justify !important;
   }
 }
-@media only screen and (min-width: 120.063em) {
+@media only screen and (min-width: 120em) {
   /* line 162, ../../bower_components/foundation/scss/foundation/components/_type.scss */
   .xxlarge-text-left {
     text-align: left !important;
@@ -6359,7 +6364,7 @@ table tr td {
   }
 }
 /* Typography resets */
-/* line 193, ../../bower_components/foundation/scss/foundation/components/_type.scss */
+/* line 211, ../../bower_components/foundation/scss/foundation/components/_type.scss */
 div,
 dl,
 dt,
@@ -6390,7 +6395,7 @@ a {
   text-decoration: none;
   line-height: inherit;
 }
-/* line 222, ../../bower_components/foundation/scss/foundation/components/_type.scss */
+/* line 223, ../../bower_components/foundation/scss/foundation/components/_type.scss */
 a:hover, a:focus {
   color: #0078a0;
 }
@@ -6405,19 +6410,19 @@ p {
   font-family: inherit;
   font-weight: normal;
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1;
   margin-bottom: 1.25rem;
   text-rendering: optimizeLegibility;
 }
 /* line 242, ../../bower_components/foundation/scss/foundation/components/_type.scss */
 p.lead {
-  font-size: 1.21875rem;
+  font-size: 1.1875rem;
   line-height: 1.6;
 }
 /* line 244, ../../bower_components/foundation/scss/foundation/components/_type.scss */
 p aside {
   font-size: 0.875rem;
-  line-height: 1.35;
+  line-height: 1;
   font-style: italic;
 }
 
@@ -6429,9 +6434,9 @@ h1, h2, h3, h4, h5, h6 {
   font-style: normal;
   color: #222222;
   text-rendering: optimizeLegibility;
-  margin-top: 0.2rem;
-  margin-bottom: 0.5rem;
-  line-height: 1.4;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  line-height: 1;
 }
 /* line 262, ../../bower_components/foundation/scss/foundation/components/_type.scss */
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
@@ -6472,11 +6477,11 @@ h6 {
 
 /* line 276, ../../bower_components/foundation/scss/foundation/components/_type.scss */
 .subheader {
-  line-height: 1.4;
+  line-height: 1;
   color: #6f6f6f;
   font-weight: normal;
-  margin-top: 0.2rem;
-  margin-bottom: 0.5rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
 }
 
 /* line 278, ../../bower_components/foundation/scss/foundation/components/_type.scss */
@@ -6489,14 +6494,14 @@ hr {
 }
 
 /* Helpful Typography Defaults */
-/* line 287, ../../bower_components/foundation/scss/foundation/components/_type.scss */
+/* line 288, ../../bower_components/foundation/scss/foundation/components/_type.scss */
 em,
 i {
   font-style: italic;
   line-height: inherit;
 }
 
-/* line 293, ../../bower_components/foundation/scss/foundation/components/_type.scss */
+/* line 294, ../../bower_components/foundation/scss/foundation/components/_type.scss */
 strong,
 b {
   font-weight: bold;
@@ -6522,12 +6527,12 @@ code {
 }
 
 /* Lists */
-/* line 316, ../../bower_components/foundation/scss/foundation/components/_type.scss */
+/* line 318, ../../bower_components/foundation/scss/foundation/components/_type.scss */
 ul,
 ol,
 dl {
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1;
   margin-bottom: 1.25rem;
   list-style-position: outside;
   font-family: inherit;
@@ -6535,13 +6540,13 @@ dl {
 
 /* line 326, ../../bower_components/foundation/scss/foundation/components/_type.scss */
 ul {
-  margin-left: 1.1rem;
+  margin-left: 1rem;
 }
 /* line 328, ../../bower_components/foundation/scss/foundation/components/_type.scss */
 ul.no-bullet {
   margin-left: 0;
 }
-/* line 331, ../../bower_components/foundation/scss/foundation/components/_type.scss */
+/* line 332, ../../bower_components/foundation/scss/foundation/components/_type.scss */
 ul.no-bullet li ul,
 ul.no-bullet li ol {
   margin-left: 1.25rem;
@@ -6550,7 +6555,7 @@ ul.no-bullet li ol {
 }
 
 /* Unordered Lists */
-/* line 344, ../../bower_components/foundation/scss/foundation/components/_type.scss */
+/* line 345, ../../bower_components/foundation/scss/foundation/components/_type.scss */
 ul li ul,
 ul li ol {
   margin-left: 1.25rem;
@@ -6563,17 +6568,17 @@ ul.square li ul, ul.circle li ul, ul.disc li ul {
 /* line 356, ../../bower_components/foundation/scss/foundation/components/_type.scss */
 ul.square {
   list-style-type: square;
-  margin-left: 1.1rem;
+  margin-left: 1rem;
 }
 /* line 357, ../../bower_components/foundation/scss/foundation/components/_type.scss */
 ul.circle {
   list-style-type: circle;
-  margin-left: 1.1rem;
+  margin-left: 1rem;
 }
 /* line 358, ../../bower_components/foundation/scss/foundation/components/_type.scss */
 ul.disc {
   list-style-type: disc;
-  margin-left: 1.1rem;
+  margin-left: 1rem;
 }
 /* line 359, ../../bower_components/foundation/scss/foundation/components/_type.scss */
 ul.no-bullet {
@@ -6583,9 +6588,9 @@ ul.no-bullet {
 /* Ordered Lists */
 /* line 363, ../../bower_components/foundation/scss/foundation/components/_type.scss */
 ol {
-  margin-left: 1.4rem;
+  margin-left: 1rem;
 }
-/* line 366, ../../bower_components/foundation/scss/foundation/components/_type.scss */
+/* line 367, ../../bower_components/foundation/scss/foundation/components/_type.scss */
 ol li ul,
 ol li ol {
   margin-left: 1.25rem;
@@ -6595,7 +6600,7 @@ ol li ol {
 /* Definition Lists */
 /* line 376, ../../bower_components/foundation/scss/foundation/components/_type.scss */
 dl dt {
-  margin-bottom: 0.3rem;
+  margin-bottom: 0rem;
   font-weight: bold;
 }
 /* line 380, ../../bower_components/foundation/scss/foundation/components/_type.scss */
@@ -6604,7 +6609,7 @@ dl dd {
 }
 
 /* Abbreviations */
-/* line 384, ../../bower_components/foundation/scss/foundation/components/_type.scss */
+/* line 385, ../../bower_components/foundation/scss/foundation/components/_type.scss */
 abbr,
 acronym {
   text-transform: uppercase;
@@ -6636,16 +6641,16 @@ blockquote cite {
 blockquote cite:before {
   content: "\2014 \0020";
 }
-/* line 410, ../../bower_components/foundation/scss/foundation/components/_type.scss */
+/* line 411, ../../bower_components/foundation/scss/foundation/components/_type.scss */
 blockquote cite a,
 blockquote cite a:visited {
   color: #555555;
 }
 
-/* line 416, ../../bower_components/foundation/scss/foundation/components/_type.scss */
+/* line 417, ../../bower_components/foundation/scss/foundation/components/_type.scss */
 blockquote,
 blockquote p {
-  line-height: 1.6;
+  line-height: 1;
   color: #6f6f6f;
 }
 
@@ -6681,10 +6686,10 @@ blockquote p {
   padding: 0 0.0625rem;
 }
 
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 453, ../../bower_components/foundation/scss/foundation/components/_type.scss */
   h1, h2, h3, h4, h5, h6 {
-    line-height: 1.4;
+    line-height: 1;
   }
 
   /* line 454, ../../bower_components/foundation/scss/foundation/components/_type.scss */
@@ -6738,7 +6743,7 @@ blockquote p {
     text-shadow: none !important;
   }
 
-  /* line 479, ../../bower_components/foundation/scss/foundation/components/_type.scss */
+  /* line 480, ../../bower_components/foundation/scss/foundation/components/_type.scss */
   a,
   a:visited {
     text-decoration: underline;
@@ -6754,14 +6759,14 @@ blockquote p {
     content: " (" attr(title) ")";
   }
 
-  /* line 486, ../../bower_components/foundation/scss/foundation/components/_type.scss */
+  /* line 488, ../../bower_components/foundation/scss/foundation/components/_type.scss */
   .ir a:after,
   a[href^="javascript:"]:after,
   a[href^="#"]:after {
     content: "";
   }
 
-  /* line 490, ../../bower_components/foundation/scss/foundation/components/_type.scss */
+  /* line 491, ../../bower_components/foundation/scss/foundation/components/_type.scss */
   pre,
   blockquote {
     border: 1px solid #999999;
@@ -6774,7 +6779,7 @@ blockquote p {
     /* h5bp.com/t */
   }
 
-  /* line 498, ../../bower_components/foundation/scss/foundation/components/_type.scss */
+  /* line 499, ../../bower_components/foundation/scss/foundation/components/_type.scss */
   tr,
   img {
     page-break-inside: avoid;
@@ -6787,8 +6792,9 @@ blockquote p {
 
   @page {
     margin: 0.5cm;
-  }
-  /* line 505, ../../bower_components/foundation/scss/foundation/components/_type.scss */
+}
+
+  /* line 507, ../../bower_components/foundation/scss/foundation/components/_type.scss */
   p,
   h2,
   h3 {
@@ -6796,7 +6802,7 @@ blockquote p {
     widows: 3;
   }
 
-  /* line 512, ../../bower_components/foundation/scss/foundation/components/_type.scss */
+  /* line 513, ../../bower_components/foundation/scss/foundation/components/_type.scss */
   h2,
   h3 {
     page-break-after: avoid;
@@ -6922,13 +6928,13 @@ blockquote p {
   padding: 0 0.9375rem;
 }
 
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 99, ../../bower_components/foundation/scss/foundation/components/_tabs.scss */
   .tabs.vertical {
     width: 20%;
     max-width: 20%;
     float: left;
-    margin: 0 0 1.25rem;
+    margin: 0 0 1rem;
   }
 
   /* line 107, ../../bower_components/foundation/scss/foundation/components/_tabs.scss */
@@ -6953,12 +6959,12 @@ blockquote p {
   display: inline-block;
   border: solid 4px white;
   max-width: 100%;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0);
   transition: all 200ms ease-out;
 }
-/* line 48, ../../bower_components/foundation/scss/foundation/components/_thumbs.scss */
+/* line 49, ../../bower_components/foundation/scss/foundation/components/_thumbs.scss */
 .th:hover, .th:focus {
-  box-shadow: 0 0 6px 1px rgba(0, 140, 186, 0.5);
+  box-shadow: 0 0 6px 1px rgba(0, 140, 186, 0);
 }
 /* line 63, ../../bower_components/foundation/scss/foundation/components/_thumbs.scss */
 .th.radius {
@@ -6973,12 +6979,12 @@ blockquote p {
   font-weight: bold;
   color: #333333;
 }
-/* line 44, ../../bower_components/foundation/scss/foundation/components/_tooltips.scss */
+/* line 45, ../../bower_components/foundation/scss/foundation/components/_tooltips.scss */
 .has-tip:hover, .has-tip:focus {
   border-bottom: dotted 1px #003f54;
   color: #008cba;
 }
-/* line 50, ../../bower_components/foundation/scss/foundation/components/_tooltips.scss */
+/* line 51, ../../bower_components/foundation/scss/foundation/components/_tooltips.scss */
 .has-tip.tip-left, .has-tip.tip-right {
   float: none !important;
 }
@@ -6990,7 +6996,7 @@ blockquote p {
   z-index: 999;
   font-weight: normal;
   font-size: 0.875rem;
-  line-height: 1.3;
+  line-height: 1;
   padding: 0.75rem;
   max-width: 300px;
   left: 50%;
@@ -7041,7 +7047,7 @@ blockquote p {
   font-weight: normal;
 }
 
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 110, ../../bower_components/foundation/scss/foundation/components/_tooltips.scss */
   .tooltip > .nub {
     border-color: transparent transparent #333333 transparent;
@@ -7053,7 +7059,7 @@ blockquote p {
     top: auto;
     bottom: -10px;
   }
-  /* line 120, ../../bower_components/foundation/scss/foundation/components/_tooltips.scss */
+  /* line 121, ../../bower_components/foundation/scss/foundation/components/_tooltips.scss */
   .tooltip.tip-left, .tooltip.tip-right {
     float: none !important;
   }
@@ -7076,8 +7082,8 @@ blockquote p {
 }
 /* line 104, ../../bower_components/foundation/scss/foundation/components/_top-bar.scss */
 meta.foundation-mq-topbar {
-  font-family: "/only screen and (min-width:40.063em)/";
-  width: 40.063em;
+  font-family: "/only screen and (min-width:40em)/";
+  width: 40em;
 }
 
 /* Wrapped around .top-bar to contain to grid width */
@@ -7136,7 +7142,7 @@ meta.foundation-mq-topbar {
 .top-bar .row {
   max-width: none;
 }
-/* line 160, ../../bower_components/foundation/scss/foundation/components/_top-bar.scss */
+/* line 161, ../../bower_components/foundation/scss/foundation/components/_top-bar.scss */
 .top-bar form,
 .top-bar input {
   margin-bottom: 0;
@@ -7146,14 +7152,14 @@ meta.foundation-mq-topbar {
   height: 1.8rem;
   padding-top: .35rem;
   padding-bottom: .35rem;
-  font-size: 0.75rem;
+  font-size: 0rem;
 }
 /* line 165, ../../bower_components/foundation/scss/foundation/components/_top-bar.scss */
 .top-bar .button, .top-bar button {
   padding-top: .45rem;
   padding-bottom: .35rem;
   margin-bottom: 0;
-  font-size: 0.75rem;
+  font-size: 0rem;
 }
 /* line 176, ../../bower_components/foundation/scss/foundation/components/_top-bar.scss */
 .top-bar .title-area {
@@ -7261,7 +7267,7 @@ meta.foundation-mq-topbar {
   font-size: 16px;
   margin: 0;
 }
-/* line 287, ../../bower_components/foundation/scss/foundation/components/_top-bar.scss */
+/* line 288, ../../bower_components/foundation/scss/foundation/components/_top-bar.scss */
 .top-bar-section .divider,
 .top-bar-section [role="separator"] {
   border-top: solid 1px #1a1a1a;
@@ -7294,11 +7300,11 @@ meta.foundation-mq-topbar {
   border-color: #007095;
   color: white;
 }
-/* line 157, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 158, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > a.button:hover, .top-bar-section ul li > a.button:focus {
   background-color: #007095;
 }
-/* line 163, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 164, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > a.button:hover, .top-bar-section ul li > a.button:focus {
   color: white;
 }
@@ -7308,11 +7314,11 @@ meta.foundation-mq-topbar {
   border-color: #b9b9b9;
   color: #333333;
 }
-/* line 157, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 158, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > a.button.secondary:hover, .top-bar-section ul li > a.button.secondary:focus {
   background-color: #b9b9b9;
 }
-/* line 163, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 164, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > a.button.secondary:hover, .top-bar-section ul li > a.button.secondary:focus {
   color: #333333;
 }
@@ -7322,11 +7328,11 @@ meta.foundation-mq-topbar {
   border-color: #368a55;
   color: white;
 }
-/* line 157, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 158, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > a.button.success:hover, .top-bar-section ul li > a.button.success:focus {
   background-color: #368a55;
 }
-/* line 163, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 164, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > a.button.success:hover, .top-bar-section ul li > a.button.success:focus {
   color: white;
 }
@@ -7336,11 +7342,11 @@ meta.foundation-mq-topbar {
   border-color: #cf2a0e;
   color: white;
 }
-/* line 157, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 158, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > a.button.alert:hover, .top-bar-section ul li > a.button.alert:focus {
   background-color: #cf2a0e;
 }
-/* line 163, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 164, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > a.button.alert:hover, .top-bar-section ul li > a.button.alert:focus {
   color: white;
 }
@@ -7353,11 +7359,11 @@ meta.foundation-mq-topbar {
   border-color: #007095;
   color: white;
 }
-/* line 157, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 158, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > button:hover, .top-bar-section ul li > button:focus {
   background-color: #007095;
 }
-/* line 163, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 164, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > button:hover, .top-bar-section ul li > button:focus {
   color: white;
 }
@@ -7367,11 +7373,11 @@ meta.foundation-mq-topbar {
   border-color: #b9b9b9;
   color: #333333;
 }
-/* line 157, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 158, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > button.secondary:hover, .top-bar-section ul li > button.secondary:focus {
   background-color: #b9b9b9;
 }
-/* line 163, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 164, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > button.secondary:hover, .top-bar-section ul li > button.secondary:focus {
   color: #333333;
 }
@@ -7381,11 +7387,11 @@ meta.foundation-mq-topbar {
   border-color: #368a55;
   color: white;
 }
-/* line 157, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 158, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > button.success:hover, .top-bar-section ul li > button.success:focus {
   background-color: #368a55;
 }
-/* line 163, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 164, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > button.success:hover, .top-bar-section ul li > button.success:focus {
   color: white;
 }
@@ -7395,11 +7401,11 @@ meta.foundation-mq-topbar {
   border-color: #cf2a0e;
   color: white;
 }
-/* line 157, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 158, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > button.alert:hover, .top-bar-section ul li > button.alert:focus {
   background-color: #cf2a0e;
 }
-/* line 163, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
+/* line 164, ../../bower_components/foundation/scss/foundation/components/_buttons.scss */
 .top-bar-section ul li > button.alert:hover, .top-bar-section ul li > button.alert:focus {
   color: white;
 }
@@ -7434,7 +7440,7 @@ meta.foundation-mq-topbar {
   width: 0;
   height: 0;
   border: inset 5px;
-  border-color: transparent transparent transparent rgba(255, 255, 255, 0.4);
+  border-color: transparent transparent transparent rgba(255, 255, 255, 0);
   border-left-style: solid;
   margin-right: 15px;
   margin-top: -4.5px;
@@ -7527,7 +7533,7 @@ meta.foundation-mq-topbar {
   display: block;
 }
 
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 434, ../../bower_components/foundation/scss/foundation/components/_top-bar.scss */
   .top-bar {
     background: #333333;
@@ -7554,7 +7560,7 @@ meta.foundation-mq-topbar {
   .top-bar .name h1 a {
     width: auto;
   }
-  /* line 444, ../../bower_components/foundation/scss/foundation/components/_top-bar.scss */
+  /* line 446, ../../bower_components/foundation/scss/foundation/components/_top-bar.scss */
   .top-bar input,
   .top-bar .button,
   .top-bar button {
@@ -7633,7 +7639,7 @@ meta.foundation-mq-topbar {
     width: 0;
     height: 0;
     border: inset 5px;
-    border-color: rgba(255, 255, 255, 0.4) transparent transparent transparent;
+    border-color: rgba(255, 255, 255, 0) transparent transparent transparent;
     border-top-style: solid;
     margin-top: -2.5px;
     top: 22.5px;
@@ -7706,7 +7712,7 @@ meta.foundation-mq-topbar {
     left: 100%;
     top: 0;
   }
-  /* line 598, ../../bower_components/foundation/scss/foundation/components/_top-bar.scss */
+  /* line 599, ../../bower_components/foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section > ul > .divider, .top-bar-section > ul > [role="separator"] {
     border-bottom: none;
     border-top: none;
@@ -7769,7 +7775,7 @@ meta.foundation-mq-topbar {
   width: 100%;
   overflow: hidden;
 }
-/* line 131, ../../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
+/* line 132, ../../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
 .off-canvas-wrap.move-right, .off-canvas-wrap.move-left {
   min-height: 100%;
   -webkit-overflow-scrolling: touch;
@@ -7845,7 +7851,7 @@ meta.foundation-mq-topbar {
   height: 2.8125rem;
   top: 0;
 }
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 199, ../../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
   .tab-bar-section.left, .tab-bar-section.right {
     text-align: left;
@@ -7908,12 +7914,12 @@ meta.foundation-mq-topbar {
   box-sizing: content-box;
   transition: transform 500ms ease 0s;
   -webkit-overflow-scrolling: touch;
-  -ms-transform: translate(-100.5%, 0);
-  -webkit-transform: translate3d(-100.5%, 0, 0);
-  -moz-transform: translate3d(-100.5%, 0, 0);
-  -ms-transform: translate3d(-100.5%, 0, 0);
-  -o-transform: translate3d(-100.5%, 0, 0);
-  transform: translate3d(-100.5%, 0, 0);
+  -ms-transform: translate(-100%, 0);
+  -webkit-transform: translate3d(-100%, 0, 0);
+  -moz-transform: translate3d(-100%, 0, 0);
+  -ms-transform: translate3d(-100%, 0, 0);
+  -o-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
   left: 0;
 }
 /* line 104, ../../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
@@ -7934,12 +7940,12 @@ meta.foundation-mq-topbar {
   box-sizing: content-box;
   transition: transform 500ms ease 0s;
   -webkit-overflow-scrolling: touch;
-  -ms-transform: translate(100.5%, 0);
-  -webkit-transform: translate3d(100.5%, 0, 0);
-  -moz-transform: translate3d(100.5%, 0, 0);
-  -ms-transform: translate3d(100.5%, 0, 0);
-  -o-transform: translate3d(100.5%, 0, 0);
-  transform: translate3d(100.5%, 0, 0);
+  -ms-transform: translate(100%, 0);
+  -webkit-transform: translate3d(100%, 0, 0);
+  -moz-transform: translate3d(100%, 0, 0);
+  -ms-transform: translate3d(100%, 0, 0);
+  -o-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
   right: 0;
 }
 /* line 104, ../../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
@@ -7970,7 +7976,7 @@ ul.off-canvas-list li label {
 ul.off-canvas-list li a {
   display: block;
   padding: 0.66667rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0);
   border-bottom: 1px solid #262626;
   transition: background 300ms ease;
 }
@@ -7993,21 +7999,21 @@ ul.off-canvas-list li a:hover {
   -webkit-backface-visibility: hidden;
   transition: background 300ms ease;
   cursor: pointer;
-  box-shadow: -4px 0 4px rgba(0, 0, 0, 0.5), 4px 0 4px rgba(0, 0, 0, 0.5);
+  box-shadow: -4px 0 4px rgba(0, 0, 0, 0), 4px 0 4px rgba(0, 0, 0, 0);
   display: block;
   position: absolute;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0);
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 1002;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 270, ../../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
   .move-right .exit-off-canvas:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0);
   }
 }
 
@@ -8025,21 +8031,21 @@ ul.off-canvas-list li a:hover {
   -webkit-backface-visibility: hidden;
   transition: background 300ms ease;
   cursor: pointer;
-  box-shadow: -4px 0 4px rgba(0, 0, 0, 0.5), 4px 0 4px rgba(0, 0, 0, 0.5);
+  box-shadow: -4px 0 4px rgba(0, 0, 0, 0), 4px 0 4px rgba(0, 0, 0, 0);
   display: block;
   position: absolute;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0);
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 1002;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 270, ../../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
   .move-left .exit-off-canvas:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0);
   }
 }
 
@@ -8057,21 +8063,21 @@ ul.off-canvas-list li a:hover {
   -webkit-backface-visibility: hidden;
   transition: background 300ms ease;
   cursor: pointer;
-  box-shadow: -4px 0 4px rgba(0, 0, 0, 0.5), 4px 0 4px rgba(0, 0, 0, 0.5);
+  box-shadow: -4px 0 4px rgba(0, 0, 0, 0), 4px 0 4px rgba(0, 0, 0, 0);
   display: block;
   position: absolute;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0);
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 1002;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 270, ../../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
   .offcanvas-overlap .exit-off-canvas:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0);
   }
 }
 
@@ -8089,21 +8095,21 @@ ul.off-canvas-list li a:hover {
   -webkit-backface-visibility: hidden;
   transition: background 300ms ease;
   cursor: pointer;
-  box-shadow: -4px 0 4px rgba(0, 0, 0, 0.5), 4px 0 4px rgba(0, 0, 0, 0.5);
+  box-shadow: -4px 0 4px rgba(0, 0, 0, 0), 4px 0 4px rgba(0, 0, 0, 0);
   display: block;
   position: absolute;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0);
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 1002;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 270, ../../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
   .offcanvas-overlap-left .exit-off-canvas:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0);
   }
 }
 
@@ -8121,21 +8127,21 @@ ul.off-canvas-list li a:hover {
   -webkit-backface-visibility: hidden;
   transition: background 300ms ease;
   cursor: pointer;
-  box-shadow: -4px 0 4px rgba(0, 0, 0, 0.5), 4px 0 4px rgba(0, 0, 0, 0.5);
+  box-shadow: -4px 0 4px rgba(0, 0, 0, 0), 4px 0 4px rgba(0, 0, 0, 0);
   display: block;
   position: absolute;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0);
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 1002;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 270, ../../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
   .offcanvas-overlap-right .exit-off-canvas:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0);
   }
 }
 
@@ -8352,7 +8358,7 @@ ul.off-canvas-list li a:hover {
   }
 }
 /* medium displays */
-@media only screen and (min-width: 40.063em) {
+@media only screen and (min-width: 40em) {
   /* line 244, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
   .hide-for-small-only, .show-for-small-up, .hide-for-small, .hide-for-small-down, .show-for-medium-only, .show-for-medium-up, .show-for-medium, .show-for-medium-down, .hide-for-large-only, .hide-for-large-up, .hide-for-large, .show-for-large-down, .hide-for-xlarge-only, .hide-for-xlarge-up, .hide-for-xxlarge-only, .hide-for-xxlarge-up {
     display: inherit !important;
@@ -8407,7 +8413,7 @@ ul.off-canvas-list li a:hover {
   }
 }
 /* large displays */
-@media only screen and (min-width: 64.063em) {
+@media only screen and (min-width: 64em) {
   /* line 244, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
   .hide-for-small-only, .show-for-small-up, .hide-for-small, .hide-for-small-down, .hide-for-medium-only, .show-for-medium-up, .hide-for-medium, .hide-for-medium-down, .show-for-large-only, .show-for-large-up, .show-for-large, .show-for-large-down, .hide-for-xlarge-only, .hide-for-xlarge-up, .hide-for-xxlarge-only, .hide-for-xxlarge-up {
     display: inherit !important;
@@ -8462,7 +8468,7 @@ ul.off-canvas-list li a:hover {
   }
 }
 /* xlarge displays */
-@media only screen and (min-width: 90.063em) {
+@media only screen and (min-width: 90em) {
   /* line 244, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
   .hide-for-small-only, .show-for-small-up, .hide-for-small, .hide-for-small-down, .hide-for-medium-only, .show-for-medium-up, .hide-for-medium, .hide-for-medium-down, .hide-for-large-only, .show-for-large-up, .hide-for-large, .hide-for-large-down, .show-for-xlarge-only, .show-for-xlarge-up, .hide-for-xxlarge-only, .hide-for-xxlarge-up {
     display: inherit !important;
@@ -8517,7 +8523,7 @@ ul.off-canvas-list li a:hover {
   }
 }
 /* xxlarge displays */
-@media only screen and (min-width: 120.063em) {
+@media only screen and (min-width: 120em) {
   /* line 244, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
   .hide-for-small-only, .show-for-small-up, .hide-for-small, .hide-for-small-down, .hide-for-medium-only, .show-for-medium-up, .hide-for-medium, .hide-for-medium-down, .hide-for-large-only, .show-for-large-up, .hide-for-large, .hide-for-large-down, .hide-for-xlarge-only, .show-for-xlarge-up, .show-for-xxlarge-only, .show-for-xxlarge-up {
     display: inherit !important;
@@ -8572,40 +8578,40 @@ ul.off-canvas-list li a:hover {
   }
 }
 /* Orientation targeting */
-/* line 285, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
+/* line 286, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
 .show-for-landscape,
 .hide-for-portrait {
   display: inherit !important;
 }
 
-/* line 287, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
+/* line 288, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
 .hide-for-landscape,
 .show-for-portrait {
   display: none !important;
 }
 
 /* Specific visibility for tables */
-/* line 292, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
+/* line 293, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
 table.hide-for-landscape, table.show-for-portrait {
   display: table;
 }
 
-/* line 296, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
+/* line 297, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
 thead.hide-for-landscape, thead.show-for-portrait {
   display: table-header-group !important;
 }
 
-/* line 300, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
+/* line 301, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
 tbody.hide-for-landscape, tbody.show-for-portrait {
   display: table-row-group !important;
 }
 
-/* line 304, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
+/* line 305, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
 tr.hide-for-landscape, tr.show-for-portrait {
   display: table-row !important;
 }
 
-/* line 309, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
+/* line 310, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
 td.hide-for-landscape, td.show-for-portrait,
 th.hide-for-landscape,
 th.show-for-portrait {
@@ -8613,40 +8619,40 @@ th.show-for-portrait {
 }
 
 @media only screen and (orientation: landscape) {
-  /* line 314, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
+  /* line 315, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
   .show-for-landscape,
   .hide-for-portrait {
     display: inherit !important;
   }
 
-  /* line 316, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
+  /* line 317, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
   .hide-for-landscape,
   .show-for-portrait {
     display: none !important;
   }
 
   /* Specific visibility for tables */
-  /* line 321, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
+  /* line 322, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
   table.show-for-landscape, table.hide-for-portrait {
     display: table;
   }
 
-  /* line 325, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
+  /* line 326, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
   thead.show-for-landscape, thead.hide-for-portrait {
     display: table-header-group !important;
   }
 
-  /* line 329, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
+  /* line 330, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
   tbody.show-for-landscape, tbody.hide-for-portrait {
     display: table-row-group !important;
   }
 
-  /* line 333, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
+  /* line 334, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
   tr.show-for-landscape, tr.hide-for-portrait {
     display: table-row !important;
   }
 
-  /* line 338, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
+  /* line 339, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
   td.show-for-landscape, td.hide-for-portrait,
   th.show-for-landscape,
   th.hide-for-portrait {
@@ -8654,40 +8660,40 @@ th.show-for-portrait {
   }
 }
 @media only screen and (orientation: portrait) {
-  /* line 344, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
+  /* line 345, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
   .show-for-portrait,
   .hide-for-landscape {
     display: inherit !important;
   }
 
-  /* line 346, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
+  /* line 347, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
   .hide-for-portrait,
   .show-for-landscape {
     display: none !important;
   }
 
   /* Specific visibility for tables */
-  /* line 351, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
+  /* line 352, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
   table.show-for-portrait, table.hide-for-landscape {
     display: table;
   }
 
-  /* line 355, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
+  /* line 356, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
   thead.show-for-portrait, thead.hide-for-landscape {
     display: table-header-group !important;
   }
 
-  /* line 359, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
+  /* line 360, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
   tbody.show-for-portrait, tbody.hide-for-landscape {
     display: table-row-group !important;
   }
 
-  /* line 363, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
+  /* line 364, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
   tr.show-for-portrait, tr.hide-for-landscape {
     display: table-row !important;
   }
 
-  /* line 368, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
+  /* line 369, ../../bower_components/foundation/scss/foundation/components/_visibility.scss */
   td.show-for-portrait, td.hide-for-landscape,
   th.show-for-portrait,
   th.hide-for-landscape {
