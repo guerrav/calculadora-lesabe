@@ -11,14 +11,24 @@ require 'omniauth-twitter'
 require 'dm-ar-finders'
 require './sinatra/auth'
 require 'sinatra/assetpack'
+require 'sinatra/support/numeric'
+
 
 #INICIALIZERS
 
 
-
+register Sinatra::Numeric
 
 configure :development do
     DataMapper.auto_upgrade!
+end
+
+
+configure do 
+
+  set :default_currency_unit, '$'
+  set :default_currency_precision, 2
+  set :default_currency_separator, ','
 end
 
 assets do
@@ -184,7 +194,8 @@ end
 class Advpayment
   include DataMapper::Resource
   property :id,           Serial
-  property :amount,       String
+  property :amount,       Integer
+  property :created_at,   Date
   belongs_to :client
   belongs_to :project
 
@@ -193,7 +204,7 @@ end
 class Cost
   include DataMapper::Resource
   property :id,             Serial
-  property :amount,         Integer
+  property :amount,         Integer, default: 0
   property :date,           DateTime
 
   has n, :quotes
@@ -216,7 +227,7 @@ class Quote
   property :id,           Serial
   property :amount,       Integer
   property :supplier_name,  String
-  property :date,     DateTime
+  property :created_at,     DateTime
   has n, :payments
   belongs_to :supplier
   belongs_to :cost

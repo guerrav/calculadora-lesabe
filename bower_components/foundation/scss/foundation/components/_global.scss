@@ -443,6 +443,6 @@ $cursor-text-value: text !default;
     textarea { height: auto; min-height: 50px; }
 
     // Make select elements 100% width by default
-    select { width: 100%; }
+    select { width: 100%; font-family: $body-font-family; }
   }
 }

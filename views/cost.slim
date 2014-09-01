@@ -4,6 +4,9 @@
 li.cost 
 
   /datos que se imprimen
+  
+
+  - cost.amount = cost.purchases.sum(:amount)
   = "Cost #{cost.amount}"
  
   /PURCHASE

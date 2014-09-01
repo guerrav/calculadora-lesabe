@@ -2,44 +2,93 @@
 /project
 
 li.project 
+    .row 
+        .small-3.columns
+            /datos que se imprimen
+            p= project.name
 
-  /datos que se imprimen
-  = project.name
+            = "Presupuesto sin iva"
 
+            p= currency(project.budgets.sum(:amount))
 
+            = "TOTAL PAGADO"
 
+            p= currency(project.budgets.advpayments.sum(:amount))
 
-  /BUDGET 
-  /form para agregar 
-  / se cambia /nombre de la clase/ nombre de la clase. id
-  form.new action="/project/#{project.id}" method="POST"
-    / se cambia child
-    label for="budget" budget: 
-    input type="text" name="budget[amount]"
-    input type="submit" value="+ budget"
+            - a = project.budgets.sum(:amount).to_i - project.budgets.advpayments.sum(:amount).to_i
 
-
-
-
-  
+            = "POR PAGAR"
+            p= currency(a)
 
 
-  /form para borrar
-  form.delete action="/project/#{project.id}" method="POST"
-    input type="hidden" name="_method" value="DELETE"
-    input type="submit" value="×" title="Delete project"
+
+        .small-8.columns
+            = "COSTO REAL" 
+            p= currency(project.costs.purchases.sum(:amount).to_i + project.costs.quotes.sum(:amount).to_i)
+
+            = "MANO DE OBRA" 
+            p= "N/A"
 
 
-  /listado de elementos
-  ul.budgets
-    - project.budgets.each do |budget|
 
-      == slim :budget, locals: { budget: budget }
+    .row
+        .small-6.columns
+            = "ANTICIPOS/PAGOS" 
+            .row
+                .small-6.columns
+                    ul 
+                        -project.budgets.advpayments.each do |advpayment|
+                            .row
+                                .small-4.columns
+                                    li   
+                               
 
-  ul.costs
-    - project.costs.each do |cost|
+                                        = advpayment.client_id
+                            
+                                .small-7.columns
+                                    li
+                                        = advpayment.created_at.strftime("%e %B %Y")
 
-      == slim :cost, locals: { cost: cost }
+                                        p= currency(advpayment.amount)
+
+
+
+
+
+        .small-3.columns
+
+
+            /BUDGET 
+            /form para agregar 
+            / se cambia /nombre de la clase/ nombre de la clase. id
+            form.new action="/project/#{project.id}" method="POST"
+                / se cambia child
+                label for="budget" budget: 
+                input type="text" name="budget[amount]"
+                input type="submit" value="+ budget"
+
+
+
+
+              
+
+
+            /form para borrar
+            form.delete action="/project/#{project.id}" method="POST"
+                input type="hidden" name="_method" value="DELETE"
+                input type="submit" value="×" title="Delete project"
+
+
+            /listado de elementos
+            ul.budgets
+                - project.budgets.each do |budget|
+
+                    == slim :budget, locals: { budget: budget }
+
+            ul.costs
+                - project.costs.each do |cost|
+
+                    == slim :cost, locals: { cost: cost }
 
 
 
