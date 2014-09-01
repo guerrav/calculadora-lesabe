@@ -1,11 +1,11 @@
 /el nombre de la clase
 /project
-
+= project.name
 li.project 
     .row 
         .small-3.columns
             /datos que se imprimen
-            p= project.name
+            
 
             = "Presupuesto sin iva"
 
@@ -32,10 +32,12 @@ li.project
 
 
     .row
-        .small-6.columns
-            = "ANTICIPOS/PAGOS" 
+        .small-12.columns
+            
             .row
-                .small-6.columns
+
+                .small-3.columns
+                    = "ANTICIPOS/PAGOS" 
                     ul 
                         -project.budgets.advpayments.each do |advpayment|
                             .row
@@ -45,11 +47,42 @@ li.project
 
                                         = advpayment.client_id
                             
-                                .small-7.columns
+                                .small-8.columns
                                     li
                                         = advpayment.created_at.strftime("%e %B %Y")
 
                                         p= currency(advpayment.amount)
+
+                .small-9.columns
+                    = "PROVEEDORES" 
+                    p= currency(project.costs.quotes.sum(:amount))
+
+                    .row
+                        .small-12.columns
+                            .row
+                                .small-3.columns
+                                    = "COTIZACIONES" 
+                                    ul 
+                                        -project.costs.quotes.each do |quote|
+                                            .row
+                                                .small-4.columns
+                                                    li   
+                                               
+
+                                                        = quote.supplier_id
+                                            
+                                                .small-8.columns
+                                                    li
+                                                        = quote.created_at.strftime("%e %B %Y")
+
+                                                        p= currency(quote.amount)
+                                .small-3.columns
+                                    = "PAGOS"
+                                .small-3.columns
+                                    = "POR PAGAR"
+
+
+
 
 
 
