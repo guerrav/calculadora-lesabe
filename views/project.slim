@@ -1,11 +1,17 @@
 /el nombre de la clase
 /project
 li.project 
-    dl.accordion data-accordion="myAccordionGroup"
+    dl.accordio data-accordion="myAccordionGroup"
         dd.accordion-navigation
-            a href="#panel#{project.name}" #{project.name} // #{project.client_name}
+            a href="#panel#{project.name}" #{project.name} // #{project.client_name} 
             .content id="panel#{project.name}" 
+                .row
+                    .small-1.columns
+                        p=
+                    .small-11.columns
+                        h6= "PRESUPUESTO SIN IVA"
 
+                        h3= currency(project.budgets.sum(:amount))
                 
                 
                 .row 
@@ -16,27 +22,23 @@ li.project
                         /datos que se imprimen
                         
 
-                        = "Presupuesto sin iva"
+                        h6= "TOTAL PAGADO"
 
-                        p= currency(project.budgets.sum(:amount))
-
-                        = "TOTAL PAGADO"
-
-                        p= currency(project.budgets.advpayments.sum(:amount))
+                        h3= currency(project.budgets.advpayments.sum(:amount))
 
                         - a = project.budgets.sum(:amount).to_i - project.budgets.advpayments.sum(:amount).to_i
 
-                        = "POR PAGAR"
-                        p= currency(a)
+                        h6= "POR PAGAR"
+                        h3= currency(a)
 
 
 
                     .small-8.columns
-                        = "COSTO REAL" 
-                        p= currency(project.costs.purchases.sum(:amount).to_i + project.costs.quotes.sum(:amount).to_i)
+                        h6= "COSTO REAL" 
+                        h3= currency(project.costs.purchases.sum(:amount).to_i + project.costs.quotes.sum(:amount).to_i)
 
-                        = "MANO DE OBRA" 
-                        p= "N/A"
+                        h6= "MANO DE OBRA" 
+                        h3= "N/A"
 
 
 
@@ -47,30 +49,32 @@ li.project
                     
 
                     .small-3.columns
-                        = "ANTICIPOS/PAGOS" 
+                        h6= "ANTICIPOS/PAGOS" 
                         ul 
                             -project.budgets.advpayments.each do |advpayment|
                                 .row
-                                    .small-4.columns
-                                        li   
-                                   
+                                    .small-12.columns
+                                        .row
+                                            .small-4.columns
+                                                li.left   
+                                           
 
-                                            = advpayment.client_id
-                                
-                                    .small-8.columns
-                                        li
-                                            = advpayment.created_at.strftime("%e %B %Y")
+                                                    h6= advpayment.client_id
+                                        
+                                            .small-8.columns
+                                                li
+                                                    h6= advpayment.created_at.strftime("%e %B %Y").upcase
 
-                                            p= currency(advpayment.amount)
+                                                    h6= currency(advpayment.amount)
 
                     .small-8.columns
-                        = "PROVEEDORES" 
-                        p= currency(project.costs.quotes.sum(:amount))
+                        h6= "PROVEEDORES" 
+                        h3= currency(project.costs.quotes.sum(:amount))
 
 
                         .row
                             .small-4.columns
-                                = "COTIZACIONES" 
+                                
                                 -project.costs.quotes.each do |quote|
                                     ul 
                                     
@@ -79,15 +83,15 @@ li.project
                                                 li   
                                            
 
-                                                    = quote.supplier_id
+                                                    h6= quote.supplier_name.upcase
                                         
                                             .small-8.columns
                                                 li
-                                                    = quote.created_at.strftime("%e %B %Y")
+                                                    h6= quote.created_at.strftime("%e %B %Y").upcase
 
-                                                    p= currency(quote.amount)
+                                                    h6= currency(quote.amount)
                             .small-4.columns
-                                = "PAGOS"
+                                h6= "PAGOS"
                                  
                                 -project.costs.quotes.payments.each do |payment|
                                     ul
@@ -96,30 +100,36 @@ li.project
                                                 li   
                                            
 
-                                                    = payment.supplier_id
+                                                    h6= payment.supplier_name.upcase
                                         
                                             .small-8.columns
                                                 li
-                                                    = payment.created_at.strftime("%e %B %Y")
+                                                    h6= payment.created_at.strftime("%e %B %Y").upcase
 
-                                                    p= currency(payment.amount)
+                                                    h6= currency(payment.amount)
                             .small-4.columns
-                                = "POR PAGAR"
+                                h6= "POR PAGAR"
                 .row
 
                     .small-4.columns
                         p=
                     .small-8.columns
-                        = "COMPRAS"
-                        -project.costs.purchases.each do |purchase|
-                            ul
-                                .row
-                                
-                                    .small-8.columns
-                                        li
-                                            /= purchase.created_at.strftime("%e %B %Y")
+                        h6= "COMPRAS MATERIAL"
+                        h3= currency(project.costs.purchases.sum(:amount))
 
-                                            p= currency(purchase.amount)
+
+                        .row
+                            .small-4.columns
+                                h6= "MATERIAL" 
+                                -project.costs.purchases.each do |purchase|
+                                    ul
+                                        .row
+                                        
+                                            .small-8.columns
+                                                li
+                                                    /= purchase.created_at.strftime("%e %B %Y")
+
+                                                    h6= currency(purchase.amount)
             
 
 
@@ -127,68 +137,99 @@ li.project
                 .row
 
 
-                    .small-3.columns
+                    .small-2.columns
 
                         /BUDGET 
                         /form para agregar 
                         / se cambia /nombre de la clase/ nombre de la clase. id
                         form.new action="/project/#{project.id}" method="POST"
 
-                            .large-9.columns
+                            .large-12.columns
                                 .row.collapse.postfix-round
-                                    .small-9.columns
+                                    .small-10.columns
                                         input placeholder="Budget" type="text" name="budget[amount]"
-                                    .small-3.columns
+                                    .small-2.columns
                                         input type="submit" class="button postfix" value= "+"
 
-                    .small-3.columns
+                    .small-2.columns
 
                         - if @budget
 
                             form.new action="/budget/#{@budget.id}" method="POST"
 
-                                .large-9.columns
+                                .large-12.columns
                                     .row.collapse.postfix-round
-                                        .small-9.columns
+                                        .small-10.columns
                                             input placeholder="Advpayment" type="text" name="advpayment[amount]"
-                                        .small-3.columns
+                                        .small-2.columns
                                             input type="submit" class="button postfix" value= "+"
 
 
-                    .small-3.columns
+                    .small-2.columns
                         - if @cost
 
                             form.new action="/cost/#{@cost.id}" method="POST"
-                                .large-9.columns
+                                .large-12.columns
                                     .row.collapse.postfix-round
-                                        .small-9.columns
+                                        .small-10.columns
                                         
                                             input placeholder="Purchase" type="text" name="purchase[amount]"
-                                        .small-3.columns
+                                        .small-2.columns
                                             input type="submit" class="button postfix" value="+"
 
                     .small-3.columns
                         - if @cost
 
                             form.new action="/quote/#{@cost.id}" method="POST"
-                                .large-9.columns
+                                .large-12.columns
                                     .row.collapse.postfix-round
-                                        .small-9.columns
+                                        .small-10.columns
                                             input placeholder="Quote" type="text" name="quote[amount]"
-                                            input placeholder="From supplier"type="text" name="quote[supplier_name]"
-                                        .small-3.columns
-                                            input type="submit" class="button postfix" value="+"
+
+
+
+                                    .row
+                                        .small-8.columns
+
+
+                                            .row
+                                                .large-12.columns
+                                                    label 
+                                                        
+                                                        select name="quote[supplier_name]" 
+                                                            -project.corporation.suppliers.each do |supplier|
+                                                    
+                                                                option value="#{supplier.name}"  #{supplier.name}
+                                                            
+                                            
+                                        .small-4.columns
+                                            input type="submit"  class="button postfix" value="+"
                     .small-3.columns
                         - if @quote
 
                             form.new action="/payment/#{@quote.id}" method="POST"
-                                .large-9.columns
+                                .large-12.columns
                                     .row.collapse.postfix-round
-                                        .small-9.columns
+                                        .small-10.columns
                                             
                                             input placeholder="Payment" type="text" name="payment[amount]"
-                                            input placeholder="For supplier" type="text" name="payment[supplier_name]"
-                                        .small-3.columns
+
+
+
+                                    .row
+                                        .small-8.columns
+
+
+                                            .row
+                                                .large-12.columns
+                                                    label 
+                                                        
+                                                        select name="payment[supplier_name]" 
+                                                            -project.corporation.suppliers.each do |supplier|
+                                                    
+                                                                option value="#{supplier.name}"  #{supplier.name}
+
+                                        .small-4.columns
                                             input type="submit" class="button postfix" value="+"
 
                             
