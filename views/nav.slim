@@ -16,15 +16,14 @@
 
 	    /! Left Nav Section
 
-	    - if current_user
 	    ul.left
 	    
-	      	li 
-	      		a href="" Welcome #{current_user.email}
+	      	
 
 	      	li
 	        	a href="/corporation" Empresa
 
+	        - if client_any
 
-	        li
-	        	a href="/projects" Proyectos
+		        li
+		        	a href="/projects" Proyectos

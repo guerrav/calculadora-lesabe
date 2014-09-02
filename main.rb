@@ -6,6 +6,7 @@ require 'sass'
 require 'data_mapper'
 require 'dm-migrations'
 require 'dm-validations'
+require 'dm-timestamps'
 require 'omniauth-identity'
 require 'omniauth-twitter'
 require 'dm-ar-finders'
@@ -23,6 +24,14 @@ configure :development do
     DataMapper.auto_upgrade!
 end
 
+
+helpers do 
+  def client_any
+      @user = User.get(session[:admin])
+      x = @user.corporations.clients.last()
+  end
+
+end
 
 configure do 
 
@@ -83,7 +92,7 @@ class Authentication
   property :provider,     String
   property :uid,          String
   property :created_at,   DateTime
-  property :updated_at,   DateTime
+  property :upDated_at,   DateTime
 
   belongs_to :user
 
@@ -173,7 +182,7 @@ class Project
   property :description,    Text
   property :client_name,    String
   property :status,         String
-  property :completed_at,   Date
+  property :completed_at,   DateTime
   has n, :budgets 
   has n, :costs
   belongs_to :client
@@ -184,7 +193,7 @@ class Budget
   include DataMapper::Resource
   property :id,             Serial
   property :amount,         Integer
-  property :created_at,     Date
+  property :created_at,     DateTime
   has n, :advpayments
   belongs_to :project
 end
@@ -195,7 +204,7 @@ class Advpayment
   include DataMapper::Resource
   property :id,           Serial
   property :amount,       Integer
-  property :created_at,   Date
+  property :created_at,   DateTime
   belongs_to :client
   belongs_to :project
 
@@ -205,7 +214,7 @@ class Cost
   include DataMapper::Resource
   property :id,             Serial
   property :amount,         Integer, default: 0
-  property :created_at,     Date
+  property :created_at,     DateTime
 
   has n, :quotes
   has n, :purchases
@@ -217,7 +226,7 @@ class Purchase
   include DataMapper::Resource
   property :id,           Serial
   property :amount,       Integer
-  property :created_at,   Date
+  property :created_at,   DateTime
   belongs_to :cost
 
 end
@@ -227,7 +236,7 @@ class Quote
   property :id,           Serial
   property :amount,       Integer
   property :supplier_name,  String
-  property :created_at,     Date
+  property :created_at,     DateTime
   has n, :payments
   belongs_to :supplier
   belongs_to :cost
@@ -238,7 +247,8 @@ class Payment
   include DataMapper::Resource
   property :id,           Serial
   property :amount,       Integer
-  property :created_at,         Date
+  property :supplier_name,  String
+  property :created_at,         DateTime
   belongs_to :supplier
   belongs_to :quote
   
@@ -270,8 +280,9 @@ get '/projects' do
   protected!
   @corporation = User.get(session[:admin]).corporations.last()
   @projects = @corporation.clients.projects.all()
-  @budget= @projects.budgets.last()
+  @budget= @projects.budgets.last() if @projects.budgets
   @cost= @projects.costs.last()
+  @quote= @projects.costs.quotes.last()
 
 
 
@@ -340,7 +351,8 @@ end
 # busca parent y crea child con params
 
 post '/corporation/:id' do
-  Corporation.get(params[:id]).clients.create! params['client'] 
+  client = Corporation.get(params[:id]).clients.create! params['client'] 
+  client.save
 
   redirect back
 end
@@ -475,8 +487,11 @@ end
 
 post '/project/:id' do
 
-  Project.get(params[:id]).budgets.create! params['budget']
-  Project.get(params[:id]).costs.create!
+  budget = Project.get(params[:id]).budgets.create! params['budget']
+  cost = Project.get(params[:id]).costs.create!
+
+  budget.save
+  cost.save
 
   redirect back
 end
@@ -607,7 +622,8 @@ end
 post '/cost/:id' do
   
 
-  Cost.get(params[:id]).purchases.create! params['purchase'] 
+  purchase = Cost.get(params[:id]).purchases.create! params['purchase'] 
+  purchase.save
 
   
 
@@ -681,11 +697,16 @@ end
 post '/payment/:id' do
   
 
-  quote = Quote.get(params[:id])
 
-  payment = quote.payments.create! params['payment'] 
+  payment = Quote.get(params[:id]).payments.create! params['payment'] 
 
-  payment.supplier_id = quote[:supplier_id]
+  supplier = Supplier.all.first(name: payment["supplier_name"])
+
+  payment.supplier_id = supplier[:id]
+
+
+
+  
 
   payment.save
 

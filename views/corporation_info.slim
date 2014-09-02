@@ -14,8 +14,7 @@
             li.user
 
             /datos que se imprimen
-            - sum = @user.corporations.sum(:name)
-            h4= "Suma es #{sum}"
+            h4= "Welcome #{current_user.name}!"
 
              /form para agregar , modificar, borrar elementos
             form.new action="/#{@user.id}" method="POST"

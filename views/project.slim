@@ -1,9 +1,9 @@
 /el nombre de la clase
 /project
 li.project 
-    dl.accordio data-accordion="myAccordionGroup"
+    dl.accordion data-accordion="myAccordionGroup"
         dd.accordion-navigation
-            a href="#panel#{project.name}" #{project.name}
+            a href="#panel#{project.name}" #{project.name} // #{project.client_name}
             .content id="panel#{project.name}" 
 
                 
@@ -124,66 +124,78 @@ li.project
 
 
 
-            .row
+                .row
 
 
-                .small-3.columns
+                    .small-3.columns
+
+                        /BUDGET 
+                        /form para agregar 
+                        / se cambia /nombre de la clase/ nombre de la clase. id
+                        form.new action="/project/#{project.id}" method="POST"
+
+                            .large-9.columns
+                                .row.collapse.postfix-round
+                                    .small-9.columns
+                                        input placeholder="Budget" type="text" name="budget[amount]"
+                                    .small-3.columns
+                                        input type="submit" class="button postfix" value= "+"
+
+                    .small-3.columns
+
+                        - if @budget
+
+                            form.new action="/budget/#{@budget.id}" method="POST"
+
+                                .large-9.columns
+                                    .row.collapse.postfix-round
+                                        .small-9.columns
+                                            input placeholder="Advpayment" type="text" name="advpayment[amount]"
+                                        .small-3.columns
+                                            input type="submit" class="button postfix" value= "+"
 
 
+                    .small-3.columns
+                        - if @cost
 
+                            form.new action="/cost/#{@cost.id}" method="POST"
+                                .large-9.columns
+                                    .row.collapse.postfix-round
+                                        .small-9.columns
+                                        
+                                            input placeholder="Purchase" type="text" name="purchase[amount]"
+                                        .small-3.columns
+                                            input type="submit" class="button postfix" value="+"
 
+                    .small-3.columns
+                        - if @cost
 
-                    /BUDGET 
-                    /form para agregar 
-                    / se cambia /nombre de la clase/ nombre de la clase. id
-                    form.new action="/project/#{project.id}" method="POST"
+                            form.new action="/quote/#{@cost.id}" method="POST"
+                                .large-9.columns
+                                    .row.collapse.postfix-round
+                                        .small-9.columns
+                                            input placeholder="Quote" type="text" name="quote[amount]"
+                                            input placeholder="From supplier"type="text" name="quote[supplier_name]"
+                                        .small-3.columns
+                                            input type="submit" class="button postfix" value="+"
+                    .small-3.columns
+                        - if @quote
 
-                        .large-9.columns
-                            .row.collapse.postfix-round
-                                .small-9.columns
-                                    input placeholder="Budget" type="text" name="budget[amount]"
-                                .small-3.columns
-                                    input type="submit" class="button postfix" value= "+"
+                            form.new action="/payment/#{@quote.id}" method="POST"
+                                .large-9.columns
+                                    .row.collapse.postfix-round
+                                        .small-9.columns
+                                            
+                                            input placeholder="Payment" type="text" name="payment[amount]"
+                                            input placeholder="For supplier" type="text" name="payment[supplier_name]"
+                                        .small-3.columns
+                                            input type="submit" class="button postfix" value="+"
 
-                .small-3.columns
-
-                    form.new action="/budget/#{@budget.id}" method="POST"
-
-                        .large-9.columns
-                            .row.collapse.postfix-round
-                                .small-9.columns
-                                    input placeholder="Advpayment" type="text" name="advpayment[amount]"
-                                .small-3.columns
-                                    input type="submit" class="button postfix" value= "+"
-
-
-                .small-3.columns
-
-                    form.new action="/cost/#{@cost.id}" method="POST"
-                        .large-9.columns
-                            .row.collapse.postfix-round
-                                .small-9.columns
-                                
-                                    input placeholder="Purchase" type="text" name="purchase[amount]"
-                                .small-3.columns
-                                    input type="submit" class="button postfix" value="+"
-
-                .small-3.columns
-
-                    form.new action="/quote/#{@cost.id}" method="POST"
-                        .large-9.columns
-                            .row.collapse.postfix-round
-                                .small-9.columns
-                                    input placeholder="Quote"type="text" name="quote[amount]"
-                                    input placeholder="Supplier"type="text" name="quote[supplier_name]"
-                                .small-3.columns
-                                    input type="submit" class="button postfix" value="+"
-
-                        
-                    /form para borrar
-                    form.delete action="/project/#{project.id}" method="POST"
-                        input type="hidden" name="_method" value="DELETE"
-                        input type="submit" class="button tiny" value="Delete project" title="Delete project"
+                            
+                        /form para borrar
+                        form.delete action="/project/#{project.id}" method="POST"
+                            input type="hidden" name="_method" value="DELETE"
+                            input type="submit" class="button tiny" value="Delete project" title="Delete project"
 
 
                 

@@ -4,24 +4,28 @@
   .small-12.columns
 
   	.row
-  		.small-6.columns
+  		.small-4.columns
 
-  			.row
-  				.small-4.columns
+  			
+			form.new action="/clientx/#{@corporation.id}" method="POST"
 
-					form.new action="/clientx/#{@corporation.id}" method="POST"
-				    	label for="right-label" class="right inline" proyecto:
-				.small-4.columns
+                .row.collapse.postfix-round
 
-				    	input type="text" name="project[name]" placeholder="nombre"
-				    	label
+                	.small-5.columns
+				    	label 
+				    	 	
 				      		select name="project[client_name]" 
 				      			-@corporation.clients.each do |client|
 						
 							        option value="#{client.name}"  #{client.name}
-				.small-4.columns
+							| Client
+                    .small-6.columns
+                    	
+				    	input type="text" name="project[name]" placeholder="Project name"
+				    	label for="project" Project
 
-				    	input type="submit"  class="button tiny radius round" value="+ project"
+					.small-1.columns
+				    	input type="submit"  class="button postfix" value="+"
 
 
 	ul class="no-bullet"

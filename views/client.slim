@@ -12,6 +12,7 @@ li.client
     / se cambia child
     label for="project" project: 
     input type="text" name="project[name]"
+    input type="text" name="project[client_name]"
     input type="submit" value="+ project"
 
 
@@ -25,7 +26,9 @@ li.client
   ul.projects
     - client.projects.each do |project|
 
-      == slim :project, locals: { project: project }
+
+
+      /== slim :project, locals: { project: project }
 
 
 
