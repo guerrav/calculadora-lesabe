@@ -2,40 +2,53 @@
 .row
     .small-1.columns
         p=
-    .small-11.columns
+    .small-2.columns
         - if project.budgets.last()
             h6= "PRESUPUESTO SIN IVA"
 
-            h3= currency(project.budgets.sum(:amount))
+            h3.right= currency(project.budgets.sum(:amount))
+    .small.9.columns
 
 
 .row 
     .small-1.columns
         p=
 
-    .small-3.columns
+    .small-2.columns
         /datos que se imprimen
         - if project.budgets.advpayments.last()
         
 
             h6= "TOTAL PAGADO"
 
-            h3= currency(project.budgets.advpayments.sum(:amount))
+            .row 
+                .small-12.columns
+
+                    h3.right= currency(project.budgets.advpayments.sum(:amount))
 
             - a = project.budgets.sum(:amount).to_i - project.budgets.advpayments.sum(:amount).to_i
 
             h6= "POR PAGAR"
-            h3= currency(a)
+            .row 
+                .small-12.columns
+                    h3.right= currency(a)
 
 
 
-    .small-8.columns
+    .small-2.columns
         - if project.costs.last()
             h6= "COSTO REAL" 
-            h3= currency(project.costs.purchases.sum(:amount).to_i + project.costs.quotes.sum(:amount).to_i)
+            .row 
+                .small-12.columns
+                    
+                    h3.right= currency(project.costs.purchases.sum(:amount).to_i + project.costs.quotes.sum(:amount).to_i)
 
             h6= "MANO DE OBRA" 
-            h3= "N/A"
+            .row 
+                .small-12.columns
+                    h3.right= "N/A"
+
+    .small-7.columns
 
 
 
@@ -45,30 +58,33 @@
         p=
     
 
-    .small-3.columns
+    .small-2.columns
         - if project.budgets.advpayments.last()
             h6= "ANTICIPOS/PAGOS" 
-            ul 
-                -project.budgets.advpayments.each do |advpayment|
+            -project.budgets.advpayments.each do |advpayment|
+                ul  
                     .row
-                        .small-12.columns
-                            .row
-                                .small-4.columns
-                                    li.left   
-                               
+                        .small-4.columns
+                            li   
+                       
 
-                                        h6= advpayment.client_name.upcase
-                            
-                                .small-8.columns
-                                    li
-                                        h6= advpayment.created_at.strftime("%e %B %Y").upcase
+                                h6= advpayment.client_name.upcase
+                    
+                        .small-8.columns
+                            li.right
+                                h6= advpayment.created_at.strftime("%b %e %Y")
 
-                                        h6= currency(advpayment.amount)
 
-    .small-8.columns
+
+                                h6.right= currency(advpayment.amount)
+
+    .small-6.columns
         - if project.costs.quotes.last()
             h6= "PROVEEDORES" 
-            h3= currency(project.costs.quotes.sum(:amount))
+            .row 
+                .small-4.columns
+                    h3.right= currency(project.costs.quotes.sum(:amount))
+                .small-8.columns
 
 
             .row
@@ -86,10 +102,10 @@
                                         h6= quote.supplier_name.upcase
                             
                                 .small-8.columns
-                                    li
-                                        h6= quote.created_at.strftime("%e %B %Y").upcase
+                                    li.right
+                                        h6= quote.created_at.strftime("%b %e %Y")
 
-                                        h6= currency(quote.amount)
+                                        h6.right= currency(quote.amount)
                 .small-4.columns
                     h6= "PAGOS"
                      
@@ -103,19 +119,26 @@
                                         h6= payment.supplier_name.upcase
                             
                                 .small-8.columns
-                                    li
-                                        h6= payment.created_at.strftime("%e %B %Y").upcase
+                                    li.right
+                                        h6= payment.created_at.strftime("%b %e %Y")
 
-                                        h6= currency(payment.amount)
+                                        h6.right= currency(payment.amount)
                 .small-4.columns
                     h6= "POR PAGAR"
+
+    .small-3.columns
+
+                
 .row
     - if project.costs.purchases.last()
-        .small-4.columns
-            p=
-        .small-8.columns
+        .small-3.columns
+            
+        .small-6.columns
             h6= "COMPRAS MATERIAL"
-            h3= currency(project.costs.purchases.sum(:amount))
+            .row 
+                .small-4.columns
+                    h3.right= currency(project.costs.purchases.sum(:amount))
+                .small-8.columns
 
 
             .row
@@ -136,3 +159,4 @@
                                         /= purchase.created_at.strftime("%e %B %Y")
 
                                         h6= currency(purchase.amount)
+        
