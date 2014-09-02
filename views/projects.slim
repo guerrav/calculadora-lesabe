@@ -1,33 +1,27 @@
 == slim :nav
 
 .row
-  .large-12.columns
+  .small-12.columns
 
-	form.new action="/clientx/#{@corporation.id}" method="POST"
+  	.row
+  		.small-6.columns
 
-        .row
-            .small-1.columns
-            	label for="right-label" class="right inline" proyecto:
-            .small-2.columns
-				/ se cambia child
-		    	input type="text" name="project[name]" placeholder="nombre"
+  			.row
+  				.small-4.columns
 
-		    	
-	    		
-    			.row
-				  	.small-12.columns
+					form.new action="/clientx/#{@corporation.id}" method="POST"
+				    	label for="right-label" class="right inline" proyecto:
+				.small-4.columns
+
+				    	input type="text" name="project[name]" placeholder="nombre"
 				    	label
 				      		select name="project[client_name]" 
 				      			-@corporation.clients.each do |client|
 						
 							        option value="#{client.name}"  #{client.name}
-							     
+				.small-4.columns
 
-				
-
-		    	/input type="text" name="project[client_name]" placeholder="cliente"
-			.small-1.columns
-		    	input type="submit"  class="button tiny radius round" value="+ project"
+				    	input type="submit"  class="button tiny radius round" value="+ project"
 
 
 	ul class="no-bullet"

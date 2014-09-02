@@ -138,7 +138,7 @@ class Corporation
   property :name,           Integer, default: 0 # es string inicial ahora integer
   property :description,    Text
   property :status,         String
-  property :completed_at,   DateTime
+  property :completed_at,   Date
   has n, :projects
   has n, :clients
   has n, :suppliers
@@ -173,7 +173,7 @@ class Project
   property :description,    Text
   property :client_name,    String
   property :status,         String
-  property :completed_at,           DateTime
+  property :completed_at,   Date
   has n, :budgets 
   has n, :costs
   belongs_to :client
@@ -184,7 +184,7 @@ class Budget
   include DataMapper::Resource
   property :id,             Serial
   property :amount,         Integer
-  property :date,           DateTime
+  property :created_at,     Date
   has n, :advpayments
   belongs_to :project
 end
@@ -205,7 +205,7 @@ class Cost
   include DataMapper::Resource
   property :id,             Serial
   property :amount,         Integer, default: 0
-  property :date,           DateTime
+  property :created_at,     Date
 
   has n, :quotes
   has n, :purchases
@@ -217,7 +217,7 @@ class Purchase
   include DataMapper::Resource
   property :id,           Serial
   property :amount,       Integer
-  property :date,         DateTime
+  property :created_at,   Date
   belongs_to :cost
 
 end
@@ -227,7 +227,7 @@ class Quote
   property :id,           Serial
   property :amount,       Integer
   property :supplier_name,  String
-  property :created_at,     DateTime
+  property :created_at,     Date
   has n, :payments
   belongs_to :supplier
   belongs_to :cost
@@ -238,7 +238,7 @@ class Payment
   include DataMapper::Resource
   property :id,           Serial
   property :amount,       Integer
-  property :date,         DateTime
+  property :created_at,         Date
   belongs_to :supplier
   belongs_to :quote
   
@@ -270,6 +270,8 @@ get '/projects' do
   protected!
   @corporation = User.get(session[:admin]).corporations.last()
   @projects = @corporation.clients.projects.all()
+  @budget= @projects.budgets.last()
+  @cost= @projects.costs.last()
 
 
 

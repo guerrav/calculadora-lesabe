@@ -1,29 +1,31 @@
 /el nombre de la clase
 /budget
-
 li.budget 
 
-  /datos que se imprimen
-  = "Budget #{budget.amount}"
+ 
+    .row 
+        .small-12.columns
+            /form para agregar 
+            / se cambia /nombre de la clase/ nombre de la clase. id
+            form.new action="/budget/#{budget.id}" method="POST"
+
+                .large-6.columns
+                    .row.collapse.postfix-round
+                        .small-9.columns
+                            input placeholder="Advpayment" type="text" name="advpayment[amount]"
+                        .small-3.columns
+                            input type="submit" class="button postfix" value= "+"
+
+    .row
+        .small-6.columns
+            /form para borrar
+            form.delete action="/budget/#{budget.id}" method="POST"
+                input type="hidden" name="_method" value="DELETE"
+                input type="submit" class="button tiny radius " value="×" title="Delete budget"
 
 
-  /form para agregar 
-  / se cambia /nombre de la clase/ nombre de la clase. id
-  form.new action="/budget/#{budget.id}" method="POST"
-    / se cambia child
-    label for="advpayment" advpayment: 
-    input type="text" name="advpayment[amount]"
-    input type="submit" value="+ advpayment"
+            /listado de elementos
+            ul.advpayments
+                - budget.advpayments.each do |advpayment|
 
-
-  /form para borrar
-  form.delete action="/budget/#{budget.id}" method="POST"
-    input type="hidden" name="_method" value="DELETE"
-    input type="submit" value="×" title="Delete budget"
-
-
-  /listado de elementos
-  ul.advpayments
-    - budget.advpayments.each do |advpayment|
-
-      == slim :advpayment, locals: { advpayment: advpayment }
+                    == slim :advpayment, locals: { advpayment: advpayment }
