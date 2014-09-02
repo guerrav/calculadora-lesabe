@@ -20,9 +20,11 @@
 							    	label 
 							    	 	
 							      		select name="project[client_name]" 
+
+							      		
 							      			-@corporation.clients.each do |client|
 									
-										        option value="#{client.name}"  #{client.name}
+										        option value="#{client.name}"  #{client.name.upcase}
 										| Client
 	                    .small-3.columns
 	                    	.row

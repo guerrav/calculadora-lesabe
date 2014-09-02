@@ -12,11 +12,9 @@
             
 
             li.user
+            - if current_user
+                h4= "Welcome #{current_user.email}!"
 
-            /datos que se imprimen
-            h4= "Welcome #{current_user.name}!"
-
-             /form para agregar , modificar, borrar elementos
             form.new action="/#{@user.id}" method="POST"
                     .row
                         .small-8
@@ -26,7 +24,7 @@
                                 .small-5.columns
                                     input type="text" name="corporation[name]" placeholder="nombre"
                                     input type="text" name="corporation[description]" placeholder="descripción"
-                                    input type="text" name="corporation[status]" placeholder="status"
+                                    
                                 .small-4.columns
                                     input type="submit" class="button tiny radius round" value="+ agregar"
 

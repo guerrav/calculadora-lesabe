@@ -16,6 +16,13 @@ module Sinatra
 			def current_user
   				@current_user ||= User.get(session[:admin]) if session[:admin]
 			end
+
+			def client_any
+		    	@current_user ||= User.get(session[:admin]) if session[:admin]
+		    	x = @current_user.corporations.clients.last()
+			end
+
+
 		end
 
 	def self.registered(app)

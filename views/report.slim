@@ -1,0 +1,138 @@
+
+.row
+    .small-1.columns
+        p=
+    .small-11.columns
+        - if project.budgets.last()
+            h6= "PRESUPUESTO SIN IVA"
+
+            h3= currency(project.budgets.sum(:amount))
+
+
+.row 
+    .small-1.columns
+        p=
+
+    .small-3.columns
+        /datos que se imprimen
+        - if project.budgets.advpayments.last()
+        
+
+            h6= "TOTAL PAGADO"
+
+            h3= currency(project.budgets.advpayments.sum(:amount))
+
+            - a = project.budgets.sum(:amount).to_i - project.budgets.advpayments.sum(:amount).to_i
+
+            h6= "POR PAGAR"
+            h3= currency(a)
+
+
+
+    .small-8.columns
+        - if project.costs.last()
+            h6= "COSTO REAL" 
+            h3= currency(project.costs.purchases.sum(:amount).to_i + project.costs.quotes.sum(:amount).to_i)
+
+            h6= "MANO DE OBRA" 
+            h3= "N/A"
+
+
+
+.row
+
+    .small-1.columns
+        p=
+    
+
+    .small-3.columns
+        - if project.budgets.advpayments.last()
+            h6= "ANTICIPOS/PAGOS" 
+            ul 
+                -project.budgets.advpayments.each do |advpayment|
+                    .row
+                        .small-12.columns
+                            .row
+                                .small-4.columns
+                                    li.left   
+                               
+
+                                        h6= advpayment.client_name.upcase
+                            
+                                .small-8.columns
+                                    li
+                                        h6= advpayment.created_at.strftime("%e %B %Y").upcase
+
+                                        h6= currency(advpayment.amount)
+
+    .small-8.columns
+        - if project.costs.quotes.last()
+            h6= "PROVEEDORES" 
+            h3= currency(project.costs.quotes.sum(:amount))
+
+
+            .row
+                .small-4.columns
+
+                    h6= "COTIZACIONES" 
+                    -project.costs.quotes.each do |quote|
+                        ul 
+                        
+                            .row
+                                .small-4.columns
+                                    li   
+                               
+
+                                        h6= quote.supplier_name.upcase
+                            
+                                .small-8.columns
+                                    li
+                                        h6= quote.created_at.strftime("%e %B %Y").upcase
+
+                                        h6= currency(quote.amount)
+                .small-4.columns
+                    h6= "PAGOS"
+                     
+                    -project.costs.quotes.payments.each do |payment|
+                        ul
+                            .row
+                                .small-4.columns
+                                    li   
+                               
+
+                                        h6= payment.supplier_name.upcase
+                            
+                                .small-8.columns
+                                    li
+                                        h6= payment.created_at.strftime("%e %B %Y").upcase
+
+                                        h6= currency(payment.amount)
+                .small-4.columns
+                    h6= "POR PAGAR"
+.row
+    - if project.costs.purchases.last()
+        .small-4.columns
+            p=
+        .small-8.columns
+            h6= "COMPRAS MATERIAL"
+            h3= currency(project.costs.purchases.sum(:amount))
+
+
+            .row
+                .small-4.columns
+                    h6= "MATERIAL" 
+                    -project.costs.purchases.each do |purchase|
+                        ul
+                            .row
+                            
+                                .small-4.columns
+                                    li
+                                        /= purchase.created_at.strftime("%e %B %Y")
+
+                                        h6= purchase.description.upcase
+
+                                .small-8.columns
+                                    li
+                                        /= purchase.created_at.strftime("%e %B %Y")
+
+                                        h6= currency(purchase.amount)

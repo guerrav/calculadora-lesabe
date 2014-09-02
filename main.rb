@@ -25,13 +25,6 @@ configure :development do
 end
 
 
-helpers do 
-  def client_any
-      @user = User.get(session[:admin])
-      x = @user.corporations.clients.last()
-  end
-
-end
 
 configure do 
 
@@ -145,7 +138,7 @@ class Corporation
   include DataMapper::Resource
   property :id,             Serial
   property :name,           Integer, default: 0 # es string inicial ahora integer
-  property :description,    Text
+  property :description,    String
   property :status,         String
   property :completed_at,   Date
   has n, :projects
@@ -179,7 +172,7 @@ class Project
   include DataMapper::Resource
   property :id,             Serial
   property :name,           String, required: true
-  property :description,    Text
+  property :description,    String
   property :client_name,    String
   property :status,         String
   property :completed_at,   DateTime
@@ -204,6 +197,7 @@ class Advpayment
   include DataMapper::Resource
   property :id,           Serial
   property :amount,       Integer
+  property :client_name,  String, required: true
   property :created_at,   DateTime
   belongs_to :client
   belongs_to :project
@@ -226,6 +220,7 @@ class Purchase
   include DataMapper::Resource
   property :id,           Serial
   property :amount,       Integer
+  property :description,  String, required: true
   property :created_at,   DateTime
   belongs_to :cost
 
@@ -235,7 +230,7 @@ class Quote
   include DataMapper::Resource
   property :id,           Serial
   property :amount,       Integer
-  property :supplier_name,  String
+  property :supplier_name,  String, required: true
   property :created_at,     DateTime
   has n, :payments
   belongs_to :supplier
