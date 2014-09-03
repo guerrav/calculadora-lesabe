@@ -3,7 +3,7 @@
 li.project 
     dl.accordio data-accordion="myAccordionGroup"
         dd.accordion-navigation
-            a href="#panel#{project.name}" #{project.name} // #{project.client_name} 
+            a href="#panel#{project.name}"  #{project.id} . #{project.client_name} 
             .content id="panel#{project.name}" 
                 
                 == slim :report_input, locals: { project: project }

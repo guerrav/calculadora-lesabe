@@ -1,0 +1,51 @@
+.element {
+	margin-bottom: .1em;
+}
+
+.elementdown {
+	margin-bottom: 1.2em;
+}
+
+.rojo h6 {
+	color:#ff0000;
+}
+
+.rojo h3 {
+	color:#ff0000;
+}
+
+.azul h6 {
+	color:#66ccff;
+}
+
+.azul h3 {
+	color:#66ccff;
+}
+
+.gris h6 {
+	color:#cccccc;
+}
+
+.gris h3 {
+	color:#cccccc;
+}
+
+.liroja {
+    border-top:    1px solid #ff0000;
+
+}
+.ligris {
+    border-top:    1px solid #cccccc;
+
+}
+
+.pad{
+	padding-top: .5em;
+}
+
+h3 {
+	margin-bottom: .1em;
+}
+h6 {
+	margin-bottom: .6em;
+}
