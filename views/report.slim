@@ -132,7 +132,7 @@
 .row
     - if project.costs.purchases.last()
         .small-3.columns
-            
+            p=
         .small-6.columns
             h6= "COMPRAS MATERIAL"
             .row 
@@ -155,8 +155,8 @@
                                         h6= purchase.description.upcase
 
                                 .small-8.columns
-                                    li
+                                    li.right
                                         /= purchase.created_at.strftime("%e %B %Y")
 
-                                        h6= currency(purchase.amount)
-        
+                                        h6.right= currency(purchase.amount)
+        .small-3.columns
