@@ -12,8 +12,11 @@
     .small-8.columns
         h5= project.description
         
-        a href="javascript:advpay();" advpay 
-        a href="javascript:budget();" budget 
+        h6 
+            a href="javascript:advpay();"  + nuevo 
+        h6  
+            a href="javascript:budget();" budget 
+        input type="submit" class="button postfix" value= "Agregar" onclick="asd(1)"
 .row 
     .small-2.columns id="budget"
         h6= "queda por pagar proveedores".upcase
@@ -25,7 +28,7 @@
 
     .small-5.columns
         p=
-    .small-3.columns id="advpay"
+    .small-3.columns id="asd"
 
         -if presupuesto.nil?
             

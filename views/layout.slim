@@ -23,11 +23,11 @@ html class="no-js" lang="en"
                 var text = document.getElementById("displayText");
                 if(ele.style.display == "block") {
                         ele.style.display = "none";
-                    text.innerHTML = "show";
+                    text.innerHTML = "hide";
                 }
                 else {
                     ele.style.display = "block";
-                    text.innerHTML = "hide";
+                    text.innerHTML = "show";
                 }
             } 
             function budget() {
@@ -35,13 +35,21 @@ html class="no-js" lang="en"
                 var text = document.getElementById("displayText");
                 if(ele.style.display == "block") {
                         ele.style.display = "none";
-                    text.innerHTML = "show";
+                    text.innerHTML = "hide";
                 }
                 else {
                     ele.style.display = "block";
-                    text.innerHTML = "hide";
+                    text.innerHTML = "show";
                 }
             } 
+
+            function asd(a)
+                {
+                    if(a==1)
+                    document.getElementById("asd").style.display="none";
+                    else
+                    document.getElementById("asd").style.display="block";
+            }
     	
 		
 
