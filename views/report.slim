@@ -161,6 +161,22 @@
                                         h6.right.elementdown= currency(payment.amount)
                 .small-4.columns
                     h6= "POR PAGAR"
+                    -project.corporation.suppliers.each do |supplier|
+                        -a = project.costs.quotes.all(supplier_name: supplier["name"]).sum(:amount)
+                        -b = project.costs.quotes.payments.all(supplier_name: supplier["name"]).sum(:amount)
+                        ul
+                        
+                            .row
+                                .small-4.columns
+                                    li   
+                               
+
+                                        h6= supplier.name.upcase
+                            
+                                .small-8.columns
+                                    li.right
+
+                                        h6.right.elementdown= currency(a-b)
 
     .small-2.columns
 
