@@ -12,11 +12,6 @@
     .small-8.columns
         h5= project.description
         
-        h6 
-            a href="javascript:advpay();"  + nuevo 
-        h6  
-            a href="javascript:budget();" budget 
-        input type="submit" class="button postfix" value= "Agregar" onclick="asd(1)"
 .row 
     .small-2.columns id="budget"
         h6= "queda por pagar proveedores".upcase
@@ -28,7 +23,7 @@
 
     .small-5.columns
         p=
-    .small-3.columns id="asd"
+    .small-3.columns id="form"
 
         -if presupuesto.nil?
             
@@ -141,6 +136,9 @@
     .small-2.columns
         - if project.budgets.advpayments.last()
             h6.ligris.pad= "ANTICIPOS/PAGOS" 
+            
+
+            input type="submit" class="button tiny radius nuevo" value= "+ NUEVO" onclick="advpayment_new()"
             -project.budgets.advpayments.each do |advpayment|
                 ul  
                     .row
