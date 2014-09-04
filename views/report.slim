@@ -11,16 +11,57 @@
         h5= project.name.capitalize
     .small-8.columns
         h5= project.description
-
-.row
-    .small-2.columns
+        
+        a href="javascript:advpay();" advpay 
+        a href="javascript:budget();" budget 
+.row 
+    .small-2.columns id="budget"
         h6= "queda por pagar proveedores".upcase
     .small-2.columns.gris
         - if project.budgets.last()
             h6.ligris.pad= "PRESUPUESTO SIN IVA"
             
             h3.right= currency(presupuesto)
-    .small.8.columns
+
+    .small-5.columns
+        p=
+    .small-3.columns id="advpay"
+
+        -if presupuesto.nil?
+            
+
+            /BUDGET 
+            /form para agregar 
+            / se cambia /nombre de la clase/ nombre de la clase. id
+            form.new action="/project/#{project.id}" method="POST"
+
+                
+                .row.collapse.postfix-round
+                    .small-9.columns
+                        input placeholder="Budget" type="text" name="budget[amount]"
+                    .small-3.columns
+                        input type="submit" class="button postfix" value= "Agregar"
+
+
+        -if presupuesto
+                                
+            form.new action="/budget/#{@budget.id}" method="POST"
+
+                .row
+                    .small-12.columns
+                        label 
+                            
+                            select name="advpayment[client_name]" 
+                                -project.corporation.clients.each do |client|
+                        
+                                    option value="#{client.name}"  #{client.name.upcase}
+
+                .row.collapse.postfix-round
+                    .small-9.columns
+                        input placeholder="Advpayment" type="text" name="advpayment[amount]"
+                    .small-3.columns
+                        input type="submit" class="button postfix" value= "Agregar"
+                
 
 
 .row 

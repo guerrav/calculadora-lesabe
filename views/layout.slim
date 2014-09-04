@@ -7,13 +7,41 @@ html class="no-js" lang="en"
         link rel="stylesheet" href="/stylesheets/app.css"
         link rel="stylesheet" href="/stylesheets/custom.css"
 
+        script type="text/javascript" src="/js/usableforms.js"
+
+
         /[if lt IE 9] 
         script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"
 
         script src="/bower_components/foundation/js/vendor/modernizr.js"
     body 
         
-
+         
+        javascript:
+            function advpay() {
+                var ele = document.getElementById("advpay");
+                var text = document.getElementById("displayText");
+                if(ele.style.display == "block") {
+                        ele.style.display = "none";
+                    text.innerHTML = "show";
+                }
+                else {
+                    ele.style.display = "block";
+                    text.innerHTML = "hide";
+                }
+            } 
+            function budget() {
+                var ele = document.getElementById("budget");
+                var text = document.getElementById("displayText");
+                if(ele.style.display == "block") {
+                        ele.style.display = "none";
+                    text.innerHTML = "show";
+                }
+                else {
+                    ele.style.display = "block";
+                    text.innerHTML = "hide";
+                }
+            } 
     	
 		
 
