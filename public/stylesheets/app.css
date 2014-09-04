@@ -3964,26 +3964,7 @@ textarea {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  transition: box-shadow 0.45s, border-color 0.45s ease-in-out;
-}
-/* line 185, ../../bower_components/foundation/scss/foundation/components/_global.scss */
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="date"]:focus,
-input[type="datetime"]:focus,
-input[type="datetime-local"]:focus,
-input[type="month"]:focus,
-input[type="week"]:focus,
-input[type="email"]:focus,
-input[type="number"]:focus,
-input[type="search"]:focus,
-input[type="tel"]:focus,
-input[type="time"]:focus,
-input[type="url"]:focus,
-input[type="color"]:focus,
-textarea:focus {
-  box-shadow: 0 0 5px #999999;
-  border-color: #999999;
+  transition: all 0.15s linear;
 }
 /* line 128, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
 input[type="text"]:focus,
@@ -4001,8 +3982,8 @@ input[type="time"]:focus,
 input[type="url"]:focus,
 input[type="color"]:focus,
 textarea:focus {
-  background: #fafafa;
-  border-color: #999999;
+  background: white;
+  border-color: #66ccff;
   outline: none;
 }
 /* line 134, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
@@ -4199,7 +4180,7 @@ select.radius {
 /* line 340, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
 select:hover {
   background-color: #f3f3f3;
-  border-color: #999999;
+  border-color: #66ccff;
 }
 /* line 345, ../../bower_components/foundation/scss/foundation/components/_forms.scss */
 select:disabled {

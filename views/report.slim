@@ -21,9 +21,9 @@
             
             h3.right= currency(presupuesto)
 
-    .small-5.columns
+    .small-6.columns
         p=
-    .small-3.columns id="form"
+    .small-2.columns 
 
         -if presupuesto.nil?
             
@@ -31,7 +31,7 @@
             /BUDGET 
             /form para agregar 
             / se cambia /nombre de la clase/ nombre de la clase. id
-            form.new action="/project/#{project.id}" method="POST"
+            form.new  action="/project/#{project.id}" method="POST"
 
                 
                 .row.collapse.postfix-round
@@ -43,7 +43,7 @@
 
         -if presupuesto
                                 
-            form.new action="/budget/#{@budget.id}" method="POST"
+            form.new id="advpayment" action="/budget/#{@budget.id}" method="POST"
 
                 .row
                     .small-12.columns
@@ -54,11 +54,13 @@
                         
                                     option value="#{client.name}"  #{client.name.upcase}
 
-                .row.collapse.postfix-round
-                    .small-9.columns
+                
+                    .small-12.columns
                         input placeholder="Advpayment" type="text" name="advpayment[amount]"
-                    .small-3.columns
-                        input type="submit" class="button postfix" value= "Agregar"
+                    .small-12.columns
+                        
+                        input type="submit" class="button tiny radius nuevo" value= "+ AGREGAR" 
+
                 
 
 
@@ -168,7 +170,9 @@
             .row
                 .small-4.columns
 
-                    h6= "COTIZACIONES" 
+                    h6.pad= "COTIZACIONES" 
+                    input type="submit" class="button tiny radius nuevo" value= "+ NUEVO" onclick="quote_new()"
+
                     -project.costs.quotes.each do |quote|
                         ul 
                         
@@ -185,8 +189,9 @@
 
                                         h6.right.elementdown= currency(quote.amount)
                 .small-4.columns
-                    h6= "PAGOS"
-                     
+                    h6.pad= "PAGOS"
+                    input type="submit" class="button tiny radius nuevo" value= "+ NUEVO" onclick="payment_new()"
+
                     -project.costs.quotes.payments.each do |payment|
                         ul
                             .row
@@ -202,7 +207,7 @@
 
                                         h6.right.elementdown= currency(payment.amount)
                 .small-4.columns
-                    h6= "POR PAGAR"
+                    h6.pad= "POR PAGAR"
                     -project.corporation.suppliers.each do |supplier|
                         -a = project.costs.quotes.all(supplier_name: supplier["name"]).sum(:amount)
                         -b = project.costs.quotes.payments.all(supplier_name: supplier["name"]).sum(:amount)
@@ -239,7 +244,9 @@
 
             .row
                 .small-4.columns
-                    h6= "MATERIAL" 
+                    h6.pad= "MATERIAL" 
+                    input type="submit" class="button tiny radius nuevo" value= "+ NUEVO" onclick="purchase_new()"
+
                     -project.costs.purchases.each do |purchase|
                         ul
                             .row

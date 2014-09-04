@@ -61,3 +61,23 @@ padding-top: 0.1rem;
 padding-bottom: .2em;
 border-color: #FF0000;
 }
+
+textarea, input { outline: none; }
+
+
+select {
+
+  background-color: #FFFFFF;
+
+}
+
+
+
+
+
+
+
+
+
+
+
