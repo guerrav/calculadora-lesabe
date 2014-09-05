@@ -52,7 +52,24 @@ h6 {
 }
 
 #form {
+	position: absolute;
+}
+
+#advpayment {
 	display: none;
+	
+}
+#quote {
+	display: none;
+	
+}
+#payment {
+	display: none;
+	
+}
+#purchase {
+	display: none;
+	
 }
 
 button.nuevo, .button.nuevo {

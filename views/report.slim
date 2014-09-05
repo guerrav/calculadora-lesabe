@@ -23,43 +23,95 @@
 
     .small-6.columns
         p=
-    .small-2.columns 
-
+    .small-2.columns id="form"
         -if presupuesto.nil?
-            
 
-            /BUDGET 
-            /form para agregar 
-            / se cambia /nombre de la clase/ nombre de la clase. id
-            form.new  action="/project/#{project.id}" method="POST"
+        
+            .row
+                .small-12.columns  
 
-                
-                .row.collapse.postfix-round
-                    .small-9.columns
-                        input placeholder="Budget" type="text" name="budget[amount]"
-                    .small-3.columns
-                        input type="submit" class="button postfix" value= "Agregar"
+                    form.new  action="/project/#{project.id}" method="POST"
+
+                        
+                        .row
+                            .small-12.columns
+                                input placeholder="Budget" type="text" name="budget[amount]"
+                            .small-12.columns
+                                input type="submit" class="button tiny radius nuevo" value= "+ AGREGAR"
 
 
-        -if presupuesto
+        .row
+            .small-12.columns  
                                 
-            form.new id="advpayment" action="/budget/#{@budget.id}" method="POST"
+                form.new  action="/budget/#{@budget.id}" method="POST"
 
-                .row
-                    .small-12.columns
-                        label 
+                    .row
+                        .small-12.columns
+                            label 
+                                
+                                select name="advpayment[client_name]" 
+                                    -project.corporation.clients.each do |client|
                             
-                            select name="advpayment[client_name]" 
-                                -project.corporation.clients.each do |client|
-                        
-                                    option value="#{client.name}"  #{client.name.upcase}
+                                        option value="#{client.name}"  #{client.name.upcase}
 
-                
-                    .small-12.columns
-                        input placeholder="Advpayment" type="text" name="advpayment[amount]"
-                    .small-12.columns
+                    
+                        .small-12.columns
+                            input placeholder="Advpayment" type="text" name="advpayment[amount]"
+                        .small-12.columns
+                            
+                            input type="submit" class="button tiny radius nuevo" value= "+ AGREGAR" 
+
+        form.new id="quote" action="/quote/#{@cost.id}" method="POST"
+            .row
+                .small-12.columns
+                    label 
+                            
+                        select name="quote[supplier_name]" 
+                            -project.corporation.suppliers.each do |supplier|
+                    
+                                option value="#{supplier.name}"  #{supplier.name.upcase}
+
+                .small-12.columns
+                    input placeholder="Quote" type="text" name="quote[amount]"
+                .small-12.columns
+                    input type="submit"  class="button tiny radius nuevo" value="+ AGREGAR"
+
+        form.new id="payment" action="/payment/#{@quote.id}" method="POST"
+            .row
+                .small-12.columns
+                    label 
                         
-                        input type="submit" class="button tiny radius nuevo" value= "+ AGREGAR" 
+                        select name="payment[supplier_name]" 
+                            -project.corporation.suppliers.each do |supplier|
+                    
+                                option value="#{supplier.name}"  #{supplier.name.upcase}
+
+                .small-12.columns
+                    
+                    input placeholder="Payment" type="text" name="payment[amount]"
+                .small-12.columns
+                    input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
+
+
+
+
+
+        form.new id="purchase" action="/cost/#{@cost.id}" method="POST"
+            .row
+                .small-12.columns                    
+                    input placeholder="Purchase" type="text" name="purchase[amount]"
+                      
+                .small-12.columns    
+                    input placeholder="Description" type="text" name="purchase[description]"
+                .small-12.columns
+                    input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"  
+
+
+
+                   
+                                    
+
+                        
 
                 
 

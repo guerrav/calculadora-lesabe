@@ -6,7 +6,7 @@ li.project
             a href="#panel#{project.name}"  #{project.id} . #{project.client_name} 
             .content id="panel#{project.name}" 
                 
-                == slim :report_input, locals: { project: project }
+                
 
                 == slim :report, locals: { project: project }
 
