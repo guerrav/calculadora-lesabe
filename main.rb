@@ -185,7 +185,7 @@ end
 class Budget
   include DataMapper::Resource
   property :id,             Serial
-  property :amount,         Integer
+  property :amount,         Integer, default: 0
   property :created_at,     DateTime
   has n, :advpayments
   belongs_to :project
@@ -196,7 +196,7 @@ end
 class Advpayment
   include DataMapper::Resource
   property :id,           Serial
-  property :amount,       Integer
+  property :amount,       Integer, default: 0
   property :client_name,  String, required: true
   property :created_at,   DateTime
   belongs_to :client
@@ -219,7 +219,7 @@ end
 class Purchase
   include DataMapper::Resource
   property :id,           Serial
-  property :amount,       Integer
+  property :amount,       Integer, default: 0
   property :description,  String, required: true
   property :created_at,   DateTime
   belongs_to :cost
@@ -229,7 +229,7 @@ end
 class Quote
   include DataMapper::Resource
   property :id,           Serial
-  property :amount,       Integer
+  property :amount,       Integer, default: 0
   property :supplier_name,  String, required: true
   property :created_at,     DateTime
   has n, :payments
@@ -241,7 +241,7 @@ end
 class Payment
   include DataMapper::Resource
   property :id,           Serial
-  property :amount,       Integer
+  property :amount,       Integer, default: 0
   property :supplier_name,  String
   property :created_at,         DateTime
   belongs_to :supplier

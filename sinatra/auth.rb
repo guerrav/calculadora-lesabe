@@ -22,6 +22,11 @@ module Sinatra
 		    	x = @current_user.corporations.clients.last()
 			end
 
+			def supplier_any
+		    	@current_user ||= User.get(session[:admin]) if session[:admin]
+		    	x = @current_user.corporations.suppliers.last()
+			end
+
 
 		end
 

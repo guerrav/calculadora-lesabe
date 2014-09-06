@@ -72,7 +72,8 @@ select {
 
 .initiallyHidden { display: none; }
 
-#form {
+
+#frm {
 	position: absolute;
 }
 

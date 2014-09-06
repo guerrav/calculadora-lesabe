@@ -43,6 +43,8 @@
                         input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
     .large-4.columns
 
+        - if @corporation
+
             // SUPPLIER
             /form para agregar
             form.new action="/suppliers/#{@corporation.id}" method="POST"
@@ -108,29 +110,30 @@
                                         input type="submit" class="button tiny radius nuevo" value="×" title="Delete client"
 
     .small-4.columns  
-        .row
-            .small-12.columns
-                - if @corporation.suppliers.last
-                    label for="lista-empresas" Proveedores: 
-            .small-12.columns
-                ul.no-bullet
+        - if @corporation
+            .row
+                .small-12.columns
+                    - if @corporation.suppliers.last
+                        label for="lista-empresas" Proveedores: 
+                .small-12.columns
+                    ul.no-bullet
 
-                    - if @corporation
+                        - if @corporation
 
-                    - @corporation.suppliers.each do |supplier|
-                        .row
-                            
-                            .small-2.columns
-                                li
+                        - @corporation.suppliers.each do |supplier|
+                            .row
+                                
+                                .small-2.columns
+                                    li
 
-                                    /datos que se imprimen
-                                    = supplier.name
-                            .small-8.columns
+                                        /datos que se imprimen
+                                        = supplier.name
+                                .small-8.columns
 
-                                form.delete action="/supplier/#{supplier.id}" method="POST"
-                                    input type="hidden" name="_method" value="DELETE"
-                                    input type="submit" class="button tiny radius nuevo" value="×" title="Delete supplier"
-                    
+                                    form.delete action="/supplier/#{supplier.id}" method="POST"
+                                        input type="hidden" name="_method" value="DELETE"
+                                        input type="submit" class="button tiny radius nuevo" value="×" title="Delete supplier"
+                        
 
 
 

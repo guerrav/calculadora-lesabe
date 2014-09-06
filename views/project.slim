@@ -3,14 +3,16 @@
         h3.azul
             a href="javascript:toggleDiv('#{project.id}')" #{project.id}
 
-li.project 
+li
     
 
     
-    .content.initiallyHidden id="#{project.id}" 
+    .content id="#{project.id}" 
+        
         
 
-       
+
+    	
 
         == slim :report, locals: { project: project }
 
