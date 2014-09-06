@@ -1,26 +1,26 @@
 /el nombre de la clase
 /project
 li.project 
-    dl.accordio data-accordion="myAccordionGroup"
-        dd.accordion-navigation
-            a href="#panel#{project.name}"  #{project.id} . #{project.client_name} 
-            .content id="panel#{project.name}" 
-                
-                
+    
+    input type="submit" class="button tiny radius nuevo" value= "#{project.id} // #{project.client_name.upcase}" onclick="javascript:toggleDiv('#{project.id}')" 
+    .content.initiallyHidden id="#{project.id}" 
+        
 
-                == slim :report, locals: { project: project }
+       
+
+        == slim :report, locals: { project: project }
 
 
-                
+        
 
-                                                
-                .row
-                    .small-12.columns
-                            
-                        /form para borrar
-                        form.delete action="/project/#{project.id}" method="POST"
-                            input type="hidden" name="_method" value="DELETE"
-                            input type="submit" class="button tiny" value="Delete project" title="Delete project"
+                                        
+        .row
+            .small-12.columns
+                    
+                /form para borrar
+                form.delete action="/project/#{project.id}" method="POST"
+                    input type="hidden" name="_method" value="DELETE"
+                    input type="submit" class="button tiny" value="Delete project" title="Delete project"
 
 
                     

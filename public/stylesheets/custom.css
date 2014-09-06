@@ -51,26 +51,7 @@ h6 {
 	margin-bottom: .6em;
 }
 
-#form {
-	position: absolute;
-}
 
-#advpayment {
-	display: none;
-	
-}
-#quote {
-	display: none;
-	
-}
-#payment {
-	display: none;
-	
-}
-#purchase {
-	display: none;
-	
-}
 
 button.nuevo, .button.nuevo {
 	margin-bottom: .5em;
@@ -89,8 +70,11 @@ select {
 }
 
 
+.initiallyHidden { display: none; }
 
-
+#form {
+	position: absolute;
+}
 
 
 

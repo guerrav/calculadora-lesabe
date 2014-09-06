@@ -5,8 +5,7 @@
 
 .row 
     .small-2.columns
-        h5
-            strong #{project.id}
+        p=
     .small-2.columns
         h5= project.name.capitalize
     .small-8.columns
@@ -23,14 +22,14 @@
 
     .small-6.columns
         p=
-    .small-2.columns id="form"
+    .small-2.columns 
         -if presupuesto.nil?
 
         
-            .row
-                .small-12.columns  
+            .row 
+                .small-12.columns  id="form"
 
-                    form.new  action="/project/#{project.id}" method="POST"
+                    form.new id="budget" action="/project/#{project.id}" method="POST"
 
                         
                         .row
@@ -40,10 +39,10 @@
                                 input type="submit" class="button tiny radius nuevo" value= "+ AGREGAR"
 
 
-        .row
-            .small-12.columns  
+        .row 
+            .small-12.columns id="form"
                                 
-                form.new  action="/budget/#{@budget.id}" method="POST"
+                form.new.initiallyHidden  id="advpayment" action="/budget/#{@budget.id}" method="POST"
 
                     .row
                         .small-12.columns
@@ -61,50 +60,60 @@
                             
                             input type="submit" class="button tiny radius nuevo" value= "+ AGREGAR" 
 
-        form.new id="quote" action="/quote/#{@cost.id}" method="POST"
-            .row
-                .small-12.columns
-                    label 
+
+        .row 
+            .small-12.columns id="form"
+                                
+                form.new.initiallyHidden id="quote" action="/quote/#{@cost.id}" method="POST"
+                    .row
+                        .small-12.columns
+                            label 
+                                    
+                                select name="quote[supplier_name]" 
+                                    -project.corporation.suppliers.each do |supplier|
                             
-                        select name="quote[supplier_name]" 
-                            -project.corporation.suppliers.each do |supplier|
-                    
-                                option value="#{supplier.name}"  #{supplier.name.upcase}
+                                        option value="#{supplier.name}"  #{supplier.name.upcase}
 
-                .small-12.columns
-                    input placeholder="Quote" type="text" name="quote[amount]"
-                .small-12.columns
-                    input type="submit"  class="button tiny radius nuevo" value="+ AGREGAR"
-
-        form.new id="payment" action="/payment/#{@quote.id}" method="POST"
-            .row
-                .small-12.columns
-                    label 
-                        
-                        select name="payment[supplier_name]" 
-                            -project.corporation.suppliers.each do |supplier|
-                    
-                                option value="#{supplier.name}"  #{supplier.name.upcase}
-
-                .small-12.columns
-                    
-                    input placeholder="Payment" type="text" name="payment[amount]"
-                .small-12.columns
-                    input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
+                        .small-12.columns
+                            input placeholder="Quote" type="text" name="quote[amount]"
+                        .small-12.columns
+                            input type="submit"  class="button tiny radius nuevo" value="+ AGREGAR"
 
 
+        .row 
+            .small-12.columns id="form"
+                                
+                form.new.initiallyHidden id="payment" action="/payment/#{@quote.id}" method="POST"
+                    .row
+                        .small-12.columns
+                            label 
+                                
+                                select name="payment[supplier_name]" 
+                                    -project.corporation.suppliers.each do |supplier|
+                            
+                                        option value="#{supplier.name}"  #{supplier.name.upcase}
+
+                        .small-12.columns
+                            
+                            input placeholder="Payment" type="text" name="payment[amount]"
+                        .small-12.columns
+                            input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
 
 
 
-        form.new id="purchase" action="/cost/#{@cost.id}" method="POST"
-            .row
-                .small-12.columns                    
-                    input placeholder="Purchase" type="text" name="purchase[amount]"
-                      
-                .small-12.columns    
-                    input placeholder="Description" type="text" name="purchase[description]"
-                .small-12.columns
-                    input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"  
+
+        .row 
+            .small-12.columns id="form"
+                                
+                form.new.initiallyHidden id="purchase" action="/cost/#{@cost.id}" method="POST"
+                    .row
+                        .small-12.columns                    
+                            input placeholder="Purchase" type="text" name="purchase[amount]"
+                              
+                        .small-12.columns    
+                            input placeholder="Description" type="text" name="purchase[description]"
+                        .small-12.columns
+                            input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"  
 
 
 
@@ -192,7 +201,7 @@
             h6.ligris.pad= "ANTICIPOS/PAGOS" 
             
 
-            input type="submit" class="button tiny radius nuevo" value= "+ NUEVO" onclick="advpayment_new()"
+            input type="submit" class="button tiny radius nuevo" value= "+ NUEVO" onclick="javascript:toggleDiv('advpayment')"
             -project.budgets.advpayments.each do |advpayment|
                 ul  
                     .row
@@ -223,7 +232,7 @@
                 .small-4.columns
 
                     h6.pad= "COTIZACIONES" 
-                    input type="submit" class="button tiny radius nuevo" value= "+ NUEVO" onclick="quote_new()"
+                    input type="submit" class="button tiny radius nuevo" value= "+ NUEVO" onclick="javascript:toggleDiv('quote')"
 
                     -project.costs.quotes.each do |quote|
                         ul 
@@ -242,7 +251,7 @@
                                         h6.right.elementdown= currency(quote.amount)
                 .small-4.columns
                     h6.pad= "PAGOS"
-                    input type="submit" class="button tiny radius nuevo" value= "+ NUEVO" onclick="payment_new()"
+                    input type="submit" class="button tiny radius nuevo" value= "+ NUEVO" onclick="javascript:toggleDiv('payment')"
 
                     -project.costs.quotes.payments.each do |payment|
                         ul
@@ -277,27 +286,24 @@
 
                                         h6.right.elementdown= currency(a-b)
 
-    .small-2.columns
+    .small-2.columns.rojo
 
-                
-.row
-    - if project.costs.purchases.last()
-        .small-2.columns
-            p=
-        .small-2.columns
-            p=
-        .small-6.columns.rojo
+
+
+       
+        - if project.costs.purchases.last()
+        
+            
             h6.liroja.pad= "COMPRAS MATERIAL"
             .row 
-                .small-4.columns
+                .small-12.columns
                     h3.right= currency(project.costs.purchases.sum(:amount))
-                .small-8.columns
 
 
             .row
-                .small-4.columns
+                .small-12.columns
                     h6.pad= "MATERIAL" 
-                    input type="submit" class="button tiny radius nuevo" value= "+ NUEVO" onclick="purchase_new()"
+                    input type="submit" class="button tiny radius nuevo" value= "+ NUEVO" onclick="javascript:toggleDiv('purchase')"
 
                     -project.costs.purchases.each do |purchase|
                         ul
@@ -314,4 +320,7 @@
                                         /= purchase.created_at.strftime("%e %B %Y")
 
                                         h6.right= currency(purchase.amount)
-        .small-2.columns
+        
+
+
+            

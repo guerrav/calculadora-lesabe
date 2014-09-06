@@ -16,7 +16,9 @@
 
 	                	.small-3.columns
 	                		.row
-	                			.large-12.columns
+	                			.small-3.columns
+	                				label for="right-label" class="right inline" Client:
+	                			.small-9.columns
 							    	label 
 							    	 	
 							      		select name="project[client_name]" 
@@ -25,13 +27,12 @@
 							      			-@corporation.clients.each do |client|
 									
 										        option value="#{client.name}"  #{client.name.upcase}
-										| Client
 	                    .small-3.columns
 	                    	.row
 	                			.large-12.columns
 	                    	
 							    	input type="text" name="project[name]" placeholder="Project name"
-							    	label for="project" Project
+							    	
 
 					    .small-5.columns
 					    	.row
@@ -43,7 +44,7 @@
 							.row
 	                			.large-12.columns
 
-					    			input type="submit"  class="button postfix" value="+"
+					    			input type="submit"  class="button tiny radius nuevo" value="+ NUEVO"
 
 
 		ul class="no-bullet"
