@@ -46,9 +46,14 @@
 
 					    			input type="submit"  class="button tiny radius nuevo" value="+ NUEVO"
 
+		ul.no-bullet
+		  
+		  	li
 
-		ul class="no-bullet"
+		ul.no-bullet
 		  - @projects.each do |project|
+		  	
+
 
 
 		  	== slim :project, locals: { project: project }

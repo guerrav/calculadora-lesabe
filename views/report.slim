@@ -12,8 +12,23 @@
         h5= project.description
         
 .row 
-    .small-2.columns id="budget"
-        h6= "queda por pagar proveedores".upcase
+    .small-2.columns 
+        
+        - if presupuesto <= 0
+        
+            .row 
+                .small-12.columns  
+
+                    form.new id="budget" action="/project/#{project.id}" method="POST"
+
+                        
+                        .row
+                            .small-12.columns
+                                input placeholder="Budget" type="text" name="budget[amount]"
+                            .small-12.columns
+                                input type="submit" class="button tiny radius nuevo" value= "+ AGREGAR"
+
+
     .small-2.columns.gris
         - if project.budgets.last()
             h6.ligris.pad= "PRESUPUESTO SIN IVA"
