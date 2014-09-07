@@ -47,14 +47,37 @@
 					    			input type="submit"  class="button tiny radius nuevo" value="+ NUEVO"
 
 		
-		h3.azul
-            a href="" next
+		
 
 		ul.no-bullet
-		  - @projects.each do |project|
+		  - @projects.reverse.each_with_index do |project, index|
+
+
 		  	
 
 
 
-		  	== slim :project, locals: { project: project }
+		  	
+
+			li.newboxes id="newboxes#{index}"
+
+			  	-if index != 0
+			  		
+					a href="javascript:showonlyone('newboxes#{index - 1}')" back
+						
+				-if index != @projects.count - 1
+					a href="javascript:showonlyone('newboxes#{index + 1}')" next
+
+				    
+
+			    
+			    .content id="#{project.id}" 
+			        
+			        
+
+
+			    	
+
+			        == slim :report, locals: { project: project }
+
 

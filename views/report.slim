@@ -270,8 +270,8 @@
             .row 
                 .small-12.columns id="form"
                     
-                                    
-                    form.new  id="advpayment" action="/budget/#{@budget.id}" method="POST"
+                    - budget = project.budgets.last(project_id: project["id"])
+                    form.new  id="advpayment" action="/budget/#{budget.id}" method="POST"
 
                         .row
                             .small-12.columns
@@ -297,8 +297,8 @@
             .row 
                 .small-12.columns id="form"
                     
-                                    
-                    form.new id="quote" action="/quote/#{@cost.id}" method="POST"
+                    - cost = project.costs.last(project_id: project["id"])          
+                    form.new id="quote" action="/quote/#{cost.id}" method="POST"
                         .row
                             .small-12.columns
                                 label 
@@ -321,8 +321,8 @@
             .row 
                 .small-12.columns id="form"
                     
-                                    
-                    form.new id="payment" action="/payment/#{@quote.id}" method="POST"
+                    - quote = project.costs.quotes.last(cost_id: cost["id"])                
+                    form.new id="payment" action="/payment/#{quote.id}" method="POST"
                         .row
                             .small-12.columns
                                 label 
@@ -346,7 +346,7 @@
                 .small-12.columns id="form"
                     
                                     
-                    form.new id="purchase" action="/cost/#{@cost.id}" method="POST"
+                    form.new id="purchase" action="/cost/#{cost.id}" method="POST"
                         .row
                             .small-12.columns                    
                                 input placeholder="Purchase" type="text" name="purchase[amount]"
@@ -360,5 +360,7 @@
         p=
 
 
-
+javascript:
+  
+  window.onload= function() { showonlyone('newboxes0'); }
             
