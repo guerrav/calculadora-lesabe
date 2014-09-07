@@ -54,10 +54,27 @@ h6 {
 
 
 button.nuevo, .button.nuevo {
+	background: #ff0000;
+color: #fff;
 	margin-bottom: .5em;
 padding-top: 0.1rem;
 padding-bottom: .2em;
 border-color: #FF0000;
+  box-shadow: 0 4px 0 #cc0000, inset 0 1px 1px rgba(255, 255, 255, 0.5), 0 1px 3px rgba(0, 0, 0, 0.4);
+
+}
+
+.nuevo:focus, .nuevo:hover {
+    background: #ff1a1a;
+    box-shadow: 0 4px 0 #cc0000, inset 0 1px 1px rgba(255, 255, 255, 0.5), 0 2px 5px rgba(0, 0, 0, 0.5); 
+    outline: none;
+}
+
+.nuevo:active {
+    background: red;
+    box-shadow: 0 0 0 #cc0000, inset 0 -1px 1px rgba(0, 0, 0, 0.2), 0 2px 5px rgba(0, 0, 0, 0.2);
+    transform: translateY(4px); }
+
 }
 
 textarea, input { outline: none; }
