@@ -78,6 +78,36 @@ select {
 }
 
 
+.botonsazo {
+  background: red;
+  border: 1px solid #b30000;
+  border-radius: 3px;
+  box-shadow: 0 4px 0 #cc0000, inset 0 1px 1px rgba(255, 255, 255, 0.5), 0 1px 3px rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+  display: inline-block;
+  font-size: 16px;
+  /* font-weight: bold; */
+  line-height: 2.5rem;
+  margin-bottom: 1.5rem;
+  /* padding: 0 1rem; */
+  text-align: center;
+  text-decoration: none;
+  /* text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); */
+  transition: all .1s ease; 
+}
+
+.botonsazo:focus, .botonsazo:hover {
+    background: #ff1a1a;
+    box-shadow: 0 4px 0 #cc0000, inset 0 1px 1px rgba(255, 255, 255, 0.5), 0 2px 5px rgba(0, 0, 0, 0.5); 
+}
+
+.botonsazo:active {
+    background: red;
+    box-shadow: 0 0 0 #cc0000, inset 0 -1px 1px rgba(0, 0, 0, 0.2), 0 2px 5px rgba(0, 0, 0, 0.2);
+    transform: translate(0px,4px); 
+
+}
+
 
 
 
