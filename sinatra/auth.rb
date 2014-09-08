@@ -19,12 +19,17 @@ module Sinatra
 
 			def client_any
 		    	@current_user ||= User.get(session[:admin]) if session[:admin]
-		    	x = @current_user.corporations.clients.last()
+		    	if @current_user
+		    		x = @current_user.corporations.clients.last()
+		    	end 
 			end
 
 			def supplier_any
+
 		    	@current_user ||= User.get(session[:admin]) if session[:admin]
-		    	x = @current_user.corporations.suppliers.last()
+		    	if @current_user
+		    		x = @current_user.corporations.suppliers.last()
+		    	end
 			end
 
 

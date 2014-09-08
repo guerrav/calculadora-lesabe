@@ -1,3 +1,22 @@
-h3 Login
-== slim :login_form
+== slim :nav
 
+.row
+	.large-2.columns
+		p=
+	.large-3.columns.azul
+		h3 Log in
+
+		== slim :login_form
+		
+	.large-1.columns
+		p=
+	.large-3.columns.azul
+		
+		== slim :register
+	.large-3.columns
+		p=
+
+.row
+	.large-12.columns
+		p Or sign up with these services 
+		a href='/auth/twitter' twitter

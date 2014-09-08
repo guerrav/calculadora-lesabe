@@ -7,360 +7,371 @@
 
 
 
+row 
+    .large-12.columns id="reports"
 
 
 
-.row 
-    .small-2.columns
-        p=
-    .small-2.columns
-        h5= project.name.capitalize
-    .small-8.columns
-        h5= project.description
-        
-.row 
-    .small-2.columns 
-        
-        p=
-        
-            
+        .row 
+            .small-2.columns
+                p=
+            .small-2.columns
+                h5= project.name.capitalize
+            .small-8.columns
+                h5= project.description
+                
+        .row 
+            .small-2.columns 
+                
+                p=
+                
+                    
 
 
-    .small-2.columns.gris
-        - if project.budgets.last()
-            h6.ligris.pad= "PRESUPUESTO SIN IVA"
-            
-            h3.right= currency(presupuesto)
+            .small-2.columns.gris
+                - if project.budgets.last()
+                    h6.ligris.pad= "PRESUPUESTO SIN IVA"
+                    
+                    h3.right= currency(presupuesto)
 
-    .small-6.columns
-        p=
-    .small-2.columns 
-        p= 
-                   
-                                    
+            .small-6.columns
+                p=
+            .small-2.columns 
+                p= 
+                           
+                                            
+
+                                
 
                         
 
+
+        .row 
+            .small-2.columns
+                - if project.budgets.last()
+
+                    h6.ligris.pad= "UTILIDAD ANTES DE IMPUESTOS"
+
+                    -if utilidad < 0
+
+                        .row 
+                            .small-12.columns.rojo
+
+                                h3.right= currency(utilidad)
+                    -else
+                        .row 
+                            .small-12.columns.azul
+
+                                h3.right= currency(utilidad)
+
+                    - p = percentage((utilidad * 100) / presupuesto)
+                    -if p.to_i < 0
+                        .row
+                            .small-12.columns.rojo
+
+                                h6.right= p
+                    -else
+                        h6.right= p
+            .small-2.columns
+                /datos que se imprimen
+                - if project.budgets.advpayments.last()
+                
+
+                    h6.ligris.pad= "TOTAL PAGADO"
+
+                    .row 
+                        .small-12.columns.gris
+                            
+                            h3.right= currency(total_pagado)
+
+                    - por_pagar = (presupuesto - total_pagado)
+
+                    h6= "POR PAGAR"
+                    .row 
+                        .small-12.columns
+                            h3.right= currency(por_pagar)
+
+
+
+            .small-2.columns.rojo
+                - if project.costs.last()
+
+                    h6.liroja.pad= "COSTO REAL" 
+                    .row 
+                        .small-12.columns
+                            
+                            h3.right= currency(costo_real)
+
+                    h6= "MANO DE OBRA" 
+                    .row 
+                        .small-12.columns
+                            h3.right= "N/A"
+
+            .small-6.columns
+
+
+
+        .row
+
+            .small-2.columns
+                p=
+            
+
+            .small-2.columns
+                - if project.budgets.advpayments.last()
+                    h6.ligris.pad= "ANTICIPOS/PAGOS" 
+                    
+
+                    
+                    -project.budgets.advpayments.each do |advpayment|
+                        ul  
+                            .row
+                                .small-4.columns
+                                    li   
+                               
+
+                                        h6= advpayment.client_name.upcase
+                            
+                                .small-8.columns
+                                    li.right
+                                        h6.element= advpayment.created_at.strftime("%b %e %Y")
+
+
+
+                                        h6.right.elementdown= currency(advpayment.amount)
+
+            .small-6.columns.rojo
+                - if project.costs.quotes.last()
+                    h6.liroja.pad= "PROVEEDORES" 
+                    .row 
+                        .small-4.columns
+                            h3.right= currency(project.costs.quotes.sum(:amount))
+                        .small-8.columns
+
+
+                    .row
+                        .small-4.columns
+
+                            h6.pad= "COTIZACIONES" 
+                            
+
+                            -project.costs.quotes.each do |quote|
+                                ul 
+                                
+                                    .row
+                                        .small-4.columns
+                                            li   
+                                       
+
+                                                h6= quote.supplier_name.upcase
+                                    
+                                        .small-8.columns
+                                            li.right
+                                                h6.element= quote.created_at.strftime("%b %e %Y")
+
+                                                h6.right.elementdown= currency(quote.amount)
+                        .small-4.columns
+                            h6.pad= "PAGOS"
+                            
+
+                            -project.costs.quotes.payments.each do |payment|
+                                ul
+                                    .row
+                                        .small-4.columns
+                                            li   
+                                       
+
+                                                h6= payment.supplier_name.upcase
+                                    
+                                        .small-8.columns
+                                            li.right
+                                                h6.element= payment.created_at.strftime("%b %e %Y")
+
+                                                h6.right.elementdown= currency(payment.amount)
+                        .small-4.columns
+                            h6.pad= "POR PAGAR"
+                            -project.corporation.suppliers.each do |supplier|
+                                -a = project.costs.quotes.all(supplier_name: supplier["name"]).sum(:amount).to_i
+                                -b = project.costs.quotes.payments.all(supplier_name: supplier["name"]).sum(:amount).to_i
+                                ul
+                                
+                                    .row
+                                        .small-4.columns
+                                            li   
+                                       
+
+                                                h6= supplier.name.upcase
+                                    
+                                        .small-8.columns
+                                            li.right
+
+                                                h6.right.elementdown= currency(a-b)
+
+            .small-2.columns.rojo
+
+
+
+               
+                - if project.costs.purchases.last()
+                
+                    
+                    h6.liroja.pad= "COMPRAS MATERIAL"
+                    .row 
+                        .small-12.columns
+                            h3.right= currency(project.costs.purchases.sum(:amount))
+
+
+                    .row
+                        .small-12.columns
+                            h6.pad= "MATERIAL" 
+                            
+
+                            -project.costs.purchases.each do |purchase|
+                                ul
+                                    .row
+                                    
+                                        .small-4.columns
+                                            li
+                                                /= purchase.created_at.strftime("%e %B %Y")
+
+                                                h6= purchase.description.upcase
+
+                                        .small-8.columns
+                                            li.right
+                                                /= purchase.created_at.strftime("%e %B %Y")
+
+                                                h6.right= currency(purchase.amount)
                 
 
 
-.row 
-    .small-2.columns
-        - if project.budgets.last()
-
-            h6.ligris.pad= "UTILIDAD ANTES DE IMPUESTOS"
-
-            -if utilidad < 0
-
-                .row 
-                    .small-12.columns.rojo
-
-                        h3.right= currency(utilidad)
-            -else
-                .row 
-                    .small-12.columns.azul
-
-                        h3.right= currency(utilidad)
-
-            - p = percentage((utilidad * 100) / presupuesto)
-            -if p.to_i < 0
-                .row
-                    .small-12.columns.rojo
-
-                        h6.right= p
-            -else
-                h6.right= p
-    .small-2.columns
-        /datos que se imprimen
-        - if project.budgets.advpayments.last()
-        
-
-            h6.ligris.pad= "TOTAL PAGADO"
-
-            .row 
-                .small-12.columns.gris
-                    
-                    h3.right= currency(total_pagado)
-
-            - por_pagar = (presupuesto - total_pagado)
-
-            h6= "POR PAGAR"
-            .row 
-                .small-12.columns
-                    h3.right= currency(por_pagar)
-
-
-
-    .small-2.columns.rojo
-        - if project.costs.last()
-
-            h6.liroja.pad= "COSTO REAL" 
-            .row 
-                .small-12.columns
-                    
-                    h3.right= currency(costo_real)
-
-            h6= "MANO DE OBRA" 
-            .row 
-                .small-12.columns
-                    h3.right= "N/A"
-
-    .small-6.columns
-
 
 
 .row
-
-    .small-2.columns
-        p=
-    
-
-    .small-2.columns
-        - if project.budgets.advpayments.last()
-            h6.ligris.pad= "ANTICIPOS/PAGOS" 
-            
-
-            
-            -project.budgets.advpayments.each do |advpayment|
-                ul  
-                    .row
-                        .small-4.columns
-                            li   
-                       
-
-                                h6= advpayment.client_name.upcase
-                    
-                        .small-8.columns
-                            li.right
-                                h6.element= advpayment.created_at.strftime("%b %e %Y")
-
-
-
-                                h6.right.elementdown= currency(advpayment.amount)
-
-    .small-6.columns.rojo
-        - if project.costs.quotes.last()
-            h6.liroja.pad= "PROVEEDORES" 
-            .row 
-                .small-4.columns
-                    h3.right= currency(project.costs.quotes.sum(:amount))
-                .small-8.columns
-
-
-            .row
-                .small-4.columns
-
-                    h6.pad= "COTIZACIONES" 
-                    
-
-                    -project.costs.quotes.each do |quote|
-                        ul 
-                        
-                            .row
-                                .small-4.columns
-                                    li   
-                               
-
-                                        h6= quote.supplier_name.upcase
-                            
-                                .small-8.columns
-                                    li.right
-                                        h6.element= quote.created_at.strftime("%b %e %Y")
-
-                                        h6.right.elementdown= currency(quote.amount)
-                .small-4.columns
-                    h6.pad= "PAGOS"
-                    
-
-                    -project.costs.quotes.payments.each do |payment|
-                        ul
-                            .row
-                                .small-4.columns
-                                    li   
-                               
-
-                                        h6= payment.supplier_name.upcase
-                            
-                                .small-8.columns
-                                    li.right
-                                        h6.element= payment.created_at.strftime("%b %e %Y")
-
-                                        h6.right.elementdown= currency(payment.amount)
-                .small-4.columns
-                    h6.pad= "POR PAGAR"
-                    -project.corporation.suppliers.each do |supplier|
-                        -a = project.costs.quotes.all(supplier_name: supplier["name"]).sum(:amount).to_i
-                        -b = project.costs.quotes.payments.all(supplier_name: supplier["name"]).sum(:amount).to_i
-                        ul
-                        
-                            .row
-                                .small-4.columns
-                                    li   
-                               
-
-                                        h6= supplier.name.upcase
-                            
-                                .small-8.columns
-                                    li.right
-
-                                        h6.right.elementdown= currency(a-b)
-
-    .small-2.columns.rojo
-
-
-
-       
-        - if project.costs.purchases.last()
-        
-            
-            h6.liroja.pad= "COMPRAS MATERIAL"
+    .small-12.columns id="inputs"
             .row 
                 .small-12.columns
-                    h3.right= currency(project.costs.purchases.sum(:amount))
-
-
-            .row
-                .small-12.columns
-                    h6.pad= "MATERIAL" 
-                    
-
-                    -project.costs.purchases.each do |purchase|
-                        ul
-                            .row
-                            
-                                .small-4.columns
-                                    li
-                                        /= purchase.created_at.strftime("%e %B %Y")
-
-                                        h6= purchase.description.upcase
-
-                                .small-8.columns
-                                    li.right
-                                        /= purchase.created_at.strftime("%e %B %Y")
-
-                                        h6.right= currency(purchase.amount)
-        
-
-
-
-
-.row
-    .small-2.columns
-
-
-
-        -if presupuesto <= 0
-
-
+                    p=
             .row 
-                .small-12.columns  id="form"
-
-                    form.new id="budget" action="/project/#{project.id}" method="POST"
-
-                        
-                        .row
-                            .small-12.columns
-                                input placeholder="Budget" type="text" name="budget[amount]"
-                            .small-12.columns
-                                input type="submit" class="button tiny radius nuevo" value= "+ AGREGAR"
+                
+                .small-2.columns 
 
 
-    .small-2.columns
-        -if project.budgets.last()
-            .row 
-                .small-12.columns id="form"
-                    
-                    - budget = project.budgets.last(project_id: project["id"])
-                    form.new  id="advpayment" action="/budget/#{budget.id}" method="POST"
 
-                        .row
-                            .small-12.columns
-                                label 
+
+                    -if presupuesto <= 0
+
+
+                        .row 
+                            .small-12.columns  
+
+                                form.new id="budget" action="/project/#{project.id}" method="POST"
+
                                     
-                                    select name="advpayment[client_name]" 
-                                        -project.corporation.clients.each do |client|
+                                    .row
+                                        .small-12.columns
+                                            input placeholder="Budget" type="text" name="budget[amount]"
+                                        .small-12.columns
+                                            input type="submit" class="button tiny radius nuevo" value= "+ AGREGAR"
+
+
+                .small-2.columns
+                    -if project.budgets.last()
+                        .row 
+                            .small-12.columns 
                                 
-                                            option value="#{client.name}"  #{client.name.upcase}
+                                - budget = project.budgets.last(project_id: project["id"])
+                                form.new  id="advpayment" action="/budget/#{budget.id}" method="POST"
 
-                        
-                            .small-12.columns
-                                input placeholder="Advpayment" type="text" name="advpayment[amount]"
-                            .small-12.columns
-                                
-                                input type="submit" class="button tiny radius nuevo" value= "+ AGREGAR" 
+                                    .row
+                                        .small-12.columns
+                                            label 
+                                                
+                                                select name="advpayment[client_name]" 
+                                                    -project.corporation.clients.each do |client|
+                                            
+                                                        option value="#{client.name}"  #{client.name.upcase}
 
-
-
-
-    .small-2.columns
-        -if project.costs.last()
-            .row 
-                .small-12.columns id="form"
-                    
-                    - cost = project.costs.last(project_id: project["id"])          
-                    form.new id="quote" action="/quote/#{cost.id}" method="POST"
-                        .row
-                            .small-12.columns
-                                label 
-                                        
-                                    select name="quote[supplier_name]" 
-                                        -project.corporation.suppliers.each do |supplier|
-                                
-                                            option value="#{supplier.name}"  #{supplier.name.upcase}
-
-                            .small-12.columns
-                                input placeholder="Quote" type="text" name="quote[amount]"
-                            .small-12.columns
-                                input type="submit"  class="button tiny radius nuevo" value="+ AGREGAR"
-
-
-
-
-    .small-2.columns
-        -if project.costs.quotes.last()
-            .row 
-                .small-12.columns id="form"
-                    
-                    - quote = project.costs.quotes.last(cost_id: cost["id"])                
-                    form.new id="payment" action="/payment/#{quote.id}" method="POST"
-                        .row
-                            .small-12.columns
-                                label 
                                     
-                                    select name="payment[supplier_name]" 
-                                        -project.corporation.suppliers.each do |supplier|
+                                        .small-12.columns
+                                            input placeholder="Advpayment" type="text" name="advpayment[amount]"
+                                        .small-12.columns
+                                            
+                                            input type="submit" class="button tiny radius nuevo" value= "+ AGREGAR" 
+
+
+
+
+                .small-2.columns
+                    -if project.costs.last()
+                        .row 
+                            .small-12.columns 
                                 
-                                            option value="#{supplier.name}"  #{supplier.name.upcase}
+                                - cost = project.costs.last(project_id: project["id"])          
+                                form.new id="quote" action="/quote/#{cost.id}" method="POST"
+                                    .row
+                                        .small-12.columns
+                                            label 
+                                                    
+                                                select name="quote[supplier_name]" 
+                                                    -project.corporation.suppliers.each do |supplier|
+                                            
+                                                        option value="#{supplier.name}"  #{supplier.name.upcase}
 
-                            .small-12.columns
+                                        .small-12.columns
+                                            input placeholder="Quote" type="text" name="quote[amount]"
+                                        .small-12.columns
+                                            input type="submit"  class="button tiny radius nuevo" value="+ AGREGAR"
+
+
+
+
+                .small-2.columns
+                    -if project.costs.quotes.last()
+                        .row 
+                            .small-12.columns 
                                 
-                                input placeholder="Payment" type="text" name="payment[amount]"
-                            .small-12.columns
-                                input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
+                                - quote = project.costs.quotes.last(cost_id: cost["id"])                
+                                form.new id="payment" action="/payment/#{quote.id}" method="POST"
+                                    .row
+                                        .small-12.columns
+                                            label 
+                                                
+                                                select name="payment[supplier_name]" 
+                                                    -project.corporation.suppliers.each do |supplier|
+                                            
+                                                        option value="#{supplier.name}"  #{supplier.name.upcase}
+
+                                        .small-12.columns
+                                            
+                                            input placeholder="Payment" type="text" name="payment[amount]"
+                                        .small-12.columns
+                                            input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
 
 
 
-    .small-2.columns
-         -if project.costs.last()
-            .row 
-                .small-12.columns id="form"
-                    
-                                    
-                    form.new id="purchase" action="/cost/#{cost.id}" method="POST"
-                        .row
-                            .small-12.columns                    
-                                input placeholder="Purchase" type="text" name="purchase[amount]"
-                                  
-                            .small-12.columns    
-                                input placeholder="Description" type="text" name="purchase[description]"
-                            .small-12.columns
-                                input type="submit" class="button tiny radius nuevo" value="+ AGREGAR" 
+                .small-2.columns
+                     -if project.costs.last()
+                        .row 
+                            .small-12.columns 
+                                
+                                                
+                                form.new id="purchase" action="/cost/#{cost.id}" method="POST"
+                                    .row
+                                        .small-12.columns                    
+                                            input placeholder="Purchase" type="text" name="purchase[amount]"
+                                              
+                                        .small-12.columns    
+                                            input placeholder="Description" type="text" name="purchase[description]"
+                                        .small-12.columns
+                                            input type="submit" class="button tiny radius nuevo" value="+ AGREGAR" 
 
-    .small-2.columns 
-        p=
+                .small-2.columns 
+                    p=
 
 
 javascript:
   
-  window.onload= function() { showonlyone('newboxes0'); }
-            
+  window.onload= function() { showonlyone('newboxes0'); 
+    sticky();
+  }
+ 

@@ -2,7 +2,7 @@
 	nav.top-bar data-options="sticky_on: large" data-topbar="" role="navigation" 
 	  ul.title-area
 	    li.name
-	      h1.botonsazo
+	      h1.botonsazoR
 	        a href="/"  ●_●
 	    /! Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
 	    li.toggle-topbar.menu-icon
@@ -10,20 +10,21 @@
 	        span Menu
 	  section.top-bar-section
 	    /! Right Nav Section
-	    ul.right
-	      li
-	        a href="/logout" Sign out 
+	    -if current_user
+		    ul.right
+		      li
+		        a href="/logout" Sign out 
 
-	    /! Left Nav Section
+		    /! Left Nav Section
 
-	    ul.left
-	    
-	      	
+		    ul.left
+		    
+		      	
 
-	      	li
-	        	a href="/corporation" Empresa
+		      	li
+		        	a href="/corporation" Empresa
 
-	        - if client_any && supplier_any
+		        - if client_any && supplier_any
 
-		        li
-		        	a href="/projects" Proyectos
+			        li
+			        	a href="/projects" Proyectos
