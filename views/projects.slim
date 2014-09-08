@@ -58,16 +58,22 @@
 		  	
 
 
-
+		  	
+		  	
 		  	
 
 			li.newboxes id="newboxes#{index}"
 
 			  	-if index != 0
 			  		
+			  		
+		  					
+
 					a href="javascript:showonlyone('newboxes#{index - 1}')" back
 						
 				-if index != @projects.count - 1
+					
+		  			  
 					a href="javascript:showonlyone('newboxes#{index + 1}')" next
 
 				    

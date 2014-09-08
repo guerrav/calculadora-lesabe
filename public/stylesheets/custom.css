@@ -6,6 +6,16 @@
 	margin-bottom: 1.2em;
 }
 
+h3 {
+
+  line-height: 1.6;
+}
+
+h6 {
+
+  line-height: 1.6;
+}
+
 .rojo h6 {
 	color:#ff0000;
 }
@@ -126,7 +136,64 @@ select {
 }
 
 
-
-
-
+.btn-arrow {
+  color: transparent;
+  display: block;
+  font-size: 5px;
+  line-height: 0;
+  margin: 4em;
+  position: relative;
+  width: 10em;
+  height: 10em;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.btn-arrow:hover, .btn-arrow:focus {
+  background: rgba(255, 255, 255, 0.1);
+}
+.btn-arrow:hover::before, .btn-arrow:hover::after, .btn-arrow:focus::before, .btn-arrow:focus::after {
+  background: rgba(0, 0, 0, 0.5);
+}
+.btn-arrow::before {
+  content: '';
+  display: block;
+  background: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6em;
+  height: 2em;
+}
+.btn-arrow::after {
+  content: '';
+  display: block;
+  background: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2em;
+  height: 6em;
+}
+.btn-arrow.btn-arrow-left a {
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.btn-arrow.btn-arrow-left::before, .btn-arrow.btn-arrow-left::after {
+  top: 2em;
+  left: 2em;
+}
+.btn-arrow.btn-arrow-right a {
+  -moz-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+.btn-arrow.btn-arrow-right::before, .btn-arrow.btn-arrow-right::after {
+  top: 2em;
+  left: 2em;
+}
 
