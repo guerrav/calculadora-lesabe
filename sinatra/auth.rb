@@ -99,7 +99,7 @@ module Sinatra
 
 
 		# SIGN IN
-		# CHECA EL CALLBACK, SI EXISTE EL USUARIO PARA COMO TRUE Y LO VERIFICA 
+		# CHECA EL CALLBACK, SI EXISTE EL USUARIO PARA Y LO VERIFICA 
 
 		  if user
 		    session[:admin] = user.id

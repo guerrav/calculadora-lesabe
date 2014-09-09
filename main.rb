@@ -60,7 +60,7 @@ end
 use Rack::Session::Pool
 use OmniAuth::Builder do
   #IDENTITY
-  provider :identity, :fields => [:email], model: User, on_failed_registration: lambda { |env|
+  provider :identity, :fields => [:email, :username], model: User, on_failed_registration: lambda { |env|
       status, headers, body = call env.merge("PATH_INFO" => '/register')
     }
     OmniAuth.config.on_failure = Proc.new { |env|
@@ -119,8 +119,8 @@ class User
 
   attr_accessor :password_confirmation
 
-  validates_presence_of :email, :username
-  validates_uniqueness_of :email, :username
+  validates_presence_of :email
+  validates_uniqueness_of :email
   validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
   
   def self.create_with_omniauth(auth)
