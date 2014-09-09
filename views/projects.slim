@@ -8,66 +8,66 @@
 	  	.row
 	  		.small-8.columns
 
-	  			
-				form.new action="/clientx/#{@corporation.id}" method="POST"
+	  			-if @corporation
+					form.new action="/clientx/#{@corporation.id}" method="POST"
 
-	                .row.collapse.postfix-round
+		                .row
 
-	                	.small-3.columns
-	                		.row
-	                			.small-3.columns
-	                				label for="right-label" class="right inline" Client:
-	                			.small-9.columns
-							    	label 
-							    	 	
-							      		select name="project[client_name]" 
+		                	.small-3.columns
+		                		.row
+		                			.small-3.columns
+		                				label for="right-label" class="right inline" Client:
+		                			.small-9.columns
+								    	label 
+								    	 	
+								      		select name="project[client_name]" 
 
-							      		
-							      			-@corporation.clients.each do |client|
+								      		
+								      			-@corporation.clients.each do |client|
+										
+											        option value="#{client.name}"  #{client.name.upcase}
+		                    .small-3.columns
+		                    	.row
+		                			.large-12.columns
+		                    	
+								    	input type="text" name="project[name]" placeholder="Project name"
+								    	
+
+						    .small-5.columns
+						    	.row
+		                			.large-12.columns
+						    			input type="text" name="project[description]" placeholder="Project description"
+						    	
+
+							.small-1.columns
+								.row
+		                			.large-12.columns
+
+						    			input type="submit"  class="button tiny radius nuevo" value="+ NUEVO"
+
+			
+		-if @projects
+
+			ul.no-bullet
+			  - @projects.reverse.each_with_index do |project, index|
+
+		  	
+
+				li.newboxes id="newboxes#{index}"
+
+					.row
+			  			.large-12.columns
+
+						  	-if index != 0
+
+						  		
+								a.botonsazoG.left href="javascript:showonlyone('newboxes#{index - 1}')" prev
 									
-										        option value="#{client.name}"  #{client.name.upcase}
-	                    .small-3.columns
-	                    	.row
-	                			.large-12.columns
-	                    	
-							    	input type="text" name="project[name]" placeholder="Project name"
-							    	
-
-					    .small-5.columns
-					    	.row
-	                			.large-12.columns
-					    			input type="text" name="project[description]" placeholder="Project description"
-					    	
-
-						.small-1.columns
-							.row
-	                			.large-12.columns
-
-					    			input type="submit"  class="button tiny radius nuevo" value="+ NUEVO"
-
-		
-		
-
-		ul.no-bullet
-		  - @projects.reverse.each_with_index do |project, index|
-
-	  	
-
-			li.newboxes id="newboxes#{index}"
-
-				.row
-		  			.large-12.columns
-
-					  	-if index != 0
-
-
-							a.botonsazoG.left href="javascript:showonlyone('newboxes#{index - 1}')" prev
+							-if index != @projects.count - 1
 								
-						-if index != @projects.count - 1
-							
-							a.botonsazoG.right href="javascript:showonlyone('newboxes#{index + 1}')" next
-			    	
+								a.botonsazoG.right href="javascript:showonlyone('newboxes#{index + 1}')" next
+				    	
 
-			    == slim :report, locals: { project: project }
+				    == slim :report, locals: { project: project }
 
 

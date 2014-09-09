@@ -258,13 +258,15 @@ DataMapper.finalize
 
 get '/' do
   protected!
-  @users = User.all(:order => [:name])
-  slim :index
+  @corporation = current_user.corporations.last() if current_user.corporations
+  @projects = @corporation.clients.projects.all() if @corporation
+
+  slim :projects
 end
 
 get '/corporation' do
   protected!
-  @user = User.get(session[:admin])
+  @user = current_user
   @corporation = @user.corporations.last()
   slim :corporation_info
 end
@@ -273,11 +275,9 @@ end
 
 get '/projects' do
   protected!
-  @corporation = User.get(session[:admin]).corporations.last()
+  @corporation = current_user.corporations.last()
   @projects = @corporation.clients.projects.all()
-  @budget= @projects.budgets.last() if @projects.budgets
-  @cost= @projects.costs.last()
-  @quote= @projects.costs.quotes.last()
+  
 
 
 
@@ -285,8 +285,15 @@ get '/projects' do
 end
 
 
+get '/welcome' do  
 
+  slim :welcome
+end
 
+get '/index' do  
+
+  slim :index
+end
 
 
 

@@ -1,23 +1,30 @@
-- if @user && @user.errors.any?
-    
-
-    .data-alert 
-    - @user.errors.full_messages.each do |msg|
-
-      ul class="alert-box info round"
-        = msg
+.row
+    .large-5.columns
 
 
+        form.new action="/auth/identity/register" method="POST"
+        	
+        	
+            
+            input type="text" placeholder="Email" name= :email
 
-form.new action="/auth/identity/register" method="POST"
-	
-	
+            input type="password" placeholder="Password" name= :password
 
-    input type="text" placeholder="Email" name= :email
-
-    input type="password" placeholder="Password" name= :password
-
-    input type="password" placeholder="Password Confirmation" name= :password_confirmation
+            input type="password" placeholder="Password Confirmation" name= :password_confirmation
 
 
-    input type="submit" class="button tiny radius nuevo" value="Submit" title="Submit"
+            input type="submit" class="button tiny radius nuevo" value="Submit" title="Submit"
+
+
+    .large-7.columns
+
+        - if @user && @user.errors.any?
+            
+
+            - @user.errors.full_messages.each do |msg|
+
+                ul.error
+                    li
+                        =msg
+
+

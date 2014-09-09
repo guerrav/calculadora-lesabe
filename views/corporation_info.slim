@@ -9,24 +9,26 @@
 .row
     .large-12.columns
 
-        - if current_user
-            h4= "Welcome #{current_user.email}!"
+        
+        - if @user.corporations.last
+            - corporation = @user.corporations.last
+            h1= corporation.name
 
 .row
     .large-4.columns
 
 
-        
+        - if @user.corporations.last.nil?
 
-        form.new action="/#{@user.id}" method="POST"
+            form.new action="/#{@user.id}" method="POST"
 
-            .row
-                .small-12.columns.azul
-                    h3= "Corporation"
-                .small-12.columns
-                    input type="text" name="corporation[name]" placeholder="Corporation name"                    
-                .small-12.columns
-                    input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
+                .row
+                    .small-12.columns.azul
+                        h3= "Corporation"
+                    .small-12.columns
+                        input type="text" name="corporation[name]" placeholder="Corporation name"                    
+                    .small-12.columns
+                        input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
 
 
 
@@ -64,27 +66,7 @@
     p=
 .row
     .small-4.columns
-        .row
-
-            .small-12.columns
-                - if @user.corporations.last
-                    label for="lista-empresas" class="left" Empresas: 
-            .small-12.columns
-
-                ul.no-bullet
-                    - @user.corporations.each do |corporation|
-                        
-                        .row 
-                            .small-3.columns
-                                li
-
-                                    /datos que se imprimen
-                                    = corporation.name
-                            .small-8.columns
-                                form.delete action="/corporation/#{corporation.id}" method="POST"
-                                    input type="hidden" name="_method" value="DELETE"
-                                    input type="submit" class="button tiny radius nuevo" value="×" title="Delete corporation"
-
+        p=
 
 
 
@@ -138,6 +120,11 @@
                                         input type="hidden" name="_method" value="DELETE"
                                         input type="submit" class="button tiny radius nuevo" value="×" title="Delete supplier"
                         
+.row 
+    .small-12.columns
+        - if client_any && supplier_any && @corporation.clients.projects.last.nil?
+            h2
+                a.botonsazoA href="/" Create your first project
 
 
 

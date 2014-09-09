@@ -48,12 +48,12 @@ module Sinatra
 		end
 
 		app.get '/register' do 
-			slim :register
+			slim :login
 		end
 
 		app.post '/register' do
     		@user = env['omniauth.identity']
-    		slim :register
+    		slim :login
  		end
 
 		
@@ -104,7 +104,7 @@ module Sinatra
 		  if user
 		    session[:admin] = user.id
 		    flash[:notice] = "You are now logged in as #{user.email}" 
-		    redirect to('/')
+		    redirect to('/index')
 
 
 
@@ -116,7 +116,7 @@ module Sinatra
 		    user.save
 		    session[:admin] = user.id
 		    flash[:notice] = "no hay match entonces genera un usario " 
-		    redirect to('/')
+		    redirect to('/index')
 
 		
 

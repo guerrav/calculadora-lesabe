@@ -1,22 +1,35 @@
 == slim :nav
 
 .row
-	.large-2.columns
+	.large-12.columns.text-center
+
+
+		
+.row
+	.large-3.columns
 		p=
-	.large-3.columns.azul
+	.large-2.columns.azul
 		h3 Log in
 
 		== slim :login_form
-		
 	.large-1.columns
 		p=
-	.large-3.columns.azul
+	.large-5.columns.azul 
 		
 		== slim :register
-	.large-3.columns
+	.large-1.columns
 		p=
 
 .row
-	.large-12.columns
+	.small-12.columns.text-center
+
+		p=
+
+.row
+		
+	p=
+
+.row
+	.large-12.columns.text-center
 		p Or sign up with these services 
 		a href='/auth/twitter' twitter

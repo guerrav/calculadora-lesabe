@@ -18,6 +18,10 @@ html class="no-js" lang="en"
         
          
         javascript:
+            function toggleDiv(divId) {
+                $("#"+divId).toggle();
+              }
+
             
 
             function showonlyone(thechosenone) {
@@ -48,5 +52,6 @@ html class="no-js" lang="en"
         script src="/bower_components/foundation/js/vendor/jquery.js"
 		    script src="/bower_components/foundation/js/vendor/fastclick.js"
 		    script src="/bower_components/foundation/js/foundation.min.js"
+        script src="js/foundation/foundation.joyride.js"
         script $(document).foundation();
 

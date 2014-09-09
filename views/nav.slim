@@ -22,9 +22,12 @@
 		      	
 
 		      	li
-		        	a href="/corporation" Empresa
+		        	a href="/corporation" Corporation
 
 		        - if client_any && supplier_any
 
+			        
 			        li
-			        	a href="/projects" Proyectos
+			        	a href="/profile" #{current_user.email}
+
+
