@@ -1,73 +1,74 @@
 == slim :nav
 .row
-	.small-12.columns
+	.large-12.columns
 		p=
 .row
-  	.small-12.columns
+  	.large-12.columns
 
 	  	.row
-	  		.small-8.columns
+	  		.large-8.columns
 
-	  			-if @corporation
+	  			-if @corporation && client_any
 					form.new action="/clientx/#{@corporation.id}" method="POST"
 
 		                
 
-	                	.small-3.columns
+	                	.large-3.columns
 	                		.row
-	                			.small-3.columns
+	                			.large-3.columns
 	                				label for="right-label" class="right inline" Cliente:
-	                			.small-9.columns
+	                			.large-9.columns
 							    	label 
 							    	 	
 							      		select name="project[client_name]" 
 
 							      		
-							      			-@corporation.clients.each do |client|
+							      			- @corporation.clients.each do |client|
 									
 										        option value="#{client.name}"  #{client.name.upcase}
-	                    .small-3.columns
+	                    .large-3.columns
 	                    	.row
 	                			.large-12.columns
 	                    	
 							    	input type="text" name="project[name]" placeholder="Nombre del proyecto"
 							    	
 
-					    .small-5.columns
+					    .large-5.columns
 					    	.row
 	                			.large-12.columns
 					    			input type="text" name="project[description]" placeholder="Descripción del proyecto"
 					    	
 
-						.small-1.columns
+						.large-1.columns
 							.row
 	                			.large-12.columns
 
 					    			input type="submit"  class="button tiny radius nuevo" value="+ NUEVO"
+		.row 
+			.large-12.columns
+		
+				-if @projects
 
-			
-		-if @projects
+				ul.no-bullet
+				  	- @projects.reverse.each_with_index do |project, index|
 
-			ul.no-bullet
-			  - @projects.reverse.each_with_index do |project, index|
+			  	
 
-		  	
+						li.newboxes id="newboxes#{index}"
 
-				li.newboxes id="newboxes#{index}"
+							.row
+					  			.large-12.columns.pad
 
-					.row
-			  			.large-12.columns
+								  	-if index != 0
 
-						  	-if index != 0
+								  		
+										a.botonsazoG.left href="javascript:showonlyone('newboxes#{index - 1}')" prev
+											
+									-if index != @projects.count - 1
+										
+										a.botonsazoG.right href="javascript:showonlyone('newboxes#{index + 1}')" next
+						    	
 
-						  		
-								a.botonsazoG.left href="javascript:showonlyone('newboxes#{index - 1}')" prev
-									
-							-if index != @projects.count - 1
-								
-								a.botonsazoG.right href="javascript:showonlyone('newboxes#{index + 1}')" next
-				    	
-
-				    == slim :report, locals: { project: project }
+						    == slim :report, locals: { project: project }
 
 

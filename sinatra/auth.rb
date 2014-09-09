@@ -104,7 +104,7 @@ module Sinatra
 		  if user
 		    session[:admin] = user.id
 		    flash[:notice] = "You are now logged in as #{user.email}" 
-		    redirect to('/index')
+		    redirect to('/corporation')
 
 
 

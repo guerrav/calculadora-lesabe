@@ -259,7 +259,7 @@ DataMapper.finalize
 get '/' do
   protected!
   @corporation = current_user.corporations.last() if current_user.corporations
-  @projects = @corporation.clients.projects.all() if @corporation
+  @projects = @corporation.clients.projects.all() 
 
   slim :projects
 end
@@ -353,7 +353,7 @@ end
 # busca parent y crea child con params
 
 post '/corporation/:id' do
-  client = Corporation.get(params[:id]).clients.create! params['client'] 
+  client = Corporation.get(params[:id]).clients.create params['client'] 
   client.save
 
   redirect back
@@ -383,7 +383,7 @@ end
 # busca parent y crea child con params
 
 post '/suppliers/:id' do
-  Corporation.get(params[:id]).suppliers.create! params['supplier'] 
+  Corporation.get(params[:id]).suppliers.create params['supplier'] 
 
   redirect back
 end

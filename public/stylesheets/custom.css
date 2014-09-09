@@ -13,6 +13,16 @@ ul.error {
   line-height: 1.4;
 }
 
+ul.client { 
+  list-style-image:  url("../images/client.gif");
+
+}
+
+ul.supplier { 
+  list-style-image:  url("../images/supplier.gif");
+
+}
+
 .bitter{
   font-family: 'Bitter', serif;
   font-weight: 700;
@@ -33,29 +43,22 @@ h6 {
   line-height: 1.6;
 }
 
-.rojo h6 {
+.rojo h1 ,.rojo h2 ,.rojo h3 ,.rojo h4 ,.rojo h5 ,.rojo h6 {
 	color:#ff0000;
 }
 
-.rojo h3 {
-	color:#ff0000;
-}
 
-.azul h6 {
+.azul h1 ,.azul h2 ,.azul h3 ,.azul h4 ,.azul h5 ,.azul h6 {
+
 	color:#66ccff;
 }
 
-.azul h3 {
-	color:#66ccff;
-}
 
-.gris h6 {
+.gris h1 , .gris h2 , .gris h3 ,.gris h4 ,.gris h5 ,.gris h6 {
 	color:#cccccc;
 }
 
-.gris h3 {
-	color:#cccccc;
-}
+
 
 .liroja {
     border-top:    1px solid #ff0000;
@@ -129,7 +132,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
 select {
 
  
-
+  font-family: 'Anaheim', serif;
   -webkit-appearance: none !important;
   -webkit-border-radius: 0px;
   background-color: #FFFFFF;
@@ -158,12 +161,7 @@ select {
   box-shadow:  0  -8px 8px -8px rgba(0, 0, 0, 0.2);
 }
 
-#reports {
-  
-  
-  height: 24.4rem;
-  overflow-x: scroll;
-}
+
 .botonsazoG {
   background: #C2C2C2;
   border: 1px solid #9c9c9c;
