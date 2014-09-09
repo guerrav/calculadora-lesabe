@@ -23,9 +23,9 @@
 
                 .row
                     .small-12.columns.azul
-                        h3= "Corporation"
+                        h3= "Empresa"
                     .small-12.columns
-                        input type="text" name="corporation[name]" placeholder="Corporation name"                    
+                        input type="text" name="corporation[name]" placeholder="Ponle nombre"                    
                     .small-12.columns
                         input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
 
@@ -40,10 +40,10 @@
                 
                 .row
                     .small-12.columns.azul
-                        h3= "Client"
+                        h3= "Cliente"
 
                     .small-12.columns
-                        input type="text" name="client[name]" placeholder="Client name"
+                        input type="text" name="client[name]" placeholder="Nombre del cliente"
                     .small-12.columns
                         input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
     .large-4.columns
@@ -56,9 +56,9 @@
                 
                 .row
                     .small-12.columns.azul
-                        h3= "Supplier"
+                        h3= "Proveedor"
                     .small-12.columns
-                        input type="text" name="supplier[name]" Placeholder="Supplier name"
+                        input type="text" name="supplier[name]" Placeholder="Nombre del proveedor"
                     .small-12.columns
                         input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
 .row
@@ -123,7 +123,7 @@
     .small-12.columns
         - if client_any && supplier_any && @corporation.clients.projects.last.nil?
             h2
-                a.botonsazoA href="/" Create your first project
+                a.botonsazoA href="/" Crea tu primer proyecto!
 
 
 

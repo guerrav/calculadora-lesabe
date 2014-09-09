@@ -119,8 +119,8 @@ class User
 
   attr_accessor :password_confirmation
 
-  validates_presence_of :email
-  validates_uniqueness_of :email
+  validates_presence_of :email, :username
+  validates_uniqueness_of :email, :username
   validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
   
   def self.create_with_omniauth(auth)
@@ -137,7 +137,7 @@ end
 class Corporation
   include DataMapper::Resource
   property :id,             Serial
-  property :name,           Integer, default: 0 # es string inicial ahora integer
+  property :name,           String
   property :description,    String
   property :status,         String
   property :completed_at,   Date
@@ -291,7 +291,7 @@ get '/welcome' do
 end
 
 get '/index' do  
-
+  protected!
   slim :index
 end
 

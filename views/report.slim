@@ -269,7 +269,7 @@ row
                                     
                                     .row
                                         .small-12.columns
-                                            input placeholder="Budget" type="text" name="budget[amount]"
+                                            input placeholder="Presupuesto" type="text" name="budget[amount]"
                                         .small-12.columns
                                             input type="submit" class="button tiny radius nuevo" value= "+ AGREGAR"
 
@@ -293,7 +293,7 @@ row
 
                                     
                                         .small-12.columns
-                                            input placeholder="Advpayment" type="text" name="advpayment[amount]"
+                                            input placeholder="Anticipo" type="text" name="advpayment[amount]"
                                         .small-12.columns
                                             
                                             input type="submit" class="button tiny radius nuevo" value= "+ AGREGAR" 
@@ -318,7 +318,7 @@ row
                                                         option value="#{supplier.name}"  #{supplier.name.upcase}
 
                                         .small-12.columns
-                                            input placeholder="Quote" type="text" name="quote[amount]"
+                                            input placeholder="Cotización" type="text" name="quote[amount]"
                                         .small-12.columns
                                             input type="submit"  class="button tiny radius nuevo" value="+ AGREGAR"
 
@@ -343,7 +343,7 @@ row
 
                                         .small-12.columns
                                             
-                                            input placeholder="Payment" type="text" name="payment[amount]"
+                                            input placeholder="Pago" type="text" name="payment[amount]"
                                         .small-12.columns
                                             input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
 
@@ -358,10 +358,10 @@ row
                                 form.new id="purchase" action="/cost/#{cost.id}" method="POST"
                                     .row
                                         .small-12.columns                    
-                                            input placeholder="Purchase" type="text" name="purchase[amount]"
+                                            input placeholder="Compra Material" type="text" name="purchase[amount]"
                                               
                                         .small-12.columns    
-                                            input placeholder="Description" type="text" name="purchase[description]"
+                                            input placeholder="Descripción" type="text" name="purchase[description]"
                                         .small-12.columns
                                             input type="submit" class="button tiny radius nuevo" value="+ AGREGAR" 
 
