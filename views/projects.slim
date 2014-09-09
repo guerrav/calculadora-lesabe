@@ -11,39 +11,39 @@
 	  			-if @corporation
 					form.new action="/clientx/#{@corporation.id}" method="POST"
 
-		                .row
+		                
 
-		                	.small-3.columns
-		                		.row
-		                			.small-3.columns
-		                				label for="right-label" class="right inline" Client:
-		                			.small-9.columns
-								    	label 
-								    	 	
-								      		select name="project[client_name]" 
+	                	.small-3.columns
+	                		.row
+	                			.small-3.columns
+	                				label for="right-label" class="right inline" Client:
+	                			.small-9.columns
+							    	label 
+							    	 	
+							      		select name="project[client_name]" 
 
-								      		
-								      			-@corporation.clients.each do |client|
-										
-											        option value="#{client.name}"  #{client.name.upcase}
-		                    .small-3.columns
-		                    	.row
-		                			.large-12.columns
-		                    	
-								    	input type="text" name="project[name]" placeholder="Project name"
-								    	
+							      		
+							      			-@corporation.clients.each do |client|
+									
+										        option value="#{client.name}"  #{client.name.upcase}
+	                    .small-3.columns
+	                    	.row
+	                			.large-12.columns
+	                    	
+							    	input type="text" name="project[name]" placeholder="Project name"
+							    	
 
-						    .small-5.columns
-						    	.row
-		                			.large-12.columns
-						    			input type="text" name="project[description]" placeholder="Project description"
-						    	
+					    .small-5.columns
+					    	.row
+	                			.large-12.columns
+					    			input type="text" name="project[description]" placeholder="Project description"
+					    	
 
-							.small-1.columns
-								.row
-		                			.large-12.columns
+						.small-1.columns
+							.row
+	                			.large-12.columns
 
-						    			input type="submit"  class="button tiny radius nuevo" value="+ NUEVO"
+					    			input type="submit"  class="button tiny radius nuevo" value="+ NUEVO"
 
 			
 		-if @projects

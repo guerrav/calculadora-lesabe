@@ -437,8 +437,10 @@ post '/clientx/:id' do
   corporation = Corporation.get(params[:id])
 
   project = corporation.clients.projects.create! params['project']
+  project.save
 
-  client = Client.all.first(name: project["client_name"])
+
+  client = Client.all.last(name: project["client_name"])
 
   project.client_id = client[:id]
   project.corporation_id = corporation[:id]
