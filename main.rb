@@ -434,22 +434,21 @@ end
 
 post '/clientx/:id' do
 
-  corporation = Corporation.get(params[:id])
-
-  project = corporation.clients.projects.create! params['project']
-  project.save
-
-
-  client = Client.all.last(name: project["client_name"])
-
+  project = Corporation.get(params[:id]).projects.create! params['project'] 
+  client = Client.all.first(name: project["client_name"])
   project.client_id = client[:id]
-  project.corporation_id = corporation[:id]
   project.save
   redirect back
 end
 
 
  
+  
+
+
+
+  
+
 
 
 

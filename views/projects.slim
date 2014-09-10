@@ -44,31 +44,30 @@
 	                			.large-12.columns
 
 					    			input type="submit"  class="button tiny radius nuevo" value="+ NUEVO"
-		.row 
-			.large-12.columns
 		
-				-if @projects
+		
+		
 
-				ul.no-bullet
-				  	- @projects.reverse.each_with_index do |project, index|
+		ul.no-bullet
+		  	- @projects.reverse.each_with_index do |project, index|
 
-			  	
+	  	
 
-						li.newboxes id="newboxes#{index}"
+				li.newboxes id="newboxes#{index}"
 
-							.row
-					  			.large-12.columns.pad
+					.row
+			  			.large-12.columns.pad
 
-								  	-if index != 0
+						  	-if index != 0
 
-								  		
-										a.botonsazoG.left href="javascript:showonlyone('newboxes#{index - 1}')" prev
-											
-									-if index != @projects.count - 1
-										
-										a.botonsazoG.right href="javascript:showonlyone('newboxes#{index + 1}')" next
-						    	
+						  		
+								a.botonsazoG.left href="javascript:showonlyone('newboxes#{index - 1}')" prev
+									
+							-if index != @projects.count - 1
+								
+								a.botonsazoG.right href="javascript:showonlyone('newboxes#{index + 1}')" next
+				    	
 
-						    == slim :report, locals: { project: project }
+				    == slim :report, locals: { project: project }
 
 
