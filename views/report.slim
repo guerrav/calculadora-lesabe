@@ -4,7 +4,7 @@
 - utilidad = (total_pagado - costo_real)
 
 
-
+- num = index.to_i
 
 
 row 
@@ -16,6 +16,8 @@ row
             .large-2.columns
                 p=
             .large-2.columns
+                h1=
+                a href="javascript:showonlyone('newboxes#{index}')"  numero
                 h5.elementdown= project.name.capitalize
             .large-8.columns
                 h5= project.description
@@ -294,7 +296,7 @@ row
                                     
                                         .large-12.columns
                                             input placeholder="Anticipo" type="text" name="advpayment[amount]"
-                                        .large-12.columns
+                                        .large-12.columns id="like"
                                             
                                             input type="submit" class="button tiny radius nuevo" value= "+ AGREGAR" 
 
@@ -371,7 +373,7 @@ row
 
 javascript:
   
-  window.onload= function() { showonlyone('newboxes0'); 
+  window.onload= function() { showonlyone('newboxes#{num}'); 
     sticky();
   }
  
