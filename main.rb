@@ -259,9 +259,12 @@ DataMapper.finalize
 get '/' do
   protected!
   @corporation = current_user.corporations.last() if current_user.corporations
-  @projects = @corporation.clients.projects.all() 
+  @projects = @corporation.clients.projects.all() if @corporation
+  @project = @projects.last() 
 
-  slim :projects
+
+
+  slim :project
 end
 
 get '/corporation' do
@@ -275,7 +278,7 @@ end
 
 get '/projects' do
   protected!
-  @corporation = current_user.corporations.last()
+  @corporation = current_user.corporations.last() if current_user.corporations
   @projects = @corporation.clients.projects.all()
   
 
@@ -285,12 +288,29 @@ get '/projects' do
 end
 
 
+get '/project/:id' do
+  protected!
+
+  @corporation = current_user.corporations.last() if current_user.corporations
+  @projects = @corporation.clients.projects.all()
+  @project = @corporation.clients.projects.get(params[:id])
+
+ 
+
+  
+  
+
+
+  slim :project
+end
+
+
 get '/welcome' do  
 
   slim :welcome
 end
 
-get '/index' do  
+get '/start' do  
   protected!
   slim :index
 end
@@ -383,7 +403,8 @@ end
 # busca parent y crea child con params
 
 post '/suppliers/:id' do
-  Corporation.get(params[:id]).suppliers.create params['supplier'] 
+  supplier = Corporation.get(params[:id]).suppliers.create params['supplier'] 
+  supplier.save
 
   redirect back
 end

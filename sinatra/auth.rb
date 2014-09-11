@@ -83,7 +83,7 @@ module Sinatra
 	      		user.save
 	      		session[:admin] = user.id
 	      		flash[:notice] = "lo logre  #{user.id} "
-	      		redirect to('/')
+	      		redirect to('/index')
  
 			end 
 	    end
@@ -98,18 +98,20 @@ module Sinatra
 
 
 
-		# SIGN IN
-		# CHECA EL CALLBACK, SI EXISTE EL USUARIO PARA Y LO VERIFICA 
+			if user.corporations.last 
+				session[:admin] = user.id
+				redirect to('/corporation')
+			end
+
 
 		  if user
 		    session[:admin] = user.id
 		    flash[:notice] = "You are now logged in as #{user.email}" 
-		    redirect to('/corporation')
+		    redirect to('/start')
 
 
 
-		# REGISTER
-		# CHECA EL CALLBACK, NO EXISTE USER LO CREA Y INGRESA LA INFO DEL HASH EN EMAIL
+		
 
 		  else
 		    user = User.new email: auth["info"]["email"]

@@ -1,0 +1,77 @@
+== slim :nav
+
+.row
+	.large-12.columns
+		p=
+.row
+  	.large-12.columns
+
+	  	.row
+	  		.large-8.columns
+
+	  			-if @corporation && client_any
+					form.new action="/clientx/#{@corporation.id}" method="POST"
+
+		                
+
+	                	.large-3.columns
+	                		.row
+	                			.large-3.columns
+	                				label for="right-label" class="right inline" Cliente:
+	                			.large-9.columns
+							    	label 
+							    	 	
+							      		select name="project[client_name]" 
+
+							      		
+							      			- @corporation.clients.each do |client|
+									
+										        option value="#{client.name}"  #{client.name.upcase}
+	                    .large-3.columns
+	                    	.row
+	                			.large-12.columns
+	                    	
+							    	input type="text" name="project[name]" placeholder="Nombre del proyecto"
+							    	
+
+					    .large-5.columns
+					    	.row
+	                			.large-12.columns
+					    			input type="text" name="project[description]" placeholder="Descripción del proyecto"
+					    	
+
+						.large-1.columns
+							.row
+	                			.large-12.columns
+
+					    			input type="submit"  class="button tiny radius nuevo" value="+ NUEVO"
+		
+		- if @project
+		
+
+			ul.no-bullet
+					
+					- index = params[:id].to_i
+
+					
+
+					li
+						.row
+				  			.large-12.columns.pad 
+
+							  	- if index > 1
+
+							  		
+									a.botonsazoG.left href="/project/#{index-1}" <<
+										
+								- if index < @projects.count
+									
+									a.botonsazoG.right href="/project/#{index+1}" >>
+
+						
+							  
+					    	
+
+					    == slim :report, locals: { project: @project }
+
+

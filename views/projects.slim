@@ -1,73 +1,12 @@
 == slim :nav
+
 .row
 	.large-12.columns
 		p=
-.row
-  	.large-12.columns
-
-	  	.row
-	  		.large-8.columns
-
-	  			-if @corporation && client_any
-					form.new action="/clientx/#{@corporation.id}" method="POST"
-
-		                
-
-	                	.large-3.columns
-	                		.row
-	                			.large-3.columns
-	                				label for="right-label" class="right inline" Cliente:
-	                			.large-9.columns
-							    	label 
-							    	 	
-							      		select name="project[client_name]" 
-
-							      		
-							      			- @corporation.clients.each do |client|
-									
-										        option value="#{client.name}"  #{client.name.upcase}
-	                    .large-3.columns
-	                    	.row
-	                			.large-12.columns
-	                    	
-							    	input type="text" name="project[name]" placeholder="Nombre del proyecto"
-							    	
-
-					    .large-5.columns
-					    	.row
-	                			.large-12.columns
-					    			input type="text" name="project[description]" placeholder="Descripción del proyecto"
-					    	
-
-						.large-1.columns
-							.row
-	                			.large-12.columns
-
-					    			input type="submit"  class="button tiny radius nuevo" value="+ NUEVO"
-		
-		
-		
-
-		ul.no-bullet
+.row 
+	.large-12.columns
+		ul.no-bullet.inline-list
 		  	- @projects.reverse.each_with_index do |project, index|
-
-	  	
-
-				li.newboxes id="newboxes#{index}"
-
-					.row
-			  			.large-12.columns.pad
-
-						  	-if index != 0
-
-						  		
-								a.botonsazoG.left href="javascript:showonlyone('newboxes#{index - 1}')" prev
-									
-							-if index != @projects.count - 1
-								
-								a.botonsazoG.right href="javascript:showonlyone('newboxes#{index + 1}')" next
-				    	
-
-				    == slim :report, locals: { project: project ,  index: index}
-
-
+		  		li
+		  			h3.bitter
+		  				a href="/project/#{@projects.count-index}" #{project.name}

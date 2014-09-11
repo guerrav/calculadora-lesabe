@@ -4,7 +4,7 @@
 - utilidad = (total_pagado - costo_real)
 
 
-- num = index.to_i
+
 
 
 row 
@@ -17,7 +17,7 @@ row
                 p=
             .large-2.columns
                 h1=
-                a href="javascript:showonlyone('newboxes#{index}')"  numero
+                
                 h5.elementdown= project.name.capitalize
             .large-8.columns
                 h5= project.description
@@ -246,7 +246,9 @@ row
                 
 
 
-
+.row
+    .large-12.columns.end
+        p=
 
 .row
     .large-12.columns id="inputs"
@@ -371,9 +373,4 @@ row
                     p=
 
 
-javascript:
-  
-  window.onload= function() { showonlyone('newboxes#{num}'); 
-    sticky();
-  }
- 
+
