@@ -260,11 +260,13 @@ get '/' do
   protected!
   @corporation = current_user.corporations.last() if current_user.corporations
   @projects = @corporation.clients.projects.all() if @corporation
-  @project = @projects.last() 
+  
 
 
 
-  slim :project
+
+
+  slim :summary
 end
 
 get '/corporation' do
@@ -328,7 +330,10 @@ end
 # busca parent y crea child con params
 
 post '/:id' do
-  User.get(params[:id]).corporations.create params['corporation']  
+  corporation = User.get(params[:id]).corporations.create params['corporation'] 
+  corporation.completed_at = corporation.completed_at.nil? ? Time.now : nil
+  corporation.save
+ 
   redirect back
 end
 
@@ -449,6 +454,8 @@ post '/client/:id' do
   client = Client.get(params[:id])
   project = client.projects.create! params['project']
   project.corporation_id = client[:corporation_id]
+  project.completed_at = project.completed_at.nil? ? Time.now : nil
+
   project.save
   redirect back
 end

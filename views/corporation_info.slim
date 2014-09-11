@@ -17,7 +17,7 @@
         
         - if @user.corporations.last
             - corporation = @user.corporations.last
-            h1.bitter.elementdown= corporation.name
+            h1.bitter.elementdown= corporation.name.capitalize
     .large-12.columns
         p=
 
