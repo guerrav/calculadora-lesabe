@@ -277,14 +277,20 @@ get '/corporation' do
 end
 
 
+get '/project' do
+  protected!
+  @user = current_user
+  @corporation = @user.corporations.last()
+  @projects = @corporation.clients.projects.all()
+  @project = @corporation.clients.projects.last()
+  slim :project
+end
+
 
 get '/projects' do
   protected!
   @corporation = current_user.corporations.last() if current_user.corporations
   @projects = @corporation.clients.projects.all()
-  
-
-
 
   slim :projects
 end
@@ -294,17 +300,17 @@ get '/project/:id' do
   protected!
 
   @corporation = current_user.corporations.last() if current_user.corporations
-  @projects = @corporation.clients.projects.all()
+
+  @projects = @corporation.clients.projects.all() 
   @project = @corporation.clients.projects.get(params[:id])
-
- 
-
-  
-  
-
 
   slim :project
 end
+
+
+
+
+
 
 
 get '/welcome' do  

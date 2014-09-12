@@ -44,16 +44,21 @@
 							.row
 	                			.large-12.columns
 
-					    			input type="submit"  class="button tiny radius nuevo" value="+ NUEVO"
+					    			input type="submit"  class="button tiny radius nuevo" value="+ NUEVO PROYECTO"
 		
-		- if @project
+		- if @corporation.clients.projects.last()
 		
 
 			ul.no-bullet
-					
-					- index = params[:id].to_i
 
-					
+					- if params[:id].to_i == 0
+						- index = @projects.count
+					-else
+
+						- index = params[:id].to_i
+
+
+					h1=@corporation.clients.projects.get(params[:id]).name
 
 					li
 						.row
@@ -67,6 +72,7 @@
 								- if index < @projects.count
 									
 									a.botonsazoG.right href="/project/#{index+1}" >>
+
 
 						
 							  

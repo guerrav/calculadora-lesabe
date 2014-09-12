@@ -25,14 +25,18 @@
 
 		        	a href="/corporation" Empresa
 
-		        - if client_any && supplier_any
+		        - if client_any && supplier_any && projects_any
+
+		        	
 
 		        	li
 			        	a href="/projects" Proyectos
 
+			       	li
+			        	a href="/project" Último proyecto
+
 			        
-			        li
-			        	a href="/" #{current_user.username.capitalize}
+			        
 
 			        
 
