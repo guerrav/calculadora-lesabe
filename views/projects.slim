@@ -6,7 +6,12 @@
 .row 
 	.large-12.columns
 		ul.no-bullet.inline-list
-		  	- @projects.reverse.each_with_index do |project, index|
+		  	- user_projects.reverse.each_with_index  do |project, index| 
+		  		
+		  		- project.index = index.to_i + 1
+		  		- project.save
+		  		
 		  		li
+		  			
 		  			h3.bitter
-		  				a href="/project/#{@projects.count-index}" #{project.name.capitalize}
+		  				a href="/project/#{project.index}" #{project.name.capitalize}

@@ -40,6 +40,14 @@ module Sinatra
 		    	end
 			end
 
+			def user_projects
+
+		    	@current_user ||= User.get(session[:admin]) if session[:admin]
+		    	if @current_user
+		    		x = @current_user.corporations.clients.projects.all()
+		    	end
+			end
+
 
 		end
 

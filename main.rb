@@ -172,6 +172,7 @@ class Project
   include DataMapper::Resource
   property :id,             Serial
   property :name,           String, required: true
+  property :index,          Integer
   property :description,    String
   property :client_name,    String
   property :status,         String
@@ -180,6 +181,11 @@ class Project
   has n, :costs
   belongs_to :client
   belongs_to :corporation
+
+
+
+
+
 end
 
 class Budget
@@ -277,12 +283,21 @@ get '/corporation' do
 end
 
 
-get '/project' do
+get '/project/:index' do
   protected!
   @user = current_user
   @corporation = @user.corporations.last()
-  @projects = @corporation.clients.projects.all()
-  @project = @corporation.clients.projects.last()
+
+  
+  
+  @project = user_projects.get! params[:index] 
+  
+
+  
+    
+  
+
+
   slim :project
 end
 
@@ -290,22 +305,13 @@ end
 get '/projects' do
   protected!
   @corporation = current_user.corporations.last() if current_user.corporations
-  @projects = @corporation.clients.projects.all()
+  
+
 
   slim :projects
 end
 
 
-get '/project/:id' do
-  protected!
-
-  @corporation = current_user.corporations.last() if current_user.corporations
-
-  @projects = @corporation.clients.projects.all() 
-  @project = @corporation.clients.projects.get(params[:id])
-
-  slim :project
-end
 
 
 

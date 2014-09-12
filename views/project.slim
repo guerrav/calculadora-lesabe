@@ -3,6 +3,7 @@
 .row
 	.large-12.columns
 		p=
+
 .row
   	.large-12.columns
 
@@ -49,35 +50,35 @@
 		- if @corporation.clients.projects.last()
 		
 
-			ul.no-bullet
+			
 
-					- if params[:id].to_i == 0
-						- index = @projects.count
-					-else
+			- if params[:id].to_i == 0
+				- index = user_projects.count
+			-else
 
-						- index = params[:id].to_i
+				- index = params[:id].to_i
 
 
-					h1=@corporation.clients.projects.get(params[:id]).name
+			
 
-					li
-						.row
-				  			.large-12.columns.pad 
+			
+			.row
+	  			.large-12.columns.pad 
 
-							  	- if index > 1
+				  	- if index > 1
 
-							  		
-									a.botonsazoG.left href="/project/#{index-1}" <<
-										
-								- if index < @projects.count
-									
-									a.botonsazoG.right href="/project/#{index+1}" >>
+				  		
+						a.botonsazoG.left href="/project/#{index-1}" <<
+							
+					- if index < user_projects.count
+						
+						a.botonsazoG.right href="/project/#{index+1}" >>
 
 
 						
 							  
 					    	
 
-					    == slim :report, locals: { project: @project }
+			== slim :report, locals: { project: @project }
 
 
