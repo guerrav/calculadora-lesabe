@@ -4,6 +4,8 @@
 	.large-12.columns
 		p=
 
+
+
 .row
   	.large-12.columns
 
@@ -52,27 +54,18 @@
 
 			
 
-			- if params[:id].to_i == 0
-				- index = user_projects.count
-			-else
-
-				- index = params[:id].to_i
-
-
-			
-
 			
 			.row
 	  			.large-12.columns.pad 
 
-				  	- if index > 1
+				  	- if @project.index > 1
 
 				  		
-						a.botonsazoG.left href="/project/#{index-1}" <<
+						a.botonsazoG.left href="/project/#{@project.index-1}" <<
 							
-					- if index < user_projects.count
+					- if @project.index < user_projects.count
 						
-						a.botonsazoG.right href="/project/#{index+1}" >>
+						a.botonsazoG.right href="/project/#{@project.index+1}" >>
 
 
 						

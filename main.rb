@@ -172,7 +172,7 @@ class Project
   include DataMapper::Resource
   property :id,             Serial
   property :name,           String, required: true
-  property :index,          Integer
+  property :index,          Integer, default: 1
   property :description,    String
   property :client_name,    String
   property :status,         String
@@ -266,11 +266,6 @@ get '/' do
   protected!
   @corporation = current_user.corporations.last() if current_user.corporations
   @projects = @corporation.clients.projects.all() if @corporation
-  
-
-
-
-
 
   slim :summary
 end
@@ -286,18 +281,15 @@ end
 get '/project/:index' do
   protected!
   @user = current_user
-  @corporation = @user.corporations.last()
-
-  
-  
-  @project = user_projects.get! params[:index] 
-  
-
-  
+  @corporation = @user.corporations.last() 
+  if params[:id] == 1
+    @user.corporations.last() 
     
+  else
+    @project = Project.all.last(index: params['index'], corporation_id: @corporation['id']) 
+  end
+
   
-
-
   slim :project
 end
 
