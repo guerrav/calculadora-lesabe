@@ -58,14 +58,16 @@
 			.row
 	  			.large-12.columns.pad 
 
-				  	- if @project.index > 1
+				  	- if @project.index < user_projects.count
 
 				  		
-						a.botonsazoG.left href="/project/#{@project.index-1}" <<
+						a.botonsazoG.left href="/project/#{@project.index+1}" <<
+
+
 							
-					- if @project.index < user_projects.count
+					- if @project.index > 1
 						
-						a.botonsazoG.right href="/project/#{@project.index+1}" >>
+						a.botonsazoG.right href="/project/#{@project.index-1}" >>
 
 
 						

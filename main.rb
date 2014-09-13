@@ -15,7 +15,7 @@ require 'sinatra/assetpack'
 require 'sinatra/support/numeric'
 
 
-#INICIALIZERS
+#INITIALIZERS
 
 
 register Sinatra::Numeric
@@ -23,7 +23,6 @@ register Sinatra::Numeric
 configure :development do
     DataMapper.auto_upgrade!
 end
-
 
 
 configure do 
@@ -181,11 +180,6 @@ class Project
   has n, :costs
   belongs_to :client
   belongs_to :corporation
-
-
-
-
-
 end
 
 class Budget
@@ -215,7 +209,6 @@ class Cost
   property :id,             Serial
   property :amount,         Integer, default: 0
   property :created_at,     DateTime
-
   has n, :quotes
   has n, :purchases
   belongs_to :project
@@ -297,9 +290,6 @@ end
 get '/projects' do
   protected!
   @corporation = current_user.corporations.last() if current_user.corporations
-  
-
-
   slim :projects
 end
 
@@ -337,7 +327,6 @@ post '/:id' do
   corporation = User.get(params[:id]).corporations.create params['corporation'] 
   corporation.completed_at = corporation.completed_at.nil? ? Time.now : nil
   corporation.save
- 
   redirect back
 end
 
@@ -384,7 +373,6 @@ end
 post '/corporation/:id' do
   client = Corporation.get(params[:id]).clients.create params['client'] 
   client.save
-
   redirect back
 end
 
@@ -414,7 +402,6 @@ end
 post '/suppliers/:id' do
   supplier = Corporation.get(params[:id]).suppliers.create params['supplier'] 
   supplier.save
-
   redirect back
 end
 
@@ -459,7 +446,6 @@ post '/client/:id' do
   project = client.projects.create! params['project']
   project.corporation_id = client[:corporation_id]
   project.completed_at = project.completed_at.nil? ? Time.now : nil
-
   project.save
   redirect back
 end
@@ -524,7 +510,6 @@ post '/project/:id' do
 
   budget = Project.get(params[:id]).budgets.create! params['budget']
   cost = Project.get(params[:id]).costs.create!
-
   budget.save
   cost.save
 
@@ -607,14 +592,11 @@ post '/budget/:id' do
   budget = Budget.get(params[:id])
   advpayment = budget.advpayments.create! params['advpayment']
   advpayment.project_id = budget[:project_id]
-
-
   parent_class =  Project.get(budget[:project_id])
-
   advpayment.client_id = parent_class[:client_id]
-
   advpayment.save
   redirect back
+
 end
 
 # busca id y borra
@@ -656,11 +638,8 @@ end
 
 post '/cost/:id' do
   
-
   purchase = Cost.get(params[:id]).purchases.create! params['purchase'] 
   purchase.save
-
-  
 
   redirect back
 end
@@ -693,18 +672,12 @@ end
 
 post '/quote/:id' do
 
-  
-  
-
   quote = Cost.get(params[:id]).quotes.create! params['quote'] 
-
   supplier = Supplier.all.first(name: quote["supplier_name"])
-
   quote.supplier_id = supplier[:id]
-
   quote.save
-
   redirect back
+
 end
 
 # busca id y borra
@@ -731,24 +704,12 @@ end
 
 post '/payment/:id' do
   
-
-
   payment = Quote.get(params[:id]).payments.create! params['payment'] 
-
   supplier = Supplier.all.first(name: payment["supplier_name"])
-
   payment.supplier_id = supplier[:id]
-
-
-
-  
-
   payment.save
-
-
-  
-
   redirect back
+
 end
 
 # busca id y borra
