@@ -157,7 +157,7 @@
                                 .row
                                     
                                     .small-7.columns
-                                        li
+                                        li.edit_supplier
 
                                             /datos que se imprimen
                                             = supplier.name.capitalize
@@ -189,7 +189,7 @@
                 }
          });
 
-- if corporation 
+- if @user.corporations.clients.last
     javascript:
          $('.edit_client').editable('/client/#{corporation.clients.last.id}', { 
              method : 'PUT',
@@ -201,3 +201,17 @@
                      window.location.reload();
                 }
          });
+
+- if @user.corporations.suppliers.last
+    javascript:
+         $('.edit_supplier').editable('/supplier/#{corporation.suppliers.last.id}', { 
+             method : 'PUT',
+             name: 'supplier[name]',
+             indicator : 'Guardando...',
+             tooltip   : 'Click para editar...',
+             width : '7em',
+             callback : function(value, settings) {
+                     window.location.reload();
+                }
+         });
+

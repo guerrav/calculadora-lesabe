@@ -1,6 +1,6 @@
 == slim :nav
 
--if @project
+-if current_user.corporations.projects.last
 
 	- cotizado = @projects.budgets.sum(:amount).to_i
 	- pagado = @projects.budgets.advpayments.sum(:amount).to_i
@@ -16,11 +16,11 @@
 			h1.bitter= "#{@projects.count} proyectos"
 			h2.bitter= "#{@corporation.clients.count} clientes"
 			-if pagado > 1
-				h2.bitter= "Que te deben #{currency(cotizado - pagado)}"
+				h2.bitter= "Te deben #{currency(cotizado - pagado)}"
 
 			h2.bitter= "#{@corporation.suppliers.count} proveedores"
 			-if pagosprov > 1
-				h2.bitter= "Que les debes #{currency(cotiprov - pagosprov)}"
+				h2.bitter= "Debes #{currency(cotiprov - pagosprov)}"
 			-if pagado > 1
 				h2.bitter= "Haz cotizado #{currency(cotizado)} y cobrado #{currency(pagado)}"
 			
