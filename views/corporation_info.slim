@@ -7,7 +7,7 @@
         p=
 
 .row 
-    .small-12.columns
+    .large-12.columns
         - if client_any && supplier_any && @corporation.clients.projects.last.nil?
             h2
                 a.botonsazoA href="/projects" Crea tu primer proyecto!
@@ -34,11 +34,11 @@
             form.new action="/#{@user.id}" method="POST"
 
                 .row
-                    .small-12.columns.azul
+                    .large-12.columns.azul
                         h4.bitter.elementdown= "Empresa"
-                    .small-12.columns
+                    .large-12.columns
                         input type="text" name="corporation[name]" placeholder="Ponle nombre"                    
-                    .small-12.columns
+                    .large-12.columns
                         input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
 
 
@@ -64,12 +64,12 @@
             form.new action="/corporation/#{@corporation.id}" method="POST"
                 
                 .row
-                    .small-12.columns.azul
+                    .large-12.columns.azul
                         h5.bitter.elementdown= "Nuevo cliente"
 
-                    .small-12.columns
+                    .large-12.columns
                         input type="text" name="client[name]" placeholder="Nombre del cliente"
-                    .small-12.columns
+                    .large-12.columns
                         input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
     .large-1.columns
         p=
@@ -79,7 +79,7 @@
             -if corporation.clients.last
                 .row
 
-                    .small-12.columns
+                    .large-12.columns
                         ul.client
                             li 
                                 
@@ -87,7 +87,7 @@
 
 
 
-                    .small-12.columns
+                    .large-12.columns
                         ul.no-bullet
 
                             - if corporation
@@ -95,14 +95,14 @@
                             - corporation.clients.each do |client|
                                 .row
                                     
-                                    .small-7.columns
+                                    .large-7.columns
                                         li.edit_client
 
                                             /datos que se imprimen
                                             = client.name.capitalize
 
                                     -if client.projects.last.nil?
-                                        .small-5.columns
+                                        .large-5.columns
                                             form.delete action="/client/#{client.id}" method="POST"
                                                 input type="hidden" name="_method" value="DELETE"
                                                 input type="submit" class="button tiny radius nuevo" value="×" title="Delete client"
@@ -128,11 +128,11 @@
             form.new action="/suppliers/#{@corporation.id}" method="POST"
                 
                 .row
-                    .small-12.columns.azul
+                    .large-12.columns.azul
                         h5.bitter.elementdown= "Nuevo proveedor"
-                    .small-12.columns
+                    .large-12.columns
                         input type="text" name="supplier[name]" Placeholder="Nombre del proveedor"
-                    .small-12.columns
+                    .large-12.columns
                         input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
 
     .large-1.columns
@@ -143,12 +143,12 @@
         - if corporation
             - if corporation.suppliers.last
                 .row
-                    .small-12.columns
+                    .large-12.columns
                         ul.supplier
                             li 
                              
                                 label for="lista-empresas" 
-                    .small-12.columns
+                    .large-12.columns
                         ul.no-bullet
 
                             - if corporation
@@ -156,13 +156,13 @@
                             - corporation.suppliers.each do |supplier|
                                 .row
                                     
-                                    .small-7.columns
+                                    .large-7.columns
                                         li.edit_supplier
 
                                             /datos que se imprimen
                                             = supplier.name.capitalize
                                     -if supplier.quotes.last.nil?
-                                        .small-5.columns
+                                        .large-5.columns
 
                                             form.delete action="/supplier/#{supplier.id}" method="POST"
                                                 input type="hidden" name="_method" value="DELETE"
@@ -171,7 +171,7 @@
 
 
 .row
-    .small-12.columns
+    .large-12.columns
         p=
                         
 
