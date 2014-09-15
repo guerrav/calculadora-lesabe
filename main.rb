@@ -294,13 +294,6 @@ get '/projects' do
 end
 
 
-
-
-
-
-
-
-
 get '/welcome' do  
 
   slim :welcome
@@ -310,8 +303,6 @@ get '/start' do
   protected!
   slim :index
 end
-
-
 
 
 
@@ -341,9 +332,8 @@ end
 
 put '/corporation/:id' do
   corporation = Corporation.get params[:id]
-  corporation.completed_at = corporation.completed_at.nil? ? Time.now : nil
-  corporation.save
-  redirect back
+  corporation.update(params[:corporation])  
+  
 end
 
 
@@ -387,9 +377,8 @@ end
 
 put '/client/:id' do
   client = Client.get params[:id]
-  client.completed_at = client.completed_at.nil? ? Time.now : nil
-  client.save
-  redirect back
+  client.update(params[:client])  
+
 end
 
 
@@ -416,9 +405,8 @@ end
 
 put '/supplier/:id' do
   supplier = Supplier.get params[:id]
-  supplier.completed_at = supplier.completed_at.nil? ? Time.now : nil
-  supplier.save
-  redirect back
+  supplier.update(params[:supplier])  
+
 end
 
 
@@ -455,6 +443,7 @@ post '/clientx/:id' do
   project = Corporation.get(params[:id]).projects.create! params['project'] 
   client = Client.all.first(name: project["client_name"])
   project.client_id = client[:id]
+  project.completed_at = project.completed_at.nil? ? Time.now : nil
   project.save
   redirect back
 end
@@ -482,10 +471,10 @@ end
 
 put '/project/:id' do
   project = Project.get params[:id]
-  project.completed_at = project.completed_at.nil? ? Time.now : nil
-  project.save
+  project.update(params[:project])
   redirect back
 end
+
 
 
 
@@ -510,7 +499,9 @@ post '/project/:id' do
 
   budget = Project.get(params[:id]).budgets.create! params['budget']
   cost = Project.get(params[:id]).costs.create!
+  budget.created_at = budget.created_at.nil? ? Time.now : nil
   budget.save
+  cost.created_at = cost.created_at.nil? ? Time.now : nil
   cost.save
 
   redirect back
@@ -639,9 +630,10 @@ end
 post '/cost/:id' do
   
   purchase = Cost.get(params[:id]).purchases.create! params['purchase'] 
+  purchase.created_at = purchase.created_at.nil? ? Time.now : nil
   purchase.save
-
   redirect back
+
 end
 
 # busca id y borra
@@ -655,7 +647,7 @@ end
 
 put '/purchase/:id' do
   purchase = Purchase.get params[:id]
-  purchase.completed_at = purchase.completed_at.nil? ? Time.now : nil
+  purchase.created_at = Time.now 
   purchase.save
   redirect back
 end
@@ -707,6 +699,7 @@ post '/payment/:id' do
   payment = Quote.get(params[:id]).payments.create! params['payment'] 
   supplier = Supplier.all.first(name: payment["supplier_name"])
   payment.supplier_id = supplier[:id]
+  payment.created_at = payment.created_at.nil? ? Time.now : nil
   payment.save
   redirect back
 

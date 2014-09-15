@@ -1,5 +1,6 @@
 == slim :nav
 
+
 .row 
     
     .large-12.columns
@@ -9,15 +10,17 @@
     .small-12.columns
         - if client_any && supplier_any && @corporation.clients.projects.last.nil?
             h2
-                a.botonsazoA href="/project/1" Crea tu primer proyecto!
+                a.botonsazoA href="/projects" Crea tu primer proyecto!
 
 .row
-    .large-12.columns
+    .large-12.columns.bitter
 
+             
         
         - if @user.corporations.last
             - corporation = @user.corporations.last
-            h1.bitter.elementdown= corporation.name.capitalize
+            h1.bitter.elementdown.edit_corporation= corporation.name.capitalize
+
     .large-12.columns
         p=
 
@@ -68,7 +71,7 @@
                         input type="text" name="client[name]" placeholder="Nombre del cliente"
                     .small-12.columns
                         input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
-    .small-3.columns
+    .large-1.columns
         p=
 
     .large-3.columns
@@ -80,7 +83,7 @@
                         ul.client
                             li 
                                 
-                                label for="lista-empresas" Clientes:
+                                label for="lista-empresas" 
 
 
 
@@ -92,15 +95,19 @@
                             - corporation.clients.each do |client|
                                 .row
                                     
-                                    .small-10.columns
-                                        li 
+                                    .small-7.columns
+                                        li.edit_client
 
                                             /datos que se imprimen
                                             = client.name.capitalize
-                                    .small-2.columns
-                                        form.delete action="/client/#{client.id}" method="POST"
-                                            input type="hidden" name="_method" value="DELETE"
-                                            input type="submit" class="button tiny radius nuevo" value="×" title="Delete client"
+
+                                    -if client.projects.last.nil?
+                                        .small-5.columns
+                                            form.delete action="/client/#{client.id}" method="POST"
+                                                input type="hidden" name="_method" value="DELETE"
+                                                input type="submit" class="button tiny radius nuevo" value="×" title="Delete client"
+    .large-5.columns
+        p=
 
 .row
     .large-12.columns.pad
@@ -128,7 +135,7 @@
                     .small-12.columns
                         input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
 
-    .large-3.columns
+    .large-1.columns
         p=
 
 
@@ -140,7 +147,7 @@
                         ul.supplier
                             li 
                              
-                                label for="lista-empresas" Proveedores:
+                                label for="lista-empresas" 
                     .small-12.columns
                         ul.no-bullet
 
@@ -149,16 +156,19 @@
                             - corporation.suppliers.each do |supplier|
                                 .row
                                     
-                                    .small-10.columns
+                                    .small-7.columns
                                         li
 
                                             /datos que se imprimen
                                             = supplier.name.capitalize
-                                    .small-2.columns
+                                    -if supplier.quotes.last.nil?
+                                        .small-5.columns
 
-                                        form.delete action="/supplier/#{supplier.id}" method="POST"
-                                            input type="hidden" name="_method" value="DELETE"
-                                            input type="submit" class="button tiny radius nuevo" value="×" title="Delete supplier"
+                                            form.delete action="/supplier/#{supplier.id}" method="POST"
+                                                input type="hidden" name="_method" value="DELETE"
+                                                input type="submit" class="button tiny radius nuevo" value="×" title="Delete supplier"
+    .large-5.columns
+
 
 .row
     .small-12.columns
@@ -166,7 +176,28 @@
                         
 
 
+- if @user.corporations.last
+    javascript:
+         $('.edit_corporation').editable('/corporation/#{current_user.corporations.last.id}', { 
+             method : 'PUT',
+             name: 'corporation[name]',
+             indicator : 'Guardando...',
+             tooltip   : 'Click para editar...',
+             width : '7em',
+             callback : function(value, settings) {
+                     window.location.reload();
+                }
+         });
 
-
-
-
+- if corporation 
+    javascript:
+         $('.edit_client').editable('/client/#{corporation.clients.last.id}', { 
+             method : 'PUT',
+             name: 'client[name]',
+             indicator : 'Guardando...',
+             tooltip   : 'Click para editar...',
+             width : '7em',
+             callback : function(value, settings) {
+                     window.location.reload();
+                }
+         });

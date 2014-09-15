@@ -12,7 +12,8 @@ html class="no-js" lang="en"
 
         /[if lt IE 9] 
         script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"
-
+        script src="/bower_components/foundation/js/vendor/jquery.js"
+        script src="/js/jquery.jeditable.js"
         script src="/bower_components/foundation/js/vendor/modernizr.js"
     body 
         
@@ -28,9 +29,12 @@ html class="no-js" lang="en"
 
         == yield
         
-        script src="/bower_components/foundation/js/vendor/jquery.js"
-		    script src="/bower_components/foundation/js/vendor/fastclick.js"
-		    script src="/bower_components/foundation/js/foundation.min.js"
+
+        
+        
+             
+		script src="/bower_components/foundation/js/vendor/fastclick.js"
+		script src="/bower_components/foundation/js/foundation.min.js"
         
         script $(document).foundation();
 

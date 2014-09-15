@@ -5,50 +5,6 @@
 		p=
 
 
-
-.row
-  	.large-12.columns
-
-	  	.row
-	  		.large-8.columns
-
-	  			-if @corporation && client_any
-					form.new action="/clientx/#{@corporation.id}" method="POST"
-
-		                
-
-	                	.large-3.columns
-	                		.row
-	                			.large-3.columns
-	                				label for="right-label" class="right inline" Cliente:
-	                			.large-9.columns
-							    	label 
-							    	 	
-							      		select name="project[client_name]" 
-
-							      		
-							      			- @corporation.clients.each do |client|
-									
-										        option value="#{client.name}"  #{client.name.upcase}
-	                    .large-3.columns
-	                    	.row
-	                			.large-12.columns
-	                    	
-							    	input type="text" name="project[name]" placeholder="Nombre del proyecto"
-							    	
-
-					    .large-5.columns
-					    	.row
-	                			.large-12.columns
-					    			input type="text" name="project[description]" placeholder="Descripción del proyecto"
-					    	
-
-						.large-1.columns
-							.row
-	                			.large-12.columns
-
-					    			input type="submit"  class="button tiny radius nuevo" value="+ NUEVO PROYECTO"
-		
 		- if @corporation.clients.projects.last()
 		
 

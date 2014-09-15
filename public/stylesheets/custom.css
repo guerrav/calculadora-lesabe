@@ -304,5 +304,35 @@ select {
 
 
 
+.edit_corporation form,
+.edit_corporation input {
+    width: auto;
+    margin: 0;
+    outline: none;
+    font: inherit;
+    color: inherit;
+    background: inherit;
+    border: inherit
+}
 
+.edit_project form,
+.edit_project input {
+    width: auto;
+    margin: 0;
+    outline: none;
+    font: inherit;
+    color: inherit;
+    background: inherit;
+    border: inherit
+}
 
+.edit_client form,
+.edit_client input {
+    width: auto;
+    margin: 0;
+    outline: none;
+    font: inherit;
+    color: inherit;
+    background: inherit;
+    border: inherit
+}

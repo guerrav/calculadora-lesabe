@@ -1,18 +1,26 @@
-- cotizado = @projects.budgets.sum(:amount).to_i
-- pagado = @projects.budgets.advpayments.sum(:amount).to_i
-- cotiprov = @projects.costs.quotes.sum(:amount).to_i
-- pagosprov = @projects.costs.quotes.payments.sum(:amount).to_i
-
 == slim :nav
-.row
-	.large-12.columns
-		p=
-.row
-	.large-12.columns
-		h1.bitter= "#{@projects.count} proyectos"
-		h2.bitter= "#{@corporation.clients.count} clientes"
-		h2.bitter= "Que te deben #{currency(cotizado - pagado)}"
-		h2.bitter= "#{@corporation.suppliers.count} proveedores"
-		h2.bitter= "Que les debes #{currency(cotiprov - pagosprov)}"
-		h2.bitter= "Haz cotizado #{currency(cotizado)} y cobrado #{currency(pagado)}"
-		h2.bitter= "Al dia de hoy #{@corporation.name.capitalize} es "
+
+-if @project
+
+	- cotizado = @projects.budgets.sum(:amount).to_i
+	- pagado = @projects.budgets.advpayments.sum(:amount).to_i
+	- cotiprov = @projects.costs.quotes.sum(:amount).to_i
+	- pagosprov = @projects.costs.quotes.payments.sum(:amount).to_i
+
+	
+	.row
+		.large-12.columns
+			p=
+	.row
+		.large-12.columns
+			h1.bitter= "#{@projects.count} proyectos"
+			h2.bitter= "#{@corporation.clients.count} clientes"
+			-if pagado > 1
+				h2.bitter= "Que te deben #{currency(cotizado - pagado)}"
+
+			h2.bitter= "#{@corporation.suppliers.count} proveedores"
+			-if pagosprov > 1
+				h2.bitter= "Que les debes #{currency(cotiprov - pagosprov)}"
+			-if pagado > 1
+				h2.bitter= "Haz cotizado #{currency(cotizado)} y cobrado #{currency(pagado)}"
+			

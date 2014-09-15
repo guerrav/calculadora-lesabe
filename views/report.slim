@@ -1,11 +1,15 @@
 -if project
     - presupuesto = project.budgets.sum(:amount).to_i
     - total_pagado = project.budgets.advpayments.sum(:amount).to_i
+   
     - costo_real = project.costs.purchases.sum(:amount).to_i + project.costs.quotes.sum(:amount).to_i
     - utilidad = (total_pagado - costo_real)
 
 
-
+    - if project.costs.last
+        - cost = Cost.all.last(project_id: project['id'])
+        - cost.amount = costo_real
+        - cost.save
 
 
 row 
@@ -19,9 +23,9 @@ row
             .large-2.columns
                 h1=
                 
-                h5.elementdown= project.name.capitalize
+                h5.elementdown.edit_project= project.name.capitalize
             .large-8.columns
-                h5= project.description
+                h5.edit_area= project.description
                 
         .row 
             .large-2.columns 
@@ -374,4 +378,16 @@ row
                     p=
 
 
+-if project
+    javascript:
+         $('.edit_project').editable('/project/#{project.id}', { 
+             method : 'PUT',
+             name: 'project[name]',
+             indicator : 'Guardando...',
+             tooltip   : 'Click para editar...',
+             width : '7em',
+             callback : function(value, settings) {
+                     window.location.reload();
+                }
+         });
 
