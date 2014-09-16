@@ -1,6 +1,5 @@
 require 'sinatra'
 require 'sinatra/flash'
-require 'sinatra/reloader' if development?
 require 'slim'
 require 'sass'
 require 'data_mapper'
@@ -9,7 +8,6 @@ require 'dm-validations'
 require 'dm-timestamps'
 require 'omniauth-identity'
 require 'omniauth-twitter'
-require 'dm-ar-finders'
 require './sinatra/auth'
 require 'sinatra/assetpack'
 require 'sinatra/support/numeric'
@@ -72,9 +70,6 @@ use OmniAuth::Builder do
 end
 
 
-
-
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
 
 
 class Authentication
