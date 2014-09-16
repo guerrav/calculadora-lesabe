@@ -4,7 +4,7 @@ require './main'
  
 
 
- DataMapper.setup(:default, ENV['HEROKU_POSTGRESQL_AMBER_URL'])
+DataMapper.setup(:default, ENV['HEROKU_POSTGRESQL_AMBER_URL'])
 
 
 
