@@ -3,7 +3,7 @@ ruby '2.1.0'
 
 gem 'sinatra', '~>1.4.4'
 gem 'sinatra-flash'
-gem "dm-core"
+gem "datamapper"
 gem "slim"
 gem "sass"
 gem "dm-postgres-adapter", :group => :production
