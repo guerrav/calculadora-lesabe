@@ -23,6 +23,9 @@ configure :development do
 end
 
 
+
+
+
 configure do 
 
   set :default_currency_unit, '$'
@@ -245,7 +248,37 @@ end
 
 
 
-DataMapper.finalize
+configure do
+  DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
+  DataMapper.finalize
+  DataMapper.auto_migrate!
+
+
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #HOME PONE A TODOS LOS USUARIOS 
