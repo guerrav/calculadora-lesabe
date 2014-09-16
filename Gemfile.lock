@@ -1,10 +1,11 @@
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     addressable (2.3.6)
     bcrypt (3.1.7)
     bcrypt-ruby (3.1.5)
       bcrypt (>= 3.1.3)
+    daemons (1.1.9)
     data_objects (0.10.14)
       addressable (~> 2.1)
     datamapper (1.2.0)
@@ -58,6 +59,7 @@ GEM
       data_objects (= 0.10.14)
     do_sqlite3 (0.10.14)
       data_objects (= 0.10.14)
+    eventmachine (1.0.3)
     fastercsv (1.5.5)
     hashie (3.3.1)
     jsmin (1.0.1)
@@ -77,7 +79,6 @@ GEM
     omniauth-twitter (1.0.1)
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
-    pg (0.17.1)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
@@ -102,6 +103,10 @@ GEM
       tilt (>= 1.3.3, < 2.1)
     stringex (1.5.1)
     temple (0.6.8)
+    thin (1.6.2)
+      daemons (>= 1.0.9)
+      eventmachine (>= 1.0.0)
+      rack (>= 1.0.0)
     tilt (1.4.1)
     uuidtools (2.1.5)
 
@@ -117,10 +122,10 @@ DEPENDENCIES
   dm-validations
   omniauth-identity
   omniauth-twitter
-  pg
   sass
-  sinatra (~> 1.4.4)
+  sinatra
   sinatra-assetpack
   sinatra-flash
   sinatra-support
   slim
+  thin
