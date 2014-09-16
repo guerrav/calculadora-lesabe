@@ -6,8 +6,8 @@ gem 'sinatra-flash'
 gem "datamapper"
 gem "slim"
 gem "sass"
-gem "dm-postgres-adapter", group: :production
-gem "dm-sqlite-adapter", group: :development
+gem "dm-postgres-adapter", :group => :production
+gem "dm-sqlite-adapter", :group => :development
 gem 'dm-migrations'
 gem 'dm-validations'
 gem 'dm-timestamps'
