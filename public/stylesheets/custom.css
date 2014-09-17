@@ -163,6 +163,7 @@ select {
 
 
 
+
 .end {
   margin-bottom: 130px;
 }
@@ -299,6 +300,34 @@ select {
 .botonsazoV:active {
   background: #4a5;
   box-shadow: 0 0 0 #358643, inset 0 -1px 1px rgba(0, 0, 0, 0.2), 0 2px 5px rgba(0, 0, 0, 0.2);
+  transform: translateY(4px);
+}
+
+
+.botonsazoDG {
+  background: #454545;
+  border: 1px solid #1f1f1f;
+  border-radius: 3px;
+  box-shadow: 0 4px 0 #2c2c2c, inset 0 1px 1px rgba(255, 255, 255, 0.5), 0 1px 3px rgba(0, 0, 0, 0.4);
+  color: white;
+  display: inline-block;
+  font-size: 16px;
+
+  line-height: 2.5rem;
+  margin-bottom: 1.5rem;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+
+  transition: all .1s ease;
+}
+.botonsazoDG:focus, .botonsazoDG:hover {
+  background: #525252;
+  box-shadow: 0 4px 0 #2c2c2c, inset 0 1px 1px rgba(255, 255, 255, 0.5), 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+.botonsazoDG:active {
+  background: #454545;
+  box-shadow: 0 0 0 #2c2c2c, inset 0 -1px 1px rgba(0, 0, 0, 0.2), 0 2px 5px rgba(0, 0, 0, 0.2);
   transform: translateY(4px);
 }
 

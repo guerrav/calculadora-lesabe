@@ -60,16 +60,16 @@ module Sinatra
 				:password => 'sinatra'
 
 		app.get '/login' do 
-			slim :login
+			slim :welcome
 		end
 
 		app.get '/register' do 
-			slim :login
+			slim :begin
 		end
 
 		app.post '/register' do
     		@user = env['omniauth.identity']
-    		slim :login
+    		slim :begin
  		end
 
 		

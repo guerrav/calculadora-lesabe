@@ -333,6 +333,10 @@ get '/start' do
 end
 
 
+get '/begin' do  
+  slim :begin
+end
+
 
 
 
