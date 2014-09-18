@@ -39,10 +39,10 @@ row
                    
 
                     - por_pagar = (presupuesto - total_pagado)
-                    - if por_pagar > 0
+                    - if por_pagar < 0
                         h2.bitter
                             
-                            span.has-tip.tip-right data-options="disable_for_touch:true" aria-haspopup="true" data-tooltip="" title="Por pagar pendiente" !
+                            span.has-tip.tip-right data-options="disable_for_touch:true" aria-haspopup="true" data-tooltip="" title="Deuda de cliente" !
 
                     
                 
@@ -126,10 +126,34 @@ row
                             
                             h3.right= currency(costo_real)
 
-                    h6= "MANO DE OBRA" 
+                    
+
+                - if project.costs.works.last()
+                    
+                    h6.liroja.pad= "MANO DE OBRA"
                     .row 
                         .large-12.columns
-                            h3.right= "N/A"
+                            h3.right= currency(project.costs.works.sum(:amount))
+                    .row
+                        .large-12.columns
+                            h6.pad= "MONTOS" 
+                            
+
+                            -project.costs.works.each do |work|
+                                ul.no-bullet
+                                    .row
+                                    
+                                        .large-4.columns
+                                            li
+                                                /= purchase.created_at.strftime("%e %B %Y")
+
+                                                h6= work.description.upcase
+
+                                        .large-8.columns
+                                            li.right
+                                                /= purchase.created_at.strftime("%e %B %Y")
+
+                                                h6.right= currency(work.amount)
 
             .large-6.columns
 
@@ -154,7 +178,7 @@ row
                                     li   
                                
 
-                                        h6= advpayment.client_name.upcase
+                                        h6= project.client_name.upcase
                             
                                 .large-8.columns
                                     li.right
@@ -297,12 +321,7 @@ row
                                 - budget = project.budgets.last(project_id: project["id"])
                                 form.new  id="advpayment" action="/budget/#{budget.id}" method="POST"
 
-                                    label 
-                                        
-                                        select name="advpayment[client_name]" 
-                                            -project.corporation.clients.each do |client|
                                     
-                                                option value="#{client.name}"  #{client.name.upcase}
 
                             
                                     input placeholder="Anticipo" type="text" name="advpayment[amount]"
@@ -392,6 +411,20 @@ row
                 ul
                     li
                         a.entypo-plus-circled Monto
+                        -if project.costs.last()
+                            ul
+                                li
+                                        
+                                                        
+                                    form.new id="work" action="/work/#{cost.id}" method="POST"
+                                        .row
+                                            .large-12.columns                    
+                                                input placeholder="Monto" type="text" name="work[amount]"
+                                                  
+                                            .large-12.columns    
+                                                input placeholder="Descripción" type="text" name="work[description]"
+                                            .large-12.columns
+                                                input type="submit" class="button tiny radius nuevo" value="+ AGREGAR" 
 
 
 

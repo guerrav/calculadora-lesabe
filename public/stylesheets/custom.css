@@ -471,7 +471,7 @@ select {
 .side-panel {
   position: fixed;
   bottom: 0;
-  padding: 14em 0;
+  padding: 15em 0;
 }
 .side-panel:nth-child(2n) {
 }

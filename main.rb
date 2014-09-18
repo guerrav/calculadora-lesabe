@@ -175,7 +175,7 @@ class Project
   property :index,          Integer, default: 1
   property :description,    String
   property :client_name,    String
-  property :status,         String
+  property :status,         String, default: 0
   property :completed_at,   DateTime
   has n, :budgets 
   has n, :costs
@@ -198,7 +198,7 @@ class Advpayment
   include DataMapper::Resource
   property :id,           Serial
   property :amount,       Integer, default: 0
-  property :client_name,  String, required: true
+  property :client_name,  String
   property :created_at,   DateTime
   belongs_to :client
   belongs_to :project
@@ -212,6 +212,7 @@ class Cost
   property :created_at,     DateTime
   has n, :quotes
   has n, :purchases
+  has n, :works
   belongs_to :project
 end
 
@@ -249,7 +250,15 @@ class Payment
   
 end
 
+class Work
+  include DataMapper::Resource
+  property :id,           Serial
+  property :amount,       Integer, default: 0
+  property :description,  String, required: true
+  property :created_at,   DateTime
+  belongs_to :cost
 
+end
 
 configure do
   DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
@@ -689,6 +698,33 @@ end
 
 
 
+
+######## WORKS
+
+post '/work/:id' do
+  
+  work = Cost.get(params[:id]).works.create! params['work'] 
+  work.created_at = work.created_at.nil? ? Time.now : nil
+  work.save
+  redirect back
+
+end
+
+# busca id y borra
+
+delete '/work/:id' do
+  Work.get(params[:id]).destroy
+  redirect back
+end
+
+# busca id y modifica
+
+put '/work/:id' do
+  work = Work.get params[:id]
+  work.created_at = Time.now 
+  work.save
+  redirect back
+end
 
 
 

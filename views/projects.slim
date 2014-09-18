@@ -66,7 +66,8 @@
 		  			
 		  			h3.bitter
 		  				a href="/project/#{project.index}" #{project.name.capitalize}
-		  				-if project.budgets.last.nil?
-		  					span.palomita style="font-size:.6em;" = "!"
+		  				-if project.budgets.advpayments.last
+			  				-if (project.budgets.sum(:amount).to_i - project.budgets.advpayments.sum(:amount).to_i ) < 0
+			  					span.palomita style="font-size:.6em;" = "!"
 
 		  					 
