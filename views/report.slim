@@ -28,9 +28,14 @@ row
                 h5.edit_area= project.description
                 
         .row 
-            .large-2.columns 
+            .large-2.columns.rojo
                 
-                p=
+                
+                h2.bitter
+                    
+                    span.has-tip.tip-right data-options="disable_for_touch:true" aria-haspopup="true" data-tooltip="" title="Por pagar pendiente" !
+
+                    
                 
                     
 
@@ -250,13 +255,18 @@ row
                                                 h6.right= currency(purchase.amount)
                 
 
-
+.row
+    
+    .large-6.small-6.columns.text-center
+        a.bitter.botonsazoDGM= "dinero entra"
+    .large-6.small-6.columns.text-center
+        a.bitter.botonsazoDGM= "dinero sale"
 .row
     .large-12.columns.end
         p=
 
 .row
-    .large-12.columns id="inputs"
+    .large-12.columns id="input"
             .row 
                 .large-12.columns
                     p=

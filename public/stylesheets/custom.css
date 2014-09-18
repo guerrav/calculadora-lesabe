@@ -192,6 +192,31 @@ select {
   transform: translateY(4px);
 }
 
+.botonsazoM {
+  background: #C2C2C2;
+  border: 1px solid #9c9c9c;
+  border-radius: 3px;
+  box-shadow: 0 4px 0 #A9A9A9, inset 0 1px 1px rgba(255, 255, 255, 0.5), 0 1px 3px rgba(0, 0, 0, 0.4);
+  color: white;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 1.5rem;
+  margin-bottom: .2rem;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: all .1s ease;
+}
+.botonsazoM:focus, .botonsazoM:hover {
+  background: #cfcfcf;
+  box-shadow: 0 4px 0 #A9A9A9, inset 0 1px 1px rgba(255, 255, 255, 0.5), 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+.botonsazoM:active {
+  background: #C2C2C2;
+  box-shadow: 0 0 0 #A9A9A9, inset 0 -1px 1px rgba(0, 0, 0, 0.2), 0 2px 5px rgba(0, 0, 0, 0.2);
+  transform: translateY(4px);
+}
+
 
 
 
@@ -331,6 +356,33 @@ select {
   transform: translateY(4px);
 }
 
+.botonsazoDGM {
+  background: #454545;
+  border: 1px solid #1f1f1f;
+  border-radius: 3px;
+  box-shadow: 0 4px 0 #2c2c2c, inset 0 1px 1px rgba(255, 255, 255, 0.5), 0 1px 3px rgba(0, 0, 0, 0.4);
+  color: white;
+  display: inline-block;
+  font-size: 16px;
+
+  line-height: 2.5rem;
+  margin-bottom: 1.5rem;
+  padding: 0 14rem;
+  text-align: center;
+  text-decoration: none;
+
+  transition: all .1s ease;
+}
+.botonsazoDGM:focus, .botonsazoDGM:hover {
+  background: #525252;
+  box-shadow: 0 4px 0 #2c2c2c, inset 0 1px 1px rgba(255, 255, 255, 0.5), 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+.botonsazoDGM:hover {
+  background: #454545;
+  box-shadow: 0 0 0 #2c2c2c, inset 0 -1px 1px rgba(0, 0, 0, 0.2), 0 2px 5px rgba(0, 0, 0, 0.2);
+  transform: translateY(4px);
+}
+
 
 .edit_corporation input:focus {  
   border: 1px solid #66ccff;
@@ -389,3 +441,23 @@ select {
     background: inherit;
     border: inherit
 }
+
+
+.palomita {
+  margin-top: 2px;
+  margin-left: -1px;
+  color: #ff0000;
+  position: absolute;
+}
+
+
+
+
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+.atras {
+  background: #333;
+}
+

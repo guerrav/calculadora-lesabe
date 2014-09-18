@@ -57,6 +57,8 @@
 // Allows the use of rem-calc() or lower-bound() in your settings
 @import "foundation/functions";
 @import url(http://fonts.googleapis.com/css?family=Anaheim|Bitter:700);
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
 
 
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
@@ -112,12 +114,12 @@ $white-smoke 	: #F5F5F5;
 // $aluminum    : #999999;
 // $jumbo       : #888888;
 // $monsoon     : #777777;
-// $steel       : #666666;
+$steel       : #666666;
 // $charcoal    : #555555;
 // $tuatara     : #444444;
 $oil         : #333333;
 // $jet         : #222222;
-// $black       : #000000;
+$black       : #000000;
 
 // We use these to define default font weights
 // $font-weight-normal: normal !default;
@@ -1100,7 +1102,7 @@ $input-include-glowing-effect: false;
 // $include-html-reveal-classes: $include-html-classes;
 
 // We use these to control the style of the reveal overlay.
-// $reveal-overlay-bg: rgba($black, .45);
+$reveal-overlay-bg: rgba($black, .45);
 // $reveal-overlay-bg-old: $black;
 
 // We use these to control the style of the modal itself.
@@ -1123,8 +1125,8 @@ $input-include-glowing-effect: false;
 
 // We use these to control the modal border
 // $reveal-border-style: solid;
-// $reveal-border-width: 1px;
-// $reveal-border-color: $steel;
+$reveal-border-width: 10px;
+$reveal-border-color: $red;
 
 // $reveal-modal-class: "reveal-modal";
 // $close-reveal-modal-class: "close-reveal-modal";
@@ -1347,15 +1349,15 @@ $input-include-glowing-effect: false;
 
 // $include-html-tooltip-classes: $include-html-classes;
 
-// $has-tip-border-bottom: dotted 1px $iron;
+$has-tip-border-bottom: dotted 0px $primary-color;
 // $has-tip-font-weight: $font-weight-bold;
 // $has-tip-font-color: $oil;
-// $has-tip-border-bottom-hover: dotted 1px scale-color($primary-color, $lightness: -55%);
-// $has-tip-font-color-hover: $primary-color;
-// $has-tip-cursor-type: help;
+$has-tip-border-bottom-hover: dotted 0px scale-color($primary-color, $lightness: -55%);
+$has-tip-font-color-hover: $red;
+$has-tip-cursor-type: none;
 
 // $tooltip-padding: rem-calc(12);
-// $tooltip-bg: $oil;
+$tooltip-bg: $blue;
 // $tooltip-font-size: rem-calc(14);
 // $tooltip-font-weight: $font-weight-normal;
 // $tooltip-font-color: $white;
@@ -1364,7 +1366,7 @@ $input-include-glowing-effect: false;
 // $tooltip-close-font-weight: $font-weight-normal;
 // $tooltip-close-font-color: $monsoon;
 // $tooltip-font-size-sml: rem-calc(14);
-// $tooltip-radius: $global-radius;
+$tooltip-radius: 3px;
 // $tooltip-rounded: $global-rounded;
 // $tooltip-pip-size: 5px;
 // $tooltip-max-width: 300px;

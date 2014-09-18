@@ -13,14 +13,14 @@
 			p=
 	.row
 		.large-12.columns
-			h1.bitter= "#{@projects.count} proyectos"
-			h2.bitter= "#{@corporation.clients.count} clientes"
+			h1.bitter.pad= "#{@projects.count} proyectos"
+			h2.bitter.pad= "#{@corporation.clients.count} clientes"
 			-if pagado > 1
-				h2.bitter= "Te deben #{currency(cotizado - pagado)}"
+				h2.bitter.pad= "Te deben #{currency(cotizado - pagado)}"
 
-			h2.bitter= "#{@corporation.suppliers.count} proveedores"
+			h2.bitter.pad= "#{@corporation.suppliers.count} proveedores"
 			-if pagosprov > 1
-				h2.bitter= "Debes #{currency(cotiprov - pagosprov)}"
+				h2.bitter.pad= "Debes #{currency(cotiprov - pagosprov)}"
 			-if pagado > 1
-				h2.bitter= "Haz cotizado #{currency(cotizado)} y cobrado #{currency(pagado)}"
+				h2.bitter.pad= "Haz cotizado #{currency(cotizado)} y cobrado #{currency(pagado)}"
 			

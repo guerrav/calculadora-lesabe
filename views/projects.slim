@@ -50,9 +50,12 @@
 	                			.large-12.columns
 
 					    			input type="submit"  class="button tiny radius nuevo" value="+ NUEVO PROYECTO"
-		
+
+
+  	
 .row 
 	.large-12.columns
+		
 		ul.no-bullet.inline-list
 		  	- user_projects.reverse.each_with_index  do |project, index| 
 		  		
@@ -63,3 +66,7 @@
 		  			
 		  			h3.bitter
 		  				a href="/project/#{project.index}" #{project.name.capitalize}
+		  				-if project.budgets.last.nil?
+		  					span.palomita style="font-size:.6em;" = "!"
+
+		  					 

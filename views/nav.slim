@@ -12,8 +12,11 @@
 	    /! Right Nav Section
 	    -if current_user
 		    ul.right
-		      li
-		        a href="/logout" Sign out 
+		    	li
+		        	a href="" #{current_user.username.capitalize}
+		     	li
+		        	a href="/logout" Sign out 
+		      
 
 		    /! Left Nav Section
 
