@@ -367,7 +367,7 @@ select {
 
   line-height: 2.5rem;
   margin-bottom: 1.5rem;
-  padding: 0 14rem;
+  padding: 0 3rem;
   text-align: center;
   text-decoration: none;
 
@@ -457,7 +457,97 @@ select {
   font-family: 'FontAwesome', sans-serif;
 }
 
-.atras {
-  background: #333;
+[class*="entypo-"]:before {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  text-align: center;
+  font-family: 'entypo', sans-serif;
+}
+
+
+
+.side-panel {
+  position: fixed;
+  bottom: 0;
+  padding: 14em 0;
+}
+.side-panel:nth-child(2n) {
+}
+.side-panel ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.side-panel > ul > li:first-child {
+  border-top-right-radius: 3px;
+}
+.side-panel > ul > li:first-child a {
+  padding-top: 13px;
+}
+.side-panel > ul > li:last-child {
+  border-bottom-right-radius: 3px;
+}
+.side-panel > ul > li:last-child a {
+  padding-bottom: 13px;
+}
+.side-panel > ul ul {
+  width: 150px;
+  padding-left: 10px;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+}
+.side-panel > ul ul li:first-child {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-right-color: #efefef;
+}
+.side-panel > ul ul li:first-child:before {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 5px solid #efefef;
+  border-right-color: inherit;
+}
+.side-panel > ul ul li:first-child:hover {
+  border-right-color: #fff;
+}
+.side-panel > ul ul li:last-child {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.side-panel li {
+  position: relative;
+  background: #fff;  
+  border-top: 1px dotted #efefef;
+}
+.side-panel li:hover {
+  background: #fff;
+}
+.side-panel li:hover > ul {
+  display: block;
+}
+.side-panel a {
+  display: inline-block;
+  padding: 8px 15px;
+  cursor: pointer;
+  color: #454545;
+}
+
+.b  ul {
+  position: fixed;
+  width: 150px;
+  left: -9px;
+  font-size: .9em;
+  
 }
 
