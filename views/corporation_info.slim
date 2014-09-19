@@ -41,139 +41,83 @@
                     .large-12.columns
                         input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
 
-
-
-
-
-.row
-    .large-12.columns
-
-        p=
-
-
-//NUEVO CLIENTE
-
-
-
-.row
-    .large-3.columns
-
-        - if corporation
-            // CLIENT
-            /form para agregar
-            form.new action="/corporation/#{@corporation.id}" method="POST"
-                
-                .row
-                    .large-12.columns.azul
-                        h5.bitter.elementdown= "Nuevo cliente"
-
-                    .large-12.columns
-                        input type="text" name="client[name]" placeholder="Nombre del cliente"
-                    .large-12.columns
-                        input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
-    .large-1.columns
-        p=
-
-    .large-3.columns
-        -if corporation
-            -if corporation.clients.last
-                .row
-
-                    .large-12.columns
-                        ul.client
-                            li 
+-if corporation
+    .row 
+        .large-6.columns.rojo
+            - if corporation.clients.last
+                h6 CLIENTES
+                ul.no-bullet.inline-list
+                    - corporation.clients.each do |client|
+                        li
                                 
-                                label for="lista-empresas" 
+                            h5.bitter   
 
+                                a href=""  #{client.name.capitalize}
 
+                                / -if client.projects.last.nil?
+                                /     form.delete action="/client/#{client.id}" method="POST"
+                                /         input type="hidden" name="_method" value="DELETE"
 
-                    .large-12.columns
-                        ul.no-bullet
+                                /         input type="submit" class="button tiny radius nuevo" value="×" title="Delete supplier"
 
-                            - if corporation
-
-                            - corporation.clients.each do |client|
-                                .row
-                                    
-                                    .large-7.columns
-                                        li.pad
-
-                                            /datos que se imprimen
-                                            = client.name.capitalize
-
-                                    -if client.projects.last.nil?
-                                        .large-5.columns
-                                            form.delete action="/client/#{client.id}" method="POST"
-                                                input type="hidden" name="_method" value="DELETE"
-                                                input type="submit" class="button tiny radius nuevo" value="×" title="Delete client"
-    .large-5.columns
-        p=
-
-.row
-    .large-12.columns.pad
-        p=
-//NUEVO PROVEEDOR
-.row
-    .large-12.columns.pad
-
-        p=
-
-.row               
-    .large-3.columns
-
-        - if corporation
-
-            // SUPPLIER
-            /form para agregar
-            form.new action="/suppliers/#{@corporation.id}" method="POST"
-                
-                .row
-                    .large-12.columns.azul
-                        h5.bitter.elementdown= "Nuevo proveedor"
-                    .large-12.columns
-                        input type="text" name="supplier[name]" Placeholder="Nombre del proveedor"
-                    .large-12.columns
-                        input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
-
-    .large-1.columns
-        p=
-
-
-    .large-3.columns  
-        - if corporation
+     
+        .large-6.columns.rojo
             - if corporation.suppliers.last
-                .row
-                    .large-12.columns
-                        ul.supplier
-                            li 
-                             
-                                label for="lista-empresas" 
-                    .large-12.columns
-                        ul.no-bullet
+                h6 PROVEEDORES
+                ul.no-bullet.inline-list
+                    - corporation.suppliers.each do |supplier|
+                        li  
+                            h5.bitter
+                                a href=""  #{supplier.name.capitalize}
+                                / -if supplier.quotes.last.nil?
 
-                            - if corporation
-
-                            - corporation.suppliers.each do |supplier|
-                                .row
-                                    
-                                    .large-7.columns
-                                        li.pad
-
-                                            /datos que se imprimen
-                                            = supplier.name.capitalize
-                                    -if supplier.quotes.last.nil?
-                                        .large-5.columns
-
-                                            form.delete action="/supplier/#{supplier.id}" method="POST"
-                                                input type="hidden" name="_method" value="DELETE"
-                                                input type="submit" class="button tiny radius nuevo" value="×" title="Delete supplier"
-    .large-5.columns
+                                /     form.delete action="/supplier/#{supplier.id}" method="POST"
+                                /         input type="hidden" name="_method" value="DELETE"
+                                /         input type="submit" class="button tiny radius nuevo" value="×" title="Delete supplier"
 
 
-.row
-    .large-12.columns
-        p=
-                        
+
+
+
+
+
+
+
+.side-panel.b
+    ul
+
+                
+        - if corporation
+            li
+                a
+                    span.entypo-user
+                    span.menu-item Cliente
+                ul
+                    li
+                        a.entypo-plus Nuevo
+                        form.new action="/corporation/#{@corporation.id}" method="POST"
+                    
+                            
+
+                            input type="text" name="client[name]" placeholder="Nombre"
+                            input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
+                
+
+            li
+                a
+                    span.entypo-attach
+                    span.menu-item Proveedor
+                ul
+                    li
+                        a.entypo-plus Nuevo
+                        form.new action="/suppliers/#{@corporation.id}" method="POST"
+
+                            input type="text" name="supplier[name]" Placeholder="Nombre"
+                            input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
+
+                    
+                                                                            
+                          
 
 
 - if @user.corporations.last
