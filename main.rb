@@ -494,9 +494,20 @@ end
 
 
  
-  
+post '/status0/:id' do
+  project = Project.get(params[:id])
+  project.status = "1"
+  project.save
+  redirect back
+end
 
 
+post '/status1/:id' do
+  project = Project.get(params[:id])
+  project.status = "0"
+  project.save
+  redirect back
+end
 
   
 

@@ -65,9 +65,18 @@
 		  		li
 		  			
 		  			h3.bitter
-		  				a href="/project/#{project.index}" #{project.name.capitalize}
-		  				-if project.budgets.advpayments.last
-			  				-if (project.budgets.sum(:amount).to_i - project.budgets.advpayments.sum(:amount).to_i ) < 0
-			  					span.palomita style="font-size:.6em;" = "!"
+		  				-if project.status == "0" #ABIERTO
+			  				a href="/project/#{project.index}" #{project.name.capitalize}
+			  				-if project.budgets.advpayments.last
+				  				-if (project.budgets.sum(:amount).to_i - project.budgets.advpayments.sum(:amount).to_i ) > 0
+				  					span.palomita style="font-size:.6em;" = "!"
+				  		-else #CERRADO
+			  				a href="/project/#{project.index}" style="color:#cccccc;" #{project.name.capitalize}
+			  				-if project.budgets.advpayments.last
+				  				-if (project.budgets.sum(:amount).to_i - project.budgets.advpayments.sum(:amount).to_i ) > 0
+				  					span.palomita style="font-size:.6em;" = "!"
+
+			  				
+			  				
 
 		  					 

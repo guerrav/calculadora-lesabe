@@ -445,10 +445,11 @@ select {
 
 .palomita {
   margin-top: 2px;
-  margin-left: -1px;
+  margin-left: 1px;
   color: #ff0000;
-  position: absolute;
+  position: fixed;
 }
+
 
 
 
@@ -549,5 +550,44 @@ select {
   left: -9px;
   font-size: .9em;
   
+}
+
+label.switch1 {
+  width: 40px;
+  height: 20px;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,.25);
+  border-radius: 20px;
+  -webkit-transition: all .2s ease-out;
+}
+
+input[type='checkbox'] {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  background-color: #66ccff;
+  border-radius: 12px;
+  -webkit-transition: all .2s ease-out;
+  margin: .2em 0 1rem .2em;
+}
+
+
+
+.switch1:active input[type='checkbox'] {
+  width: 34px;
+}
+.switch1:active input[type='checkbox']:checked {
+  width: 34px;
+  margin-left: -8px;
+}
+
+input[type='checkbox']:focus {
+  outline: none;
+}
+
+
+input[type='checkbox']:checked {
+  -webkit-transform: translateX(20px);
+  background-color: #ff0000;
 }
 

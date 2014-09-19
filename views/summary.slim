@@ -13,7 +13,10 @@
 			p=
 	.row
 		.large-12.columns
-			h1.bitter.pad= "#{@projects.count} proyectos"
+			-if @projects.count == 1
+				h1.bitter.pad= "#{@projects.count} proyecto"
+			-else
+				h1.bitter.pad= "#{@projects.count} proyectos"
 			h2.bitter.pad= "#{@corporation.clients.count} clientes"
 			-if pagado > 1
 				h2.bitter.pad= "Te deben #{currency(cotizado - pagado)}"

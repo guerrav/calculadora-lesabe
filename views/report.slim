@@ -2,7 +2,7 @@
     - presupuesto = project.budgets.sum(:amount).to_i
     - total_pagado = project.budgets.advpayments.sum(:amount).to_i
    
-    - costo_real = project.costs.purchases.sum(:amount).to_i + project.costs.quotes.sum(:amount).to_i
+    - costo_real = project.costs.purchases.sum(:amount).to_i + project.costs.quotes.sum(:amount).to_i + project.costs.works.sum(:amount).to_i
     - utilidad = (total_pagado - costo_real)
     - por_pagar = (presupuesto - total_pagado)
 
@@ -39,7 +39,7 @@ row
                    
 
                     - por_pagar = (presupuesto - total_pagado)
-                    - if por_pagar < 0
+                    - if por_pagar > 0
                         h2.bitter
                             
                             span.has-tip.tip-right data-options="disable_for_touch:true" aria-haspopup="true" data-tooltip="" title="Deuda de cliente" !
@@ -293,6 +293,9 @@ row
 
 .side-panel.b
     ul
+
+                
+
         -if presupuesto <= 0
             li
                 a
@@ -303,7 +306,7 @@ row
                         a.entypo-plus-circled Monto
                         form.new id="budget" action="/project/#{project.id}" method="POST"
 
-                            input placeholder="Presupuesto" type="text" name="budget[amount]"
+                            input placeholder="Cantidad $" type="text" name="budget[amount]"
                             input type="submit" class="button tiny radius nuevo" value= "+ AGREGAR"
         -if project.budgets.last()
 
@@ -324,7 +327,7 @@ row
                                     
 
                             
-                                    input placeholder="Anticipo" type="text" name="advpayment[amount]"
+                                    input placeholder="Cantidad $" type="text" name="advpayment[amount]"
                                     
                                     input type="submit" class="button tiny radius nuevo" value= "+ AGREGAR" 
 
@@ -357,7 +360,7 @@ row
 
                                             .large-12.columns
                                                 
-                                                input placeholder="Pago" type="text" name="payment[amount]"
+                                                input placeholder="Cantidad $" type="text" name="payment[amount]"
                                             .large-12.columns
                                                 input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
                     li
@@ -378,7 +381,7 @@ row
                                                             option value="#{supplier.name}"  #{supplier.name.upcase}
 
                                             .large-12.columns
-                                                input placeholder="Cotización" type="text" name="quote[amount]"
+                                                input placeholder="Cantidad $" type="text" name="quote[amount]"
                                             .large-12.columns
                                                 input type="submit"  class="button tiny radius nuevo" value="+ AGREGAR"      
             li
@@ -397,7 +400,7 @@ row
                                     form.new id="purchase" action="/cost/#{cost.id}" method="POST"
                                         .row
                                             .large-12.columns                    
-                                                input placeholder="Compra Material" type="text" name="purchase[amount]"
+                                                input placeholder="Cantidad $" type="text" name="purchase[amount]"
                                                   
                                             .large-12.columns    
                                                 input placeholder="Descripción" type="text" name="purchase[description]"
@@ -419,12 +422,25 @@ row
                                     form.new id="work" action="/work/#{cost.id}" method="POST"
                                         .row
                                             .large-12.columns                    
-                                                input placeholder="Monto" type="text" name="work[amount]"
+                                                input placeholder="Cantidad $" type="text" name="work[amount]"
                                                   
                                             .large-12.columns    
                                                 input placeholder="Descripción" type="text" name="work[description]"
                                             .large-12.columns
                                                 input type="submit" class="button tiny radius nuevo" value="+ AGREGAR" 
+            li
+            a
+                -if project.status == "0"
+                    span.entypo-lock-open
+                    
+                    form.new id="work" action="/status0/#{project.id}" method="POST" 
+                        label.switch1
+                            input type="checkbox" name="1" value="1" onChange="this.form.submit()"
+                -if project.status == "1"
+                    span.entypo-lock
+                    form.new id="work" action="/status1/#{project.id}" method="POST" 
+                        label.switch1
+                            input type="checkbox" checked="checked" name="0"  value="0" onChange="this.form.submit()"
 
 
 
