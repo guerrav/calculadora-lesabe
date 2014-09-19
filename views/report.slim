@@ -18,19 +18,19 @@ row
 
 
         .row 
-            .large-2.columns
+            .large-2.medium-2.columns
                 p=
-            .large-2.columns
+            .large-2.medium-2.columns
                 h1=
                 
                 h5.element.edit_project= project.name.capitalize
                 h6.element= project.client_name.capitalize
                 h6.elementdown= project.completed_at.strftime("%b %e %Y")
-            .large-8.columns
+            .large-8.medium-8.columns
                 h6= project.description
                 
         .row 
-            .large-2.columns.rojo
+            .large-2.medium-2.columns.rojo
                 p=
                 
                 - if project.budgets.advpayments.last()
@@ -49,15 +49,15 @@ row
                     
 
 
-            .large-2.columns.gris
+            .large-2.medium-2.columns.gris
                 - if project.budgets.last()
                     h6.ligris.pad= "PRESUPUESTO SIN IVA"
                     
                     h3.right= currency(presupuesto)
 
-            .large-6.columns
+            .large-6.medium-6.columns
                 p=
-            .large-2.columns 
+            .large-2.medium-2.columns 
                 p= 
                            
                                             
@@ -68,7 +68,7 @@ row
 
 
         .row 
-            .large-2.small-6.columns
+            .large-2.medium-2.small-6.columns
 
                 - if project.budgets.advpayments.last() 
 
@@ -95,7 +95,7 @@ row
                     -else
                         h6.right= p
                 p=
-            .large-2.small-6.columns
+            .large-2.medium-2.small-6.columns
                 /datos que se imprimen
                 - if project.budgets.advpayments.last()
                 
@@ -117,7 +117,7 @@ row
 
 
 
-            .large-2.columns.rojo
+            .large-2.medium-2.columns.rojo
                 - if project.costs.last() && project.costs.sum(:amount).to_i > 0
 
                     h6.liroja.pad= "COSTO REAL" 
@@ -155,17 +155,17 @@ row
 
                                                 h6.right= currency(work.amount)
 
-            .large-6.columns
+            .large-6.medium-6.columns
 
 
 
         .row
 
-            .large-2.columns
+            .large-2.medium-2.columns
                 p=
             
 
-            .large-2.small-6.columns
+            .large-2.medium-2.small-6.columns
                 - if project.budgets.advpayments.last()
                     h6.ligris.pad= "ANTICIPOS/PAGOS" 
                     
@@ -188,7 +188,7 @@ row
 
                                         h6.right.elementdown= currency(advpayment.amount)
                 
-            .large-2.columns.rojo
+            .large-2.medium-2.small-6.columns.rojo
 
                 - if project.costs.purchases.last()
                 
@@ -218,7 +218,7 @@ row
 
                                                 h6.right= currency(purchase.amount)
 
-            .large-6.small-6.columns.rojo
+            .large-6.medium-6.small-6.columns.rojo
                 - if project.costs.quotes.last()
                     h6.liroja.pad= "PROVEEDORES" 
                     .row 
@@ -285,7 +285,7 @@ row
 
                                                 h6.right.elementdown= currency(a-b)
             -if project.budgets.advpayments.last.nil?
-                .large-2.columns
+                .large-2.medium-2.columns
                     p=
 
             

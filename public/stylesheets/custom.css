@@ -161,7 +161,17 @@ select {
   box-shadow:  0  -8px 8px -8px rgba(0, 0, 0, 0.2);
 }
 
+#some-element {
+  display: none;
+}
 
+#some-div:hover #some-element {
+  display: block;
+}
+
+#some-div:focus #some-element {
+  display: block;
+}
 
 
 .end {
@@ -552,6 +562,35 @@ line-height: 1.4;
   color: #454545;
 }
 
+####
+
+
+.side2-panel {
+  position: fixed;
+  bottom: 0;
+  padding: 15em 0;
+}
+
+.side2-panel ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
+.side2-panel li {
+  position: relative;
+  background: #fff;  
+  border-top: 1px dotted #efefef;
+}
+
+.side2-panel a {
+  display: inline-block;
+  padding: 8px 15px;
+  cursor: pointer;
+  color: #454545;
+}
+
 .b  ul {
   position: fixed;
   width: 150px;
@@ -560,6 +599,15 @@ line-height: 1.4;
   
 }
 
+
+.c  ul {
+  position: fixed;
+  width: 180px;
+  bottom: 7.4em;
+  right: 0;
+  font-size: .9em;
+  
+}
 label.switch1 {
   width: 40px;
   height: 20px;
@@ -597,5 +645,12 @@ input[type='checkbox']:focus {
 input[type='checkbox']:checked {
   -webkit-transform: translateX(20px);
   background-color: #ff0000;
+}
+
+.signature {
+  position: fixed;
+  bottom: .4em;
+  font-size: .73em;
+  line-height: 1.3em;
 }
 

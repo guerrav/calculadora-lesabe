@@ -50,9 +50,39 @@
                     - corporation.clients.each do |client|
                         li
                                 
-                            h5.bitter   
+                            h5.bitter id="some-div"  
 
-                                a href=""  #{client.name.capitalize}
+                                a  #{client.name.capitalize}
+
+
+                                .side2-panel.c.anaheim id="some-element" style="font-size: .9em;"
+                                    ul
+
+                                                
+                                        - if corporation
+                                            li
+                                                a
+                                                    span.entypo-user
+                                                    span.menu-item #{client.name.capitalize}
+                                            li
+                                                a
+                                                    
+                                                    span.menu-item #{client.projects.count} Proyectos
+                                            -if client.projects.budgets.advpayments.last
+                                                li
+                                                    a
+                                                        
+                                                        span.menu-item #{currency(client.projects.budgets.advpayments.sum(:amount))} Pagado
+
+                                                -if client.projects.budgets.sum(:amount).to_i > client.projects.budgets.advpayments.sum(:amount).to_i
+
+                                                    li
+                                                        a
+                                                            
+                                                            span.menu-item #{currency(client.projects.budgets.sum(:amount).to_i - client.projects.budgets.advpayments.sum(:amount).to_i)} Por pagar
+                                            
+                                           
+                                                             
 
                                 / -if client.projects.last.nil?
                                 /     form.delete action="/client/#{client.id}" method="POST"
@@ -67,21 +97,32 @@
                 ul.no-bullet.inline-list
                     - corporation.suppliers.each do |supplier|
                         li  
-                            h5.bitter
-                                a href=""  #{supplier.name.capitalize}
+                            h5.bitter id="some-div" 
+                                a   #{supplier.name.capitalize}
                                 / -if supplier.quotes.last.nil?
 
                                 /     form.delete action="/supplier/#{supplier.id}" method="POST"
                                 /         input type="hidden" name="_method" value="DELETE"
                                 /         input type="submit" class="button tiny radius nuevo" value="×" title="Delete supplier"
+                                .side2-panel.c.anaheim id="some-element" style="font-size: .9em;"
+                                    ul
 
-
-
-
-
-
-
-
+                                                
+                                        - if corporation
+                                            li
+                                                a
+                                                    span.entypo-user
+                                                    span.menu-item #{supplier.name.capitalize}
+                                            li
+                                                a
+                                                    
+                                                    span.menu-item #{supplier.name.capitalize}
+                                            li
+                                                a
+                                                    
+                                                    span.menu-item #{supplier.name.capitalize}
+                                                    
+                                            
 
 .side-panel.b
     ul
@@ -94,7 +135,7 @@
                     span.menu-item Cliente
                 ul
                     li
-                        a.entypo-plus Nuevo
+                        a.entypo-plus-circled Nuevo
                         form.new action="/corporation/#{@corporation.id}" method="POST"
                     
                             
@@ -109,13 +150,15 @@
                     span.menu-item Proveedor
                 ul
                     li
-                        a.entypo-plus Nuevo
+                        a.entypo-plus-circled Nuevo
                         form.new action="/suppliers/#{@corporation.id}" method="POST"
 
                             input type="text" name="supplier[name]" Placeholder="Nombre"
                             input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
 
-                    
+
+
+
                                                                             
                           
 

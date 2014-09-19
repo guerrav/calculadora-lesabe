@@ -16,7 +16,7 @@
 			-if @projects.count == 1
 				h1.bitter= "#{@projects.count} proyecto"
 			-else
-				h1.bitter= "#{@projects.count} proyectos"
+				h1.bitter= "#{@projects.count} proyectos en total"
 			h2.bitter= "#{@corporation.clients.count} clientes"
 			-if pagado > 1
 				h2.bitter= "Te deben #{currency(cotizado - pagado)}"
