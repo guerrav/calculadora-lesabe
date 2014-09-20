@@ -13,7 +13,7 @@
 	    -if current_user
 		    ul.right
 		    	li
-		        	a href="" #{current_user.username.capitalize}
+		        	a #{current_user.name.capitalize} #{current_user.lastname.capitalize}
 		     	li
 		        	a href="/logout" Sign out 
 		      

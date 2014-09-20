@@ -628,7 +628,13 @@ input[type='checkbox'] {
 }
 
 
-
+.percent{
+  font-size: 9.5em;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  color: rgba(0,0,0,.2);
+}
 .switch1:active input[type='checkbox'] {
   width: 34px;
 }

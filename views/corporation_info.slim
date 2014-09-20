@@ -43,7 +43,8 @@
 
 -if corporation
     .row 
-        .large-6.columns.rojo
+        
+        .large-12.columns.rojo
             - if corporation.clients.last
                 h6 CLIENTES
                 ul.no-bullet.inline-list
@@ -67,19 +68,19 @@
                                             li
                                                 a
                                                     
-                                                    span.menu-item #{client.projects.count} Proyectos
+                                                    span.menu-item #{client.projects.count} proyectos
                                             -if client.projects.budgets.advpayments.last
                                                 li
                                                     a
                                                         
-                                                        span.menu-item #{currency(client.projects.budgets.advpayments.sum(:amount))} Pagado
+                                                        span.menu-item #{currency(client.projects.budgets.advpayments.sum(:amount))} pagado
 
                                                 -if client.projects.budgets.sum(:amount).to_i > client.projects.budgets.advpayments.sum(:amount).to_i
 
                                                     li
                                                         a
                                                             
-                                                            span.menu-item #{currency(client.projects.budgets.sum(:amount).to_i - client.projects.budgets.advpayments.sum(:amount).to_i)} Por pagar
+                                                            span.menu-item #{currency(client.projects.budgets.sum(:amount).to_i - client.projects.budgets.advpayments.sum(:amount).to_i)} por pagar
                                             
                                            
                                                              
@@ -91,7 +92,7 @@
                                 /         input type="submit" class="button tiny radius nuevo" value="×" title="Delete supplier"
 
      
-        .large-6.columns.rojo
+        .large-12.columns.rojo
             - if corporation.suppliers.last
                 h6 PROVEEDORES
                 ul.no-bullet.inline-list
@@ -113,17 +114,17 @@
                                                 a
                                                     span.entypo-user
                                                     span.menu-item #{supplier.name.capitalize}
+                                        -if supplier.quotes.last
                                             li
                                                 a
                                                     
-                                                    span.menu-item #{supplier.name.capitalize}
+                                                    span.menu-item #{currency(supplier.quotes.sum(:amount).to_i)} cotizado
                                             li
                                                 a
                                                     
-                                                    span.menu-item #{supplier.name.capitalize}
+                                                    span.menu-item #{currency(supplier.quotes.sum(:amount).to_i-supplier.quotes.payments.sum(:amount).to_i)} por pagar
                                                     
-                                            
-
+        
 .side-panel.b
     ul
 

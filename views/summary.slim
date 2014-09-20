@@ -7,6 +7,11 @@
 	- cotiprov = @projects.costs.quotes.sum(:amount).to_i
 	- pagosprov = @projects.costs.quotes.payments.sum(:amount).to_i
 
+   
+    - costo_real = @projects.costs.purchases.sum(:amount).to_i + cotiprov + @projects.costs.works.sum(:amount).to_i
+	- utilidad = (pagado - costo_real)
+
+
 	
 	.row
 		.large-12.columns
@@ -17,13 +22,17 @@
 				h1.bitter= "#{@projects.count} proyecto"
 			-else
 				h1.bitter= "#{@projects.count} proyectos en total"
-			h2.bitter= "#{@corporation.clients.count} clientes"
+			h4.bitter= "#{@corporation.clients.count} clientes"
 			-if pagado > 1
-				h2.bitter= "Te deben #{currency(cotizado - pagado)}"
+				h4.bitter= "Te deben #{currency(cotizado - pagado)}"
 
-			h2.bitter= "#{@corporation.suppliers.count} proveedores"
-			-if pagosprov > 1
-				h2.bitter= "Debes #{currency(cotiprov - pagosprov)}"
+			h4.bitter= "#{@corporation.suppliers.count} proveedores"
+			-if cotiprov > 1
+				h4.bitter= "Debes #{currency(pagosprov - cotiprov )}"
 			-if pagado > 1
-				h2.bitter= "Haz cotizado #{currency(cotizado)} y cobrado #{currency(pagado)}"
+				h4.bitter= "Haz cotizado #{currency(cotizado)} y cobrado #{currency(pagado)}"
+			-if cotizado > 1
+				- p = percentage((utilidad * 100) / cotizado)
+				h4.bitter Utilidad promedio por proyectos:
+				h2.bitter.percent #{p}
 			
