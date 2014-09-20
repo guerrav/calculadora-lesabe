@@ -22,16 +22,17 @@
 				h1.bitter= "#{@projects.count} proyecto"
 			-else
 				h1.bitter= "#{@projects.count} proyectos en total"
-			h4.bitter= "#{@corporation.clients.count} clientes"
+			-if @corporation.clients.count > 1
+				h4.bitter= "#{@corporation.clients.count} clientes"
 			-if pagado > 1
 				h4.bitter= "Te deben #{currency(cotizado - pagado)}"
-
-			h4.bitter= "#{@corporation.suppliers.count} proveedores"
+			-if @corporation.suppliers.count > 1
+				h4.bitter= "#{@corporation.suppliers.count} proveedores"
 			-if cotiprov > 1
 				h4.bitter= "Debes #{currency(pagosprov - cotiprov )}"
 			-if pagado > 1
 				h4.bitter= "Haz cotizado #{currency(cotizado)} y cobrado #{currency(pagado)}"
-			-if cotizado > 1
+			-if cotizado > 1 && costo_real > 1
 				- p = percentage((utilidad * 100) / cotizado)
 				h4.bitter Utilidad promedio por proyectos:
 				h2.bitter.percent #{p}

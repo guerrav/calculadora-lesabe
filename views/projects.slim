@@ -4,52 +4,95 @@
 	.large-12.columns
 		p=
 
+-if @corporation && client_any
+.side-panel.b
+    ul
 
-.row
-  	.large-12.columns id="inputs"
-  		.row
-  			.large-12.columns
-  				p=
+                
 
-	  	.row
-	  		.large-8.columns
-
-	  			-if @corporation && client_any
+        li
+            a
+                span.entypo-folder
+                span.menu-item Proyecto
+            ul
+                li
+                    a.entypo-plus-circled Nuevo
 					form.new action="/clientx/#{@corporation.id}" method="POST"
 
 		                
+	                	label.element Cliente:
+					    	
+	                		
+				    	label 
+				    	 	
+				      		select name="project[client_name]" 
 
-	                	.large-3.columns
-	                		.row
-	                			.large-3.columns
-	                				label for="right-label" class="right inline" Cliente:
-	                			.large-9.columns
-							    	label 
-							    	 	
-							      		select name="project[client_name]" 
-
-							      		
-							      			- @corporation.clients.each do |client|
-									
-										        option value="#{client.name}"  #{client.name.upcase}
-	                    .large-3.columns
-	                    	.row
-	                			.large-12.columns
+				      		
+				      			- @corporation.clients.each do |client|
+						
+							        option value="#{client.name}"  #{client.name.upcase}
+	                  
 	                    	
-							    	input type="text" name="project[name]" placeholder="Nombre del proyecto"
+	                   
+					    input type="text" name="project[name]" placeholder="Nombre"
 							    	
 
-					    .large-5.columns
-					    	.row
-	                			.large-12.columns
-					    			input type="text" name="project[description]" placeholder="Descripción del proyecto"
 					    	
+					   	input type="text" name="project[description]" placeholder="Descripción"
 
-						.large-1.columns
-							.row
-	                			.large-12.columns
+					   	
+							
 
-					    			input type="submit"  class="button tiny radius nuevo" value="+ NUEVO PROYECTO"
+					    input type="submit"  class="button tiny radius nuevo" value="+ NUEVO PROYECTO"
+
+
+                    
+
+      
+                    
+                                                                            
+                            
+/ .row
+/   	.large-12.columns id="inputs"
+/   		.row
+/   			.large-12.columns
+/   				p=
+
+/ 	  	.row
+/ 	  		.large-8.medium-12.columns
+
+/ 	  			-if @corporation && client_any
+/ 					form.new action="/clientx/#{@corporation.id}" method="POST"
+
+		                
+	                
+/ 	                    .large-3.medium-3.small-7.columns
+	                    	
+	                   
+/ 					    	input type="text" name="project[name]" placeholder="Nombre del proyecto"
+							    	
+
+/ 					    .large-4.medium-4.small-7.columns
+					    	
+/ 					   		input type="text" name="project[description]" placeholder="Descripción del proyecto"
+
+/ 					   	large-1.medium-1.small-7.columns
+/ 					   		label CLIENTE:
+					    	
+/ 					   	.large-3.medium-2.small-7.columns
+	                		
+/ 					    	label 
+					    	 	
+/ 					      		select name="project[client_name]" 
+
+					      		
+/ 					      			- @corporation.clients.each do |client|
+							
+/ 								        option value="#{client.name}"  #{client.name.upcase}
+/ 						.large-1.medium-2.columns
+							
+
+/ 					    	input type="submit"  class="button tiny radius nuevo" value="+ NUEVO PROYECTO"
 
 
   	
