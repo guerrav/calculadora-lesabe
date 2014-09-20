@@ -107,55 +107,36 @@ module Sinatra
 
 		app.post '/auth/:provider/callback' do
 		  
-		  auth = request.env["omniauth.auth"]
-
-
-		  user = User.all.first(email: auth["info"]["email"])
-
-
+			auth = request.env["omniauth.auth"]
+			user = User.all.first(email: auth["info"]["email"])
 
 			if user.corporations.last 
 				session[:admin] = user.id
 				redirect to('/corporation')
 			end
 
+			if user
+			    session[:admin] = user.id
+			    flash[:notice] = "You are now logged in as #{user.email}" 
+			    redirect to('/start')
 
-		  if user
-		    session[:admin] = user.id
-		    flash[:notice] = "You are now logged in as #{user.email}" 
-		    redirect to('/start')
+			else
+			    user = User.new email: auth["info"]["email"]
+			    user.save
+			    session[:admin] = user.id
+			    flash[:notice] = "no hay match entonces genera un usario " 
+			    redirect to('/index')		
 
-
-
-		
-
-		  else
-		    user = User.new email: auth["info"]["email"]
-		    user.save
-		    session[:admin] = user.id
-		    flash[:notice] = "no hay match entonces genera un usario " 
-		    redirect to('/index')
-
-		
-
-		  end
+			end
 
 
 		end
 		 
-
 		 
 		app.get '/auth/failure' do
 			flash[:notice] = "The username or password you entered are incorrect"
           	redirect to('/')
 		end
-
-
-
-
-
-
-
 
 
 	end

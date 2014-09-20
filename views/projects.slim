@@ -7,9 +7,6 @@
 -if @corporation && client_any
 .side-panel.b
     ul
-
-                
-
         li
             a
                 span.entypo-folder
@@ -17,96 +14,23 @@
             ul
                 li
                     a.entypo-plus-circled Nuevo
-					form.new action="/clientx/#{@corporation.id}" method="POST"
-
-		                
+					form.new action="/clientx/#{@corporation.id}" method="POST" 
 	                	label.element Cliente:
-					    	
-	                		
-				    	label 
-				    	 	
-				      		select name="project[client_name]" 
-
-				      		
+				    	label 				    	 	
+				      		select name="project[client_name]" 				      		
 				      			- @corporation.clients.each do |client|
-						
 							        option value="#{client.name}"  #{client.name.upcase}
-	                  
-	                    	
-	                   
-					    input type="text" name="project[name]" placeholder="Nombre"
-							    	
-
-					    	
+						input type="text" name="project[name]" placeholder="Nombre"					    	
 					   	input type="text" name="project[description]" placeholder="Descripción"
-
-					   	
-							
-
 					    input type="submit"  class="button tiny radius nuevo" value="+ NUEVO PROYECTO"
-
-
-                    
-
-      
-                    
-                                                                            
-                            
-/ .row
-/   	.large-12.columns id="inputs"
-/   		.row
-/   			.large-12.columns
-/   				p=
-
-/ 	  	.row
-/ 	  		.large-8.medium-12.columns
-
-/ 	  			-if @corporation && client_any
-/ 					form.new action="/clientx/#{@corporation.id}" method="POST"
-
-		                
-	                
-/ 	                    .large-3.medium-3.small-7.columns
-	                    	
-	                   
-/ 					    	input type="text" name="project[name]" placeholder="Nombre del proyecto"
-							    	
-
-/ 					    .large-4.medium-4.small-7.columns
-					    	
-/ 					   		input type="text" name="project[description]" placeholder="Descripción del proyecto"
-
-/ 					   	large-1.medium-1.small-7.columns
-/ 					   		label CLIENTE:
-					    	
-/ 					   	.large-3.medium-2.small-7.columns
-	                		
-/ 					    	label 
-					    	 	
-/ 					      		select name="project[client_name]" 
-
-					      		
-/ 					      			- @corporation.clients.each do |client|
-							
-/ 								        option value="#{client.name}"  #{client.name.upcase}
-/ 						.large-1.medium-2.columns
-							
-
-/ 					    	input type="submit"  class="button tiny radius nuevo" value="+ NUEVO PROYECTO"
-
-
   	
 .row 
-	.large-12.columns
-		
+	.large-12.columns		
 		ul.no-bullet.inline-list
-		  	- user_projects.reverse.each_with_index  do |project, index| 
-		  		
+		  	- user_projects.reverse.each_with_index  do |project, index| 		
 		  		- project.index = index.to_i + 1
 		  		- project.save
-		  		
 		  		li
-		  			
 		  			h3.bitter
 		  				-if project.status == "0" #ABIERTO
 			  				a href="/project/#{project.index}" #{project.name.capitalize}

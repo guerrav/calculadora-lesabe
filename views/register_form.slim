@@ -1,29 +1,15 @@
 .row
     .large-5.columns
-
-
-        form.new action="/auth/identity/register" method="POST"
-        	
-        	
+        form.new action="/auth/identity/register" method="POST"  	
             input type="text" placeholder="Nombre" name= :name
             input type="text" placeholder="Apellido" name= :lastname
             input type="text" placeholder="Email" name= :email
-
             input type="password" placeholder="Contraseña" name= :password
-
             input type="password" placeholder="Confirmación de contraseña" name= :password_confirmation
-
-
             input type="submit" class="button tiny radius nuevo" value="Enviar" title="Submit"
-
-
     .large-7.columns
-
         - if @user && @user.errors.any?
-            
-
             - @user.errors.full_messages.each do |msg|
-
                 ul.error
                     li
                         =msg

@@ -3,33 +3,13 @@
 .row
 	.large-12.columns
 		p=
-
-
 		- if @corporation.clients.projects.last()
-		
-
-			
-			
-		    	
-			
 			.row
 	  			.large-12.columns.pad 
-
-				  	- if @project.index < user_projects.count
-
-				  		
+				  	- if @project.index < user_projects.count				  		
 						a.botonsazoM.left href="/project/#{@project.index+1}" <<
-
-
-							
-					- if @project.index > 1
-						
+					- if @project.index > 1						
 						a.botonsazoM.right href="/project/#{@project.index-1}" >>
-
-
-						
-							  
-					    	
 
 			== slim :report, locals: { project: @project }
 

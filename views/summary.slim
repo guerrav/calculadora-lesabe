@@ -6,13 +6,9 @@
 	- pagado = @projects.budgets.advpayments.sum(:amount).to_i
 	- cotiprov = @projects.costs.quotes.sum(:amount).to_i
 	- pagosprov = @projects.costs.quotes.payments.sum(:amount).to_i
-
-   
     - costo_real = @projects.costs.purchases.sum(:amount).to_i + cotiprov + @projects.costs.works.sum(:amount).to_i
 	- utilidad = (pagado - costo_real)
 
-
-	
 	.row
 		.large-12.columns
 			p=
@@ -34,6 +30,6 @@
 				h4.bitter= "Haz cotizado #{currency(cotizado)} y cobrado #{currency(pagado)}"
 			-if cotizado > 1 && costo_real > 1
 				- p = percentage((utilidad * 100) / cotizado)
-				h4.bitter Utilidad promedio por proyectos:
+				h5.bitter.percent2 Utilidad promedio por proyectos .
 				h2.bitter.percent #{p}
 			

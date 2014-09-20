@@ -2,7 +2,6 @@
 
 
 .row 
-    
     .large-12.columns
         p=
 
@@ -14,25 +13,16 @@
 
 .row
     .large-12.columns.bitter
-
-             
-        
         - if @user.corporations.last
             - corporation = @user.corporations.last
             h1.bitter.elementdown.edit_corporation= corporation.name.capitalize
-
     .large-12.columns
         p=
 
-
 .row
     .large-4.columns
-
-
         - if @user.corporations.last.nil?
-
             form.new action="/#{@user.id}" method="POST"
-
                 .row
                     .large-12.columns.azul
                         h4.bitter.elementdown= "Empresa"
@@ -43,23 +33,16 @@
 
 -if corporation
     .row 
-        
         .large-12.columns.rojo
             - if corporation.clients.last
                 h6 CLIENTES
                 ul.no-bullet.inline-list
                     - corporation.clients.each do |client|
-                        li
-                                
+                        li                              
                             h5.bitter id="some-div"  
-
                                 a  #{client.name.capitalize}
-
-
                                 .side2-panel.c.anaheim id="some-element" style="font-size: .9em;"
                                     ul
-
-                                                
                                         - if corporation
                                             li
                                                 a
@@ -76,22 +59,10 @@
                                                         span.menu-item #{currency(client.projects.budgets.advpayments.sum(:amount))} pagado
 
                                                 -if client.projects.budgets.sum(:amount).to_i > client.projects.budgets.advpayments.sum(:amount).to_i
-
                                                     li
                                                         a
-                                                            
                                                             span.menu-item #{currency(client.projects.budgets.sum(:amount).to_i - client.projects.budgets.advpayments.sum(:amount).to_i)} por pagar
-                                            
-                                           
-                                                             
 
-                                / -if client.projects.last.nil?
-                                /     form.delete action="/client/#{client.id}" method="POST"
-                                /         input type="hidden" name="_method" value="DELETE"
-
-                                /         input type="submit" class="button tiny radius nuevo" value="×" title="Delete supplier"
-
-     
         .large-12.columns.rojo
             - if corporation.suppliers.last
                 h6 PROVEEDORES
@@ -100,15 +71,8 @@
                         li  
                             h5.bitter id="some-div" 
                                 a   #{supplier.name.capitalize}
-                                / -if supplier.quotes.last.nil?
-
-                                /     form.delete action="/supplier/#{supplier.id}" method="POST"
-                                /         input type="hidden" name="_method" value="DELETE"
-                                /         input type="submit" class="button tiny radius nuevo" value="×" title="Delete supplier"
                                 .side2-panel.c.anaheim id="some-element" style="font-size: .9em;"
-                                    ul
-
-                                                
+                                    ul                                          
                                         - if corporation
                                             li
                                                 a
@@ -116,19 +80,14 @@
                                                     span.menu-item #{supplier.name.capitalize}
                                         -if supplier.quotes.last
                                             li
-                                                a
-                                                    
+                                                a              
                                                     span.menu-item #{currency(supplier.quotes.sum(:amount).to_i)} cotizado
                                             li
-                                                a
-                                                    
+                                                a          
                                                     span.menu-item #{currency(supplier.quotes.sum(:amount).to_i-supplier.quotes.payments.sum(:amount).to_i)} por pagar
-                                                    
-        
+                                                           
 .side-panel.b
-    ul
-
-                
+    ul            
         - if corporation
             li
                 a
@@ -138,13 +97,8 @@
                     li
                         a.entypo-plus-circled Nuevo
                         form.new action="/corporation/#{@corporation.id}" method="POST"
-                    
-                            
-
                             input type="text" name="client[name]" placeholder="Nombre"
                             input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
-                
-
             li
                 a
                     span.entypo-attach
@@ -156,12 +110,6 @@
 
                             input type="text" name="supplier[name]" Placeholder="Nombre"
                             input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
-
-
-
-
-                                                                            
-                          
 
 
 - if @user.corporations.last

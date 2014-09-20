@@ -16,7 +16,7 @@ require 'sinatra/assetpack'
 require 'sinatra/support/numeric'
 
 
-#INITIALIZERS
+
 
 
 register Sinatra::Numeric
@@ -58,7 +58,11 @@ end
 
 
 
-#omniauth initializer
+
+
+
+
+#OMNIAUTH IDENTITY
 
 use Rack::Session::Pool
 use OmniAuth::Builder do
@@ -74,6 +78,10 @@ use OmniAuth::Builder do
   provider :twitter, 'dpGgrLpsjZl94CwwdykqoABuU', 'YJlE5EN36opAZRKgsx4lbHToaoz0h3RjPAmzEDHLrfUFGZyAjW'
 
 end
+
+
+
+
 
 
 
@@ -153,7 +161,6 @@ class Client
   has n, :advpayments
   has n, :projects
   belongs_to :corporation
-
 end
 
 class Supplier
@@ -162,9 +169,7 @@ class Supplier
   property :name,         String, required: true
   has n, :payments
   has n, :quotes
-
   belongs_to :corporation
-
 end
 
 class Project
@@ -201,7 +206,6 @@ class Advpayment
   property :created_at,   DateTime
   belongs_to :client
   belongs_to :project
-
 end
 
 class Cost
@@ -223,7 +227,6 @@ class Purchase
   property :description,  String, required: true
   property :created_at,   DateTime
   belongs_to :cost
-
 end
 
 class Quote
@@ -235,7 +238,6 @@ class Quote
   has n, :payments
   belongs_to :supplier
   belongs_to :cost
-
 end
 
 class Payment
@@ -246,7 +248,6 @@ class Payment
   property :created_at,         DateTime
   belongs_to :supplier
   belongs_to :quote
-  
 end
 
 class Work
@@ -256,15 +257,22 @@ class Work
   property :description,  String, required: true
   property :created_at,   DateTime
   belongs_to :cost
-
 end
+
+
+
+
+
+
+
+
+
+
 
 configure do
   DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
   DataMapper.finalize
   DataMapper.auto_migrate!
-
-
 end
 
 
@@ -275,32 +283,39 @@ end
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#HOME PONE A TODOS LOS USUARIOS 
 
 get '/' do
   protected!
   @corporation = current_user.corporations.last() if current_user.corporations
   @projects = @corporation.clients.projects.all() if @corporation
-
   slim :summary
 end
+
+
+get '/welcome' do  
+  slim :welcome
+end
+
+get '/start' do  
+  protected!
+  slim :index
+end
+
+
+get '/begin' do  
+  slim :begin
+end
+
+
+
+
+
+
+
+
+
+
+
 
 get '/corporation' do
   protected!
@@ -321,7 +336,6 @@ get '/project/:index' do
     @project = Project.all.last(index: params['index'], corporation_id: @corporation['id']) 
   end
 
-  
   slim :project
 end
 
@@ -333,20 +347,13 @@ get '/projects' do
 end
 
 
-get '/welcome' do  
-
-  slim :welcome
-end
-
-get '/start' do  
-  protected!
-  slim :index
-end
 
 
-get '/begin' do  
-  slim :begin
-end
+
+
+
+
+
 
 
 
@@ -355,7 +362,7 @@ end
 
 ######## CORPORATION
 
-# busca parent y crea child con params
+
 
 post '/:id' do
   corporation = User.get(params[:id]).corporations.create params['corporation'] 
@@ -364,44 +371,25 @@ post '/:id' do
   redirect back
 end
 
-# busca id y borra
+# DELETE
 
 delete '/corporation/:id' do
   Corporation.get(params[:id]).destroy
   redirect back
 end
 
-# busca id y modifica
+# UPDATE
 
 put '/corporation/:id' do
   corporation = Corporation.get params[:id]
   corporation.update(params[:corporation])  
-  
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 
 ######## CLIENT
 
-# busca parent y crea child con params
 
 post '/corporation/:id' do
   client = Corporation.get(params[:id]).clients.create params['client'] 
@@ -409,27 +397,23 @@ post '/corporation/:id' do
   redirect back
 end
 
-# busca id y borra
+# DELETE
 
 delete '/client/:id' do
   Client.get(params[:id]).destroy
   redirect back
 end
 
-# busca id y modifica
+# UPDATE
 
 put '/client/:id' do
   client = Client.get params[:id]
   client.update(params[:client])  
-
 end
-
-
 
 
 ######## SUPPLIER
 
-# busca parent y crea child con params
 
 post '/suppliers/:id' do
   supplier = Corporation.get(params[:id]).suppliers.create params['supplier'] 
@@ -437,31 +421,19 @@ post '/suppliers/:id' do
   redirect back
 end
 
-# busca id y borra
+# DELETE
 
 delete '/supplier/:id' do
   Supplier.get(params[:id]).destroy
   redirect back
 end
 
-# busca id y modifica
+# UPDATE
 
 put '/supplier/:id' do
   supplier = Supplier.get params[:id]
   supplier.update(params[:supplier])  
-
 end
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -469,10 +441,9 @@ end
 
 ######## PROJECT
 
-# busca parent y crea child con params
+
 
 post '/client/:id' do
-
   client = Client.get(params[:id])
   project = client.projects.create! params['project']
   project.corporation_id = client[:corporation_id]
@@ -482,7 +453,6 @@ post '/client/:id' do
 end
 
 post '/clientx/:id' do
-
   project = Corporation.get(params[:id]).projects.create! params['project'] 
   client = Client.all.first(name: project["client_name"])
   project.client_id = client[:id]
@@ -490,7 +460,6 @@ post '/clientx/:id' do
   project.save
   redirect back
 end
-
 
  
 post '/status0/:id' do
@@ -510,18 +479,14 @@ end
 
   
 
-
-
-
-
-# busca id y borra
+# DELETE
 
 delete '/project/:id' do
   Project.get(params[:id]).destroy
   redirect back
 end
 
-# busca id y modifica
+# UPDATE
 
 put '/project/:id' do
   project = Project.get params[:id]
@@ -533,42 +498,27 @@ end
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 ######## BUDGET
 
-# busca parent y crea child con params
 
 post '/project/:id' do
-
   budget = Project.get(params[:id]).budgets.create! params['budget']
   cost = Project.get(params[:id]).costs.create!
   budget.created_at = budget.created_at.nil? ? Time.now : nil
   budget.save
   cost.created_at = cost.created_at.nil? ? Time.now : nil
   cost.save
-
   redirect back
 end
 
-# busca id y borra
+# DELETE
 
 delete '/budget/:id' do
   Budget.get(params[:id]).destroy
   redirect back
 end
 
-# busca id y modifica
+# UPDATE
 
 put '/budget/:id' do
   budget = Budget.get params[:id]
@@ -579,18 +529,17 @@ end
 
 
 
-
 ######## COST
 
 
-# busca id y borra
+# DELETE
 
 delete '/cost/:id' do
   Cost.get(params[:id]).destroy
   redirect back
 end
 
-# busca id y modifica
+# UPDATE
 
 put '/cost/:id' do
   cost = Cost.get params[:id]
@@ -603,37 +552,10 @@ end
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ######## ADVPAYMENT
 
-# busca parent y crea child con params
 
 post '/budget/:id' do
-
   budget = Budget.get(params[:id])
   advpayment = budget.advpayments.create! params['advpayment']
   advpayment.project_id = budget[:project_id]
@@ -644,14 +566,14 @@ post '/budget/:id' do
 
 end
 
-# busca id y borra
+# DELETE
 
 delete '/advpayment/:id' do
   Advpayment.get(params[:id]).destroy
   redirect back
 end
 
-# busca id y modifica
+# UPDATE
 
 put '/advpayment/:id' do
   advpayment = Advpayment.get params[:id]
@@ -664,25 +586,9 @@ end
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ######## PURCHASE
 
 post '/cost/:id' do
-  
   purchase = Cost.get(params[:id]).purchases.create! params['purchase'] 
   purchase.created_at = purchase.created_at.nil? ? Time.now : nil
   purchase.save
@@ -690,14 +596,14 @@ post '/cost/:id' do
 
 end
 
-# busca id y borra
+# DELETE
 
 delete '/purchase/:id' do
   Purchase.get(params[:id]).destroy
   redirect back
 end
 
-# busca id y modifica
+# UPDATE
 
 put '/purchase/:id' do
   purchase = Purchase.get params[:id]
@@ -707,12 +613,9 @@ put '/purchase/:id' do
 end
 
 
-
-
 ######## WORKS
 
 post '/work/:id' do
-  
   work = Cost.get(params[:id]).works.create! params['work'] 
   work.created_at = work.created_at.nil? ? Time.now : nil
   work.save
@@ -720,14 +623,14 @@ post '/work/:id' do
 
 end
 
-# busca id y borra
+# DELETE
 
 delete '/work/:id' do
   Work.get(params[:id]).destroy
   redirect back
 end
 
-# busca id y modifica
+# UPDATE
 
 put '/work/:id' do
   work = Work.get params[:id]
@@ -738,13 +641,9 @@ end
 
 
 
-
-
-
 ######## QUOTE
 
 post '/quote/:id' do
-
   quote = Cost.get(params[:id]).quotes.create! params['quote'] 
   supplier = Supplier.all.first(name: quote["supplier_name"])
   quote.supplier_id = supplier[:id]
@@ -753,14 +652,14 @@ post '/quote/:id' do
 
 end
 
-# busca id y borra
+# DELETE
 
 delete '/quote/:id' do
   Quote.get(params[:id]).destroy
   redirect back
 end
 
-# busca id y modifica
+# UPDATE
 
 put '/purchase/:id' do
   quote = Quote.get params[:id]
@@ -770,13 +669,9 @@ put '/purchase/:id' do
 end
     
 
-
-
-
 ######## PAYMENT
 
 post '/payment/:id' do
-  
   payment = Quote.get(params[:id]).payments.create! params['payment'] 
   supplier = Supplier.all.first(name: payment["supplier_name"])
   payment.supplier_id = supplier[:id]
@@ -786,14 +681,14 @@ post '/payment/:id' do
 
 end
 
-# busca id y borra
+# DELETE
 
 delete '/payment/:id' do
   Payment.get(params[:id]).destroy
   redirect back
 end
 
-# busca id y modifica
+# UPDATE
 
 put '/payment/:id' do
   payment = Payment.get params[:id]

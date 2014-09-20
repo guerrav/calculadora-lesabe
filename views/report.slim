@@ -15,19 +15,19 @@
 row 
     .large-12.columns id="reports"
 
-
-
         .row 
             .large-2.medium-2.columns
                 p=
-            .large-2.medium-2.columns
-                h1=
-                
+            .large-2.medium-2.columns                
                 h5.element.edit_project= project.name.capitalize
                 h6.element= project.client_name.capitalize
                 h6.elementdown= project.completed_at.strftime("%b %e %Y")
-            .large-8.medium-8.columns
-                h6= project.description
+            -if project.description.length > 0
+                .large-8.medium-8.columns
+                    p.element.edit_projectnotes style="font-size:.9em;"= project.description
+            -else
+                .large-8.medium-8.columns
+                    p=
                 
         .row 
             .large-2.medium-2.columns.rojo
@@ -35,37 +35,21 @@ row
                 
                 - if project.budgets.advpayments.last()
                 
-
-                   
-
                     - por_pagar = (presupuesto - total_pagado)
                     - if por_pagar > 0
                         h2.bitter
                             
                             span.has-tip.tip-right data-options="disable_for_touch:true" aria-haspopup="true" data-tooltip="" title="Deuda de cliente" !
 
-                    
-                
-                    
-
-
             .large-2.medium-2.columns.gris
                 - if project.budgets.last()
                     h6.ligris.pad= "PRESUPUESTO SIN IVA"
-                    
                     h3.right= currency(presupuesto)
-
             .large-6.medium-6.columns
                 p=
             .large-2.medium-2.columns 
                 p= 
                            
-                                            
-
-                                
-
-                        
-
 
         .row 
             .large-2.medium-2.small-6.columns
@@ -452,6 +436,17 @@ row
              indicator : 'Guardando...',
              tooltip   : 'Click para editar...',
              width : '7em',
+             callback : function(value, settings) {
+                     window.location.reload();
+                }
+         });
+
+         $('.edit_projectnotes').editable('/project/#{project.id}', { 
+             method : 'PUT',
+             name: 'project[description]',
+             indicator : 'Guardando...',
+             tooltip   : 'Click para editar...',
+             width : '24em',
              callback : function(value, settings) {
                      window.location.reload();
                 }
