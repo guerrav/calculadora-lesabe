@@ -4,25 +4,7 @@
 	.large-12.columns
 		p=
 
--if @corporation && client_any
-.side-panel.b
-    ul
-        li
-            a
-                span.entypo-folder
-                span.menu-item Proyecto
-            ul
-                li
-                    a.entypo-plus-circled Nuevo
-					form.new action="/clientx/#{@corporation.id}" method="POST" 
-	                	label.element Cliente:
-				    	label 				    	 	
-				      		select name="project[client_name]" 				      		
-				      			- @corporation.clients.each do |client|
-							        option value="#{client.name}"  #{client.name.upcase}
-						input type="text" name="project[name]" placeholder="Nombre"					    	
-					   	input type="text" name="project[description]" placeholder="Descripción"
-					    input type="submit"  class="button tiny radius nuevo" value="+ NUEVO PROYECTO"
+
   	
 .row 
 	.large-12.columns		
@@ -43,7 +25,24 @@
 				  				-if (project.budgets.sum(:amount).to_i - project.budgets.advpayments.sum(:amount).to_i ) > 0
 				  					span.palomita style="font-size:.6em;" = "!"
 
-			  				
-			  				
+-if @corporation && client_any
+.side-panel.b
+    ul
+        li
+            a
+                span.entypo-folder
+                span.menu-item Proyecto
+            ul
+                li
+                    a.entypo-plus-circled Nuevo
+					form.new action="/clientx/#{@corporation.id}" method="POST" 
+	                	label.element Cliente:
+				    	label 				    	 	
+				      		select name="project[client_name]" 				      		
+				      			- @corporation.clients.each do |client|
+							        option value="#{client.name}"  #{client.name.upcase}
+						input type="text" name="project[name]" placeholder="Nombre"					    	
+					   	input type="text" name="project[description]" placeholder="Descripción"
+					    input type="submit"  class="button tiny radius nuevo" value="+ NUEVO PROYECTO"  				
 
 		  					 

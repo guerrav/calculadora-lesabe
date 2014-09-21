@@ -492,6 +492,8 @@ line-height: 1.4;
   bottom: 0;
   padding: 15em 0;
 }
+
+
 .side-panel:nth-child(2n) {
 }
 .side-panel ul {
@@ -639,7 +641,7 @@ input[type='checkbox'] {
 .percent2{
   font-size: .9em;
   position: fixed;
-  bottom: 1em;
+  bottom: 0;
   right: 0;
   color: rgba(0,0,0,.2);
 }
@@ -667,4 +669,24 @@ input[type='checkbox']:checked {
   font-size: .73em;
   line-height: 1.3em;
 }
+
+@media screen and (max-width: 720px) {
+  .side-panel {
+    position: static;
+    padding: 0;
+    
+    }
+  .xx {
+    position: fixed;
+    bottom: 0;
+    padding: 15em 0;
+    
+    }
+  .signature {
+    position: static;
+    
+  }
+}
+
+
 
