@@ -691,12 +691,21 @@ input[type='checkbox']:checked {
     padding: 16.4em 0;
     left: -9px;
     font-size: .9em;
+    width: 34px;
     }
   .signature {
     position: static;
     
   }
+  .menu-item{
+    display: none;
+  }
 
+  .b ul {
+
+  width: 34px;
+
+}
 
 
   .mo li{
@@ -707,6 +716,7 @@ input[type='checkbox']:checked {
     right: 1em;
   }
 
+ 
 }
 
 

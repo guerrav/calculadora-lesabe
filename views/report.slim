@@ -334,6 +334,28 @@ row
                     span.menu-item Proveedor
                 ul#newboxes3.newboxes style="display:none;"
                     
+                    
+                    li
+                        a.entypo-doc-text-inv href="javascript:toggleDiv('myContent2');" Cotización
+                        -if project.costs.last()
+                            ul.mo id="myContent2"style="display:none;"
+                                li
+                    
+                                    - cost = project.costs.last(project_id: project["id"])          
+                                    form.new id="quote" action="/quote/#{cost.id}" method="POST"
+                                        .row
+                                            .large-12.columns
+                                                label 
+                                                
+                                                    select name="quote[supplier_name]" 
+                                                        -project.corporation.suppliers.each do |supplier|
+                                        
+                                                            option value="#{supplier.name}"  #{supplier.name.upcase}
+
+                                            .large-12.columns
+                                                input placeholder="Cantidad $" type="text" name="quote[amount]"
+                                            .large-12.columns
+                                                input type="submit"  class="button tiny radius nuevo" value="+ AGREGAR"      
                     -if project.costs.quotes.last()
                         li
                             a.entypo-plus-circled href="javascript:toggleDiv('myContent');" Pago
@@ -358,27 +380,6 @@ row
                                                 input placeholder="Cantidad $" type="text" name="payment[amount]"
                                             .large-12.columns
                                                 input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
-                    li
-                        a.entypo-doc-text-inv href="javascript:toggleDiv('myContent2');" Cotización
-                        -if project.costs.last()
-                            ul.mo id="myContent2"style="display:none;"
-                                li
-                    
-                                    - cost = project.costs.last(project_id: project["id"])          
-                                    form.new id="quote" action="/quote/#{cost.id}" method="POST"
-                                        .row
-                                            .large-12.columns
-                                                label 
-                                                
-                                                    select name="quote[supplier_name]" 
-                                                        -project.corporation.suppliers.each do |supplier|
-                                        
-                                                            option value="#{supplier.name}"  #{supplier.name.upcase}
-
-                                            .large-12.columns
-                                                input placeholder="Cantidad $" type="text" name="quote[amount]"
-                                            .large-12.columns
-                                                input type="submit"  class="button tiny radius nuevo" value="+ AGREGAR"      
             li
                 a href="javascript:showonlyonev2('newboxes4');"
                     span.entypo-docs
