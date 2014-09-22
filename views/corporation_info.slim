@@ -90,31 +90,34 @@
     ul            
         - if corporation
             li
-                a
+                a href="javascript:showonlyonev2('newboxes1');"
                     span.entypo-user
                     span.menu-item Cliente
-                ul
+                ul#newboxes1.newboxes style="display:none;"
                     li
                         a.entypo-plus-circled Nuevo
                         form.new action="/corporation/#{@corporation.id}" method="POST"
                             input type="text" name="client[name]" placeholder="Nombre"
                             input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
             li
-                a
+                a href="javascript:showonlyonev2('newboxes2');"
                     span.entypo-attach
                     span.menu-item Proveedor
-                ul
+                ul#newboxes2.newboxes style="display:none;"
                     li
-                        a.entypo-plus-circled Nuevo
+                        a.entypo-plus-circled  Nuevo
                         form.new action="/suppliers/#{@corporation.id}" method="POST"
 
                             input type="text" name="supplier[name]" Placeholder="Nombre"
                             input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
 
 
+
+
+
 - if @user.corporations.last
     javascript:
-         $('.edit_corporation').editable('/corporation/#{current_user.corporations.last.id}', { 
+        $('.edit_corporation').editable('/corporation/#{current_user.corporations.last.id}', { 
              method : 'PUT',
              name: 'corporation[name]',
              indicator : 'Guardando...',
@@ -123,6 +126,8 @@
              callback : function(value, settings) {
                      window.location.reload();
                 }
-         });
+        });
+
+        
 
 

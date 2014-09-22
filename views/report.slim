@@ -11,7 +11,6 @@
         - cost.amount = costo_real
         - cost.save
 
-
 row 
     .large-12.columns id="reports"
 
@@ -28,6 +27,7 @@ row
             -else
                 .large-8.medium-8.columns
                     p=
+                    
                 
         .row 
             .large-2.medium-2.columns.rojo
@@ -273,19 +273,30 @@ row
                     p=
 
             
-                
+.side-panel.b2.borrar.xxb
+    ul
+        li
+            a href="javascript:toggleDiv('borrarProyecto');" style="color:#ff0000;"
+                span.entypo-trash 
+            ul id="borrarProyecto" style="display:none;"
+                li 
+                    
+                    form.delete action="/project/#{project.id}" method="POST" 
+                        input type="hidden" name="_method" value="DELETE"
+                        input type="submit" class="button tiny radius" value= "BORRAR PROYECTO"               
 
 .side-panel.b.xx
     ul
+        
 
                 
 
         -if presupuesto <= 0
             li
-                a
+                a href="javascript:showonlyonev2('newboxes1');"
                     span.entypo-direction
                     span.menu-item Presupuesto
-                ul
+                ul#newboxes1.newboxes style="display:none;"
                     li
                         a.entypo-plus-circled Monto
                         form.new id="budget" action="/project/#{project.id}" method="POST"
@@ -295,14 +306,14 @@ row
         -if project.budgets.last()
 
             li
-                a
+                a href="javascript:showonlyonev2('newboxes2');"
                     span.entypo-user
                     span.menu-item Cliente
-                ul
+                ul#newboxes2.newboxes style="display:none;"
                     li
                         a.entypo-thumbs-up Anticipo
 
-                        ul
+                        ul.mo
                             li
                                                                                 
                                 - budget = project.budgets.last(project_id: project["id"])
@@ -318,16 +329,16 @@ row
 
 
             li
-                a
+                a href="javascript:showonlyonev2('newboxes3');"
                     span.entypo-attach
                     span.menu-item Proveedor
-                ul
+                ul#newboxes3.newboxes style="display:none;"
                     
                     -if project.costs.quotes.last()
                         li
-                            a.entypo-plus-circled Pago
+                            a.entypo-plus-circled href="javascript:toggleDiv('myContent');" Pago
                             
-                            ul
+                            ul.mo id="myContent" style="display:none;"
                                 li
                             
                                     
@@ -348,9 +359,9 @@ row
                                             .large-12.columns
                                                 input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
                     li
-                        a.entypo-doc-text-inv Cotización
+                        a.entypo-doc-text-inv href="javascript:toggleDiv('myContent2');" Cotización
                         -if project.costs.last()
-                            ul
+                            ul.mo id="myContent2"style="display:none;"
                                 li
                     
                                     - cost = project.costs.last(project_id: project["id"])          
@@ -369,15 +380,15 @@ row
                                             .large-12.columns
                                                 input type="submit"  class="button tiny radius nuevo" value="+ AGREGAR"      
             li
-                a
+                a href="javascript:showonlyonev2('newboxes4');"
                     span.entypo-docs
                     span.menu-item Compras
-                ul
+                ul#newboxes4.newboxes style="display:none;"
                     li
                         a.entypo-plus-circled Material
                
                         -if project.costs.last()
-                            ul
+                            ul.mo
                                 li
                                         
                                                         
@@ -392,14 +403,14 @@ row
                                                 input type="submit" class="button tiny radius nuevo" value="+ AGREGAR" 
 
             li
-                a
+                a href="javascript:showonlyonev2('newboxes5');"
                     span.entypo-tools
                     span.menu-item Mano de Obra
-                ul
+                ul#newboxes5.newboxes style="display:none;"
                     li
                         a.entypo-plus-circled Monto
                         -if project.costs.last()
-                            ul
+                            ul.mo
                                 li
                                         
                                                         

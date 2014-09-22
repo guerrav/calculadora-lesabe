@@ -20,6 +20,37 @@ html class="no-js" lang="en"
     body 
         header
 
+        javascript:
+
+            function showonlyonev2(thechosenone) {
+                  var newboxes = document.getElementsByTagName("ul");
+                  for(var x=0; x<newboxes.length; x++) {
+                        name = newboxes[x].getAttribute("class");
+                        if (name == 'newboxes') {
+                              if (newboxes[x].id == thechosenone) {
+                                    if (newboxes[x].style.display == 'block') {
+                                          newboxes[x].style.display = 'none';
+                                    }
+                                    else {
+                                          newboxes[x].style.display = 'block';
+
+                                    }
+                              }else {
+                                    newboxes[x].style.display = 'none';
+                              }
+                        }
+                  }
+            }
+
+            function toggleDiv(divId) {
+               $("#"+divId).toggle();
+            }
+
+
+
+
+
+
         == yield
                  
 		script src="/bower_components/foundation/js/vendor/fastclick.js"

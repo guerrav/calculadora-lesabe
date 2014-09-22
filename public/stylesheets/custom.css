@@ -150,7 +150,7 @@ select {
 }
 
 
-.initiallyHidden { display: none; }
+.initiallyHidden { display: block; }
 
 #inputs {
   background: rgb(255, 255, 255);
@@ -463,12 +463,6 @@ line-height: 1.4;
   position: fixed;
 }
 
-.borrar {
-  margin-top: -.5em;
-  margin-right: 2.9em;
-  color: #ff0000;
-  position: fixed;
-}
 
 
 
@@ -516,7 +510,6 @@ line-height: 1.4;
 .side-panel > ul ul {
   width: 150px;
   padding-left: 10px;
-  display: none;
   position: absolute;
   top: 0;
   left: 100%;
@@ -555,7 +548,6 @@ line-height: 1.4;
   background: #fff;
 }
 .side-panel li:hover > ul {
-  display: block;
 }
 .side-panel a {
   display: inline-block;
@@ -600,8 +592,11 @@ line-height: 1.4;
   font-size: .9em;
   
 }
-
-
+.borrar {
+  padding: 16.4em 0;
+  left: -9px;
+  font-size: .9em;
+}
 .c  ul {
   position: fixed;
   width: 180px;
@@ -630,6 +625,25 @@ input[type='checkbox'] {
 }
 
 
+
+.switch1:active input[type='checkbox'] {
+  width: 14px;
+}
+.switch1:active input[type='checkbox']:checked {
+  width: 14px;
+  margin-left: -8px;
+}
+
+input[type='checkbox']:focus {
+  outline: none;
+}
+
+
+input[type='checkbox']:checked {
+  -webkit-transform: translateX(20px);
+  background-color: #ff0000;
+}
+
 .percent{
   font-size: 9.5em;
   position: fixed;
@@ -644,23 +658,6 @@ input[type='checkbox'] {
   bottom: 0;
   right: 0;
   color: rgba(0,0,0,.2);
-}
-.switch1:active input[type='checkbox'] {
-  width: 34px;
-}
-.switch1:active input[type='checkbox']:checked {
-  width: 34px;
-  margin-left: -8px;
-}
-
-input[type='checkbox']:focus {
-  outline: none;
-}
-
-
-input[type='checkbox']:checked {
-  -webkit-transform: translateX(20px);
-  background-color: #ff0000;
 }
 
 .signature {
@@ -682,11 +679,33 @@ input[type='checkbox']:checked {
     padding: 15em 0;
     
     }
+
+  .xxb {
+    position: fixed;
+    bottom: 0;
+    padding: 16.4em 0;
+    left: -9px;
+    font-size: .9em;
+    }
   .signature {
     position: static;
     
   }
+
+
+
+  .mo li{
+    width: 150px;
+    position: fixed;
+    bottom: .3em;
+    display: block;
+    right: 1em;
+  }
+
 }
+
+
+
 
 
 

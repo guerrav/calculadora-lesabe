@@ -29,10 +29,10 @@
 .side-panel.b
     ul
         li
-            a
+            a href="javascript:showonlyonev2('newboxes1');"
                 span.entypo-folder
                 span.menu-item Proyecto
-            ul
+            ul#newboxes1.newboxes style="display:none;"
                 li
                     a.entypo-plus-circled Nuevo
 					form.new action="/clientx/#{@corporation.id}" method="POST" 
