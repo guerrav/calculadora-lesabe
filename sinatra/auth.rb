@@ -76,7 +76,6 @@ module Sinatra
       	
       	app.get '/logout' do
         	session[:admin] = nil
-        	flash[:notice] = "You have now logged out"
         	redirect to('/')
 		end 
 
@@ -90,7 +89,6 @@ module Sinatra
 
 	      	if authentication
 	      		authentication.user_id == current_user
-	      		flash[:notice] = "existe una auth ligada a user.id #{authentication.id} " 
 	      		redirect to('/')
 
 	      	else
@@ -98,7 +96,6 @@ module Sinatra
 	      		user.authentications.create!(uid: auth["uid"], provider: auth["provider"])
 	      		user.save
 	      		session[:admin] = user.id
-	      		flash[:notice] = "lo logre  #{user.id} "
 	      		redirect to('/index')
  
 			end 
@@ -117,14 +114,12 @@ module Sinatra
 
 			if user
 			    session[:admin] = user.id
-			    flash[:notice] = "You are now logged in as #{user.email}" 
 			    redirect to('/start')
 
 			else
 			    user = User.new email: auth["info"]["email"]
 			    user.save
 			    session[:admin] = user.id
-			    flash[:notice] = "no hay match entonces genera un usario " 
 			    redirect to('/index')		
 
 			end
@@ -134,7 +129,7 @@ module Sinatra
 		 
 		 
 		app.get '/auth/failure' do
-			flash[:notice] = "The username or password you entered are incorrect"
+			flash[:notice] = "El usario o contraseña son incorrectos"
           	redirect to('/')
 		end
 

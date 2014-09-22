@@ -556,6 +556,11 @@ line-height: 1.4;
   color: #454545;
 }
 
+.side-panel a:hover {
+  
+  color: #66ccff;
+}
+
 ####
 
 

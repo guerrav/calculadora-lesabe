@@ -251,7 +251,7 @@ class Work
   include DataMapper::Resource
   property :id,           Serial
   property :amount,       Integer, default: 0
-  property :description,  String, required: true
+  property :description,  String
   property :created_at,   DateTime
   belongs_to :cost
 end
@@ -479,8 +479,20 @@ end
 # DELETE
 
 delete '/project/:id' do
-  Project.get(params[:id]).destroy
-  redirect back
+  project = Project.get(params[:id])
+  
+  Budget.all(project_id: project["id"]).advpayments.destroy
+  Budget.all(project_id: project["id"]).destroy
+  Project.last(id: project["id"]).costs.quotes.payments.destroy
+  Project.last(id: project["id"]).costs.quotes.destroy
+  
+  Project.last(id: project["id"]).costs.purchases.destroy
+  Project.last(id: project["id"]).costs.works.destroy
+  Cost.all(project_id: project["id"]).destroy
+  project.destroy!
+  flash[:notice] = "Proyecto borrado"  
+  
+  redirect to ('/projects')
 end
 
 # UPDATE
