@@ -1,132 +1,216 @@
 == slim :nav
 
-
-.row 
+row 
     .large-12.columns
-        p=
 
-.row 
-    .large-12.columns
-        - if client_any && supplier_any && @corporation.clients.projects.last.nil?
-            h2
-                a.botonsazoA href="/projects" Crea tu primer proyecto!
+        .row 
 
-.row
-    .large-12.columns.bitter
-        - if @user.corporations.last
-            - corporation = @user.corporations.last
-            h1.bitter.elementdown.edit_corporation= corporation.name.capitalize
-    .large-12.columns
-        p=
+            .large-12.columns
+                p=
 
-.row
-    .large-4.columns
-        - if @user.corporations.last.nil?
-            form.new action="/#{@user.id}" method="POST"
-                .row
-                    .large-12.columns.azul
-                        h4.bitter.elementdown= "Empresa"
-                    .large-12.columns
-                        input type="text" name="corporation[name]" placeholder="Ponle nombre"                    
-                    .large-12.columns
-                        input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
 
--if corporation
-    .row 
-        .large-12.columns.rojo
-            - if corporation.clients.last
-                h6 CLIENTES
-                ul.no-bullet.inline-list
-                    - corporation.clients.each do |client|
-                        li                              
-                            h5.bitter id="some-div"  
-                                a  #{client.name.capitalize}
-                                .side2-panel.c.anaheim id="some-element" style="font-size: .9em;"
-                                    ul
-                                        - if corporation
-                                            li
-                                                a
-                                                    span.entypo-user
-                                                    span.menu-item #{client.name.capitalize}
-                                            li
-                                                a
-                                                    
-                                                    span.menu-item #{client.projects.count} proyectos
-                                            -if client.projects.budgets.advpayments.last
-                                                li
-                                                    a
-                                                        
-                                                        span.menu-item #{currency(client.projects.budgets.advpayments.sum(:amount))} pagado
+        .row
+            .large-12.columns.bitter
+                - if current_user.corporations.last
+                    - corporation = current_user.corporations.last
+                    h1.bitter.element.edit_corporation= corporation.name.capitalize
+                    h6= "#{current_user.name.capitalize} #{current_user.lastname.capitalize}"
 
-                                                -if client.projects.budgets.sum(:amount).to_i > client.projects.budgets.advpayments.sum(:amount).to_i
+        .row 
+            .large-12.columns
+                - if client_any.nil? 
+                    h2
+                        a.botonsazoA href="javascript:showonlyonev2('newboxes1');" Agrega un cliente y un proveedor para empezar!
+                - if client_any && supplier_any && @corporation.clients.projects.last.nil?
+                    h2
+                        a.botonsazoA href="javascript:showonlyonev2('newboxes3');" Crea tu primer proyecto!
+                - if current_user.corporations.clients.projects.last && current_user.corporations.clients.projects.budgets.first.nil?
+                    h2
+                        a.botonsazoA href="/project/1" Asigna un presupuesto!
+
+
+        == slim :summary    
+
+
+
+        -if corporation
+            .row 
+                .large-6.columns.rojo
+                    - if corporation.clients.last
+                        h6 Clientes
+                        ul.no-bullet.inline-list
+                            - corporation.clients.each do |client|
+                                li                              
+                                    h5.bitter  
+                                        a href="javascript:showonlyonev2('newboxes3#{client.id}');"  #{client.name.capitalize}
+                                        .side2-panel.c.anaheim style="font-size: .9em;"
+                                            ul.newboxes id="newboxes3#{client.id}" style="display:none;"  
+                                                - if corporation
                                                     li
                                                         a
-                                                            span.menu-item #{currency(client.projects.budgets.sum(:amount).to_i - client.projects.budgets.advpayments.sum(:amount).to_i)} por pagar
+                                                            span.entypo-user
+                                                            span.edit_client #{client.name.capitalize}
 
-        .large-12.columns.rojo
-            - if corporation.suppliers.last
-                h6 PROVEEDORES
-                ul.no-bullet.inline-list
-                    - corporation.suppliers.each do |supplier|
-                        li  
-                            h5.bitter id="some-div" 
-                                a   #{supplier.name.capitalize}
-                                .side2-panel.c.anaheim id="some-element" style="font-size: .9em;"
-                                    ul                                          
-                                        - if corporation
-                                            li
-                                                a
-                                                    span.entypo-user
-                                                    span.menu-item #{supplier.name.capitalize}
-                                        -if supplier.quotes.last
-                                            li
-                                                a              
-                                                    span.menu-item #{currency(supplier.quotes.sum(:amount).to_i)} cotizado
-                                            li
-                                                a          
-                                                    span.menu-item #{currency(supplier.quotes.sum(:amount).to_i-supplier.quotes.payments.sum(:amount).to_i)} por pagar
-                                                           
-.side-panel.b
-    ul            
-        - if corporation
-            li
-                a href="javascript:showonlyonev2('newboxes1');"
-                    span.entypo-user
-                    span.menu-item Cliente
-                ul#newboxes1.newboxes style="display:none;"
+                                                            javascript:
+
+                                                                $('.edit_client').editable('/client/#{client.id}', { 
+                                                                     method : 'PUT',
+                                                                     type      : 'text',
+                                                                     name: 'client[name]',
+                                                                     indicator : 'Guardando...',
+                                                                     submit    : 'Ok Guardar',
+                                                                     tooltip   : 'Click para editar...',
+                                                                     width : '7em',
+                                                                     callback : function(value, settings) {
+                                                                             window.location.reload();
+                                                                        }
+                                                                });
+                                                    
+                                                    li
+                                                        a
+                                                            
+                                                            span #{client.projects.count} proyectos
+                                                    -if client.projects.budgets.advpayments.last
+                                                        li
+                                                            a
+                                                                
+                                                                span #{currency(client.projects.budgets.advpayments.sum(:amount))} pagado
+
+                                                        -if client.projects.budgets.sum(:amount).to_i > client.projects.budgets.advpayments.sum(:amount).to_i
+                                                            li
+                                                                a
+                                                                    span #{currency(client.projects.budgets.sum(:amount).to_i - client.projects.budgets.advpayments.sum(:amount).to_i)} por pagar
+                                                    -if client.projects.last.nil?
+
+                                                        li 
+   
+                                                            form.delete action="/client/#{client.id}" method="POST" 
+                                                                input type="hidden" name="_method" value="DELETE"
+                                                                input type="submit" class="button tiny radius" value= "BORRAR CLIENTE"
+
+                .large-6.columns.rojo
+                    - if corporation.suppliers.last
+                        h6 Proveedores
+                        ul.no-bullet.inline-list
+                            - corporation.suppliers.each do |supplier|
+                                li  
+                                    h5.bitter 
+                                        a href="javascript:showonlyonev2('newboxes2#{supplier.id}');"  #{supplier.name.capitalize}
+                                        .side2-panel.c.anaheim style="font-size: .9em;"
+                                            ul.newboxes id="newboxes2#{supplier.id}" style="display:none; font-size: .9em;"                                          
+                                                - if corporation
+                                                    li
+                                                        a
+                                                            span.entypo-user
+                                                            span.edit_supplier #{supplier.name.capitalize}
+                                                            javascript:
+
+                                                                $('.edit_supplier').editable('/supplier/#{supplier.id}', { 
+                                                                     method : 'PUT',
+                                                                     type      : 'text',
+                                                                     name: 'supplier[name]',
+                                                                     indicator : 'Guardando...',
+                                                                     submit    : 'Ok Guardar',
+                                                                     tooltip   : 'Click para editar...',
+                                                                     width : '7em',
+                                                                     callback : function(value, settings) {
+                                                                             window.location.reload();
+                                                                        }
+                                                                });
+
+                                                -if supplier.quotes.last
+                                                    li
+                                                        a              
+                                                            span #{currency(supplier.quotes.sum(:amount).to_i)} cotizado
+                                                    li
+                                                        a          
+                                                            span #{currency(supplier.quotes.sum(:amount).to_i-supplier.quotes.payments.sum(:amount).to_i)} por pagar
+                                                -if supplier.quotes.last.nil?
+
+                                                    li 
+
+                                                        form.delete action='/supplier/#{supplier.id}' method="POST" 
+                                                            input type="hidden" name="_method" value="DELETE"
+                                                            input type="submit" class="button tiny radius" value= "BORRAR CLIENTE"
+           
+
+
+
+        == slim :projects
+
+
+        .side-panel.b.xx
+            ul            
+                - if corporation
                     li
-                        a.entypo-plus-circled Nuevo
-                        form.new action="/corporation/#{@corporation.id}" method="POST"
-                            input type="text" name="client[name]" placeholder="Nombre"
-                            input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
-            li
-                a href="javascript:showonlyonev2('newboxes2');"
-                    span.entypo-attach
-                    span.menu-item Proveedor
-                ul#newboxes2.newboxes style="display:none;"
+                        a href="javascript:showonlyonev2('newboxes1');"
+                            span.entypo-user
+                            span.menu-item Cliente
+                        ul#newboxes1.newboxes style="display:none;"
+                            li
+                                a.entypo-plus style= "font-size:.9em;"Nuevo Cliente
+                                ul.mo
+                                    li
+                                        form.new action="/corporation/#{@corporation.id}" method="POST"
+                                            input type="text" name="client[name]" placeholder="Nombre cliente"
+                                            input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
                     li
-                        a.entypo-plus-circled  Nuevo
-                        form.new action="/suppliers/#{@corporation.id}" method="POST"
+                        a href="javascript:showonlyonev2('newboxes2');"
+                            span.entypo-attach
+                            span.menu-item Proveedor
+                        ul#newboxes2.newboxes style="display:none;"
+                            li
+                                a.entypo-plus style= "font-size:.9em;"Nuevo Proveedor
+                                ul.mo
+                                    li
+                                       
+                                        form.new action="/suppliers/#{@corporation.id}" method="POST"
 
-                            input type="text" name="supplier[name]" Placeholder="Nombre"
-                            input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
+                                            input type="text" name="supplier[name]" Placeholder="Nombre proveedor"
+                                            input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
+                -if supplier_any && client_any 
+                    li
+                        a href="javascript:showonlyonev2('newboxes3');"
+                            span.entypo-folder
+                            span.menu-item Proyecto
+                        ul#newboxes3.newboxes style="display:none;"
+                            li
+                                a.entypo-plus style= "font-size:.9em;"Nuevo Proyecto
+                                ul.mo
+                                    li
+                                        form.new action="/clientx/#{@corporation.id}" method="POST" 
+                                            label.element Cliente:
+                                            label                           
+                                                select name="project[client_name]"                          
+                                                    - @corporation.clients.each do |client|
+                                                        option value="#{client.name}"  #{client.name.upcase}
+                                            input type="text" name="project[name]" placeholder="Nombre proyecto"                         
+                                            
+                                            input type="submit"  class="button tiny radius nuevo" value="+ NUEVO PROYECTO" 
 
 
 
 
 
-- if @user.corporations.last
+- if current_user.corporations.last
     javascript:
         $('.edit_corporation').editable('/corporation/#{current_user.corporations.last.id}', { 
              method : 'PUT',
              name: 'corporation[name]',
              indicator : 'Guardando...',
+             submit    : 'Ok Guardar',
              tooltip   : 'Click para editar...',
              width : '7em',
              callback : function(value, settings) {
                      window.location.reload();
                 }
         });
+
+
+    
+
+
+
 
         
 

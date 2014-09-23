@@ -95,8 +95,9 @@ module Sinatra
 	      		user = User.create!
 	      		user.authentications.create!(uid: auth["uid"], provider: auth["provider"])
 	      		user.save
+	      		
 	      		session[:admin] = user.id
-	      		redirect to('/index')
+	      		redirect to('/corporation')
  
 			end 
 	    end
@@ -113,14 +114,17 @@ module Sinatra
 			end
 
 			if user
+				corporation = Corporation.create!(user_id: user["id"]) 
+			    corporation.save
 			    session[:admin] = user.id
-			    redirect to('/start')
+			    redirect to('/')
 
 			else
 			    user = User.new email: auth["info"]["email"]
 			    user.save
+			    
 			    session[:admin] = user.id
-			    redirect to('/index')		
+			    redirect to('/corporation')		
 
 			end
 

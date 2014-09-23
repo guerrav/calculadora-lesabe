@@ -21,12 +21,10 @@ row
                 h5.element.edit_project= project.name.capitalize
                 h6.element= project.client_name.capitalize
                 h6.elementdown= project.completed_at.strftime("%b %e %Y")
-            -if project.description.length > 0
-                .large-8.medium-8.columns
-                    p.element.edit_projectnotes style="font-size:.9em;"= project.description
-            -else
-                .large-8.medium-8.columns
-                    p=
+            
+            .large-8.medium-8.columns
+                p.element.edit_projectnotes style="font-size:.8em; color:#454545; line-height: 1.3;"= project.description
+            
                     
                 
         .row 
@@ -272,22 +270,19 @@ row
                 .large-2.medium-2.columns
                     p=
 
-            
-.side-panel.b2.borrar.xxb
-    ul
-        li
-            a href="javascript:toggleDiv('borrarProyecto');" style="color:#ff0000;"
-                span.entypo-trash 
-            ul id="borrarProyecto" style="display:none;"
-                li 
-                    
-                    form.delete action="/project/#{project.id}" method="POST" 
-                        input type="hidden" name="_method" value="DELETE"
-                        input type="submit" class="button tiny radius" value= "BORRAR PROYECTO"               
+             
 
 .side-panel.b.xx
     ul
-        
+        li.widthBorrar
+            a href="javascript:toggleDiv('borrarProyecto');" style="color:#ff0000;"
+                span.entypo-trash 
+            ul id="borrarProyecto" style="display:none;"
+                li
+                    
+                    form.delete action="/project/#{project.id}" method="POST" 
+                        input type="hidden" name="_method" value="DELETE"
+                        input type="submit" class="button tiny radius" value= "BORRAR PROYECTO"
 
                 
 
@@ -301,7 +296,7 @@ row
                         a.entypo-plus-circled Monto
                         form.new id="budget" action="/project/#{project.id}" method="POST"
 
-                            input placeholder="Cantidad $" type="text" name="budget[amount]"
+                            input placeholder="Cantidad $$$" type="text" name="budget[amount]"
                             input type="submit" class="button tiny radius nuevo" value= "+ AGREGAR"
         -if project.budgets.last()
 
@@ -322,7 +317,7 @@ row
                                     
 
                             
-                                    input placeholder="Cantidad $" type="text" name="advpayment[amount]"
+                                    input placeholder="Cantidad $$$" type="text" name="advpayment[amount]"
                                     
                                     input type="submit" class="button tiny radius nuevo" value= "+ AGREGAR" 
 
@@ -353,7 +348,7 @@ row
                                                             option value="#{supplier.name}"  #{supplier.name.upcase}
 
                                             .large-12.columns
-                                                input placeholder="Cantidad $" type="text" name="quote[amount]"
+                                                input placeholder="Cantidad $$$" type="text" name="quote[amount]"
                                             .large-12.columns
                                                 input type="submit"  class="button tiny radius nuevo" value="+ AGREGAR"      
                     -if project.costs.quotes.last()
@@ -377,7 +372,7 @@ row
 
                                             .large-12.columns
                                                 
-                                                input placeholder="Cantidad $" type="text" name="payment[amount]"
+                                                input placeholder="Cantidad $$$" type="text" name="payment[amount]"
                                             .large-12.columns
                                                 input type="submit" class="button tiny radius nuevo" value="+ AGREGAR"
             li
@@ -396,14 +391,14 @@ row
                                     form.new id="purchase" action="/cost/#{cost.id}" method="POST"
                                         .row
                                             .large-12.columns                    
-                                                input placeholder="Cantidad $" type="text" name="purchase[amount]"
+                                                input placeholder="Cantidad $$$" type="text" name="purchase[amount]"
                                                   
                                             .large-12.columns    
                                                 input placeholder="Descripción" type="text" name="purchase[description]"
                                             .large-12.columns
                                                 input type="submit" class="button tiny radius nuevo" value="+ AGREGAR" 
 
-            li
+            li 
                 a href="javascript:showonlyonev2('newboxes5');"
                     span.entypo-tools
                     span.menu-item Mano de Obra
@@ -418,7 +413,7 @@ row
                                     form.new id="work" action="/work/#{cost.id}" method="POST"
                                         .row
                                             .large-12.columns                    
-                                                input placeholder="Cantidad $" type="text" name="work[amount]"
+                                                input placeholder="Cantidad $$$" type="text" name="work[amount]"
                                                   
                                             .large-12.columns    
                                                 input placeholder="Descripción" type="text" name="work[description]"
@@ -444,6 +439,8 @@ row
     javascript:
          $('.edit_project').editable('/project/#{project.id}', { 
              method : 'PUT',
+             type      : 'text',
+             submit    : 'Ok Guardar',
              name: 'project[name]',
              indicator : 'Guardando...',
              tooltip   : 'Click para editar...',
@@ -455,10 +452,12 @@ row
 
          $('.edit_projectnotes').editable('/project/#{project.id}', { 
              method : 'PUT',
+             type      : 'textarea',
+             submit    : 'Ok Guardar',
              name: 'project[description]',
              indicator : 'Guardando...',
              tooltip   : 'Click para editar...',
-             width : '24em',
+             
              callback : function(value, settings) {
                      window.location.reload();
                 }

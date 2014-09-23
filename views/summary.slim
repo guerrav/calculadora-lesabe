@@ -1,35 +1,41 @@
-== slim :nav
 
--if current_user.corporations.projects.last
+-if @projects
+	-if current_user.corporations.projects.last
 
-	- cotizado = @projects.budgets.sum(:amount).to_i
-	- pagado = @projects.budgets.advpayments.sum(:amount).to_i
-	- cotiprov = @projects.costs.quotes.sum(:amount).to_i
-	- pagosprov = @projects.costs.quotes.payments.sum(:amount).to_i
-    - costo_real = @projects.costs.purchases.sum(:amount).to_i + cotiprov + @projects.costs.works.sum(:amount).to_i
-	- utilidad = (pagado - costo_real)
+		- cotizado = @projects.budgets.sum(:amount).to_i
+		- pagado = @projects.budgets.advpayments.sum(:amount).to_i
+		- cotiprov = @projects.costs.quotes.sum(:amount).to_i
+		- pagosprov = @projects.costs.quotes.payments.sum(:amount).to_i
+	    - costo_real = @projects.costs.purchases.sum(:amount).to_i + cotiprov + @projects.costs.works.sum(:amount).to_i
+		- utilidad = (pagado - costo_real)
 
-	.row
-		.large-12.columns
-			p=
-	.row
-		.large-12.columns
-			-if @projects.count == 1
-				h1.bitter= "#{@projects.count} proyecto"
-			-else
-				h1.bitter= "#{@projects.count} proyectos en total"
-			-if @corporation.clients.count > 1
-				h4.bitter= "#{@corporation.clients.count} clientes"
-			-if pagado > 1
-				h4.bitter= "Te deben #{currency(cotizado - pagado)}"
-			-if @corporation.suppliers.count > 1
-				h4.bitter= "#{@corporation.suppliers.count} proveedores"
-			-if cotiprov > 1
-				h4.bitter= "Debes #{currency(pagosprov - cotiprov )}"
-			-if pagado > 1
-				h4.bitter= "Haz cotizado #{currency(cotizado)} y cobrado #{currency(pagado)}"
-			-if cotizado > 1 && costo_real > 1
-				- p = percentage((utilidad * 100) / cotizado)
-				h5.bitter.percent2 Utilidad promedio por proyectos .
-				h2.bitter.percent #{p}
+		
+		.row.summary
+			.large-2.columns  
+				-if @projects.count == 1
+					span= "#{@projects.count} proyecto"
+				-else
+					span= "#{@projects.count} proyectos en total"
+			.large-2.columns
+				
+				-if pagado > 1
+					span= "Por cobrar #{currency(cotizado - pagado)}"
 			
+				
+				-if cotiprov > 1 
+					span= "Por pagar #{currency(pagosprov - cotiprov )}"
+			.large-2.columns
+				-if pagado > 1
+					span= "Cotizado #{currency(cotizado)}"
+					span= "Cobrado #{currency(pagado)}"
+			.large-3.columns
+				-if cotizado > 1 && costo_real > 1
+					- p = percentage((utilidad * 100) / cotizado)
+					span #{p}
+					span Utilidad promedio por proyecto
+					
+			.large-1.columns
+				p=
+		.row
+			.large-12.columns
+				p=

@@ -1,5 +1,3 @@
-== slim :nav
-
 .row
 	.large-12.columns.rojo
 		p=
@@ -7,44 +5,24 @@
 			== styled_flash
 
 
-  	
-.row 
-	.large-12.columns		
-		ul.no-bullet.inline-list
-		  	- user_projects.reverse.each_with_index  do |project, index| 		
-		  		- project.index = index.to_i + 1
-		  		- project.save
-		  		li
-		  			h3.bitter
-		  				-if project.status == "0" #ABIERTO
-			  				a href="/project/#{project.index}" #{project.name.capitalize}
-			  				-if project.budgets.advpayments.last
-				  				-if (project.budgets.sum(:amount).to_i - project.budgets.advpayments.sum(:amount).to_i ) > 0
-				  					span.palomita style="font-size:.6em;" = "!"
-				  		-else #CERRADO
-			  				a href="/project/#{project.index}" style="color:#cccccc;" #{project.name.capitalize}
-			  				-if project.budgets.advpayments.last
-				  				-if (project.budgets.sum(:amount).to_i - project.budgets.advpayments.sum(:amount).to_i ) > 0
-				  					span.palomita style="font-size:.6em;" = "!"
+-if user_projects.last
+	.row 
+		.large-12.columns.rojo.pad
+			h6 Proyectos		
+			ul.no-bullet.inline-list
+			  	- user_projects.reverse.each_with_index  do |project, index| 		
+			  		- project.index = index.to_i + 1
+			  		- project.save
+			  		li
+			  			h3.bitter
+			  				-if project.status == "0" #ABIERTO
+				  				a href="/project/#{project.index}" #{project.name.capitalize}
+				  				-if project.budgets.advpayments.last
+					  				-if (project.budgets.sum(:amount).to_i - project.budgets.advpayments.sum(:amount).to_i ) > 0
+					  					span.palomita style="font-size:.6em;" = "!"
+					  		-else #CERRADO
+				  				a href="/project/#{project.index}" style="color:#cccccc;" #{project.name.capitalize}
+				  				-if project.budgets.advpayments.last
+					  				-if (project.budgets.sum(:amount).to_i - project.budgets.advpayments.sum(:amount).to_i ) > 0
+					  					span.palomita style="font-size:.6em;" = "!"
 
--if @corporation && client_any
-.side-panel.b
-    ul
-        li
-            a href="javascript:showonlyonev2('newboxes1');"
-                span.entypo-folder
-                span.menu-item Proyecto
-            ul#newboxes1.newboxes style="display:none;"
-                li
-                    a.entypo-plus-circled Nuevo
-					form.new action="/clientx/#{@corporation.id}" method="POST" 
-	                	label.element Cliente:
-				    	label 				    	 	
-				      		select name="project[client_name]" 				      		
-				      			- @corporation.clients.each do |client|
-							        option value="#{client.name}"  #{client.name.upcase}
-						input type="text" name="project[name]" placeholder="Nombre"					    	
-					   	input type="text" name="project[description]" placeholder="Descripción"
-					    input type="submit"  class="button tiny radius nuevo" value="+ NUEVO PROYECTO"  				
-
-		  					 

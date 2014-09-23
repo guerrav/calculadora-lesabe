@@ -141,8 +141,7 @@ end
 class Corporation
   include DataMapper::Resource
   property :id,             Serial
-  property :name,           String
-  property :description,    String
+  property :name,           String, default: "Tu empresa"
   property :status,         String
   property :completed_at,   Date
   has n, :projects
@@ -174,7 +173,7 @@ class Project
   property :id,             Serial
   property :name,           String, required: true
   property :index,          Integer, default: 1
-  property :description,    String
+  property :description,    Text,  default: "Notas de tu proyecto"
   property :client_name,    String
   property :status,         String, default: 0
   property :completed_at,   DateTime
@@ -285,7 +284,7 @@ get '/' do
   protected!
   @corporation = current_user.corporations.last() if current_user.corporations
   @projects = @corporation.clients.projects.all() if @corporation
-  slim :summary
+  slim :corporation_info
 end
 
 
@@ -293,10 +292,7 @@ get '/welcome' do
   slim :welcome
 end
 
-get '/start' do  
-  protected!
-  slim :index
-end
+
 
 
 get '/begin' do  
@@ -307,19 +303,6 @@ end
 
 
 
-
-
-
-
-
-
-
-get '/corporation' do
-  protected!
-  @user = current_user
-  @corporation = @user.corporations.last()
-  slim :corporation_info
-end
 
 
 get '/project/:index' do
@@ -397,7 +380,7 @@ end
 # DELETE
 
 delete '/client/:id' do
-  Client.get(params[:id]).destroy
+  Client.get(params[:id]).destroy!
   redirect back
 end
 
@@ -421,7 +404,7 @@ end
 # DELETE
 
 delete '/supplier/:id' do
-  Supplier.get(params[:id]).destroy
+  Supplier.get(params[:id]).destroy!
   redirect back
 end
 
@@ -492,7 +475,7 @@ delete '/project/:id' do
   project.destroy!
   flash[:notice] = "Proyecto borrado"  
   
-  redirect to ('/projects')
+  redirect to ('/')
 end
 
 # UPDATE

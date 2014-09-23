@@ -161,17 +161,6 @@ select {
   box-shadow:  0  -8px 8px -8px rgba(0, 0, 0, 0.2);
 }
 
-#some-element {
-  display: none;
-}
-
-#some-div:hover #some-element {
-  display: block;
-}
-
-#some-div:focus #some-element {
-  display: block;
-}
 
 
 .end {
@@ -456,6 +445,39 @@ line-height: 1.4;
 }
 
 
+
+
+.edit_projectnotes input:focus {  
+  border: 1px solid #66ccff;
+}
+.edit_projectnotes form,
+.edit_projectnotes input {
+    width: auto;
+    outline: none;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    background: inherit;
+    border: inherit
+}
+
+
+.edit_corporation button, .edit_client button, .edit_supplier button, .edit_projectnotes button, .edit_project button{
+  background: #ff0000;
+  color: #fff;
+  padding-top: 0.1rem;
+  padding-right: 0.5rem;
+  padding-bottom: 0.1rem;
+  padding-left: 0.5rem;
+  font-size: 0.6875rem;
+  margin-top: .5em;
+  margin-right: .5em;
+  border-radius: 3px;
+  border-color: #FF0000;
+  box-shadow: 0 4px 0 #cc0000, inset 0 1px 1px rgba(255, 255, 255, 0.5), 0 1px 3px rgba(0, 0, 0, 0.4);
+  display: block;
+}
+
 .palomita {
   margin-top: 2px;
   margin-left: 1px;
@@ -483,7 +505,7 @@ line-height: 1.4;
 
 .side-panel {
   position: fixed;
-  bottom: 0;
+  bottom: 13em;
   padding: 15em 0;
 }
 
@@ -541,7 +563,7 @@ line-height: 1.4;
 }
 .side-panel li {
   position: relative;
-  background: #fff;  
+  background: rgba(255,255,255,0.8);  
   border-top: 1px dotted #efefef;
 }
 .side-panel li:hover {
@@ -598,9 +620,10 @@ line-height: 1.4;
   
 }
 .borrar {
-  padding: 16.4em 0;
+  padding: 17.6em 0;
   left: -9px;
   font-size: .9em;
+  width: 34px;
 }
 .c  ul {
   position: fixed;
@@ -672,6 +695,18 @@ input[type='checkbox']:checked {
   line-height: 1.3em;
 }
 
+.widthBorrar{
+  width: 34px;
+}
+
+
+.summary span {
+  font-family: 'Anaheim', serif;
+  font-size: .8em; 
+  color:#C4C4C4;
+  display:block;
+}
+
 @media screen and (max-width: 720px) {
   .side-panel {
     position: static;
@@ -680,19 +715,12 @@ input[type='checkbox']:checked {
     }
   .xx {
     position: fixed;
-    bottom: 0;
+    bottom: 1em;
     padding: 15em 0;
     
     }
 
-  .xxb {
-    position: fixed;
-    bottom: 0;
-    padding: 16.4em 0;
-    left: -9px;
-    font-size: .9em;
-    width: 34px;
-    }
+
   .signature {
     position: static;
     
@@ -721,6 +749,12 @@ input[type='checkbox']:checked {
 
 
 
-
+@media screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio: 2) {
+.side-panel {
+  
+    position: static;
+    padding: 0;
+}
+}
 
 
