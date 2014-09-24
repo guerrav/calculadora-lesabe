@@ -11,31 +11,27 @@
 
 		
 		.row.summary
-			.large-2.columns  
+			.large-5.columns.rojo
 				-if @projects.count == 1
-					span= "#{@projects.count} proyecto"
+					h6= "#{@projects.count} proyecto"
 				-else
-					span= "#{@projects.count} proyectos en total"
-			.large-2.columns
+					h6= "#{@projects.count} proyectos en total"
+			
 				
 				-if pagado > 1
-					span= "Por cobrar #{currency(cotizado - pagado)}"
+					h6= "#{currency(cotizado - pagado)} por cobrar "
 			
 				
 				-if cotiprov > 1 
-					span= "Por pagar #{currency(pagosprov - cotiprov )}"
-			.large-2.columns
+					h6= "#{currency(pagosprov - cotiprov )} por pagar "
+			.large-5.columns.rojo
 				-if pagado > 1
-					span= "Cotizado #{currency(cotizado)}"
-					span= "Cobrado #{currency(pagado)}"
-			.large-3.columns
+					h6= "#{currency(cotizado)} cotizado "
+					h6= "#{currency(pagado)} cobrado "
 				-if cotizado > 1 && costo_real > 1
 					- p = percentage((utilidad * 100) / cotizado)
-					span #{p}
-					span Utilidad promedio por proyecto
+					h6= "#{p} Utilidad promedio por proyecto"
 					
-			.large-1.columns
+			.large-2.columns
 				p=
-		.row
-			.large-12.columns
-				p=
+		

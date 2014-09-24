@@ -1,20 +1,19 @@
-.row
-	.large-12.columns.rojo
-		p=
-		h6
-			== styled_flash
+
 
 
 -if user_projects.last
 	.row 
+		
 		.large-12.columns.rojo.pad
-			h6 Proyectos		
+			h6 Proyectos	
+			h6
+				== styled_flash	
 			ul.no-bullet.inline-list
 			  	- user_projects.reverse.each_with_index  do |project, index| 		
 			  		- project.index = index.to_i + 1
 			  		- project.save
 			  		li
-			  			h3.bitter
+			  			h4.bitter
 			  				-if project.status == "0" #ABIERTO
 				  				a href="/project/#{project.index}" #{project.name.capitalize}
 				  				-if project.budgets.advpayments.last

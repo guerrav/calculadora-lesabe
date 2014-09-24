@@ -478,6 +478,8 @@ line-height: 1.4;
   display: block;
 }
 
+
+
 .palomita {
   margin-top: 2px;
   margin-left: 1px;
@@ -508,7 +510,10 @@ line-height: 1.4;
   bottom: 13em;
   padding: 15em 0;
 }
-
+.staticorp{
+  padding: 0;
+  position: static;
+}
 
 .side-panel:nth-child(2n) {
 }
@@ -563,7 +568,7 @@ line-height: 1.4;
 }
 .side-panel li {
   position: relative;
-  background: rgba(255,255,255,0.8);  
+  background: rgb(255,255,255);  
   border-top: 1px dotted #efefef;
 }
 .side-panel li:hover {
@@ -627,10 +632,9 @@ line-height: 1.4;
 }
 .c  ul {
   position: fixed;
-  width: 180px;
-  bottom: 7.4em;
-  right: 0;
-  font-size: .9em;
+bottom: 30em;
+right: 0;
+font-size: .8em;
   
 }
 label.switch1 {
@@ -703,7 +707,7 @@ input[type='checkbox']:checked {
 .summary span {
   font-family: 'Anaheim', serif;
   font-size: .8em; 
-  color:#C4C4C4;
+  color:#454545;
   display:block;
 }
 
@@ -749,12 +753,6 @@ input[type='checkbox']:checked {
 
 
 
-@media screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio: 2) {
-.side-panel {
-  
-    position: static;
-    padding: 0;
-}
-}
+
 
 

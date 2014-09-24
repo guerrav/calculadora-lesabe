@@ -250,22 +250,24 @@ row
                                                 h6.right.elementdown= currency(payment.amount)
                         .large-4.columns
                             h6.pad= "POR PAGAR"
+
+                            
                             -project.corporation.suppliers.each do |supplier|
                                 -a = project.costs.quotes.all(supplier_name: supplier["name"]).sum(:amount).to_i
                                 -b = project.costs.quotes.payments.all(supplier_name: supplier["name"]).sum(:amount).to_i
                                 ul.no-bullet
-                                
-                                    .row
-                                        .large-4.columns
-                                            li   
-                                       
+                                    -if (a-b) > 0
+                                        .row
+                                            .large-4.columns
+                                                li   
+                                           
 
-                                                h6= supplier.name.upcase
-                                    
-                                        .large-8.columns
-                                            li.right
+                                                    h6= supplier.name.upcase
+                                        
+                                            .large-8.columns
+                                                li.right
 
-                                                h6.right.elementdown= currency(a-b)
+                                                    h6.right.elementdown= currency(a-b)
             -if project.budgets.advpayments.last.nil?
                 .large-2.medium-2.columns
                     p=

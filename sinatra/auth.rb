@@ -97,7 +97,7 @@ module Sinatra
 	      		user.save
 	      		
 	      		session[:admin] = user.id
-	      		redirect to('/corporation')
+	      		redirect to('/')
  
 			end 
 	    end
@@ -110,7 +110,7 @@ module Sinatra
 
 			if user.corporations.last 
 				session[:admin] = user.id
-				redirect to('/corporation')
+				redirect to('/')
 			end
 
 			if user
@@ -124,7 +124,7 @@ module Sinatra
 			    user.save
 			    
 			    session[:admin] = user.id
-			    redirect to('/corporation')		
+			    redirect to('/')		
 
 			end
 
