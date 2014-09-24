@@ -118,12 +118,11 @@ class User
   property :email,        String 
   property :password_digest,     Text 
   property :name,         String
-  property :lastname,     String
   property :created_at,   DateTime
 
   attr_accessor :password_confirmation
 
-  validates_presence_of :email, :name, :lastname
+  validates_presence_of :email, :name
   validates_uniqueness_of :email
   validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
   

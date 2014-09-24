@@ -11,27 +11,28 @@
 
 		
 		.row.summary
-			.large-5.columns.rojo
+			.large-2.small-6.columns
 				-if @projects.count == 1
-					h6= "#{@projects.count} proyecto"
+					h6.ligris.pad = "#{@projects.count} proyecto"
 				-else
-					h6= "#{@projects.count} proyectos en total"
+					h6.ligris.pad = "#{@projects.count} proyectos en total"
+			.large-2.small-6.columns
 			
 				
 				-if pagado > 1
-					h6= "#{currency(cotizado - pagado)} por cobrar "
+					h6.ligris.pad = "#{currency(cotizado - pagado)} por cobrar "
 			
 				
 				-if cotiprov > 1 
 					h6= "#{currency(pagosprov - cotiprov )} por pagar "
-			.large-5.columns.rojo
-				-if pagado > 1
-					h6= "#{currency(cotizado)} cotizado "
-					h6= "#{currency(pagado)} cobrado "
+			.large-2.small-6.columns.elementdown
+				/ -if pagado > 1
+				/ 	h6= "#{currency(cotizado)} cotizado "
+				/ 	h6= "#{currency(pagado)} cobrado "
 				-if cotizado > 1 && costo_real > 1
 					- p = percentage((utilidad * 100) / cotizado)
-					h6= "#{p} Utilidad promedio por proyecto"
+					h6.ligris.pad = "#{p} Utilidad promedio por proyecto"
 					
-			.large-2.columns
+			.large-6.small-6.columns
 				p=
 		

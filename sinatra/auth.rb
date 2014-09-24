@@ -84,22 +84,36 @@ module Sinatra
  		app.get '/auth/:provider/callback' do
 
 
+	      	
 	      	auth = request.env["omniauth.auth"]
-	      	authentication = Authentication.find_with_omniauth(auth)
+	      	authentication = Authentication.all.last(uid: auth["uid"], provider: auth["provider"])
+
 
 	      	if authentication
-	      		authentication.user_id == current_user
+	      		session[:admin] == authentication.user_id
 	      		redirect to('/')
 
-	      	else
-	      		user = User.create!
-	      		user.authentications.create!(uid: auth["uid"], provider: auth["provider"])
+	      	elsif current_user
+	      		user = current_user.authentications.create!(uid: auth["uid"], provider: auth["provider"])
 	      		user.save
+	      		redirect to('/')
+
+
+	      	else
+	      		user = User.create!(name: auth["info"]["name"])
+	      		user.authentications.create!(uid: auth["uid"], provider: auth["provider"])
+	      		user.email(required: false) 
+	      		user.password(required: false) 
+	      		user.save
+	      		corporation = Corporation.create!(user_id: user["id"]) 
+			    corporation.save
 	      		
 	      		session[:admin] = user.id
 	      		redirect to('/')
  
 			end 
+
+		
 	    end
 
 

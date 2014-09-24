@@ -4,24 +4,58 @@
 -if user_projects.last
 	.row 
 		
-		.large-12.columns.rojo.pad
-			h6 Proyectos	
+		.large-12.columns
+			h6.ligris.pad PROYECTOS	
 			h6
 				== styled_flash	
-			ul.no-bullet.inline-list
+			ul.no-bullet
 			  	- user_projects.reverse.each_with_index  do |project, index| 		
 			  		- project.index = index.to_i + 1
 			  		- project.save
-			  		li
-			  			h4.bitter
+			  		li 
+			  			h5.bitter 
 			  				-if project.status == "0" #ABIERTO
-				  				a href="/project/#{project.index}" #{project.name.capitalize}
+				  				a href="javascript:toggleDiv('p-#{project.id}');" #{project.name.capitalize}
 				  				-if project.budgets.advpayments.last
 					  				-if (project.budgets.sum(:amount).to_i - project.budgets.advpayments.sum(:amount).to_i ) > 0
 					  					span.palomita style="font-size:.6em;" = "!"
+					  			
+					  	
+						
 					  		-else #CERRADO
-				  				a href="/project/#{project.index}" style="color:#cccccc;" #{project.name.capitalize}
+				  				a href="javascript:toggleDiv('p-#{project.id}');" style="color:#cccccc;" #{project.name.capitalize}
 				  				-if project.budgets.advpayments.last
 					  				-if (project.budgets.sum(:amount).to_i - project.budgets.advpayments.sum(:amount).to_i ) > 0
 					  					span.palomita style="font-size:.6em;" = "!"
+					  	
+				  		  
+			  			.row 
+					  		.large-12.columns id="p-#{project.id}" style="display:none;"
+					  			h6.ligris.pad = "DETALLE"
 
+					  			.row
+					  				.large-9.columns
+					  					h6.element= project.completed_at.strftime("%b %e %Y")
+						  				-if project.status == "0" #ABIERTO
+								  			h6 style="color:#ff0000;" PROYECTO EN PROCESO
+								  		-else
+								  			h6 style="color:#ff0000;" PROYECTO CERRADO
+						  			.large-3.columns
+						  				a class="button tiny radius nuevo" href="/project/#{project.index}" VER PROYECTO 
+						  				p=
+						  		
+
+						  		.row
+						  			.large-6.columns.gris
+						  				-if project.budgets.last
+									  		h6.pad= "PRESUPUESTO SIN IVA"
+                    						h3.right #{currency(project.budgets.last.amount)}
+                    					-else
+                    						h6.pad= "SIN PRESUPUESTO"
+								  	.large-6.columns
+								  		-if project.budgets.last
+								  			h6.pad #{project.description}
+								  		p=
+
+					
+							

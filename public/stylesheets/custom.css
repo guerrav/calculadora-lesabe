@@ -740,12 +740,12 @@ input[type='checkbox']:checked {
 }
 
 
-  .mo li{
+  .mo {
     width: 150px;
     position: fixed;
-    bottom: .3em;
-    display: block;
-    right: 1em;
+    bottom: 2em;
+display: block;
+left: 6em;
   }
 
  
@@ -754,5 +754,18 @@ input[type='checkbox']:checked {
 
 
 
+.abrirp{
+  background: #ff0000;
+color: #fff;
+margin-bottom: .5em;
+padding-left: 1em;
+padding-top: 0.1em;
+padding-bottom: .2em;
+padding-right: 1em;
+border-color: #FF0000;
+box-shadow: 0 4px 0 #cc0000, inset 0 1px 1px rgba(255, 255, 255, 0.5), 0 1px 3px rgba(0, 0, 0, 0.4);
+font-size: 0.7em;
+border-radius: .4em;
+}
 
 
