@@ -1,0 +1,17 @@
+== slim :nav
+
+.row
+    .large-5.columns
+        form.new action="/auth/identity/register" method="POST"  	
+            
+            input type="text" placeholder="Email" name= :email
+
+            input type="submit" class="button tiny radius nuevo" value="Enviar" title="Submit"
+    .large-7.columns
+        - if @user && @user.errors.any?
+            - @user.errors.full_messages.each do |msg|
+                ul.error
+                    li
+                        =msg
+
+

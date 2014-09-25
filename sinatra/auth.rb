@@ -48,6 +48,8 @@ module Sinatra
 		    	end
 			end
 
+			
+
 
 		end
 
@@ -101,15 +103,22 @@ module Sinatra
 
 	      	else
 	      		user = User.create!(name: auth["info"]["name"])
-	      		user.authentications.create!(uid: auth["uid"], provider: auth["provider"])
-	      		user.email(required: false) 
-	      		user.password(required: false) 
-	      		user.save
 	      		corporation = Corporation.create!(user_id: user["id"]) 
 			    corporation.save
+	      		user.authentications.create!(uid: auth["uid"], provider: auth["provider"])
 	      		
-	      		session[:admin] = user.id
-	      		redirect to('/')
+	      		if user.save
+	      			session[:admin] = user.id
+	      			redirect to('/')
+	      		else
+	      			session[:omniauth] = auth.except('extra')
+	      			redirect to('/authentication')
+	      		end
+
+
+	      		
+	      		
+	      		
  
 			end 
 

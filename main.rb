@@ -64,7 +64,7 @@ end
 use Rack::Session::Pool
 use OmniAuth::Builder do
   #IDENTITY
-  provider :identity, :fields => [:email, :name, :lastname], model: User, on_failed_registration: lambda { |env|
+  provider :identity, :fields => [:email, :name], model: User, on_failed_registration: lambda { |env|
       status, headers, body = call env.merge("PATH_INFO" => '/register')
     }
     OmniAuth.config.on_failure = Proc.new { |env|
@@ -132,6 +132,8 @@ class User
       user.email = auth["info"]["email"]
     end
   end
+
+  
 
   has n, :authentications
   has n, :corporations
@@ -300,7 +302,14 @@ end
 
 
 
-
+get '/authentication' do
+  @user = current_user
+  if session[:omniauth]
+    @user.authentications.create!(uid: auth["uid"], provider: auth["provider"])
+    @user.valid?
+  end
+  slim :authentication
+end
 
 
 
