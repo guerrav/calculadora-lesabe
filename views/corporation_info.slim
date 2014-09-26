@@ -11,11 +11,11 @@ row
         .row 
             .large-12.columns
                 - if client_any.nil? 
-                    h2
-                        a.botonsazoA href="javascript:showonlyonev2('newboxes1');" Agrega un cliente!
+                    a.botonsazoA href="javascript:showonlyonev2('newboxes1');" Agrega un cliente!
                 - if supplier_any.nil? 
-                    h2
-                        a.botonsazoA href="javascript:showonlyonev2('newboxes2');"  Agrega un proveedor!
+                    
+                    
+                    a.botonsazoA href="javascript:showonlyonev2('newboxes2');"  Agrega un proveedor!
                 - if client_any && supplier_any && @corporation.clients.projects.last.nil?
                     h2
                         a.botonsazoA href="javascript:showonlyonev2('newboxes3');" Crea tu primer proyecto!
