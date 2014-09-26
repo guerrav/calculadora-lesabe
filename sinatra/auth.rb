@@ -92,7 +92,7 @@ module Sinatra
 
 
 	      	if authentication
-	      		session[:admin] == authentication.user_id
+	      		session[:admin] = authentication.user_id
 	      		redirect to('/')
 
 	      	elsif current_user
@@ -104,15 +104,19 @@ module Sinatra
 	      	else
 	      		user = User.create!(name: auth["info"]["name"])
 	      		corporation = Corporation.create!(user_id: user["id"]) 
+	      		corporation.completed_at = Time.now
 			    corporation.save
 	      		user.authentications.create!(uid: auth["uid"], provider: auth["provider"])
+	      		user.created_at = Time.now
+	      		user.email = "ejem@ejem.com"
+	      		user.password_digest = "."
 	      		
-	      		if user.save
+	      		if user.save!
 	      			session[:admin] = user.id
 	      			redirect to('/')
 	      		else
-	      			session[:omniauth] = auth.except('extra')
-	      			redirect to('/authentication')
+	      			session[:admin] = user.id
+	      			redirect to('/')
 	      		end
 
 
@@ -138,6 +142,7 @@ module Sinatra
 
 			if user
 				corporation = Corporation.create!(user_id: user["id"]) 
+				corporation.completed_at = Time.now
 			    corporation.save
 			    session[:admin] = user.id
 			    redirect to('/')

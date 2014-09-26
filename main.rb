@@ -89,8 +89,6 @@ class Authentication
   property :id,           Serial
   property :provider,     String
   property :uid,          String
-  property :created_at,   DateTime
-  property :upDated_at,   DateTime
 
   belongs_to :user
 
@@ -124,6 +122,7 @@ class User
 
   validates_presence_of :email, :name
   validates_uniqueness_of :email
+
   validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
   
   def self.create_with_omniauth(auth)
@@ -133,6 +132,8 @@ class User
     end
   end
 
+
+  
   
 
   has n, :authentications
@@ -143,7 +144,6 @@ class Corporation
   include DataMapper::Resource
   property :id,             Serial
   property :name,           String, default: "Tu empresa"
-  property :status,         String
   property :completed_at,   Date
   has n, :projects
   has n, :clients
@@ -302,23 +302,16 @@ end
 
 
 
-get '/authentication' do
-  @user = current_user
-  if session[:omniauth]
-    @user.authentications.create!(uid: auth["uid"], provider: auth["provider"])
-    @user.valid?
-  end
-  slim :authentication
-end
+
 
 
 
 get '/project/:index' do
   protected!
-  @user = current_user
-  @corporation = @user.corporations.last() 
+  
+  @corporation = current_user.corporations.last() if current_user.corporations
   if params[:id] == 1
-    @user.corporations.last() 
+    @project = current_user.corporations.last() 
     
   else
     @project = Project.all.last(index: params['index'], corporation_id: @corporation['id']) 

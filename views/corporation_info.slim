@@ -12,7 +12,10 @@ row
             .large-12.columns
                 - if client_any.nil? 
                     h2
-                        a.botonsazoA href="javascript:showonlyonev2('newboxes1');" Agrega un cliente y un proveedor para empezar!
+                        a.botonsazoA href="javascript:showonlyonev2('newboxes1');" Agrega un cliente!
+                - if supplier_any.nil? 
+                    h2
+                        a.botonsazoA href="javascript:showonlyonev2('newboxes2');"  Agrega un proveedor!
                 - if client_any && supplier_any && @corporation.clients.projects.last.nil?
                     h2
                         a.botonsazoA href="javascript:showonlyonev2('newboxes3');" Crea tu primer proyecto!
@@ -20,7 +23,7 @@ row
                     h2
                         a.botonsazoA href="/project/1" Asigna un presupuesto!
         .row
-            .large-6.columns.bitter
+            .large-6.medium-6.columns.bitter
                 - if current_user.corporations.last
                     - corporation = current_user.corporations.last
                     h3.bitter.element.edit_corporation= corporation.name
@@ -29,15 +32,15 @@ row
 
         
 
-
-        == slim :summary    
+        -if @projects
+            == slim :summary, locals: { corporation: corporation}
 
         .row
             .large-2.columns
                 p=
            
                 
-            .large-4.small-12.columns
+            .large-4.medium-4.small-12.columns
                 
                 - corporation.clients.each do |client|
                     ul.newboxes id="newboxes3#{client.id}" style="display:none; list-style:none; margin: 0;"  
@@ -85,7 +88,7 @@ row
                     ul.newboxes id="newboxes2#{supplier.id}" style="display:none; list-style:none; margin: 0;"                                          
                         - if corporation
                             li
-                                h6.ligris.pad = "DETALLE"
+                                h6.ligris.pad  = "DETALLE"
                                     
                                 h5.element.edit_supplier #{supplier.name.capitalize}
                                 javascript:
@@ -117,13 +120,13 @@ row
                                     input type="submit" class="button tiny radius" value= "BORRAR CLIENTE"
                       
             
-            .large-6.columns
+            .large-6.medium-4.columns
                 p=
         -if corporation
             .row 
-                .large-2.columns
+                .large-2.medium-2.columns
                     p=
-                .large-2.small-6.columns
+                .large-2.medium-2.small-6.columns
                     - if corporation.clients.last
                         h6.ligris.pad  CLIENTES
                         p=
@@ -135,7 +138,7 @@ row
                                     
                                                 
 
-                .large-2.small-6.columns
+                .large-2.medium-2.small-6.columns
                     - if corporation.suppliers.last
                         h6.ligris.pad  PROVEEDORES
                         p=
@@ -146,12 +149,12 @@ row
                                     a href="javascript:showonlyonev2('newboxes2#{supplier.id}');" style="font-size:.8em; line-height:150%;"  #{supplier.name.capitalize}
                                     
        
-                .large-5.columns
+                .large-5.medium-5.columns
 
 
-                    == slim :projects
+                    == slim :projects, locals: { corporation: corporation }
 
-                .large-1.columns
+                .large-1.medium-1.columns
                     p=
 
 

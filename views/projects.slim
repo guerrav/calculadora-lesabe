@@ -1,7 +1,7 @@
 
 
 
--if user_projects.last
+-if corporation.projects.last
 	.row 
 		
 		.large-12.columns
@@ -9,8 +9,8 @@
 			h6
 				== styled_flash	
 			ul.no-bullet
-			  	- user_projects.reverse.each_with_index  do |project, index| 		
-			  		- project.index = index.to_i + 1
+			  	- corporation.projects.reverse.to_enum.with_index(1)  do |project, index| 		
+			  		- project.index = index
 			  		- project.save
 			  		li 
 			  			h5.bitter 
@@ -31,7 +31,7 @@
 				  		  
 			  			.row 
 					  		.large-12.columns id="p-#{project.id}" style="display:none;"
-					  			h6.ligris.pad = "DETALLE"
+					  			h6.pad style="border-top:1px dotted #ddd;" = "DETALLE"
 
 					  			.row
 					  				.large-9.columns

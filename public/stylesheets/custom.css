@@ -723,6 +723,17 @@ input[type='checkbox']:checked {
     padding: 15em 0;
     
     }
+    .xx a {
+   
+    padding-right: 0;
+    
+    }
+
+    [class*="entypo-"]:before {
+      width: 10px;
+
+    }
+
 
 
   .signature {

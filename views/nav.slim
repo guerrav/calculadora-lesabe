@@ -7,8 +7,9 @@
 	    
 	    /! Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
 	    li.toggle-topbar
-	      a href="#" 
-	        span Menu
+		    -if current_user
+		      a href="#" 
+		        span Menu
 	    
 	  section.top-bar-section
 	    /! Right Nav Section
