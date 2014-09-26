@@ -23,7 +23,7 @@ configure :development do
 end
 
 
-use Rack::GoogleAnalytics, :tracker => 'UA-55150343-1'
+
 
 
 
@@ -61,7 +61,7 @@ end
 
 
 #OMNIAUTH IDENTITY
-
+use Rack::GoogleAnalytics, :tracker => 'UA-55150343-1'
 use Rack::Session::Pool
 use OmniAuth::Builder do
   #IDENTITY
