@@ -11,7 +11,7 @@ require 'omniauth-twitter'
 require './sinatra/auth'
 require 'sinatra/assetpack'
 require 'sinatra/support/numeric'
-
+require 'rack-google-analytics'
 
 
 
@@ -23,6 +23,7 @@ configure :development do
 end
 
 
+use Rack::GoogleAnalytics, :tracker => 'UA-55150343-1'
 
 
 
