@@ -178,7 +178,7 @@ class Project
   property :description,    Text,  default: "Notas de tu proyecto"
   property :client_name,    String
   property :status,         String, default: 0
-  property :completed_at,   DateTime
+  property :completed_at,   Date
   has n, :budgets 
   has n, :costs
   belongs_to :client
