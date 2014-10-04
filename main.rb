@@ -178,7 +178,7 @@ class Project
   property :description,    Text,  default: "Notas de tu proyecto"
   property :client_name,    String
   property :status,         String, default: 0
-  property :completed_at,   Date
+  property :completed_at,   DateTime
   has n, :budgets 
   has n, :costs
   belongs_to :client
@@ -487,8 +487,6 @@ put '/project/:id' do
   project.update(params[:project])
   redirect back
 end
-
-
 
 
 

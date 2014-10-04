@@ -20,37 +20,15 @@ row
             .large-2.medium-2.columns                
                 h5.element.edit_project= project.name.capitalize
                 h6.element= project.client_name.capitalize
-                
-                    
-
-
-
-
-
-                
-
-                
-                form.date method="POST" action="/project/#{project.id}"
+                form.date.elementdown method="POST" action="/project/#{project.id}"
                     input type="hidden" name="_method" value="PUT" 
                     
                     input#datepicker  type="text" name="project[completed_at]" value="#{project.completed_at.strftime("%b %e %Y")}"
 
-                    javascript:
-                        $(function() {
-                            $( "#datepicker" ).datepicker({
-                                dateFormat: 'd-m-yy',
-                                onSelect: function (dateText, inst) {
-                                $(this).parent('form').submit();
-                            }
 
 
-                            });
-                                
-                          });
-                        
-                       
 
-    
+            
             .large-8.medium-8.columns
                 p.element.edit_projectnotes style="font-size:.8em; color:#454545; line-height: 1.3;"= project.description
             
@@ -493,11 +471,34 @@ row
                      window.location.reload();
                 }
         });
-        
+         
+        $(function() {
+            $.datepicker.regional['es'] = {
+             closeText: 'Cerrar',
+             prevText: '<',
+             nextText: '>',
+             currentText: 'Hoy',
+             monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+             monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+             dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+             dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+             dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
+             weekHeader: 'Sm',
+             dateFormat: 'dd/mm/yy',
+             firstDay: 1,
+             isRTL: false,
+             showMonthAfterYear: false,
+             yearSuffix: ''
+            };
+            $.datepicker.setDefaults($.datepicker.regional['es']);
+            $( "#datepicker" ).datepicker({
+                dateFormat: 'd-m-yy',
+                onSelect: function (dateText, inst) {
+                $(this).parent('form').submit();
+            }
 
 
-        
-
-       
-
+            });
+                
+        });
 
