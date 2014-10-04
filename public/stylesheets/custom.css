@@ -763,7 +763,14 @@ left: 6em;
 }
 
 
+.date input:focus {  
+  border: 1px solid #66ccff;
+}
 
+.date input {  
+  border: 1px dotted #ccc;
+  box-shadow: none;
+}
 
 .abrirp{
   background: #ff0000;
