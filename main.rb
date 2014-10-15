@@ -6,6 +6,7 @@ require 'data_mapper'
 require 'dm-migrations'
 require 'dm-validations'
 require 'dm-timestamps'
+
 require 'omniauth-identity'
 require 'omniauth-twitter'
 require './sinatra/auth'
@@ -269,6 +270,8 @@ end
 
 configure do
   DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
+  #DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://Gomez:h@localhost/GOMEZ')
+
   DataMapper.finalize
   DataMapper.auto_upgrade!
 end
