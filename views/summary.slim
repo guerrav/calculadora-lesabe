@@ -1,0 +1,39 @@
+
+
+-if corporation.projects.last
+
+	- cotizado = corporation.projects.budgets.sum(:amount).to_i
+	- pagado = corporation.projects.budgets.advpayments.sum(:amount).to_i
+	- cotiprov = corporation.projects.costs.quotes.sum(:amount).to_i
+	- pagosprov = corporation.projects.costs.quotes.payments.sum(:amount).to_i
+    - costo_real = corporation.projects.costs.purchases.sum(:amount).to_i + cotiprov + corporation.projects.costs.works.sum(:amount).to_i
+	- utilidad = (pagado - costo_real)
+
+	
+	.row.summary
+		.large-2.medium-2.small-6.columns
+			-if corporation.projects.count == 1
+				h6.ligris.pad = "#{corporation.projects.count} proyecto"
+			-else
+				h6.ligris.pad = "#{corporation.projects.count} proyectos en total"
+
+		.large-2.medium-2.small-6.columns
+		
+			
+			-if pagado > 1
+				h6.ligris.pad = "#{currency(cotizado - pagado)} por cobrar "
+		
+			
+			-if cotiprov > 1 
+				h6= "#{currency(pagosprov - cotiprov )} por pagar "
+		.large-2.medium-2.small-6.columns.elementdown
+			/ -if pagado > 1
+			/ 	h6= "#{currency(cotizado)} cotizado "
+			/ 	h6= "#{currency(pagado)} cobrado "
+			-if cotizado > 1 && costo_real > 1
+				- p = percentage((utilidad * 100) / cotizado)
+				h6.ligris.pad = "#{p} Utilidad promedio por proyecto"
+				
+		.large-6.medium-6.small-6.columns
+			p=
+	

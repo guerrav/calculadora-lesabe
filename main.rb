@@ -6,7 +6,6 @@ require 'data_mapper'
 require 'dm-migrations'
 require 'dm-validations'
 require 'dm-timestamps'
-
 require 'omniauth-identity'
 require 'omniauth-twitter'
 require './sinatra/auth'
